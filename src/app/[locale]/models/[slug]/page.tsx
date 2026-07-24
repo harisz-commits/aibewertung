@@ -1,0 +1,288 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
+import { Check, ExternalLink, Minus, ArrowLeft, ShieldAlert } from 'lucide-react';
+import clsx from 'clsx';
+import { Link } from '@/i18n/navigation';
+import { getModelBySlug } from '@/lib/data';
+import type { ModelView } from '@/lib/types';
+import {
+  CATEGORY_LABELS,
+  SCORE_LABELS,
+  formatContext,
+  formatDate,
+  formatPrice,
+  formatScore,
+  scoreBg,
+  stripMarkdown
+} from '@/lib/format';
+import { Badge, StatusBadges } from '@/components/badges';
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string; locale: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const m = getModelBySlug(slug);
+  if (!m) return { title: 'Model not found' };
+  return {
+    title: `${m.name} — price, providers, context & scores`,
+    description: stripMarkdown(m.description).slice(0, 155) || `${m.name} by ${m.lab}`
+  };
+}
+
+function ScoreBar({ label, value }: { label: string; value: number }) {
+  return (
+    <div>
+      <div className="mb-1 flex items-center justify-between text-xs">
+        <span className="text-muted">{label}</span>
+        <span className="font-semibold tabular-nums">{formatScore(value)}</span>
+      </div>
+      <div className="h-1.5 overflow-hidden rounded-full bg-surface-2">
+        <div
+          className={clsx(
+            'h-full rounded-full',
+            value >= 80 ? 'bg-success' : value >= 60 ? 'bg-brand' : value >= 40 ? 'bg-warning' : 'bg-danger'
+          )}
+          style={{ width: `${Math.max(2, value)}%` }}
+        />
+      </div>
+    </div>
+  );
+}
+
+function FeatureRow({ ok, label }: { ok: boolean; label: string }) {
+  return (
+    <div className="flex items-center gap-2 text-sm">
+      {ok ? (
+        <Check size={15} className="text-success" />
+      ) : (
+        <Minus size={15} className="text-muted/50" />
+      )}
+      <span className={ok ? '' : 'text-muted/60'}>{label}</span>
+    </div>
+  );
+}
+
+function Meta({ label, value }: { label: string; value: React.ReactNode }) {
+  return (
+    <div className="flex flex-col gap-0.5">
+      <dt className="text-xs uppercase tracking-wide text-muted">{label}</dt>
+      <dd className="text-sm font-medium">{value}</dd>
+    </div>
+  );
+}
+
+export default async function ModelDetailPage({
+  params
+}: {
+  params: Promise<{ slug: string; locale: string }>;
+}) {
+  const { slug, locale } = await params;
+  const m = getModelBySlug(slug);
+  if (!m) notFound();
+
+  const t = await getTranslations('model');
+  const c = await getTranslations('common');
+  const lang = locale === 'de' ? 'de' : 'en';
+  const desc = stripMarkdown(m.description);
+
+  const scoreKeys = Object.keys(SCORE_LABELS).filter((k) => k !== 'overall') as (keyof ModelView['scores'])[];
+
+  const feats: { ok: boolean; label: string }[] = [
+    { ok: m.features.tools, label: 'Tool calling' },
+    { ok: m.features.functionCalling, label: 'Function calling' },
+    { ok: m.features.jsonMode, label: 'JSON mode' },
+    { ok: m.features.structuredOutput, label: 'Structured output' },
+    { ok: m.features.vision, label: 'Vision' },
+    { ok: m.features.audio, label: 'Audio' },
+    { ok: m.features.reasoning, label: 'Reasoning' },
+    { ok: m.features.coding, label: 'Coding' },
+    { ok: m.features.streaming, label: 'Streaming' },
+    { ok: m.features.localDeployment, label: 'Local deployment' }
+  ];
+
+  const worthIt =
+    m.scores.pricePerformance >= 65
+      ? lang === 'de'
+        ? 'Für die meisten Nutzer bietet dieses Modell ein sehr gutes Preis-Leistungs-Verhältnis — ein teureres Frontier-Modell brauchst du nur für Spezialfälle.'
+        : 'For most users this model offers strong price/performance — you only need a pricier frontier model for edge cases.'
+      : lang === 'de'
+        ? 'Dieses Modell ist eher hochpreisig. Es lohnt sich, wenn du maximale Qualität brauchst; sonst gibt es günstigere Alternativen mit ähnlichem Score.'
+        : 'This model sits at the higher end. Worth it when you need top quality; otherwise cheaper models reach a similar score.';
+
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+      <Link href="/#models" className="inline-flex items-center gap-1 text-sm text-muted hover:text-fg">
+        <ArrowLeft size={14} /> {t('backToTable')}
+      </Link>
+
+      {/* Header */}
+      <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <div className="flex flex-wrap items-center gap-2">
+            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">{m.name}</h1>
+            <StatusBadges model={m} t={(k) => c(k)} />
+          </div>
+          <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-muted">
+            <span>{m.lab}</span>
+            <span>·</span>
+            <span>{CATEGORY_LABELS[m.category]?.[lang] ?? m.category}</span>
+            <span>·</span>
+            <span>{m.isOpenWeight ? c('openWeight') : c('closed')}</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="text-right">
+            <div className="text-xs uppercase tracking-wide text-muted">{SCORE_LABELS.overall[lang]}</div>
+            <div className={clsx('mt-1 rounded-lg px-3 py-1.5 text-2xl font-bold tabular-nums', scoreBg(m.scores.overall))}>
+              {formatScore(m.scores.overall)}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {desc && <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">{desc}</p>}
+      {m.scoresEstimated && (
+        <div className="mt-2 inline-flex items-center gap-1.5 text-xs text-muted">
+          <Badge tone="warning">{c('estimated')}</Badge>
+          <span>{t('noBenchmarks')}</span>
+        </div>
+      )}
+
+      <div className="mt-8 grid gap-8 lg:grid-cols-3">
+        {/* Left: overview + capabilities */}
+        <div className="space-y-8 lg:col-span-2">
+          {/* Overview */}
+          <section className="rounded-xl border border-border bg-surface p-5">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">{t('overview')}</h2>
+            <dl className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+              <Meta label={t('releaseDate')} value={formatDate(m.releaseDate, locale)} />
+              <Meta label={t('contextWindow')} value={formatContext(m.contextWindow)} />
+              <Meta label={t('maxOutput')} value={formatContext(m.maxOutputTokens)} />
+              <Meta label={t('parameters')} value={m.parameterCount ?? '—'} />
+              <Meta label={t('license')} value={m.license ?? '—'} />
+              <Meta label={t('inputModalities')} value={m.inputModalities.join(', ')} />
+              <Meta label={t('outputModalities')} value={m.outputModalities.join(', ')} />
+              <Meta label={t('cheapestOverall')} value={`${formatPrice(m.cheapestInputPer1m)} / ${formatPrice(m.cheapestOutputPer1m)}`} />
+              <Meta label={c('lastChecked')} value={formatDate(m.lastCheckedAt, locale)} />
+            </dl>
+          </section>
+
+          {/* Capabilities */}
+          <section className="rounded-xl border border-border bg-surface p-5">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">{t('capabilities')}</h2>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+              {feats.map((fe) => (
+                <FeatureRow key={fe.label} ok={fe.ok} label={fe.label} />
+              ))}
+            </div>
+          </section>
+
+          {/* Providers & prices */}
+          <section className="rounded-xl border border-border bg-surface p-5">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">{t('providersPrices')}</h2>
+            <div className="overflow-x-auto scroll-thin">
+              <table className="w-full min-w-[560px] text-sm">
+                <thead className="text-left text-xs uppercase tracking-wide text-muted">
+                  <tr className="border-b border-border">
+                    <th className="py-2 pr-3 font-medium">{c('provider')}</th>
+                    <th className="py-2 px-3 text-right font-medium">{t('inputModalities')} /1M</th>
+                    <th className="py-2 px-3 text-right font-medium">{t('outputModalities')} /1M</th>
+                    <th className="py-2 px-3 text-right font-medium">{t('contextWindow')}</th>
+                    <th className="py-2 pl-3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {m.providers.map((p, i) => (
+                    <tr key={`${p.providerSlug}-${i}`} className="border-b border-border/60">
+                      <td className="py-2 pr-3 font-medium">{p.providerName}</td>
+                      <td className="py-2 px-3 text-right tabular-nums">{formatPrice(p.inputPricePer1m)}</td>
+                      <td className="py-2 px-3 text-right tabular-nums">{formatPrice(p.outputPricePer1m)}</td>
+                      <td className="py-2 px-3 text-right tabular-nums text-muted">{formatContext(p.contextWindow)}</td>
+                      <td className="py-2 pl-3 text-right">
+                        {p.link && (
+                          <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-brand">
+                            <ExternalLink size={13} />
+                          </a>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* Benchmarks (placeholder / honest) */}
+          <section className="rounded-xl border border-border bg-surface p-5">
+            <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted">{t('benchmarks')}</h2>
+            <p className="text-sm text-muted">{t('noBenchmarks')}</p>
+          </section>
+        </div>
+
+        {/* Right: scores + worth-it + local + sources */}
+        <div className="space-y-6">
+          {/* Worth it */}
+          <section className="rounded-xl border border-brand/30 bg-brand/5 p-5">
+            <h2 className="mb-2 text-sm font-semibold">{t('worthItTitle')}</h2>
+            <p className="text-sm text-muted">{worthIt}</p>
+          </section>
+
+          {/* Use-case scores */}
+          <section className="rounded-xl border border-border bg-surface p-5">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">{t('scores')}</h2>
+            <div className="space-y-3">
+              {scoreKeys.map((k) => (
+                <ScoreBar key={k} label={SCORE_LABELS[k][lang]} value={m.scores[k]} />
+              ))}
+            </div>
+          </section>
+
+          {/* Local deployment */}
+          {m.isOpenWeight && (
+            <section className="rounded-xl border border-border bg-surface p-5">
+              <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted">{t('localDeployment')}</h2>
+              <p className="text-sm text-muted">
+                {lang === 'de'
+                  ? 'Open-Weight — grundsätzlich lokal ausführbar (Ollama, LM Studio, vLLM, llama.cpp), abhängig von Größe und Hardware.'
+                  : 'Open-weight — generally runnable locally (Ollama, LM Studio, vLLM, llama.cpp), depending on size and hardware.'}
+              </p>
+              {m.parameterCount && (
+                <p className="mt-1 text-sm">
+                  {t('parameters')}: <span className="font-medium">{m.parameterCount}</span>
+                </p>
+              )}
+            </section>
+          )}
+
+          {/* Sources */}
+          <section className="rounded-xl border border-border bg-surface p-5">
+            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted">{t('sources')}</h2>
+            <ul className="space-y-2 text-sm">
+              {m.sources.map((s, i) => (
+                <li key={i} className="flex items-center justify-between gap-2">
+                  {s.url ? (
+                    <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">
+                      {s.name}
+                    </a>
+                  ) : (
+                    <span>{s.name}</span>
+                  )}
+                  <Badge tone="neutral">{s.reliability}</Badge>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/methodology"
+              className="mt-4 inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs text-muted transition hover:text-fg"
+            >
+              <ShieldAlert size={13} /> {t('reportIssue')}
+            </Link>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
