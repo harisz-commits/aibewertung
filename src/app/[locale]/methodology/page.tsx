@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { OVERALL_WEIGHTS, SCORE_VERSION } from '@/lib/scoring/engine';
 import { getSnapshotMeta } from '@/lib/data';
+import { Link } from '@/i18n/navigation';
 
 export async function generateMetadata({
   params
@@ -26,6 +27,7 @@ export default async function MethodologyPage({ params }: { params: Promise<{ lo
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('methodology');
+  const nav = await getTranslations('nav');
   const meta = getSnapshotMeta();
 
   const weights = Object.entries(OVERALL_WEIGHTS);
@@ -59,7 +61,16 @@ export default async function MethodologyPage({ params }: { params: Promise<{ lo
           </div>
         </section>
 
-        <Section title={t('benchmarksTitle')} body={t('benchmarksBody')} />
+        <section className="rounded-xl border border-border bg-surface p-5">
+          <h2 className="mb-2 text-base font-semibold">{t('benchmarksTitle')}</h2>
+          <p className="text-sm leading-relaxed text-muted">{t('benchmarksBody')}</p>
+          <Link
+            href="/benchmarks"
+            className="mt-3 inline-flex rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-brand transition hover:border-brand/50"
+          >
+            {nav('benchmarks')} →
+          </Link>
+        </section>
         <Section title={t('sourcesTitle')} body={t('sourcesBody')} />
         <Section title={t('sponsoredTitle')} body={t('sponsoredBody')} />
         <Section title={t('estimatedTitle')} body={t('estimatedBody')} />

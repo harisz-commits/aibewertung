@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { Check, ExternalLink, Minus, ArrowLeft, ShieldAlert } from 'lucide-react';
+import { Check, ExternalLink, Minus, ArrowLeft, ShieldAlert, Info } from 'lucide-react';
 import clsx from 'clsx';
 import { Link } from '@/i18n/navigation';
 import { getModelBySlug } from '@/lib/data';
@@ -17,6 +17,21 @@ import {
   stripMarkdown
 } from '@/lib/format';
 import { Badge, StatusBadges } from '@/components/badges';
+import { worthIt, explainOverall, ratingHighlights } from '@/lib/explain';
+import { BENCHMARKS_BY_SLUG, benchmarksInGroup } from '@/lib/benchmarks';
+import type { BenchmarkGroupSlug } from '@/lib/types';
+
+function relevantBenchmarks(category: string) {
+  const groups: BenchmarkGroupSlug[] =
+    category === 'coding'
+      ? ['coding', 'intelligence']
+      : category === 'reasoning'
+        ? ['reasoning', 'math', 'intelligence']
+        : category === 'multimodal'
+          ? ['multimodal', 'intelligence']
+          : ['intelligence', 'human_preference'];
+  return groups.flatMap((g) => benchmarksInGroup(g)).slice(0, 6);
+}
 
 export async function generateMetadata({
   params
@@ -103,14 +118,10 @@ export default async function ModelDetailPage({
     { ok: m.features.localDeployment, label: 'Local deployment' }
   ];
 
-  const worthIt =
-    m.scores.pricePerformance >= 65
-      ? lang === 'de'
-        ? 'Für die meisten Nutzer bietet dieses Modell ein sehr gutes Preis-Leistungs-Verhältnis — ein teureres Frontier-Modell brauchst du nur für Spezialfälle.'
-        : 'For most users this model offers strong price/performance — you only need a pricier frontier model for edge cases.'
-      : lang === 'de'
-        ? 'Dieses Modell ist eher hochpreisig. Es lohnt sich, wenn du maximale Qualität brauchst; sonst gibt es günstigere Alternativen mit ähnlichem Score.'
-        : 'This model sits at the higher end. Worth it when you need top quality; otherwise cheaper models reach a similar score.';
+  const worthItText = worthIt(m, lang);
+  const overallWhy = explainOverall(m, lang);
+  const highlights = ratingHighlights(m, lang);
+  const benchmarks = m.benchmarks ?? [];
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
@@ -215,10 +226,103 @@ export default async function ModelDetailPage({
             </div>
           </section>
 
-          {/* Benchmarks (placeholder / honest) */}
+          {/* Rating explained (plain language, deterministic) */}
           <section className="rounded-xl border border-border bg-surface p-5">
-            <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted">{t('benchmarks')}</h2>
-            <p className="text-sm text-muted">{t('noBenchmarks')}</p>
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">{t('ratingTitle')}</h2>
+            <p className="mt-1 text-xs text-muted">{t('ratingIntro')}</p>
+            <p className="mt-3 text-sm leading-relaxed">{overallWhy}</p>
+            <ul className="mt-4 space-y-2.5">
+              {highlights.map((h) => (
+                <li key={h.key} className="flex items-start gap-2.5 text-sm">
+                  <span
+                    className={clsx(
+                      'mt-0.5 inline-flex min-w-[2.2rem] justify-center rounded px-1.5 py-0.5 text-xs font-semibold tabular-nums',
+                      scoreBg(h.value)
+                    )}
+                  >
+                    {formatScore(h.value)}
+                  </span>
+                  <span>
+                    <span className="font-medium">{SCORE_LABELS[h.key][lang]}:</span>{' '}
+                    <span className="text-muted">{h.text}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Benchmarks */}
+          <section className="rounded-xl border border-border bg-surface p-5">
+            <div className="mb-3 flex items-center justify-between">
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">{t('benchmarks')}</h2>
+              <Link href="/benchmarks" className="text-xs font-medium text-brand hover:underline">
+                {t('benchmarkGlossary')} →
+              </Link>
+            </div>
+
+            {benchmarks.length > 0 ? (
+              <div className="space-y-3">
+                {benchmarks.map((r) => {
+                  const def = BENCHMARKS_BY_SLUG[r.benchmarkSlug];
+                  if (!def) return null;
+                  return (
+                    <div key={r.benchmarkSlug} className="border-b border-border/60 pb-3 last:border-0">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="font-medium">{def.name}</span>
+                        <span className="tabular-nums">
+                          {r.rawValue != null ? `${r.rawValue}` : '—'} <span className="text-muted">{def.unit}</span>
+                          {r.isEstimated && <span className="ml-1 text-warning">*</span>}
+                        </span>
+                      </div>
+                      {r.normalized != null && (
+                        <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-surface-2">
+                          <div
+                            className={clsx(
+                              'h-full rounded-full',
+                              r.normalized >= 80 ? 'bg-success' : r.normalized >= 60 ? 'bg-brand' : r.normalized >= 40 ? 'bg-warning' : 'bg-danger'
+                            )}
+                            style={{ width: `${Math.max(2, r.normalized)}%` }}
+                          />
+                        </div>
+                      )}
+                      <div className="mt-1 flex items-center justify-between text-[11px] text-muted">
+                        <span>{def.what[lang]}</span>
+                      </div>
+                      {(r.sourceName || r.lastCheckedAt) && (
+                        <div className="mt-0.5 flex items-center gap-2 text-[11px] text-muted">
+                          {r.sourceUrl ? (
+                            <a href={r.sourceUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand">
+                              {r.sourceName}
+                            </a>
+                          ) : (
+                            r.sourceName && <span>{r.sourceName}</span>
+                          )}
+                          {r.lastCheckedAt && <span>· {formatDate(r.lastCheckedAt, locale)}</span>}
+                          {r.isDisputed && <Badge tone="warning">disputed</Badge>}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div>
+                <div className="mb-3 flex items-start gap-2 rounded-lg bg-surface-2 p-3 text-xs text-muted">
+                  <Info size={14} className="mt-0.5 shrink-0 text-brand" />
+                  <span>{t('benchmarksNotMeasured')}</span>
+                </div>
+                <ul className="space-y-2">
+                  {relevantBenchmarks(m.category).map((def) => (
+                    <li key={def.slug} className="text-sm">
+                      <Link href={`/benchmarks#${def.groupSlug}`} className="font-medium hover:text-brand">
+                        {def.name}
+                      </Link>
+                      <span className="text-muted"> — {def.what[lang]}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </section>
         </div>
 
@@ -227,7 +331,7 @@ export default async function ModelDetailPage({
           {/* Worth it */}
           <section className="rounded-xl border border-brand/30 bg-brand/5 p-5">
             <h2 className="mb-2 text-sm font-semibold">{t('worthItTitle')}</h2>
-            <p className="text-sm text-muted">{worthIt}</p>
+            <p className="text-sm text-muted">{worthItText}</p>
           </section>
 
           {/* Use-case scores */}

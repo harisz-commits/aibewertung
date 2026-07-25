@@ -23,9 +23,27 @@
     "models": "Modelle",
     "compare": "Vergleichen",
     "rankings": "Rankings",
+    "benchmarks": "Benchmarks",
     "methodology": "Methodik",
     "api": "API",
     "news": "Heute in LLMs"
+  },
+  "benchmarks": {
+    "title": "Benchmarks verständlich erklärt",
+    "intro": "Jeder KI-Test in einfacher Sprache — was er misst, wie man den Wert liest und wo er dich täuschen kann. Ohne Fachjargon.",
+    "whatAreTitle": "Was ist ein Benchmark?",
+    "whatAreBody": "Ein Benchmark ist eine standardisierte Prüfung für KI-Modelle. Alle schreiben denselben Test, damit die Ergebnisse vergleichbar sind. Manche Tests sind Multiple-Choice-Quizze, manche lassen das Modell echten Code schreiben, und bei manchen stimmen echte Menschen ab, welche Antwort ihnen besser gefällt.",
+    "whyMisleadTitle": "Warum Benchmarks täuschen können",
+    "whyMisleadBody": "Ein hoher Wert ist keine Garantie. Tests werden „gesättigt“ (alle bestehen sie), können ins Trainingsmaterial gelangen oder messen etwas Enges, das wenig mit deiner echten Aufgabe zu tun hat. Deshalb zeigt botbrix mehrere Benchmarks pro Fähigkeit und verlässt sich nie auf eine einzige Zahl.",
+    "howWeUseTitle": "Wie botbrix sie nutzt",
+    "howWeUseBody": "Wo Messdaten vorliegen, normalisieren wir jeden Test auf eine 0–100-Skala und lassen die Intelligenz-/Reasoning-/Coding-/Mathe-Tests in den Qualitätsteil unseres Scores einfließen. Die Erklärung ist getrennt von der Zahl. Bis ein Benchmark für ein Modell gemessen wurde, zeigen wir „noch nicht gemessen“ statt eines erfundenen Werts.",
+    "groupTitle": "Benchmarks nach Fähigkeit",
+    "whatItMeasures": "Was er misst",
+    "howToRead": "Wie man ihn liest",
+    "caveat": "Vorsicht",
+    "source": "Quelle",
+    "higherBetter": "Höher ist besser",
+    "unit": "Einheit"
   },
   "home": {
     "heroTitle": "Welches KI-Modell solltest du wirklich nutzen?",
@@ -127,7 +145,13 @@
     "supported": "Unterstützt",
     "notSupported": "Nicht unterstützt",
     "cheapestOverall": "Günstigste",
-    "backToTable": "Alle Modelle"
+    "backToTable": "Alle Modelle",
+    "ratingTitle": "Bewertung erklärt",
+    "ratingIntro": "Warum botbrix diese Scores vergibt — in einfacher Sprache, aus den echten Signalen des Modells.",
+    "benchmarksNotMeasured": "Für dieses Modell sind noch keine Benchmark-Werte gemessen. Hier steht, was die Tests bedeuten und wie wir sie lesen würden.",
+    "benchmarkGlossary": "Zum vollständigen Benchmark-Glossar",
+    "measured": "Gemessen",
+    "notMeasured": "Noch nicht gemessen"
   },
   "compare": {
     "title": "Modelle vergleichen",

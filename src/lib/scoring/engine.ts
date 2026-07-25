@@ -153,8 +153,16 @@ function localEase(m: ImportedModel): number {
   return 55;
 }
 
-export function scoreModel(m: ImportedModel, now = new Date()): { scores: Scores; estimated: boolean } {
-  const Q = qualityProxy(m, now);
+export function scoreModel(
+  m: ImportedModel,
+  now = new Date(),
+  benchmarkQualityScore?: number | null
+): { scores: Scores; estimated: boolean } {
+  const proxy = qualityProxy(m, now);
+  // When measured benchmark quality is available, blend it in and treat the
+  // result as measured (not estimated). Otherwise fall back to the proxy.
+  const hasBench = benchmarkQualityScore != null && Number.isFinite(benchmarkQualityScore);
+  const Q = hasBench ? clamp(0.65 * (benchmarkQualityScore as number) + 0.35 * proxy) : proxy;
   const cheap = priceCheapness(m.cheapestOutputPer1m);
   const inputCheap = priceCheapness(m.cheapestInputPer1m);
   const SP = speedProxy(m);
@@ -208,6 +216,6 @@ export function scoreModel(m: ImportedModel, now = new Date()): { scores: Scores
     pricePerformance: round1(PP)
   };
 
-  // Estimated because quality is a structural proxy, not benchmark-measured.
-  return { scores, estimated: true };
+  // Estimated when quality is a structural proxy; measured when benchmarks fed in.
+  return { scores, estimated: !hasBench };
 }

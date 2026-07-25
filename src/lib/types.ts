@@ -85,6 +85,34 @@ export interface SourceRef {
   reliability: 'official' | 'marketplace' | 'benchmark' | 'community' | 'estimated';
 }
 
+export type BenchmarkGroupSlug =
+  | 'intelligence'
+  | 'reasoning'
+  | 'coding'
+  | 'math'
+  | 'agentic'
+  | 'multimodal'
+  | 'human_preference'
+  | 'speed'
+  | 'factuality'
+  | 'long_context'
+  | 'business_agents'
+  | 'price_performance';
+
+// A measured benchmark result attached to a model. `normalized` is 0-100;
+// `rawValue` keeps the original score/Elo/percentage for the detail view.
+export interface BenchmarkResultView {
+  benchmarkSlug: string;
+  rawValue: number | null;
+  normalized: number | null;
+  isEstimated: boolean;
+  isDisputed: boolean;
+  notes: string | null;
+  sourceName: string | null;
+  sourceUrl: string | null;
+  lastCheckedAt: string | null;
+}
+
 export interface ModelView {
   id: string;
   slug: string;
@@ -127,6 +155,10 @@ export interface ModelView {
   scores: Scores;
   scoresEstimated: boolean;
   sources: SourceRef[];
+
+  // Measured benchmarks (optional; populated by the benchmark importers once a
+  // source/key is configured). Absent in the marketplace-only snapshot.
+  benchmarks?: BenchmarkResultView[];
 }
 
 export interface SnapshotMeta {
