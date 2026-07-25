@@ -44,7 +44,7 @@ export default async function AdminDashboard() {
         {meta.source}
       </p>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Stat label="Models in snapshot" value={models.length} href="/admin/models" />
         <Stat label="Active overrides" value={c?.overrides ?? '—'} href="/admin/models" />
         <Stat label="Active featured slots" value={c?.featured ?? '—'} href="/admin/featured" />

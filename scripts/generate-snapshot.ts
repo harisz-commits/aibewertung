@@ -4,7 +4,7 @@
 // This keeps a real-data snapshot in the repo so the app renders without a DB.
 // The DB-backed pipeline (scripts/import-openrouter.ts) uses the same importer.
 
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
@@ -15,6 +15,13 @@ import {
   type RawOpenRouterEndpoint
 } from '../src/lib/importers/openrouter.ts';
 import { scoreModel, SCORE_VERSION } from '../src/lib/scoring/engine.ts';
+import {
+  attachBenchmarks,
+  benchmarkQuality,
+  toResult,
+  type BenchmarkMap
+} from '../src/lib/importers/benchmarks.ts';
+import { fetchArtificialAnalysis, type RawAAModel } from '../src/lib/importers/artificialAnalysis.ts';
 import type { ModelView, Snapshot } from '../src/lib/types.ts';
 
 const BASE = 'https://openrouter.ai/api/v1';
@@ -49,6 +56,65 @@ async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promis
   }
   await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
   return out;
+}
+
+const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '');
+
+interface SeedEntry {
+  benchmarkSlug: string;
+  rawValue: number | null;
+  sourceName?: string;
+  sourceUrl?: string;
+  isEstimated?: boolean;
+}
+
+async function loadBenchmarks(models: { slug: string; name: string }[], now: Date): Promise<BenchmarkMap> {
+  const byNorm = new Map(models.map((m) => [norm(m.name), m.slug]));
+  const matchSlug = (name: string | undefined) => (name ? byNorm.get(norm(name)) ?? null : null);
+
+  const merged: BenchmarkMap = {};
+  const add = (map: BenchmarkMap) => {
+    for (const [slug, results] of Object.entries(map)) {
+      merged[slug] = [...(merged[slug] ?? []), ...results];
+    }
+  };
+
+  // 1) Artificial Analysis (needs a free API key).
+  try {
+    add(await fetchArtificialAnalysis(process.env.ARTIFICIAL_ANALYSIS_API_KEY, (aa: RawAAModel) => matchSlug(aa.name ?? aa.slug), now));
+  } catch (e) {
+    console.warn(`  Artificial Analysis skipped: ${(e as Error).message}`);
+  }
+
+  // 2) Local seed file (manually curated; each entry carries its own source).
+  const seedPath = join(__dirname, '..', 'src', 'data', 'benchmarks.seed.json');
+  if (existsSync(seedPath)) {
+    try {
+      const seed = JSON.parse(readFileSync(seedPath, 'utf8')) as Record<string, SeedEntry[]>;
+      const map: BenchmarkMap = {};
+      for (const [slug, entries] of Object.entries(seed)) {
+        if (slug.startsWith('_')) continue; // allow _comment keys
+        map[slug] = entries.map((e) =>
+          toResult(
+            {
+              benchmarkSlug: e.benchmarkSlug,
+              rawValue: e.rawValue,
+              isEstimated: e.isEstimated ?? false,
+              sourceName: e.sourceName ?? 'Curated seed',
+              sourceUrl: e.sourceUrl ?? null
+            },
+            now
+          )
+        );
+      }
+      add(map);
+      console.log(`  loaded benchmark seed for ${Object.keys(map).length} models`);
+    } catch (e) {
+      console.warn(`  benchmark seed parse failed: ${(e as Error).message}`);
+    }
+  }
+
+  return merged;
 }
 
 async function main() {
@@ -87,8 +153,17 @@ async function main() {
   });
   console.log(`  merged real endpoints for ${endpointHits} models`);
 
+  // --- Real benchmarks (optional, key/seed gated; never fabricated) ---
+  // Sources: Artificial Analysis API (ARTIFICIAL_ANALYSIS_API_KEY) and/or a
+  // local seed file src/data/benchmarks.seed.json (see .example for format).
+  const bench = await loadBenchmarks(imported.map((m) => ({ slug: m.slug, name: m.name })), now);
+  imported = attachBenchmarks(imported, bench);
+  const benchCount = Object.keys(bench).length;
+  console.log(`  attached measured benchmarks to ${benchCount} models`);
+
   const models: ModelView[] = imported.map((m) => {
-    const { scores, estimated } = scoreModel(m, now);
+    const q = benchmarkQuality(m.benchmarks);
+    const { scores, estimated } = scoreModel(m, now, q);
     return { ...m, scores, scoresEstimated: estimated };
   });
 

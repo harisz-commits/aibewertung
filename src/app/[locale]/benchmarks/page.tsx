@@ -33,7 +33,7 @@ export default async function BenchmarksPage({ params }: { params: Promise<{ loc
       <h1 className="text-3xl font-bold tracking-tight">{t('title')}</h1>
       <p className="mt-2 max-w-2xl text-muted">{t('intro')}</p>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Intro title={t('whatAreTitle')} body={t('whatAreBody')} />
         <Intro title={t('whyMisleadTitle')} body={t('whyMisleadBody')} />
         <Intro title={t('howWeUseTitle')} body={t('howWeUseBody')} />

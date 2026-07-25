@@ -111,7 +111,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <h2 className="text-lg font-semibold">{t('newModelsTitle')}</h2>
           <p className="text-sm text-muted">{t('newModelsSubtitle')}</p>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {newest.map((m) => (
             <Link
               key={m.id}

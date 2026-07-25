@@ -13,7 +13,7 @@ export function RankingCards({
   const t = useTranslations('rankings');
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {rankings.map((r) => (
         <div key={r.id} className="rounded-xl border border-border bg-surface p-4">
           <div className="mb-3 flex items-center gap-2 text-sm font-semibold">

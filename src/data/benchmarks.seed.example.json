@@ -1,0 +1,9 @@
+{
+  "_note": "TEMPLATE — copy to benchmarks.seed.json and replace with SOURCED values. Keys are model slugs (as in models.snapshot.json). benchmarkSlug values must match src/lib/benchmarks.ts (mmlu_pro, gpqa, humaneval, mbpp, swebench_verified, livecodebench, aime, math, mmmu, lmarena, aa_intelligence, bfcl, simpleqa, helm, vending_bench, vending_bench_2). rawValue is the native scale (% , Elo, index). Always set a real sourceUrl. Numbers below are PLACEHOLDERS, not measurements.",
+  "_example_only": true,
+  "anthropic-claude-opus-5": [
+    { "benchmarkSlug": "gpqa", "rawValue": 0, "sourceName": "REPLACE ME", "sourceUrl": "https://…" },
+    { "benchmarkSlug": "swebench_verified", "rawValue": 0, "sourceName": "REPLACE ME", "sourceUrl": "https://…" },
+    { "benchmarkSlug": "lmarena", "rawValue": 0, "sourceName": "LMArena", "sourceUrl": "https://lmarena.ai/" }
+  ]
+}

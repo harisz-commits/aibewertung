@@ -31,7 +31,7 @@ export default async function AdminFeaturedPage() {
       </p>
 
       {/* New slot */}
-      <form action={saveFeaturedAction} className="mb-6 grid gap-3 rounded-xl border border-border bg-surface p-4 sm:grid-cols-2">
+      <form action={saveFeaturedAction} className="mb-6 grid grid-cols-1 gap-3 rounded-xl border border-border bg-surface p-4 sm:grid-cols-2">
         <h2 className="text-sm font-semibold sm:col-span-2">Add slot</h2>
         <label className="text-sm">
           Placement

@@ -13,7 +13,7 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-16 border-t border-border bg-surface">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
         <div>
           <div className="font-semibold">{c('brand')}</div>
           <p className="mt-2 max-w-xs text-xs leading-relaxed text-muted">{t('disclaimer')}</p>
