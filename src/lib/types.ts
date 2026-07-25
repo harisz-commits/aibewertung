@@ -159,6 +159,18 @@ export interface ModelView {
   // Measured benchmarks (optional; populated by the benchmark importers once a
   // source/key is configured). Absent in the marketplace-only snapshot.
   benchmarks?: BenchmarkResultView[];
+
+  // Applied from admin overrides when a database is connected.
+  affiliateUrl?: string | null;
+  isFeatured?: boolean;
+}
+
+export interface FeaturedSlotView {
+  id: string;
+  placement: string;
+  label: string;
+  modelSlug: string | null;
+  targetUrl: string;
 }
 
 export interface SnapshotMeta {

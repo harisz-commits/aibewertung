@@ -12,6 +12,8 @@
     "experimental": "Experimental",
     "openWeight": "Open-weight",
     "closed": "Closed",
+    "verified": "Verified",
+    "visit": "Visit provider",
     "lastChecked": "Last checked",
     "viewDetails": "View details",
     "providers": "Providers",

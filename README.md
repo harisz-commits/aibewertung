@@ -116,6 +116,16 @@ npm run import:openrouter  # upsert models + scores + changelog
 Then swap `src/lib/data.ts` reads from the snapshot to Prisma queries (same
 function signatures) — the UI does not change.
 
+## Admin backend (Phase 5)
+
+Log in at **`/admin`** with `ADMIN_EMAIL` / `ADMIN_PASSWORD` (env). Login works
+with no database; **editing** (hide/verify/status/affiliate overrides, featured
+slots, data reports) needs `DATABASE_URL` + `npm run db:push`. Admin changes are
+stored as slug-keyed overrides applied on top of the snapshot — so monetization
+works with just a database connection, ahead of the full model import. Every
+change is written to `AdminAuditLog`. Sponsored/featured placements are clearly
+labelled and never affect organic scores or rankings.
+
 ---
 
 ## Roadmap (from the product spec)
@@ -126,7 +136,7 @@ function signatures) — the UI does not change.
 | 2 | Importers, daily update job, change logs | 🟡 OpenRouter importer + DB pipeline + cron stub |
 | 3 | Main table, expandable providers, filters, detail pages | ✅ done |
 | 4 | Scoring engine, use-case rankings, assistant, methodology | 🟡 scoring + rankings + assistant done; benchmark ingestion pending |
-| 5 | Admin backend, verification, featured slots, reports | ⬜ schema ready, UI pending |
+| 5 | Admin backend, verification, featured slots, reports | ✅ auth + models/featured/reports admin (DB-backed) |
 | 6 | Auth, favorites/watchlist, CSV export, Stripe prep | ⬜ schema ready |
 | 7 | Paid API, keys, rate limiting, usage logs | 🟡 open endpoints live; auth/limits pending |
 | 8 | SEO, DE translations, daily summaries, polish | 🟡 SEO + i18n done |

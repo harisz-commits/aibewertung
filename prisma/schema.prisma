@@ -131,6 +131,9 @@ model Model {
   status                ModelStatus @default(active)
   category              Category    @default(chat)
 
+  // Monetization: outbound affiliate/referral link for this model (admin-set).
+  affiliateUrl          String?
+
   releaseDate           DateTime?
   knowledgeCutoff       DateTime?
 
@@ -427,6 +430,25 @@ model AdminAuditLog {
   before    Json?
   after     Json?
   createdAt DateTime @default(now())
+}
+
+// Slug-keyed overrides applied on top of the read-side snapshot. Lets the admin
+// hide/verify/deactivate models and attach affiliate links WITHOUT first
+// importing every model into the DB — so monetization works with just a
+// database connection, ahead of the full Phase-2 model import.
+model AdminOverride {
+  id             String       @id @default(cuid())
+  modelSlug      String       @unique
+  isHidden       Boolean?
+  isVerified     Boolean?
+  statusOverride ModelStatus?
+  affiliateUrl   String?
+  note           String?
+  updatedBy      String?
+  updatedAt      DateTime     @updatedAt
+  createdAt      DateTime     @default(now())
+
+  @@index([modelSlug])
 }
 
 // ---------------------------------------------------------------------------

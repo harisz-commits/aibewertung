@@ -6,5 +6,5 @@ export default createMiddleware(routing);
 export const config = {
   // Match the root and all pathnames except API, Next internals, and files
   // with an extension (so `/` redirects to the default locale).
-  matcher: ['/', '/((?!api|_next|_vercel|.*\\..*).*)']
+  matcher: ['/', '/((?!api|admin|_next|_vercel|.*\\..*).*)']
 };

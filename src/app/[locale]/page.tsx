@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowRight, Database, Sparkles } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { getAllModels, getHomeRankings, getLabs, getSnapshotMeta } from '@/lib/data';
+import { applyOverrides, getAllModels, getHomeRankings, getLabs, getOverrides, getSnapshotMeta } from '@/lib/data';
 import type { ModelView } from '@/lib/types';
 import { ModelTable, type TableModel } from '@/components/table/ModelTable';
 import { RankingCards } from '@/components/RankingCards';
@@ -20,15 +20,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const t = await getTranslations('home');
   const c = await getTranslations('common');
 
-  const models = getAllModels();
+  const ov = await getOverrides();
+  const hidden = (slug: string) => Boolean(ov.bySlug[slug]?.isHidden);
+  const models = applyOverrides(getAllModels(), ov);
   const tableModels = models.map(toTableModel);
-  const rankings = getHomeRankings();
+  const rankings = getHomeRankings().map((r) => ({
+    ...r,
+    models: r.models.filter((m) => !hidden(m.slug))
+  }));
   const labs = getLabs();
   const meta = getSnapshotMeta();
   const newest = [...models]
     .filter((m) => m.releaseDate)
     .sort((a, b) => (b.releaseDate ?? '').localeCompare(a.releaseDate ?? ''))
     .slice(0, 8);
+
+  const sponsored = ov.featured.find((f) => f.placement === 'table_top' || f.placement === 'homepage_hero');
+  const sponsoredModel = sponsored?.modelSlug ? models.find((m) => m.slug === sponsored.modelSlug) : undefined;
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -80,6 +88,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <h2 className="text-lg font-semibold">{t('tableTitle')}</h2>
           <p className="text-sm text-muted">{t('tableSubtitle')}</p>
         </div>
+        {sponsored && (
+          <a
+            href={sponsored.targetUrl}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            className="mb-3 flex items-center justify-between gap-3 rounded-xl border border-amber-500/40 bg-amber-500/5 px-4 py-3 text-sm transition hover:border-amber-500/70"
+          >
+            <span className="flex items-center gap-2">
+              <Badge tone="sponsored">{sponsored.label || c('sponsored')}</Badge>
+              <span className="font-medium">{sponsoredModel?.name ?? sponsored.targetUrl}</span>
+            </span>
+            <span className="text-xs text-muted">{c('learnMore')} →</span>
+          </a>
+        )}
         <ModelTable models={tableModels} labs={labs} />
       </section>
 

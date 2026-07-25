@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { Check, ExternalLink, Minus, ArrowLeft, ShieldAlert, Info } from 'lucide-react';
 import clsx from 'clsx';
 import { Link } from '@/i18n/navigation';
-import { getModelBySlug } from '@/lib/data';
+import { getModelBySlug, getOverrides, applyOverrides } from '@/lib/data';
 import type { ModelView } from '@/lib/types';
 import {
   CATEGORY_LABELS,
@@ -95,8 +95,11 @@ export default async function ModelDetailPage({
   params: Promise<{ slug: string; locale: string }>;
 }) {
   const { slug, locale } = await params;
-  const m = getModelBySlug(slug);
-  if (!m) notFound();
+  const base = getModelBySlug(slug);
+  if (!base) notFound();
+  const ov = await getOverrides();
+  if (ov.bySlug[base.slug]?.isHidden) notFound();
+  const m = applyOverrides([base], ov)[0] ?? base;
 
   const t = await getTranslations('model');
   const c = await getTranslations('common');
@@ -135,6 +138,8 @@ export default async function ModelDetailPage({
           <div className="flex flex-wrap items-center gap-2">
             <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">{m.name}</h1>
             <StatusBadges model={m} t={(k) => c(k)} />
+            {m.isVerified && <Badge tone="success">✓ {c('verified')}</Badge>}
+            {m.isFeatured && <Badge tone="sponsored">{c('sponsored')}</Badge>}
           </div>
           <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-muted">
             <span>{m.lab}</span>
@@ -145,6 +150,16 @@ export default async function ModelDetailPage({
           </div>
         </div>
         <div className="flex items-center gap-3">
+          {m.affiliateUrl && (
+            <a
+              href={m.affiliateUrl}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-brand px-4 py-2.5 text-sm font-medium text-brand-fg transition hover:opacity-90"
+            >
+              {c('visit')} <ExternalLink size={14} />
+            </a>
+          )}
           <div className="text-right">
             <div className="text-xs uppercase tracking-wide text-muted">{SCORE_LABELS.overall[lang]}</div>
             <div className={clsx('mt-1 rounded-lg px-3 py-1.5 text-2xl font-bold tabular-nums', scoreBg(m.scores.overall))}>
