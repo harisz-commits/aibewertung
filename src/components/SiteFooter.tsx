@@ -28,7 +28,6 @@ export function SiteFooter() {
             <li><Link href="/compare" className="text-muted hover:text-fg">{nav('compare')}</Link></li>
             <li><Link href="/#rankings" className="text-muted hover:text-fg">{nav('rankings')}</Link></li>
             <li><Link href="/benchmarks" className="text-muted hover:text-fg">{nav('benchmarks')}</Link></li>
-            <li><Link href="/coding" className="text-muted hover:text-fg">{nav('coding')}</Link></li>
             <li><Link href="/methodology" className="text-muted hover:text-fg">{t('methodology')}</Link></li>
           </ul>
         </div>

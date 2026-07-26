@@ -104,10 +104,19 @@ function deriveCategory(opts: {
   return 'chat';
 }
 
+/** URL-safe slug from an OpenRouter model id. Collapses every character that
+ * is not [a-z0-9] into a single hyphen, so ids with '/', ':' (e.g. ':free'),
+ * '.' (version numbers) or '~' (…-latest aliases) never end up in a URL path —
+ * those characters cause routing/404 issues on Vercel. Distinct ids stay
+ * distinct (…-a12b vs …-a12b-free). */
+export function toSlug(id: string): string {
+  return id.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
 export function mapModel(raw: RawOpenRouterModel, now = new Date()): ImportedModel {
   const [prefix, ...rest] = raw.id.split('/');
   const lab = resolveLab(prefix);
-  const slug = raw.id.replace(/\//g, '-').toLowerCase();
+  const slug = toSlug(raw.id);
 
   const inputModalities = raw.architecture?.input_modalities ?? ['text'];
   const outputModalities = raw.architecture?.output_modalities ?? ['text'];

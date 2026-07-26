@@ -2,16 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import {
-  ChevronDown,
-  ChevronRight,
-  ExternalLink,
-  LayoutGrid,
-  List,
-  Search,
-  SlidersHorizontal,
-  X
-} from 'lucide-react';
+import { LayoutGrid, List, Search, SlidersHorizontal, X } from 'lucide-react';
 import clsx from 'clsx';
 import { Link } from '@/i18n/navigation';
 import type { ModelView } from '@/lib/types';
@@ -19,7 +10,6 @@ import {
   CATEGORY_LABELS,
   SCORE_LABELS,
   formatContext,
-  formatDate,
   formatLatency,
   formatPrice,
   formatScore,
@@ -30,7 +20,9 @@ import { Badge, StatusBadges } from '@/components/badges';
 import { RangeSlider } from './RangeSlider';
 import { ModelCard } from './ModelCard';
 
-export type TableModel = Omit<ModelView, 'description' | 'descriptionDe' | 'sources' | 'family'>;
+// Providers are intentionally excluded from the table payload — they live on
+// the model detail page. Dropping the array keeps the client bundle lean.
+export type TableModel = Omit<ModelView, 'description' | 'descriptionDe' | 'sources' | 'family' | 'providers'>;
 
 const SCORE_SORTS = [
   'overall',
@@ -129,7 +121,6 @@ export function ModelTable({
   const [sort, setSort] = useState<SortKey>('overall');
   const [view, setView] = useState<'table' | 'grid'>('table');
   const [showFilters, setShowFilters] = useState(false);
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
   function toggleSet<T>(setter: (fn: (p: Set<T>) => Set<T>) => void, val: T) {
     setter((prev) => {
@@ -211,7 +202,7 @@ export function ModelTable({
       }
 
       if (q) {
-        const hay = `${m.name} ${m.lab} ${m.slug} ${m.providers.map((p) => p.providerName).join(' ')}`.toLowerCase();
+        const hay = `${m.name} ${m.lab} ${m.slug}`.toLowerCase();
         if (!hay.includes(q)) return false;
       }
       return true;
@@ -239,10 +230,6 @@ export function ModelTable({
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [models, query, category, openness, caps, mods, freeOnly, showDeprecated, lab, releasedMonths, outPrice, inPrice, ctx, intel, codingIdx, sort]);
-
-  function toggleRow(id: string) {
-    toggleSet(setExpanded, id);
-  }
 
   const categories = ['all', 'chat', 'reasoning', 'coding', 'multimodal', 'embedding', 'reranker'];
   const isScoreSort = (SCORE_SORTS as readonly string[]).includes(sort);
@@ -439,7 +426,7 @@ export function ModelTable({
               scoreKey={activeScoreKey}
               locale={locale}
               statusT={(k) => c(k)}
-              labels={{ context: t('context'), output: t('output'), speed: t('speed'), providers: t('providers') }}
+              labels={{ context: t('context'), output: t('output'), speed: t('speed') }}
             />
           ))}
           {filtered.length === 0 && <p className="col-span-full py-16 text-center text-muted">{t('noResults')}</p>}
@@ -447,10 +434,9 @@ export function ModelTable({
       ) : (
         /* Table view */
         <div className="overflow-x-auto scroll-thin rounded-xl border border-border">
-          <table className="w-full min-w-[980px] border-collapse text-sm">
+          <table className="w-full min-w-[820px] border-collapse text-sm">
             <thead className="sticky top-0 z-10 bg-surface-2 text-left text-xs uppercase tracking-wide text-muted">
               <tr>
-                <th className="w-8 px-2 py-3"></th>
                 <th className="px-3 py-3 font-medium">{t('model')}</th>
                 <th className="px-3 py-3 font-medium">{t('category')}</th>
                 <th className="px-3 py-3 text-center font-medium">{scoreHeader}</th>
@@ -459,36 +445,15 @@ export function ModelTable({
                 <th className="px-3 py-3 text-right font-medium">{t('output')}</th>
                 <th className="px-3 py-3 text-right font-medium">{t('throughput')}</th>
                 <th className="px-3 py-3 text-right font-medium">{t('latency')}</th>
-                <th className="px-3 py-3 text-center font-medium">{t('providers')}</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((m) => (
-                <FragmentRow
-                  key={m.id}
-                  model={m}
-                  isOpen={expanded.has(m.id)}
-                  onToggle={() => toggleRow(m.id)}
-                  scoreKey={activeScoreKey}
-                  locale={locale}
-                  labels={{
-                    apiModelId: t('apiModelId'),
-                    input: t('input'),
-                    output: t('output'),
-                    cachedInput: t('cachedInput'),
-                    context: t('context'),
-                    maxOutput: t('maxOutput'),
-                    uptime: t('uptime'),
-                    availability: t('availability'),
-                    lastChecked: c('lastChecked'),
-                    viewDetails: c('viewDetails')
-                  }}
-                  statusT={(k) => c(k)}
-                />
+                <ModelRow key={m.id} model={m} scoreKey={activeScoreKey} locale={locale} statusT={(k) => c(k)} />
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={10} className="px-4 py-16 text-center text-muted">
+                  <td colSpan={8} className="px-4 py-16 text-center text-muted">
                     {t('noResults')}
                   </td>
                 </tr>
@@ -505,124 +470,42 @@ function FilterLabel({ children, className }: { children: React.ReactNode; class
   return <div className={clsx('mb-1.5 text-xs font-medium uppercase tracking-wide text-muted', className)}>{children}</div>;
 }
 
-function FragmentRow({
+function ModelRow({
   model: m,
-  isOpen,
-  onToggle,
   scoreKey,
   locale,
-  labels,
   statusT
 }: {
   model: TableModel;
-  isOpen: boolean;
-  onToggle: () => void;
   scoreKey: keyof TableModel['scores'];
   locale: string;
-  labels: Record<string, string>;
   statusT: (k: string) => string;
 }) {
   const catLabel = CATEGORY_LABELS[m.category]?.[locale === 'de' ? 'de' : 'en'] ?? m.category;
   return (
-    <>
-      <tr className={clsx('border-t border-border transition hover:bg-surface-2/60', isOpen && 'bg-surface-2/40')}>
-        <td className="px-2 py-3 align-top">
-          <button type="button" onClick={onToggle} aria-label="Expand" className="mt-0.5 text-muted transition hover:text-fg">
-            {isOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-          </button>
-        </td>
-        <td className="px-3 py-3">
-          <div className="flex flex-col gap-1">
-            <Link href={`/models/${m.slug}`} className="font-medium leading-tight hover:text-brand">
-              {m.name}
-            </Link>
-            <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted">
-              <span>{m.lab}</span>
-              <StatusBadges model={m as ModelView} t={statusT} />
-            </div>
+    <tr className="border-t border-border transition hover:bg-surface-2/60">
+      <td className="px-3 py-3">
+        <div className="flex flex-col gap-1">
+          <Link href={`/models/${m.slug}`} className="font-medium leading-tight hover:text-brand">
+            {m.name}
+          </Link>
+          <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted">
+            <span>{m.lab}</span>
+            <StatusBadges model={m as ModelView} t={statusT} />
           </div>
-        </td>
-        <td className="px-3 py-3">
-          <span className="whitespace-nowrap text-xs text-muted">{catLabel}</span>
-        </td>
-        <td className="px-3 py-3 text-center">
-          <ScorePill value={m.scores[scoreKey]} />
-        </td>
-        <td className="px-3 py-3 text-right tabular-nums text-muted">{formatContext(m.contextWindow)}</td>
-        <td className="px-3 py-3 text-right tabular-nums">{formatPrice(m.cheapestInputPer1m)}</td>
-        <td className="px-3 py-3 text-right tabular-nums">{formatPrice(m.cheapestOutputPer1m)}</td>
-        <td className="px-3 py-3 text-right tabular-nums text-muted">{m.outputSpeedTps != null ? formatSpeed(m.outputSpeedTps) : '—'}</td>
-        <td className="px-3 py-3 text-right tabular-nums text-muted">{formatLatency(m.ttftMs)}</td>
-        <td className="px-3 py-3 text-center">
-          <button
-            type="button"
-            onClick={onToggle}
-            className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 text-xs text-muted transition hover:border-brand/50 hover:text-fg"
-          >
-            {m.providerCount}
-            {isOpen ? <ChevronDown size={13} /> : <ChevronRight size={13} />}
-          </button>
-        </td>
-      </tr>
-      {isOpen && (
-        <tr className="border-t border-border bg-surface-2/30">
-          <td colSpan={10} className="px-3 py-3 sm:px-6">
-            <div className="overflow-x-auto scroll-thin rounded-lg border border-border bg-surface">
-              <table className="w-full min-w-[720px] text-xs">
-                <thead className="bg-surface-2 text-left uppercase tracking-wide text-muted">
-                  <tr>
-                    <th className="px-3 py-2 font-medium">{statusT('provider')}</th>
-                    <th className="px-3 py-2 font-medium">{labels.apiModelId}</th>
-                    <th className="px-3 py-2 text-right font-medium">{labels.input}</th>
-                    <th className="px-3 py-2 text-right font-medium">{labels.output}</th>
-                    <th className="px-3 py-2 text-right font-medium">{labels.cachedInput}</th>
-                    <th className="px-3 py-2 text-right font-medium">{labels.context}</th>
-                    <th className="px-3 py-2 text-right font-medium">{labels.uptime}</th>
-                    <th className="px-3 py-2 text-center font-medium">{labels.availability}</th>
-                    <th className="px-3 py-2"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {m.providers.map((p, i) => (
-                    <tr key={`${p.providerSlug}-${i}`} className="border-t border-border">
-                      <td className="px-3 py-2 font-medium">{p.providerName}</td>
-                      <td className="px-3 py-2 font-mono text-[11px] text-muted">{p.apiModelId ?? '—'}</td>
-                      <td className="px-3 py-2 text-right tabular-nums">{formatPrice(p.inputPricePer1m)}</td>
-                      <td className="px-3 py-2 text-right tabular-nums">{formatPrice(p.outputPricePer1m)}</td>
-                      <td className="px-3 py-2 text-right tabular-nums">{formatPrice(p.cachedInputPricePer1m)}</td>
-                      <td className="px-3 py-2 text-right tabular-nums text-muted">{formatContext(p.contextWindow)}</td>
-                      <td className="px-3 py-2 text-right tabular-nums text-muted">
-                        {p.uptime30m != null ? `${p.uptime30m.toFixed(0)}%` : '—'}
-                      </td>
-                      <td className="px-3 py-2 text-center">
-                        <span
-                          className={clsx('inline-block h-2 w-2 rounded-full', p.availabilityStatus === 'available' ? 'bg-success' : 'bg-warning')}
-                          title={p.availabilityStatus}
-                        />
-                      </td>
-                      <td className="px-3 py-2 text-right">
-                        {p.link && (
-                          <a href={p.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-muted hover:text-brand">
-                            <ExternalLink size={12} />
-                          </a>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="mt-2 flex items-center justify-between px-1 text-[11px] text-muted">
-              <span>
-                {labels.lastChecked}: {formatDate(m.lastCheckedAt, locale)}
-              </span>
-              <Link href={`/models/${m.slug}`} className="font-medium text-brand hover:underline">
-                {labels.viewDetails} →
-              </Link>
-            </div>
-          </td>
-        </tr>
-      )}
-    </>
+        </div>
+      </td>
+      <td className="px-3 py-3">
+        <span className="whitespace-nowrap text-xs text-muted">{catLabel}</span>
+      </td>
+      <td className="px-3 py-3 text-center">
+        <ScorePill value={m.scores[scoreKey]} />
+      </td>
+      <td className="px-3 py-3 text-right tabular-nums text-muted">{formatContext(m.contextWindow)}</td>
+      <td className="px-3 py-3 text-right tabular-nums">{formatPrice(m.cheapestInputPer1m)}</td>
+      <td className="px-3 py-3 text-right tabular-nums">{formatPrice(m.cheapestOutputPer1m)}</td>
+      <td className="px-3 py-3 text-right tabular-nums text-muted">{m.outputSpeedTps != null ? formatSpeed(m.outputSpeedTps) : '—'}</td>
+      <td className="px-3 py-3 text-right tabular-nums text-muted">{formatLatency(m.ttftMs)}</td>
+    </tr>
   );
 }

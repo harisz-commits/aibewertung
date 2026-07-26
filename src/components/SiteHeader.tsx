@@ -15,7 +15,6 @@ export function SiteHeader() {
     { href: '/#rankings', label: t('rankings') },
     { href: '/compare', label: t('compare') },
     { href: '/benchmarks', label: t('benchmarks') },
-    { href: '/coding', label: t('coding') },
     { href: '/methodology', label: t('methodology') }
   ];
 

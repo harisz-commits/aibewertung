@@ -4,7 +4,7 @@ import { getAllModels } from '@/lib/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
-  const staticPaths = ['', '/compare', '/benchmarks', '/coding', '/methodology', '/impressum', '/datenschutz'];
+  const staticPaths = ['', '/compare', '/benchmarks', '/methodology', '/impressum', '/datenschutz'];
   const models = getAllModels();
 
   const entries: MetadataRoute.Sitemap = [];

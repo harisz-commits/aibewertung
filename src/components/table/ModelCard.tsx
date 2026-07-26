@@ -14,7 +14,7 @@ import {
 } from '@/lib/format';
 import { StatusBadges } from '@/components/badges';
 
-export type CardModel = Omit<ModelView, 'description' | 'descriptionDe' | 'sources' | 'family'>;
+export type CardModel = Omit<ModelView, 'description' | 'descriptionDe' | 'sources' | 'family' | 'providers'>;
 
 function Stat({ label, value }: { label: string; value: React.ReactNode }) {
   return (
@@ -36,7 +36,7 @@ export function ModelCard({
   scoreKey: keyof CardModel['scores'];
   locale: string;
   statusT: (k: string) => string;
-  labels: { context: string; output: string; speed: string; providers: string };
+  labels: { context: string; output: string; speed: string };
 }) {
   const lang = locale === 'de' ? 'de' : 'en';
   const catLabel = CATEGORY_LABELS[m.category]?.[lang] ?? m.category;
@@ -60,11 +60,10 @@ export function ModelCard({
 
       <StatusBadges model={m as ModelView} t={statusT} />
 
-      <div className="grid grid-cols-4 gap-2 border-t border-border pt-3">
+      <div className="grid grid-cols-3 gap-2 border-t border-border pt-3">
         <Stat label={labels.context} value={formatContext(m.contextWindow)} />
         <Stat label={labels.output} value={formatPrice(m.cheapestOutputPer1m)} />
         <Stat label={labels.speed} value={m.outputSpeedTps != null ? formatSpeed(m.outputSpeedTps) : '—'} />
-        <Stat label={labels.providers} value={m.providerCount} />
       </div>
     </Link>
   );

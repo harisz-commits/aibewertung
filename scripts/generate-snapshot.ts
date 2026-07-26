@@ -11,6 +11,7 @@ import {
   mapModel,
   mapEndpoints,
   withEndpoints,
+  toSlug,
   type RawOpenRouterModel,
   type RawOpenRouterEndpoint
 } from '../src/lib/importers/openrouter.ts';
@@ -127,7 +128,7 @@ async function main() {
       const data = await fetchJson(`${BASE}/models/${m.id}/endpoints`);
       const eps: RawOpenRouterEndpoint[] = data?.data?.endpoints ?? [];
       if (eps.length) {
-        const slug = m.id.replace(/\//g, '-').toLowerCase();
+        const slug = toSlug(m.id);
         const i = bySlug.get(slug);
         if (i != null) {
           imported[i] = withEndpoints(imported[i], mapEndpoints(m.id, eps, now));

@@ -10,7 +10,9 @@ import { formatDate, formatPrice } from '@/lib/format';
 import { Badge } from '@/components/badges';
 
 function toTableModel(m: ModelView): TableModel {
-  const { description, descriptionDe, sources, family, ...rest } = m;
+  // Drop heavy/unused fields from the client payload. Providers live on the
+  // model detail page, so the full endpoint array never ships to the table.
+  const { description, descriptionDe, sources, family, providers, ...rest } = m;
   return rest;
 }
 

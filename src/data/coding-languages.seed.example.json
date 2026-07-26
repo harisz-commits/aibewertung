@@ -1,9 +1,0 @@
-{
-  "_note": "TEMPLATE — copy to coding-languages.seed.json and fill with SOURCED per-model, per-language results. The three named HF datasets (SWE-bench_Multilingual, MultiPL-E, McEval-Instruct) contain benchmark PROBLEMS/training data, not model scores, so scores must come from a published leaderboard export or your own eval run. 'benchmark' is normalized to swe-bench-multilingual | mceval | multipl-e. 'score' may be 0-1 or 0-100. Numbers below are PLACEHOLDERS.",
-  "rows": [
-    { "model": "Example-Model-A", "language": "JavaScript", "benchmark": "swe-bench-multilingual", "score": 0.0 },
-    { "model": "Example-Model-A", "language": "JavaScript", "benchmark": "multipl-e", "score": 0.0 },
-    { "model": "Example-Model-A", "language": "Python", "benchmark": "mceval", "score": 0.0 },
-    { "model": "Example-Model-B", "language": "Rust", "benchmark": "multipl-e", "score": 0.0 }
-  ]
-}

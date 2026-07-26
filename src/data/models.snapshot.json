@@ -8,7 +8,7 @@
   "models": [
     {
       "id": "z-ai-glm-5.2",
-      "slug": "z-ai-glm-5.2",
+      "slug": "z-ai-glm-5-2",
       "name": "Z.ai: GLM 5.2",
       "family": null,
       "lab": "Z.ai (Zhipu)",
@@ -1058,7 +1058,7 @@
     },
     {
       "id": "google-gemini-3.6-flash",
-      "slug": "google-gemini-3.6-flash",
+      "slug": "google-gemini-3-6-flash",
       "name": "Google: Gemini 3.6 Flash",
       "family": null,
       "lab": "Google",
@@ -1319,7 +1319,7 @@
     },
     {
       "id": "google-gemini-3.5-flash-lite",
-      "slug": "google-gemini-3.5-flash-lite",
+      "slug": "google-gemini-3-5-flash-lite",
       "name": "Google: Gemini 3.5 Flash Lite",
       "family": null,
       "lab": "Google",
@@ -1580,7 +1580,7 @@
     },
     {
       "id": "google-gemini-3.5-flash",
-      "slug": "google-gemini-3.5-flash",
+      "slug": "google-gemini-3-5-flash",
       "name": "Google: Gemini 3.5 Flash",
       "family": null,
       "lab": "Google",
@@ -1863,7 +1863,7 @@
     },
     {
       "id": "meta-muse-spark-1.1",
-      "slug": "meta-muse-spark-1.1",
+      "slug": "meta-muse-spark-1-1",
       "name": "Meta: Muse Spark 1.1",
       "family": null,
       "lab": "Meta",
@@ -2044,7 +2044,7 @@
     },
     {
       "id": "google-gemini-3.1-flash-lite",
-      "slug": "google-gemini-3.1-flash-lite",
+      "slug": "google-gemini-3-1-flash-lite",
       "name": "Google: Gemini 3.1 Flash Lite",
       "family": null,
       "lab": "Google",
@@ -2327,7 +2327,7 @@
     },
     {
       "id": "google-gemma-4-26b-a4b-it:free",
-      "slug": "google-gemma-4-26b-a4b-it:free",
+      "slug": "google-gemma-4-26b-a4b-it-free",
       "name": "Google: Gemma 4 26B A4B  (free)",
       "family": null,
       "lab": "Google",
@@ -2533,7 +2533,7 @@
     },
     {
       "id": "nvidia-nemotron-3-nano-omni-30b-a3b-reasoning:free",
-      "slug": "nvidia-nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "slug": "nvidia-nemotron-3-nano-omni-30b-a3b-reasoning-free",
       "name": "NVIDIA: Nemotron 3 Nano Omni (free)",
       "family": null,
       "lab": "NVIDIA",
@@ -2646,7 +2646,7 @@
     },
     {
       "id": "stepfun-step-3.7-flash",
-      "slug": "stepfun-step-3.7-flash",
+      "slug": "stepfun-step-3-7-flash",
       "name": "StepFun: Step 3.7 Flash",
       "family": null,
       "lab": "Stepfun",
@@ -2879,7 +2879,7 @@
     },
     {
       "id": "qwen-qwen3.5-flash-02-23",
-      "slug": "qwen-qwen3.5-flash-02-23",
+      "slug": "qwen-qwen3-5-flash-02-23",
       "name": "Qwen: Qwen3.5-Flash",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -3092,7 +3092,7 @@
     },
     {
       "id": "openai-gpt-5.6-luna-pro",
-      "slug": "openai-gpt-5.6-luna-pro",
+      "slug": "openai-gpt-5-6-luna-pro",
       "name": "OpenAI: GPT-5.6 Luna Pro",
       "family": null,
       "lab": "OpenAI",
@@ -3263,7 +3263,7 @@
     },
     {
       "id": "openai-gpt-5.6-luna",
-      "slug": "openai-gpt-5.6-luna",
+      "slug": "openai-gpt-5-6-luna",
       "name": "OpenAI: GPT-5.6 Luna",
       "family": null,
       "lab": "OpenAI",
@@ -3506,7 +3506,7 @@
     },
     {
       "id": "moonshotai-kimi-k2.7-code",
-      "slug": "moonshotai-kimi-k2.7-code",
+      "slug": "moonshotai-kimi-k2-7-code",
       "name": "MoonshotAI: Kimi K2.7 Code",
       "family": null,
       "lab": "Moonshot AI (Kimi)",
@@ -3919,7 +3919,7 @@
     },
     {
       "id": "nvidia-nemotron-3-super-120b-a12b:free",
-      "slug": "nvidia-nemotron-3-super-120b-a12b:free",
+      "slug": "nvidia-nemotron-3-super-120b-a12b-free",
       "name": "NVIDIA: Nemotron 3 Super (free)",
       "family": null,
       "lab": "NVIDIA",
@@ -4029,7 +4029,7 @@
     },
     {
       "id": "openai-gpt-5.6-terra-pro",
-      "slug": "openai-gpt-5.6-terra-pro",
+      "slug": "openai-gpt-5-6-terra-pro",
       "name": "OpenAI: GPT-5.6 Terra Pro",
       "family": null,
       "lab": "OpenAI",
@@ -4652,7 +4652,7 @@
     },
     {
       "id": "x-ai-grok-build-0.1",
-      "slug": "x-ai-grok-build-0.1",
+      "slug": "x-ai-grok-build-0-1",
       "name": "xAI: Grok Build 0.1",
       "family": null,
       "lab": "xAI",
@@ -4807,7 +4807,7 @@
     },
     {
       "id": "qwen-qwen3.6-flash",
-      "slug": "qwen-qwen3.6-flash",
+      "slug": "qwen-qwen3-6-flash",
       "name": "Qwen: Qwen3.6 Flash",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -4914,7 +4914,7 @@
     },
     {
       "id": "google-gemini-3.1-flash-lite-preview",
-      "slug": "google-gemini-3.1-flash-lite-preview",
+      "slug": "google-gemini-3-1-flash-lite-preview",
       "name": "Google: Gemini 3.1 Flash Lite Preview",
       "family": null,
       "lab": "Google",
@@ -5023,7 +5023,7 @@
     },
     {
       "id": "openai-gpt-oss-20b:free",
-      "slug": "openai-gpt-oss-20b:free",
+      "slug": "openai-gpt-oss-20b-free",
       "name": "OpenAI: gpt-oss-20b (free)",
       "family": null,
       "lab": "OpenAI",
@@ -5271,7 +5271,7 @@
     },
     {
       "id": "openai-gpt-5.6-terra",
-      "slug": "openai-gpt-5.6-terra",
+      "slug": "openai-gpt-5-6-terra",
       "name": "OpenAI: GPT-5.6 Terra",
       "family": null,
       "lab": "OpenAI",
@@ -5900,7 +5900,7 @@
     },
     {
       "id": "qwen-qwen3.5-plus-20260420",
-      "slug": "qwen-qwen3.5-plus-20260420",
+      "slug": "qwen-qwen3-5-plus-20260420",
       "name": "Qwen: Qwen3.5 Plus 2026-04-20",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -6007,7 +6007,7 @@
     },
     {
       "id": "qwen-qwen3.7-max",
-      "slug": "qwen-qwen3.7-max",
+      "slug": "qwen-qwen3-7-max",
       "name": "Qwen: Qwen3.7 Max",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -6481,7 +6481,7 @@
     },
     {
       "id": "x-ai-grok-4.3",
-      "slug": "x-ai-grok-4.3",
+      "slug": "x-ai-grok-4-3",
       "name": "xAI: Grok 4.3",
       "family": null,
       "lab": "xAI",
@@ -6730,7 +6730,7 @@
     },
     {
       "id": "openai-gpt-5.6-sol-pro",
-      "slug": "openai-gpt-5.6-sol-pro",
+      "slug": "openai-gpt-5-6-sol-pro",
       "name": "OpenAI: GPT-5.6 Sol Pro",
       "family": null,
       "lab": "OpenAI",
@@ -6901,7 +6901,7 @@
     },
     {
       "id": "qwen-qwen3.5-plus-02-15",
-      "slug": "qwen-qwen3.5-plus-02-15",
+      "slug": "qwen-qwen3-5-plus-02-15",
       "name": "Qwen: Qwen3.5 Plus 2026-02-15",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -7361,7 +7361,7 @@
     },
     {
       "id": "nvidia-nemotron-3-ultra-550b-a55b:free",
-      "slug": "nvidia-nemotron-3-ultra-550b-a55b:free",
+      "slug": "nvidia-nemotron-3-ultra-550b-a55b-free",
       "name": "NVIDIA: Nemotron 3 Ultra (free)",
       "family": null,
       "lab": "NVIDIA",
@@ -7471,7 +7471,7 @@
     },
     {
       "id": "xiaomi-mimo-v2.5",
-      "slug": "xiaomi-mimo-v2.5",
+      "slug": "xiaomi-mimo-v2-5",
       "name": "Xiaomi: MiMo-V2.5",
       "family": null,
       "lab": "Xiaomi",
@@ -7784,7 +7784,7 @@
     },
     {
       "id": "qwen-qwen3.6-35b-a3b",
-      "slug": "qwen-qwen3.6-35b-a3b",
+      "slug": "qwen-qwen3-6-35b-a3b",
       "name": "Qwen: Qwen3.6 35B A3B",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -8101,7 +8101,7 @@
     },
     {
       "id": "nvidia-nemotron-nano-9b-v2:free",
-      "slug": "nvidia-nemotron-nano-9b-v2:free",
+      "slug": "nvidia-nemotron-nano-9b-v2-free",
       "name": "NVIDIA: Nemotron Nano 9B V2 (free)",
       "family": null,
       "lab": "NVIDIA",
@@ -8211,7 +8211,7 @@
     },
     {
       "id": "qwen-qwen3.5-122b-a10b",
-      "slug": "qwen-qwen3.5-122b-a10b",
+      "slug": "qwen-qwen3-5-122b-a10b",
       "name": "Qwen: Qwen3.5-122B-A10B",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -8870,7 +8870,7 @@
     },
     {
       "id": "moonshotai-kimi-k2.6",
-      "slug": "moonshotai-kimi-k2.6",
+      "slug": "moonshotai-kimi-k2-6",
       "name": "MoonshotAI: Kimi K2.6",
       "family": null,
       "lab": "Moonshot AI (Kimi)",
@@ -9075,7 +9075,7 @@
     },
     {
       "id": "nvidia-nemotron-3.5-content-safety:free",
-      "slug": "nvidia-nemotron-3.5-content-safety:free",
+      "slug": "nvidia-nemotron-3-5-content-safety-free",
       "name": "NVIDIA: Nemotron 3.5 Content Safety (free)",
       "family": null,
       "lab": "NVIDIA",
@@ -9605,7 +9605,7 @@
     },
     {
       "id": "qwen-qwen3.7-plus",
-      "slug": "qwen-qwen3.7-plus",
+      "slug": "qwen-qwen3-7-plus",
       "name": "Qwen: Qwen3.7 Plus",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -10041,7 +10041,7 @@
     },
     {
       "id": "openai-gpt-5.6-sol",
-      "slug": "openai-gpt-5.6-sol",
+      "slug": "openai-gpt-5-6-sol",
       "name": "OpenAI: GPT-5.6 Sol",
       "family": null,
       "lab": "OpenAI",
@@ -10510,7 +10510,7 @@
     },
     {
       "id": "nvidia-nemotron-nano-12b-v2-vl:free",
-      "slug": "nvidia-nemotron-nano-12b-v2-vl:free",
+      "slug": "nvidia-nemotron-nano-12b-v2-vl-free",
       "name": "NVIDIA: Nemotron Nano 12B 2 VL (free)",
       "family": null,
       "lab": "NVIDIA",
@@ -10622,7 +10622,7 @@
     },
     {
       "id": "x-ai-grok-4.5",
-      "slug": "x-ai-grok-4.5",
+      "slug": "x-ai-grok-4-5",
       "name": "xAI: Grok 4.5",
       "family": null,
       "lab": "xAI",
@@ -10849,7 +10849,7 @@
     },
     {
       "id": "qwen-qwen3.5-27b",
-      "slug": "qwen-qwen3.5-27b",
+      "slug": "qwen-qwen3-5-27b",
       "name": "Qwen: Qwen3.5-27B",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -11044,7 +11044,7 @@
     },
     {
       "id": "deepseek-deepseek-v3.2",
-      "slug": "deepseek-deepseek-v3.2",
+      "slug": "deepseek-deepseek-v3-2",
       "name": "DeepSeek: DeepSeek V3.2",
       "family": null,
       "lab": "DeepSeek",
@@ -11567,7 +11567,7 @@
     },
     {
       "id": "google-gemini-3.1-pro-preview",
-      "slug": "google-gemini-3.1-pro-preview",
+      "slug": "google-gemini-3-1-pro-preview",
       "name": "Google: Gemini 3.1 Pro Preview",
       "family": null,
       "lab": "Google",
@@ -11880,7 +11880,7 @@
     },
     {
       "id": "qwen-qwen3.5-35b-a3b",
-      "slug": "qwen-qwen3.5-35b-a3b",
+      "slug": "qwen-qwen3-5-35b-a3b",
       "name": "Qwen: Qwen3.5-35B-A3B",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -12185,7 +12185,7 @@
     },
     {
       "id": "anthropic-claude-opus-4.8",
-      "slug": "anthropic-claude-opus-4.8",
+      "slug": "anthropic-claude-opus-4-8",
       "name": "Anthropic: Claude Opus 4.8",
       "family": null,
       "lab": "Anthropic",
@@ -12593,7 +12593,7 @@
     },
     {
       "id": "google-gemma-4-31b-it:free",
-      "slug": "google-gemma-4-31b-it:free",
+      "slug": "google-gemma-4-31b-it-free",
       "name": "Google: Gemma 4 31B (free)",
       "family": null,
       "lab": "Google",
@@ -13125,7 +13125,7 @@
     },
     {
       "id": "poolside-laguna-s-2.1:free",
-      "slug": "poolside-laguna-s-2.1:free",
+      "slug": "poolside-laguna-s-2-1-free",
       "name": "Poolside: Laguna S 2.1 (free)",
       "family": null,
       "lab": "Poolside",
@@ -13230,7 +13230,7 @@
     },
     {
       "id": "moonshotai-kimi-k2.5",
-      "slug": "moonshotai-kimi-k2.5",
+      "slug": "moonshotai-kimi-k2-5",
       "name": "MoonshotAI: Kimi K2.5",
       "family": null,
       "lab": "Moonshot AI (Kimi)",
@@ -13716,7 +13716,7 @@
     },
     {
       "id": "x-ai-grok-4.20",
-      "slug": "x-ai-grok-4.20",
+      "slug": "x-ai-grok-4-20",
       "name": "xAI: Grok 4.20",
       "family": null,
       "lab": "xAI",
@@ -13823,7 +13823,7 @@
     },
     {
       "id": "minimax-minimax-m2.7",
-      "slug": "minimax-minimax-m2.7",
+      "slug": "minimax-minimax-m2-7",
       "name": "MiniMax: MiniMax M2.7",
       "family": null,
       "lab": "MiniMax",
@@ -14027,7 +14027,7 @@
     },
     {
       "id": "qwen-qwen3.5-397b-a17b",
-      "slug": "qwen-qwen3.5-397b-a17b",
+      "slug": "qwen-qwen3-5-397b-a17b",
       "name": "Qwen: Qwen3.5 397B A17B",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -14233,7 +14233,7 @@
     },
     {
       "id": "deepseek-deepseek-v3.2-exp",
-      "slug": "deepseek-deepseek-v3.2-exp",
+      "slug": "deepseek-deepseek-v3-2-exp",
       "name": "DeepSeek: DeepSeek V3.2 Exp",
       "family": null,
       "lab": "DeepSeek",
@@ -14470,7 +14470,7 @@
     },
     {
       "id": "qwen-qwen3.5-9b",
-      "slug": "qwen-qwen3.5-9b",
+      "slug": "qwen-qwen3-5-9b",
       "name": "Qwen: Qwen3.5-9B",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -14882,7 +14882,7 @@
     },
     {
       "id": "openai-gpt-5.4-nano",
-      "slug": "openai-gpt-5.4-nano",
+      "slug": "openai-gpt-5-4-nano",
       "name": "OpenAI: GPT-5.4 Nano",
       "family": null,
       "lab": "OpenAI",
@@ -15083,7 +15083,7 @@
     },
     {
       "id": "google-gemini-3.1-pro-preview-customtools",
-      "slug": "google-gemini-3.1-pro-preview-customtools",
+      "slug": "google-gemini-3-1-pro-preview-customtools",
       "name": "Google: Gemini 3.1 Pro Preview Custom Tools",
       "family": null,
       "lab": "Google",
@@ -15192,7 +15192,7 @@
     },
     {
       "id": "qwen-qwen3.6-plus",
-      "slug": "qwen-qwen3.6-plus",
+      "slug": "qwen-qwen3-6-plus",
       "name": "Qwen: Qwen3.6 Plus",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -15393,7 +15393,7 @@
     },
     {
       "id": "qwen-qwen3.6-27b",
-      "slug": "qwen-qwen3.6-27b",
+      "slug": "qwen-qwen3-6-27b",
       "name": "Qwen: Qwen3.6 27B",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -15710,7 +15710,7 @@
     },
     {
       "id": "google-gemini-2.5-flash-lite",
-      "slug": "google-gemini-2.5-flash-lite",
+      "slug": "google-gemini-2-5-flash-lite",
       "name": "Google: Gemini 2.5 Flash Lite",
       "family": null,
       "lab": "Google",
@@ -16064,7 +16064,7 @@
     },
     {
       "id": "poolside-laguna-s-2.1",
-      "slug": "poolside-laguna-s-2.1",
+      "slug": "poolside-laguna-s-2-1",
       "name": "Poolside: Laguna S 2.1",
       "family": null,
       "lab": "Poolside",
@@ -16169,7 +16169,7 @@
     },
     {
       "id": "poolside-laguna-xs-2.1:free",
-      "slug": "poolside-laguna-xs-2.1:free",
+      "slug": "poolside-laguna-xs-2-1-free",
       "name": "Poolside: Laguna XS 2.1 (free)",
       "family": null,
       "lab": "Poolside",
@@ -16274,7 +16274,7 @@
     },
     {
       "id": "minimax-minimax-m2.5",
-      "slug": "minimax-minimax-m2.5",
+      "slug": "minimax-minimax-m2-5",
       "name": "MiniMax: MiniMax M2.5",
       "family": null,
       "lab": "MiniMax",
@@ -17118,7 +17118,7 @@
     },
     {
       "id": "qwen-qwen-plus-2025-07-28:thinking",
-      "slug": "qwen-qwen-plus-2025-07-28:thinking",
+      "slug": "qwen-qwen-plus-2025-07-28-thinking",
       "name": "Qwen: Qwen Plus 0728 (thinking)",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -17434,7 +17434,7 @@
     },
     {
       "id": "z-ai-glm-4.7",
-      "slug": "z-ai-glm-4.7",
+      "slug": "z-ai-glm-4-7",
       "name": "Z.ai: GLM 4.7",
       "family": null,
       "lab": "Z.ai (Zhipu)",
@@ -17682,7 +17682,7 @@
     },
     {
       "id": "mistralai-mistral-small-3.2-24b-instruct",
-      "slug": "mistralai-mistral-small-3.2-24b-instruct",
+      "slug": "mistralai-mistral-small-3-2-24b-instruct",
       "name": "Mistral: Mistral Small 3.2 24B",
       "family": null,
       "lab": "Mistral AI",
@@ -17793,7 +17793,7 @@
     },
     {
       "id": "nvidia-nemotron-3-nano-30b-a3b:free",
-      "slug": "nvidia-nemotron-3-nano-30b-a3b:free",
+      "slug": "nvidia-nemotron-3-nano-30b-a3b-free",
       "name": "NVIDIA: Nemotron 3 Nano 30B A3B (free)",
       "family": null,
       "lab": "NVIDIA",
@@ -17903,7 +17903,7 @@
     },
     {
       "id": "~google-gemini-flash-latest",
-      "slug": "~google-gemini-flash-latest",
+      "slug": "google-gemini-flash-latest",
       "name": "Google Gemini Flash Latest",
       "family": null,
       "lab": "~google",
@@ -18007,7 +18007,7 @@
     },
     {
       "id": "bytedance-seed-seed-2.0-mini",
-      "slug": "bytedance-seed-seed-2.0-mini",
+      "slug": "bytedance-seed-seed-2-0-mini",
       "name": "ByteDance Seed: Seed-2.0-Mini",
       "family": null,
       "lab": "Bytedance Seed",
@@ -18109,7 +18109,7 @@
     },
     {
       "id": "bytedance-seed-seed-1.6-flash",
-      "slug": "bytedance-seed-seed-1.6-flash",
+      "slug": "bytedance-seed-seed-1-6-flash",
       "name": "ByteDance Seed: Seed 1.6 Flash",
       "family": null,
       "lab": "Bytedance Seed",
@@ -18322,7 +18322,7 @@
     },
     {
       "id": "xiaomi-mimo-v2.5-pro",
-      "slug": "xiaomi-mimo-v2.5-pro",
+      "slug": "xiaomi-mimo-v2-5-pro",
       "name": "Xiaomi: MiMo-V2.5-Pro",
       "family": null,
       "lab": "Xiaomi",
@@ -18870,7 +18870,7 @@
     },
     {
       "id": "deepseek-deepseek-v3.1-terminus",
-      "slug": "deepseek-deepseek-v3.1-terminus",
+      "slug": "deepseek-deepseek-v3-1-terminus",
       "name": "DeepSeek: DeepSeek V3.1 Terminus",
       "family": null,
       "lab": "DeepSeek",
@@ -19356,7 +19356,7 @@
     },
     {
       "id": "google-gemini-2.5-flash",
-      "slug": "google-gemini-2.5-flash",
+      "slug": "google-gemini-2-5-flash",
       "name": "Google: Gemini 2.5 Flash",
       "family": null,
       "lab": "Google",
@@ -19781,7 +19781,7 @@
     },
     {
       "id": "z-ai-glm-5.1",
-      "slug": "z-ai-glm-5.1",
+      "slug": "z-ai-glm-5-1",
       "name": "Z.ai: GLM 5.1",
       "family": null,
       "lab": "Z.ai (Zhipu)",
@@ -19985,7 +19985,7 @@
     },
     {
       "id": "poolside-laguna-m.1:free",
-      "slug": "poolside-laguna-m.1:free",
+      "slug": "poolside-laguna-m-1-free",
       "name": "Poolside: Laguna M.1 (free)",
       "family": null,
       "lab": "Poolside",
@@ -20283,7 +20283,7 @@
     },
     {
       "id": "openai-gpt-5.1-codex-mini",
-      "slug": "openai-gpt-5.1-codex-mini",
+      "slug": "openai-gpt-5-1-codex-mini",
       "name": "OpenAI: GPT-5.1-Codex-Mini",
       "family": null,
       "lab": "OpenAI",
@@ -20753,7 +20753,7 @@
     },
     {
       "id": "google-gemini-3.1-flash-image",
-      "slug": "google-gemini-3.1-flash-image",
+      "slug": "google-gemini-3-1-flash-image",
       "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image)",
       "family": null,
       "lab": "Google",
@@ -20876,7 +20876,7 @@
     },
     {
       "id": "z-ai-glm-4.7-flash",
-      "slug": "z-ai-glm-4.7-flash",
+      "slug": "z-ai-glm-4-7-flash",
       "name": "Z.ai: GLM 4.7 Flash",
       "family": null,
       "lab": "Z.ai (Zhipu)",
@@ -21268,7 +21268,7 @@
     },
     {
       "id": "x-ai-grok-4.20-multi-agent",
-      "slug": "x-ai-grok-4.20-multi-agent",
+      "slug": "x-ai-grok-4-20-multi-agent",
       "name": "xAI: Grok 4.20 Multi-Agent",
       "family": null,
       "lab": "xAI",
@@ -21375,7 +21375,7 @@
     },
     {
       "id": "openai-gpt-5.4-mini",
-      "slug": "openai-gpt-5.4-mini",
+      "slug": "openai-gpt-5-4-mini",
       "name": "OpenAI: GPT-5.4 Mini",
       "family": null,
       "lab": "OpenAI",
@@ -21576,7 +21576,7 @@
     },
     {
       "id": "google-gemini-2.5-pro-preview",
-      "slug": "google-gemini-2.5-pro-preview",
+      "slug": "google-gemini-2-5-pro-preview",
       "name": "Google: Gemini 2.5 Pro Preview 06-05",
       "family": null,
       "lab": "Google",
@@ -21684,7 +21684,7 @@
     },
     {
       "id": "~google-gemini-pro-latest",
-      "slug": "~google-gemini-pro-latest",
+      "slug": "google-gemini-pro-latest",
       "name": "Google Gemini Pro Latest",
       "family": null,
       "lab": "~google",
@@ -21788,7 +21788,7 @@
     },
     {
       "id": "openai-gpt-5.4",
-      "slug": "openai-gpt-5.4",
+      "slug": "openai-gpt-5-4",
       "name": "OpenAI: GPT-5.4",
       "family": null,
       "lab": "OpenAI",
@@ -22205,7 +22205,7 @@
     },
     {
       "id": "poolside-laguna-xs-2.1",
-      "slug": "poolside-laguna-xs-2.1",
+      "slug": "poolside-laguna-xs-2-1",
       "name": "Poolside: Laguna XS 2.1",
       "family": null,
       "lab": "Poolside",
@@ -22658,7 +22658,7 @@
     },
     {
       "id": "openai-gpt-5.3-codex",
-      "slug": "openai-gpt-5.3-codex",
+      "slug": "openai-gpt-5-3-codex",
       "name": "OpenAI: GPT-5.3-Codex",
       "family": null,
       "lab": "OpenAI",
@@ -22848,7 +22848,7 @@
     },
     {
       "id": "google-gemini-2.5-pro-preview-05-06",
-      "slug": "google-gemini-2.5-pro-preview-05-06",
+      "slug": "google-gemini-2-5-pro-preview-05-06",
       "name": "Google: Gemini 2.5 Pro Preview 05-06",
       "family": null,
       "lab": "Google",
@@ -23450,7 +23450,7 @@
     },
     {
       "id": "minimax-minimax-m2.1",
-      "slug": "minimax-minimax-m2.1",
+      "slug": "minimax-minimax-m2-1",
       "name": "MiniMax: MiniMax M2.1",
       "family": null,
       "lab": "MiniMax",
@@ -23797,7 +23797,7 @@
     },
     {
       "id": "google-gemini-2.5-pro",
-      "slug": "google-gemini-2.5-pro",
+      "slug": "google-gemini-2-5-pro",
       "name": "Google: Gemini 2.5 Pro",
       "family": null,
       "lab": "Google",
@@ -24055,7 +24055,7 @@
     },
     {
       "id": "inclusionai-ling-3.0-flash:free",
-      "slug": "inclusionai-ling-3.0-flash:free",
+      "slug": "inclusionai-ling-3-0-flash-free",
       "name": "Ling-3.0-flash (free)",
       "family": null,
       "lab": "Inclusionai",
@@ -24155,7 +24155,7 @@
     },
     {
       "id": "cohere-north-mini-code:free",
-      "slug": "cohere-north-mini-code:free",
+      "slug": "cohere-north-mini-code-free",
       "name": "Cohere: North Mini Code (free)",
       "family": null,
       "lab": "Cohere",
@@ -24577,7 +24577,7 @@
     },
     {
       "id": "openai-gpt-5.5",
-      "slug": "openai-gpt-5.5",
+      "slug": "openai-gpt-5-5",
       "name": "OpenAI: GPT-5.5",
       "family": null,
       "lab": "OpenAI",
@@ -24901,7 +24901,7 @@
     },
     {
       "id": "qwen-qwen3.6-max-preview",
-      "slug": "qwen-qwen3.6-max-preview",
+      "slug": "qwen-qwen3-6-max-preview",
       "name": "Qwen: Qwen3.6 Max Preview",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -25089,7 +25089,7 @@
     },
     {
       "id": "z-ai-glm-4.6",
-      "slug": "z-ai-glm-4.6",
+      "slug": "z-ai-glm-4-6",
       "name": "Z.ai: GLM 4.6",
       "family": null,
       "lab": "Z.ai (Zhipu)",
@@ -25337,7 +25337,7 @@
     },
     {
       "id": "meta-llama-llama-3.1-8b-instruct",
-      "slug": "meta-llama-llama-3.1-8b-instruct",
+      "slug": "meta-llama-llama-3-1-8b-instruct",
       "name": "Meta: Llama 3.1 8B Instruct",
       "family": null,
       "lab": "Meta",
@@ -25447,7 +25447,7 @@
     },
     {
       "id": "deepseek-deepseek-chat-v3.1",
-      "slug": "deepseek-deepseek-chat-v3.1",
+      "slug": "deepseek-deepseek-chat-v3-1",
       "name": "DeepSeek: DeepSeek V3.1",
       "family": null,
       "lab": "DeepSeek",
@@ -26111,7 +26111,7 @@
     },
     {
       "id": "anthropic-claude-opus-4.7",
-      "slug": "anthropic-claude-opus-4.7",
+      "slug": "anthropic-claude-opus-4-7",
       "name": "Anthropic: Claude Opus 4.7",
       "family": null,
       "lab": "Anthropic",
@@ -26611,7 +26611,7 @@
     },
     {
       "id": "openai-gpt-5.2",
-      "slug": "openai-gpt-5.2",
+      "slug": "openai-gpt-5-2",
       "name": "OpenAI: GPT-5.2",
       "family": null,
       "lab": "OpenAI",
@@ -26845,7 +26845,7 @@
     },
     {
       "id": "openai-gpt-5.2-codex",
-      "slug": "openai-gpt-5.2-codex",
+      "slug": "openai-gpt-5-2-codex",
       "name": "OpenAI: GPT-5.2-Codex",
       "family": null,
       "lab": "OpenAI",
@@ -27034,7 +27034,7 @@
     },
     {
       "id": "z-ai-glm-4.6v",
-      "slug": "z-ai-glm-4.6v",
+      "slug": "z-ai-glm-4-6v",
       "name": "Z.ai: GLM 4.6V",
       "family": null,
       "lab": "Z.ai (Zhipu)",
@@ -27518,7 +27518,7 @@
     },
     {
       "id": "~moonshotai-kimi-latest",
-      "slug": "~moonshotai-kimi-latest",
+      "slug": "moonshotai-kimi-latest",
       "name": "MoonshotAI Kimi Latest",
       "family": null,
       "lab": "~moonshotai",
@@ -28044,7 +28044,7 @@
     },
     {
       "id": "google-gemini-3.1-flash-lite-image",
-      "slug": "google-gemini-3.1-flash-lite-image",
+      "slug": "google-gemini-3-1-flash-lite-image",
       "name": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
       "family": null,
       "lab": "Google",
@@ -28405,7 +28405,7 @@
     },
     {
       "id": "stepfun-step-3.5-flash",
-      "slug": "stepfun-step-3.5-flash",
+      "slug": "stepfun-step-3-5-flash",
       "name": "StepFun: Step 3.5 Flash",
       "family": null,
       "lab": "Stepfun",
@@ -28593,7 +28593,7 @@
     },
     {
       "id": "openai-gpt-5.1",
-      "slug": "openai-gpt-5.1",
+      "slug": "openai-gpt-5-1",
       "name": "OpenAI: GPT-5.1",
       "family": null,
       "lab": "OpenAI",
@@ -29076,7 +29076,7 @@
     },
     {
       "id": "anthropic-claude-opus-4.8-fast",
-      "slug": "anthropic-claude-opus-4.8-fast",
+      "slug": "anthropic-claude-opus-4-8-fast",
       "name": "Anthropic: Claude Opus 4.8 (Fast)",
       "family": null,
       "lab": "Anthropic",
@@ -30096,7 +30096,7 @@
     },
     {
       "id": "~x-ai-grok-latest",
-      "slug": "~x-ai-grok-latest",
+      "slug": "x-ai-grok-latest",
       "name": "xAI: Grok Latest",
       "family": null,
       "lab": "~x Ai",
@@ -30386,7 +30386,7 @@
     },
     {
       "id": "bytedance-seed-seed-2.0-lite",
-      "slug": "bytedance-seed-seed-2.0-lite",
+      "slug": "bytedance-seed-seed-2-0-lite",
       "name": "ByteDance Seed: Seed-2.0-Lite",
       "family": null,
       "lab": "Bytedance Seed",
@@ -30488,7 +30488,7 @@
     },
     {
       "id": "anthropic-claude-sonnet-4.6",
-      "slug": "anthropic-claude-sonnet-4.6",
+      "slug": "anthropic-claude-sonnet-4-6",
       "name": "Anthropic: Claude Sonnet 4.6",
       "family": null,
       "lab": "Anthropic",
@@ -30689,7 +30689,7 @@
     },
     {
       "id": "openai-gpt-5.1-codex",
-      "slug": "openai-gpt-5.1-codex",
+      "slug": "openai-gpt-5-1-codex",
       "name": "OpenAI: GPT-5.1-Codex",
       "family": null,
       "lab": "OpenAI",
@@ -31508,7 +31508,7 @@
     },
     {
       "id": "~openai-gpt-mini-latest",
-      "slug": "~openai-gpt-mini-latest",
+      "slug": "openai-gpt-mini-latest",
       "name": "OpenAI GPT Mini Latest",
       "family": null,
       "lab": "~openai",
@@ -31610,7 +31610,7 @@
     },
     {
       "id": "anthropic-claude-opus-4.6",
-      "slug": "anthropic-claude-opus-4.6",
+      "slug": "anthropic-claude-opus-4-6",
       "name": "Anthropic: Claude Opus 4.6",
       "family": null,
       "lab": "Anthropic",
@@ -32004,7 +32004,7 @@
     },
     {
       "id": "anthropic-claude-haiku-4.5",
-      "slug": "anthropic-claude-haiku-4.5",
+      "slug": "anthropic-claude-haiku-4-5",
       "name": "Anthropic: Claude Haiku 4.5",
       "family": null,
       "lab": "Anthropic",
@@ -32875,7 +32875,7 @@
     },
     {
       "id": "~anthropic-claude-sonnet-latest",
-      "slug": "~anthropic-claude-sonnet-latest",
+      "slug": "anthropic-claude-sonnet-latest",
       "name": "Anthropic Claude Sonnet Latest",
       "family": null,
       "lab": "~anthropic",
@@ -32977,7 +32977,7 @@
     },
     {
       "id": "anthropic-claude-sonnet-4.5",
-      "slug": "anthropic-claude-sonnet-4.5",
+      "slug": "anthropic-claude-sonnet-4-5",
       "name": "Anthropic: Claude Sonnet 4.5",
       "family": null,
       "lab": "Anthropic",
@@ -33316,7 +33316,7 @@
     },
     {
       "id": "bytedance-seed-seed-1.6",
-      "slug": "bytedance-seed-seed-1.6",
+      "slug": "bytedance-seed-seed-1-6",
       "name": "ByteDance Seed: Seed 1.6",
       "family": null,
       "lab": "Bytedance Seed",
@@ -33418,7 +33418,7 @@
     },
     {
       "id": "openai-gpt-5.1-codex-max",
-      "slug": "openai-gpt-5.1-codex-max",
+      "slug": "openai-gpt-5-1-codex-max",
       "name": "OpenAI: GPT-5.1-Codex-Max",
       "family": null,
       "lab": "OpenAI",
@@ -33855,7 +33855,7 @@
     },
     {
       "id": "meituan-longcat-2.0",
-      "slug": "meituan-longcat-2.0",
+      "slug": "meituan-longcat-2-0",
       "name": "Meituan: LongCat 2.0",
       "family": null,
       "lab": "Meituan",
@@ -34143,7 +34143,7 @@
     },
     {
       "id": "qwen-qwen-2.5-7b-instruct",
-      "slug": "qwen-qwen-2.5-7b-instruct",
+      "slug": "qwen-qwen-2-5-7b-instruct",
       "name": "Qwen: Qwen2.5 7B Instruct",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -34253,7 +34253,7 @@
     },
     {
       "id": "anthropic-claude-opus-4.7-fast",
-      "slug": "anthropic-claude-opus-4.7-fast",
+      "slug": "anthropic-claude-opus-4-7-fast",
       "name": "Anthropic: Claude Opus 4.7 (Fast)",
       "family": null,
       "lab": "Anthropic",
@@ -34642,7 +34642,7 @@
     },
     {
       "id": "~anthropic-claude-haiku-latest",
-      "slug": "~anthropic-claude-haiku-latest",
+      "slug": "anthropic-claude-haiku-latest",
       "name": "Anthropic Claude Haiku Latest",
       "family": null,
       "lab": "~anthropic",
@@ -34744,7 +34744,7 @@
     },
     {
       "id": "anthropic-claude-opus-4.5",
-      "slug": "anthropic-claude-opus-4.5",
+      "slug": "anthropic-claude-opus-4-5",
       "name": "Anthropic: Claude Opus 4.5",
       "family": null,
       "lab": "Anthropic",
@@ -35085,7 +35085,7 @@
     },
     {
       "id": "z-ai-glm-4.5v",
-      "slug": "z-ai-glm-4.5v",
+      "slug": "z-ai-glm-4-5v",
       "name": "Z.ai: GLM 4.5V",
       "family": null,
       "lab": "Z.ai (Zhipu)",
@@ -35582,7 +35582,7 @@
     },
     {
       "id": "inclusionai-ring-2.6-1t",
-      "slug": "inclusionai-ring-2.6-1t",
+      "slug": "inclusionai-ring-2-6-1t",
       "name": "inclusionAI: Ring-2.6-1T",
       "family": null,
       "lab": "Inclusionai",
@@ -35776,7 +35776,7 @@
     },
     {
       "id": "poolside-laguna-m.1",
-      "slug": "poolside-laguna-m.1",
+      "slug": "poolside-laguna-m-1",
       "name": "Poolside: Laguna M.1",
       "family": null,
       "lab": "Poolside",
@@ -35881,7 +35881,7 @@
     },
     {
       "id": "inclusionai-ling-2.6-flash",
-      "slug": "inclusionai-ling-2.6-flash",
+      "slug": "inclusionai-ling-2-6-flash",
       "name": "inclusionAI: Ling-2.6-flash",
       "family": null,
       "lab": "Inclusionai",
@@ -36075,7 +36075,7 @@
     },
     {
       "id": "openai-gpt-5.5-pro",
-      "slug": "openai-gpt-5.5-pro",
+      "slug": "openai-gpt-5-5-pro",
       "name": "OpenAI: GPT-5.5 Pro",
       "family": null,
       "lab": "OpenAI",
@@ -36293,7 +36293,7 @@
     },
     {
       "id": "openai-gpt-4.1-nano",
-      "slug": "openai-gpt-4.1-nano",
+      "slug": "openai-gpt-4-1-nano",
       "name": "OpenAI: GPT-4.1 Nano",
       "family": null,
       "lab": "OpenAI",
@@ -36549,7 +36549,7 @@
     },
     {
       "id": "z-ai-glm-4.5",
-      "slug": "z-ai-glm-4.5",
+      "slug": "z-ai-glm-4-5",
       "name": "Z.ai: GLM 4.5",
       "family": null,
       "lab": "Z.ai (Zhipu)",
@@ -37498,7 +37498,7 @@
     },
     {
       "id": "openai-gpt-5.4-pro",
-      "slug": "openai-gpt-5.4-pro",
+      "slug": "openai-gpt-5-4-pro",
       "name": "OpenAI: GPT-5.4 Pro",
       "family": null,
       "lab": "OpenAI",
@@ -37609,7 +37609,7 @@
     },
     {
       "id": "google-gemini-3.1-flash-image-preview",
-      "slug": "google-gemini-3.1-flash-image-preview",
+      "slug": "google-gemini-3-1-flash-image-preview",
       "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
       "family": null,
       "lab": "Google",
@@ -37824,7 +37824,7 @@
     },
     {
       "id": "openai-gpt-4.1-mini",
-      "slug": "openai-gpt-4.1-mini",
+      "slug": "openai-gpt-4-1-mini",
       "name": "OpenAI: GPT-4.1 Mini",
       "family": null,
       "lab": "OpenAI",
@@ -38681,7 +38681,7 @@
     },
     {
       "id": "mistralai-mistral-medium-3.1",
-      "slug": "mistralai-mistral-medium-3.1",
+      "slug": "mistralai-mistral-medium-3-1",
       "name": "Mistral: Mistral Medium 3.1",
       "family": null,
       "lab": "Mistral AI",
@@ -39171,7 +39171,7 @@
     },
     {
       "id": "~anthropic-claude-opus-latest",
-      "slug": "~anthropic-claude-opus-latest",
+      "slug": "anthropic-claude-opus-latest",
       "name": "Anthropic: Claude Opus Latest",
       "family": null,
       "lab": "~anthropic",
@@ -39273,7 +39273,7 @@
     },
     {
       "id": "z-ai-glm-4.5-air",
-      "slug": "z-ai-glm-4.5-air",
+      "slug": "z-ai-glm-4-5-air",
       "name": "Z.ai: GLM 4.5 Air",
       "family": null,
       "lab": "Z.ai (Zhipu)",
@@ -39521,7 +39521,7 @@
     },
     {
       "id": "ibm-granite-granite-4.1-8b",
-      "slug": "ibm-granite-granite-4.1-8b",
+      "slug": "ibm-granite-granite-4-1-8b",
       "name": "IBM: Granite 4.1 8B",
       "family": null,
       "lab": "Ibm Granite",
@@ -40057,7 +40057,7 @@
     },
     {
       "id": "openai-gpt-5.4-image-2",
-      "slug": "openai-gpt-5.4-image-2",
+      "slug": "openai-gpt-5-4-image-2",
       "name": "OpenAI: GPT-5.4 Image 2",
       "family": null,
       "lab": "OpenAI",
@@ -40385,7 +40385,7 @@
     },
     {
       "id": "~openai-gpt-latest",
-      "slug": "~openai-gpt-latest",
+      "slug": "openai-gpt-latest",
       "name": "OpenAI GPT Latest",
       "family": null,
       "lab": "~openai",
@@ -40487,7 +40487,7 @@
     },
     {
       "id": "meta-llama-llama-3.3-70b-instruct",
-      "slug": "meta-llama-llama-3.3-70b-instruct",
+      "slug": "meta-llama-llama-3-3-70b-instruct",
       "name": "Meta: Llama 3.3 70B Instruct",
       "family": null,
       "lab": "Meta",
@@ -40597,7 +40597,7 @@
     },
     {
       "id": "meta-llama-llama-3.1-70b-instruct",
-      "slug": "meta-llama-llama-3.1-70b-instruct",
+      "slug": "meta-llama-llama-3-1-70b-instruct",
       "name": "Meta: Llama 3.1 70B Instruct",
       "family": null,
       "lab": "Meta",
@@ -41382,7 +41382,7 @@
     },
     {
       "id": "kwaipilot-kat-coder-air-v2.5",
-      "slug": "kwaipilot-kat-coder-air-v2.5",
+      "slug": "kwaipilot-kat-coder-air-v2-5",
       "name": "Kwaipilot: KAT-Coder-Air V2.5",
       "family": null,
       "lab": "Kwaipilot",
@@ -41784,7 +41784,7 @@
     },
     {
       "id": "bytedance-ui-tars-1.5-7b",
-      "slug": "bytedance-ui-tars-1.5-7b",
+      "slug": "bytedance-ui-tars-1-5-7b",
       "name": "ByteDance: UI-TARS 7B ",
       "family": null,
       "lab": "ByteDance",
@@ -41890,7 +41890,7 @@
     },
     {
       "id": "~anthropic-claude-fable-latest",
-      "slug": "~anthropic-claude-fable-latest",
+      "slug": "anthropic-claude-fable-latest",
       "name": "Anthropic: Claude Fable Latest",
       "family": null,
       "lab": "~anthropic",
@@ -41992,7 +41992,7 @@
     },
     {
       "id": "inclusionai-ling-2.6-1t",
-      "slug": "inclusionai-ling-2.6-1t",
+      "slug": "inclusionai-ling-2-6-1t",
       "name": "inclusionAI: Ling-2.6-1T",
       "family": null,
       "lab": "Inclusionai",
@@ -42479,7 +42479,7 @@
     },
     {
       "id": "qwen-qwen2.5-vl-72b-instruct",
-      "slug": "qwen-qwen2.5-vl-72b-instruct",
+      "slug": "qwen-qwen2-5-vl-72b-instruct",
       "name": "Qwen: Qwen2.5 VL 72B Instruct",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -42807,7 +42807,7 @@
     },
     {
       "id": "aion-labs-aion-3.0-mini",
-      "slug": "aion-labs-aion-3.0-mini",
+      "slug": "aion-labs-aion-3-0-mini",
       "name": "AionLabs: Aion-3.0-Mini",
       "family": null,
       "lab": "Aion Labs",
@@ -42907,7 +42907,7 @@
     },
     {
       "id": "openai-gpt-5.2-pro",
-      "slug": "openai-gpt-5.2-pro",
+      "slug": "openai-gpt-5-2-pro",
       "name": "OpenAI: GPT-5.2 Pro",
       "family": null,
       "lab": "OpenAI",
@@ -43833,7 +43833,7 @@
     },
     {
       "id": "qwen-qwen-2.5-72b-instruct",
-      "slug": "qwen-qwen-2.5-72b-instruct",
+      "slug": "qwen-qwen-2-5-72b-instruct",
       "name": "Qwen2.5 72B Instruct",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -44602,7 +44602,7 @@
     },
     {
       "id": "openai-gpt-4.1",
-      "slug": "openai-gpt-4.1",
+      "slug": "openai-gpt-4-1",
       "name": "OpenAI: GPT-4.1",
       "family": null,
       "lab": "OpenAI",
@@ -44847,7 +44847,7 @@
     },
     {
       "id": "openai-gpt-5.3-chat",
-      "slug": "openai-gpt-5.3-chat",
+      "slug": "openai-gpt-5-3-chat",
       "name": "OpenAI: GPT-5.3 Chat",
       "family": null,
       "lab": "OpenAI",
@@ -44954,7 +44954,7 @@
     },
     {
       "id": "thedrummer-cydonia-24b-v4.1",
-      "slug": "thedrummer-cydonia-24b-v4.1",
+      "slug": "thedrummer-cydonia-24b-v4-1",
       "name": "TheDrummer: Cydonia 24B V4.1",
       "family": null,
       "lab": "Thedrummer",
@@ -45161,7 +45161,7 @@
     },
     {
       "id": "openai-gpt-5.1-chat",
-      "slug": "openai-gpt-5.1-chat",
+      "slug": "openai-gpt-5-1-chat",
       "name": "OpenAI: GPT-5.1 Chat",
       "family": null,
       "lab": "OpenAI",
@@ -45482,7 +45482,7 @@
     },
     {
       "id": "baidu-ernie-4.5-vl-424b-a47b",
-      "slug": "baidu-ernie-4.5-vl-424b-a47b",
+      "slug": "baidu-ernie-4-5-vl-424b-a47b",
       "name": "Baidu: ERNIE 4.5 VL 424B A47B ",
       "family": null,
       "lab": "Baidu",
@@ -45694,7 +45694,7 @@
     },
     {
       "id": "openai-gpt-5.2-chat",
-      "slug": "openai-gpt-5.2-chat",
+      "slug": "openai-gpt-5-2-chat",
       "name": "OpenAI: GPT-5.2 Chat",
       "family": null,
       "lab": "OpenAI",
@@ -45801,7 +45801,7 @@
     },
     {
       "id": "mistralai-mistral-small-3.1-24b-instruct",
-      "slug": "mistralai-mistral-small-3.1-24b-instruct",
+      "slug": "mistralai-mistral-small-3-1-24b-instruct",
       "name": "Mistral: Mistral Small 3.1 24B",
       "family": null,
       "lab": "Mistral AI",
@@ -46018,7 +46018,7 @@
     },
     {
       "id": "anthropic-claude-opus-4.1",
-      "slug": "anthropic-claude-opus-4.1",
+      "slug": "anthropic-claude-opus-4-1",
       "name": "Anthropic: Claude Opus 4.1",
       "family": null,
       "lab": "Anthropic",
@@ -46125,7 +46125,7 @@
     },
     {
       "id": "aion-labs-aion-2.0",
-      "slug": "aion-labs-aion-2.0",
+      "slug": "aion-labs-aion-2-0",
       "name": "AionLabs: Aion-2.0",
       "family": null,
       "lab": "Aion Labs",
@@ -46330,7 +46330,7 @@
     },
     {
       "id": "meta-llama-llama-3.2-3b-instruct",
-      "slug": "meta-llama-llama-3.2-3b-instruct",
+      "slug": "meta-llama-llama-3-2-3b-instruct",
       "name": "Meta: Llama 3.2 3B Instruct",
       "family": null,
       "lab": "Meta",
@@ -47571,7 +47571,7 @@
     },
     {
       "id": "kwaipilot-kat-coder-pro-v2.5",
-      "slug": "kwaipilot-kat-coder-pro-v2.5",
+      "slug": "kwaipilot-kat-coder-pro-v2-5",
       "name": "Kwaipilot: KAT-Coder-Pro V2.5",
       "family": null,
       "lab": "Kwaipilot",
@@ -47671,7 +47671,7 @@
     },
     {
       "id": "deepcogito-cogito-v2.1-671b",
-      "slug": "deepcogito-cogito-v2.1-671b",
+      "slug": "deepcogito-cogito-v2-1-671b",
       "name": "Deep Cogito: Cogito v2.1 671B",
       "family": null,
       "lab": "Deepcogito",
@@ -47882,7 +47882,7 @@
     },
     {
       "id": "aion-labs-aion-3.0",
-      "slug": "aion-labs-aion-3.0",
+      "slug": "aion-labs-aion-3-0",
       "name": "AionLabs: Aion-3.0",
       "family": null,
       "lab": "Aion Labs",
@@ -47982,7 +47982,7 @@
     },
     {
       "id": "sao10k-l3.1-euryale-70b",
-      "slug": "sao10k-l3.1-euryale-70b",
+      "slug": "sao10k-l3-1-euryale-70b",
       "name": "Sao10K: Llama 3.1 Euryale 70B v2.2",
       "family": null,
       "lab": "Sao10K",
@@ -48087,7 +48087,7 @@
     },
     {
       "id": "ibm-granite-granite-4.0-h-micro",
-      "slug": "ibm-granite-granite-4.0-h-micro",
+      "slug": "ibm-granite-granite-4-0-h-micro",
       "name": "IBM: Granite 4.0 Micro",
       "family": null,
       "lab": "Ibm Granite",
@@ -48647,7 +48647,7 @@
     },
     {
       "id": "google-gemini-2.5-flash-image",
-      "slug": "google-gemini-2.5-flash-image",
+      "slug": "google-gemini-2-5-flash-image",
       "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",
       "family": null,
       "lab": "Google",
@@ -50293,7 +50293,7 @@
     },
     {
       "id": "meta-llama-llama-3.2-1b-instruct",
-      "slug": "meta-llama-llama-3.2-1b-instruct",
+      "slug": "meta-llama-llama-3-2-1b-instruct",
       "name": "Meta: Llama 3.2 1B Instruct",
       "family": null,
       "lab": "Meta",
@@ -50510,7 +50510,7 @@
     },
     {
       "id": "nousresearch-hermes-3-llama-3.1-70b",
-      "slug": "nousresearch-hermes-3-llama-3.1-70b",
+      "slug": "nousresearch-hermes-3-llama-3-1-70b",
       "name": "Nous: Hermes 3 70B Instruct",
       "family": null,
       "lab": "Nous Research",
@@ -50615,7 +50615,7 @@
     },
     {
       "id": "ai21-jamba-large-1.7",
-      "slug": "ai21-jamba-large-1.7",
+      "slug": "ai21-jamba-large-1-7",
       "name": "AI21: Jamba Large 1.7",
       "family": null,
       "lab": "AI21 Labs",
@@ -50725,7 +50725,7 @@
     },
     {
       "id": "sao10k-l3.3-euryale-70b",
-      "slug": "sao10k-l3.3-euryale-70b",
+      "slug": "sao10k-l3-3-euryale-70b",
       "name": "Sao10K: Llama 3.3 Euryale 70B",
       "family": null,
       "lab": "Sao10K",
@@ -51461,7 +51461,7 @@
     },
     {
       "id": "nousresearch-hermes-3-llama-3.1-405b",
-      "slug": "nousresearch-hermes-3-llama-3.1-405b",
+      "slug": "nousresearch-hermes-3-llama-3-1-405b",
       "name": "Nous: Hermes 3 405B Instruct",
       "family": null,
       "lab": "Nous Research",
@@ -53555,7 +53555,7 @@
     },
     {
       "id": "openai-gpt-3.5-turbo",
-      "slug": "openai-gpt-3.5-turbo",
+      "slug": "openai-gpt-3-5-turbo",
       "name": "OpenAI: GPT-3.5 Turbo",
       "family": null,
       "lab": "OpenAI",
@@ -53721,7 +53721,7 @@
     },
     {
       "id": "openai-gpt-3.5-turbo-16k",
-      "slug": "openai-gpt-3.5-turbo-16k",
+      "slug": "openai-gpt-3-5-turbo-16k",
       "name": "OpenAI: GPT-3.5 Turbo 16k",
       "family": null,
       "lab": "OpenAI",
@@ -54025,7 +54025,7 @@
     },
     {
       "id": "openai-gpt-3.5-turbo-0613",
-      "slug": "openai-gpt-3.5-turbo-0613",
+      "slug": "openai-gpt-3-5-turbo-0613",
       "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
       "family": null,
       "lab": "OpenAI",
@@ -54191,7 +54191,7 @@
     },
     {
       "id": "qwen-qwen-2.5-coder-32b-instruct",
-      "slug": "qwen-qwen-2.5-coder-32b-instruct",
+      "slug": "qwen-qwen-2-5-coder-32b-instruct",
       "name": "Qwen2.5 Coder 32B Instruct",
       "family": null,
       "lab": "Qwen (Alibaba)",
@@ -55321,7 +55321,7 @@
     },
     {
       "id": "openai-gpt-3.5-turbo-instruct",
-      "slug": "openai-gpt-3.5-turbo-instruct",
+      "slug": "openai-gpt-3-5-turbo-instruct",
       "name": "OpenAI: GPT-3.5 Turbo Instruct",
       "family": null,
       "lab": "OpenAI",
@@ -55631,7 +55631,7 @@
     },
     {
       "id": "aion-labs-aion-rp-llama-3.1-8b",
-      "slug": "aion-labs-aion-rp-llama-3.1-8b",
+      "slug": "aion-labs-aion-rp-llama-3-1-8b",
       "name": "AionLabs: Aion-RP 1.0 (8B)",
       "family": null,
       "lab": "Aion Labs",
