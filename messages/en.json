@@ -26,9 +26,26 @@
     "compare": "Compare",
     "rankings": "Rankings",
     "benchmarks": "Benchmarks",
+    "coding": "Coding",
     "methodology": "Methodology",
     "api": "API",
     "news": "Today in LLMs"
+  },
+  "coding": {
+    "title": "Coding by language",
+    "intro": "How models rank on coding benchmarks, broken down by programming language.",
+    "noData": "No measured per-language scores yet",
+    "noDataBody": "The pipeline is ready. Per-language scores appear here automatically once a results source is connected — a published leaderboard export or a curated seed. We never show fabricated numbers.",
+    "howTitle": "How it works",
+    "howBody": "Results are standardized to [model, language, benchmark, score], language aliases are resolved (js → JavaScript, cpp → C++), and a per-language composite is computed via z-score normalization — or a weighted average: SWE-bench 50% · McEval 30% · MultiPL-E 20%.",
+    "sourcesTitle": "Data sources",
+    "sourcesBody": "SWE-bench Multilingual, McEval and MultiPL-E provide the benchmark problems (and, via MultiPL-E, the language coverage). Per-model scores require running an evaluation or importing a leaderboard export.",
+    "coverageTitle": "Languages covered ({count})",
+    "selectLanguage": "Language",
+    "rank": "#",
+    "model": "Model",
+    "score": "Score",
+    "noLangData": "No data for this language yet."
   },
   "benchmarks": {
     "title": "Benchmarks explained",
