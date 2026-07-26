@@ -11,7 +11,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PrismaClient } from '@prisma/client';
 import { BENCHMARK_GROUPS, BENCHMARKS } from '../src/lib/benchmarks.ts';
-import { fetchArtificialAnalysis, type RawAAModel } from '../src/lib/importers/artificialAnalysis.ts';
+import { fetchAARaw, buildAAMap } from '../src/lib/importers/artificialAnalysis.ts';
 import { buildArenaMap, type ArenaEntry } from '../src/lib/importers/lmarena.ts';
 import { type BenchmarkMap } from '../src/lib/importers/benchmarks.ts';
 import { SCORE_VERSION } from '../src/lib/scoring/engine.ts';
@@ -45,11 +45,8 @@ async function main() {
 
   // 2. Gather measured results from sources.
   const maps: BenchmarkMap[] = [];
-  maps.push(
-    await fetchArtificialAnalysis(process.env.ARTIFICIAL_ANALYSIS_API_KEY, (aa: RawAAModel) =>
-      matchByName(aa.name ?? aa.slug)
-    )
-  );
+  const rawAA = await fetchAARaw(process.env.ARTIFICIAL_ANALYSIS_API_KEY);
+  maps.push(buildAAMap(rawAA, models));
 
   const arenaFile = join(__dirname, '..', 'src', 'data', 'lmarena.json');
   if (existsSync(arenaFile)) {

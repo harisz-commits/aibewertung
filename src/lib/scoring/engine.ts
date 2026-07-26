@@ -94,7 +94,7 @@ function recencyScore(releaseIso: string | null, now: Date): number {
   return clamp(100 - (ageDays / 540) * 100);
 }
 
-function qualityProxy(m: ImportedModel, now: Date): number {
+export function qualityProxy(m: ImportedModel, now: Date): number {
   const ctx = logScale(m.contextWindow, 4000, 1_000_000);
   const feat = featureCoverage(m);
   const reasoning = m.features.reasoning ? 100 : 55;

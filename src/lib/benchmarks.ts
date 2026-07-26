@@ -457,6 +457,153 @@ export const BENCHMARKS: BenchmarkDef[] = [
     }
   },
   {
+    slug: 'hle',
+    name: "Humanity's Last Exam (HLE)",
+    groupSlug: 'reasoning',
+    higherIsBetter: true,
+    unit: '%',
+    maxValue: 100,
+    sourceUrl: 'https://lastexam.ai/',
+    what: {
+      en: 'Thousands of extremely hard, expert-written questions across maths, sciences and humanities — designed to sit at the very frontier of human knowledge.',
+      de: 'Tausende extrem schwere, von Experten geschriebene Fragen aus Mathematik, Naturwissenschaften und Geisteswissenschaften — bewusst an der Grenze des menschlichen Wissens.'
+    },
+    howToRead: {
+      en: 'Percent correct. Scores are LOW by design — even frontier models are in the low tens, so small gaps matter.',
+      de: 'Prozent korrekt. Werte sind bewusst NIEDRIG — selbst Spitzenmodelle liegen im niedrigen Zehnerbereich, daher zählen kleine Abstände.'
+    },
+    caveat: {
+      en: 'So hard that noise is large; treat single-digit differences with care.',
+      de: 'So schwer, dass das Rauschen groß ist; einstellige Unterschiede vorsichtig behandeln.'
+    }
+  },
+  {
+    slug: 'scicode',
+    name: 'SciCode',
+    groupSlug: 'coding',
+    higherIsBetter: true,
+    unit: '%',
+    maxValue: 100,
+    sourceUrl: 'https://scicode-bench.github.io/',
+    what: {
+      en: 'Write real scientific code (physics, biology, maths) that reproduces research results — coding plus domain knowledge.',
+      de: 'Echten wissenschaftlichen Code (Physik, Biologie, Mathe) schreiben, der Forschungsergebnisse reproduziert — Coding plus Fachwissen.'
+    },
+    howToRead: {
+      en: 'Percent of sub-problems solved. Harder and more realistic than toy coding tests.',
+      de: 'Prozent gelöster Teilaufgaben. Schwerer und realistischer als Spielzeug-Coding-Tests.'
+    },
+    caveat: {
+      en: 'Requires scientific knowledge, so it mixes two skills.',
+      de: 'Erfordert wissenschaftliches Wissen und mischt damit zwei Fähigkeiten.'
+    }
+  },
+  {
+    slug: 'terminalbench',
+    name: 'Terminal-Bench',
+    groupSlug: 'agentic',
+    higherIsBetter: true,
+    unit: '%',
+    maxValue: 100,
+    sourceUrl: 'https://www.tbench.ai/',
+    what: {
+      en: 'Can the model actually operate a computer through the terminal — set up servers, run tools, fix things — as an autonomous agent?',
+      de: 'Kann das Modell einen Computer wirklich über das Terminal bedienen — Server aufsetzen, Tools ausführen, Dinge reparieren — als autonomer Agent?'
+    },
+    howToRead: {
+      en: 'Percent of end-to-end terminal tasks completed. A strong signal for real agentic ability.',
+      de: 'Prozent vollständig gelöster Terminal-Aufgaben. Ein starkes Signal für echte Agenten-Fähigkeit.'
+    },
+    caveat: {
+      en: 'Depends on the agent scaffold around the model, not the model alone.',
+      de: 'Hängt vom Agenten-Gerüst um das Modell ab, nicht nur vom Modell.'
+    }
+  },
+  {
+    slug: 'ifbench',
+    name: 'IFBench / IFEval',
+    groupSlug: 'agentic',
+    higherIsBetter: true,
+    unit: '%',
+    maxValue: 100,
+    sourceUrl: 'https://github.com/google-research/google-research/tree/master/instruction_following_eval',
+    what: {
+      en: 'Does the model follow precise formatting and structure instructions exactly ("answer in 3 bullet points, no punctuation")?',
+      de: 'Befolgt das Modell präzise Formatierungs- und Struktur-Anweisungen exakt („antworte in 3 Stichpunkten, ohne Satzzeichen")?'
+    },
+    howToRead: {
+      en: 'Percent of instructions obeyed exactly. Crucial for reliable automation and structured output.',
+      de: 'Prozent exakt befolgter Anweisungen. Entscheidend für verlässliche Automatisierung und strukturierte Ausgaben.'
+    },
+    caveat: {
+      en: 'Measures obedience to format, not the quality of the content.',
+      de: 'Misst das Befolgen des Formats, nicht die Qualität des Inhalts.'
+    }
+  },
+  {
+    slug: 'tau2',
+    name: 'τ²-bench (tool use)',
+    groupSlug: 'agentic',
+    higherIsBetter: true,
+    unit: '%',
+    maxValue: 100,
+    sourceUrl: 'https://github.com/sierra-research/tau2-bench',
+    what: {
+      en: 'Realistic customer-service style tasks where the model must use tools/APIs correctly over a multi-turn conversation (e.g. banking, retail).',
+      de: 'Realistische Kundenservice-Aufgaben, bei denen das Modell Tools/APIs über mehrere Gesprächsrunden korrekt nutzen muss (z. B. Banking, Handel).'
+    },
+    howToRead: {
+      en: 'Percent of tasks completed correctly. A practical measure of agent reliability, not just single tool calls.',
+      de: 'Prozent korrekt gelöster Aufgaben. Ein praxisnahes Maß für Agenten-Zuverlässigkeit, nicht nur einzelne Tool-Aufrufe.'
+    },
+    caveat: {
+      en: 'Domain-specific; strong here does not guarantee every agent workflow.',
+      de: 'Domänenspezifisch; stark hier heißt nicht jeder Agenten-Workflow gelingt.'
+    }
+  },
+  {
+    slug: 'aa_coding',
+    name: 'Artificial Analysis Coding Index',
+    groupSlug: 'coding',
+    higherIsBetter: true,
+    unit: 'index',
+    maxValue: 100,
+    sourceUrl: 'https://artificialanalysis.ai/',
+    what: {
+      en: 'A blended coding score combining several coding benchmarks (e.g. LiveCodeBench, SciCode) into one number.',
+      de: 'Ein gemischter Coding-Score, der mehrere Coding-Benchmarks (z. B. LiveCodeBench, SciCode) zu einer Zahl zusammenfasst.'
+    },
+    howToRead: {
+      en: 'Higher = better at coding overall. Convenient one-glance coding rank.',
+      de: 'Höher = insgesamt besser beim Coden. Praktischer Coding-Rang auf einen Blick.'
+    },
+    caveat: {
+      en: 'A weighted blend; the components matter more than the single number.',
+      de: 'Eine gewichtete Mischung; die Bestandteile zählen mehr als die eine Zahl.'
+    }
+  },
+  {
+    slug: 'aa_math',
+    name: 'Artificial Analysis Math Index',
+    groupSlug: 'math',
+    higherIsBetter: true,
+    unit: 'index',
+    maxValue: 100,
+    sourceUrl: 'https://artificialanalysis.ai/',
+    what: {
+      en: 'A blended maths score combining competition-maths benchmarks (e.g. AIME, MATH-500) into one number.',
+      de: 'Ein gemischter Mathe-Score, der Wettbewerbs-Mathe-Benchmarks (z. B. AIME, MATH-500) zu einer Zahl zusammenfasst.'
+    },
+    howToRead: {
+      en: 'Higher = stronger competition-level maths.',
+      de: 'Höher = stärker in Wettbewerbs-Mathematik.'
+    },
+    caveat: {
+      en: 'A weighted blend of a few hard maths tests.',
+      de: 'Eine gewichtete Mischung einiger schwerer Mathe-Tests.'
+    }
+  },
+  {
     slug: 'vending_bench',
     name: 'Vending-Bench',
     groupSlug: 'business_agents',

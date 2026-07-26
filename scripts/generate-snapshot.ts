@@ -14,14 +14,10 @@ import {
   type RawOpenRouterModel,
   type RawOpenRouterEndpoint
 } from '../src/lib/importers/openrouter.ts';
-import { scoreModel, SCORE_VERSION } from '../src/lib/scoring/engine.ts';
-import {
-  attachBenchmarks,
-  benchmarkQuality,
-  toResult,
-  type BenchmarkMap
-} from '../src/lib/importers/benchmarks.ts';
-import { fetchArtificialAnalysis, type RawAAModel } from '../src/lib/importers/artificialAnalysis.ts';
+import { scoreModel, SCORE_VERSION, qualityProxy } from '../src/lib/scoring/engine.ts';
+import { attachBenchmarks, toResult, type BenchmarkMap } from '../src/lib/importers/benchmarks.ts';
+import { fetchAARaw, buildAAMap } from '../src/lib/importers/artificialAnalysis.ts';
+import { benchmarkStats, compositeFor } from '../src/lib/scoring/composite.ts';
 import type { ModelView, Snapshot } from '../src/lib/types.ts';
 
 const BASE = 'https://openrouter.ai/api/v1';
@@ -58,8 +54,6 @@ async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promis
   return out;
 }
 
-const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '');
-
 interface SeedEntry {
   benchmarkSlug: string;
   rawValue: number | null;
@@ -69,9 +63,6 @@ interface SeedEntry {
 }
 
 async function loadBenchmarks(models: { slug: string; name: string }[], now: Date): Promise<BenchmarkMap> {
-  const byNorm = new Map(models.map((m) => [norm(m.name), m.slug]));
-  const matchSlug = (name: string | undefined) => (name ? byNorm.get(norm(name)) ?? null : null);
-
   const merged: BenchmarkMap = {};
   const add = (map: BenchmarkMap) => {
     for (const [slug, results] of Object.entries(map)) {
@@ -79,9 +70,11 @@ async function loadBenchmarks(models: { slug: string; name: string }[], now: Dat
     }
   };
 
-  // 1) Artificial Analysis (needs a free API key).
+  // 1) Artificial Analysis (needs a free API key). Matches by normalized name.
   try {
-    add(await fetchArtificialAnalysis(process.env.ARTIFICIAL_ANALYSIS_API_KEY, (aa: RawAAModel) => matchSlug(aa.name ?? aa.slug), now));
+    const rawAA = await fetchAARaw(process.env.ARTIFICIAL_ANALYSIS_API_KEY);
+    if (rawAA.length) console.log(`  Artificial Analysis: ${rawAA.length} models fetched`);
+    add(buildAAMap(rawAA, models, now));
   } catch (e) {
     console.warn(`  Artificial Analysis skipped: ${(e as Error).message}`);
   }
@@ -161,11 +154,33 @@ async function main() {
   const benchCount = Object.keys(bench).length;
   console.log(`  attached measured benchmarks to ${benchCount} models`);
 
-  const models: ModelView[] = imported.map((m) => {
-    const q = benchmarkQuality(m.benchmarks);
+  // Cross-model stats for z-score normalization, then a domain-weighted
+  // composite per model. The composite (population-centered) is rescaled onto
+  // the structural-proxy distribution so measured and un-measured models stay
+  // comparable — otherwise z-centered measured models would rank below
+  // un-benchmarked ones.
+  const stats = benchmarkStats(imported);
+  const comps = imported.map((m) => compositeFor(m.benchmarks, stats));
+  const proxies = imported.map((m) => qualityProxy(m, now));
+  const mIdx = comps.map((c, i) => (c != null ? i : -1)).filter((i) => i >= 0);
+  const mean = (a: number[]) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : 0);
+  const sd = (a: number[], mu: number) => Math.sqrt(mean(a.map((v) => (v - mu) ** 2))) || 1;
+  const pMean = mean(mIdx.map((i) => proxies[i]));
+  const pStd = sd(mIdx.map((i) => proxies[i]), pMean);
+  const cMean = mean(mIdx.map((i) => comps[i] as number));
+  const cStd = sd(mIdx.map((i) => comps[i] as number), cMean);
+  const clampQ = (n: number) => Math.max(0, Math.min(100, n));
+
+  let measured = 0;
+  const models: ModelView[] = imported.map((m, i) => {
+    const c = comps[i];
+    // Rescale the population-z composite onto the proxy scale.
+    const q = c == null ? null : clampQ(pMean + ((c - cMean) / cStd) * pStd);
+    if (q != null) measured++;
     const { scores, estimated } = scoreModel(m, now, q);
     return { ...m, scores, scoresEstimated: estimated };
   });
+  console.log(`  scored ${measured} models with measured benchmark composite`);
 
   // Default sort: overall score desc.
   models.sort((a, b) => b.scores.overall - a.scores.overall);

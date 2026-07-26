@@ -1,10 +1,10 @@
-// Artificial Analysis importer (Phase 4). Maps the AA model endpoint payload to
+// Artificial Analysis importer (Phase 4). Maps the AA models endpoint to
 // botbrix benchmark results. Requires ARTIFICIAL_ANALYSIS_API_KEY.
 //
-// AA exposes a blended "Intelligence Index" plus component evals. Field names
-// below reflect the documented shape; adjust to the exact API version in use.
-// Pure mapper + a key-gated fetch that returns {} when no key is present, so
-// the pipeline degrades gracefully instead of inventing data.
+// AA reports blended indices (intelligence/coding/math) on a 0-100 scale and
+// individual evals on a 0-1 scale — this importer normalizes both to a
+// percentage. Model names carry reasoning-effort suffixes like "(high)", so
+// matching strips those and the lab prefix and keeps the best-scoring variant.
 
 import type { BenchmarkResultView } from '../types.ts';
 import { toResult, type BenchmarkMap } from './benchmarks.ts';
@@ -12,45 +12,55 @@ import { toResult, type BenchmarkMap } from './benchmarks.ts';
 const AA_BASE = 'https://artificialanalysis.ai/api/v2';
 
 export interface RawAAModel {
-  slug?: string;
+  id?: string;
   name?: string;
-  evaluations?: {
-    artificial_analysis_intelligence_index?: number;
-    mmlu_pro?: number;
-    gpqa?: number;
-    humaneval?: number;
-    livecodebench?: number;
-    swe_bench_verified?: number;
-    math_500?: number;
-    aime?: number;
-    mmmu?: number;
-  };
+  slug?: string;
+  model_creator?: { name?: string } | string;
+  median_output_tokens_per_second?: number | null;
+  median_time_to_first_token_seconds?: number | null;
+  evaluations?: Record<string, number | null>;
 }
 
-const FIELD_TO_SLUG: [keyof NonNullable<RawAAModel['evaluations']>, string][] = [
+// AA eval field -> botbrix benchmark slug. Order matters for aime fallback.
+const FIELD_TO_SLUG: [string, string][] = [
   ['artificial_analysis_intelligence_index', 'aa_intelligence'],
+  ['artificial_analysis_coding_index', 'aa_coding'],
+  ['artificial_analysis_math_index', 'aa_math'],
   ['mmlu_pro', 'mmlu_pro'],
   ['gpqa', 'gpqa'],
-  ['humaneval', 'humaneval'],
+  ['hle', 'hle'],
   ['livecodebench', 'livecodebench'],
-  ['swe_bench_verified', 'swebench_verified'],
+  ['scicode', 'scicode'],
   ['math_500', 'math'],
+  ['aime_25', 'aime'],
   ['aime', 'aime'],
-  ['mmmu', 'mmmu']
+  ['ifbench', 'ifbench'],
+  ['terminalbench_v2_1', 'terminalbench'],
+  ['terminalbench_hard', 'terminalbench'],
+  ['tau2', 'tau2']
 ];
+
+// Indices are already 0-100; per-eval fractions (0-1) scale up to a percentage.
+function toPercent(field: string, value: number): number {
+  const isIndex = field.startsWith('artificial_analysis_');
+  const v = isIndex ? value : value <= 1 ? value * 100 : value;
+  return Math.round(v * 10) / 10;
+}
 
 export function mapAAModel(raw: RawAAModel, now = new Date()): BenchmarkResultView[] {
   const evals = raw.evaluations ?? {};
+  const seen = new Set<string>();
   const out: BenchmarkResultView[] = [];
   for (const [field, slug] of FIELD_TO_SLUG) {
+    if (seen.has(slug)) continue; // first match wins (e.g. aime_25 before aime)
     const value = evals[field];
-    if (typeof value === 'number') {
+    if (typeof value === 'number' && Number.isFinite(value)) {
+      seen.add(slug);
       out.push(
         toResult(
           {
             benchmarkSlug: slug,
-            // AA reports 0-1 for many evals; scale to percentage where needed.
-            rawValue: value <= 1 ? Math.round(value * 1000) / 10 : value,
+            rawValue: toPercent(field, value),
             sourceName: 'Artificial Analysis',
             sourceUrl: 'https://artificialanalysis.ai/'
           },
@@ -62,31 +72,52 @@ export function mapAAModel(raw: RawAAModel, now = new Date()): BenchmarkResultVi
   return out;
 }
 
-/** Fetch AA data and return a benchmark map keyed by our model slug.
- * Returns {} (and logs) when the API key is missing. Matching AA slugs to
- * botbrix slugs is the caller's responsibility (see scripts/import-benchmarks). */
-export async function fetchArtificialAnalysis(
-  apiKey: string | undefined,
-  matchSlug: (aa: RawAAModel) => string | null,
-  now = new Date()
-): Promise<BenchmarkMap> {
+/** Strip lab prefix ("OpenAI: ") and parentheticals ("(high)") for matching. */
+export function normalizeName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/^[^:]+:\s*/, '')
+    .replace(/\([^)]*\)/g, '')
+    .replace(/[^a-z0-9]+/g, '');
+}
+
+export async function fetchAARaw(apiKey: string | undefined): Promise<RawAAModel[]> {
   if (!apiKey) {
     console.warn('[artificialAnalysis] no ARTIFICIAL_ANALYSIS_API_KEY — skipping.');
-    return {};
+    return [];
   }
   const res = await fetch(`${AA_BASE}/data/llms/models`, {
     headers: { 'x-api-key': apiKey, Accept: 'application/json' }
   });
   if (!res.ok) throw new Error(`Artificial Analysis HTTP ${res.status}`);
   const body = await res.json();
-  const rows: RawAAModel[] = body?.data ?? body?.models ?? [];
+  return (body?.data ?? body?.models ?? []) as RawAAModel[];
+}
+
+/** Build a benchmark map keyed by our model slug. For each of our models, find
+ * AA entries with the same normalized base name and keep the best variant
+ * (highest intelligence index → most capable configuration). */
+export function buildAAMap(
+  rawList: RawAAModel[],
+  ourModels: { slug: string; name: string }[],
+  now = new Date()
+): BenchmarkMap {
+  const bestByBase = new Map<string, RawAAModel>();
+  for (const m of rawList) {
+    if (!m.name) continue;
+    const base = normalizeName(m.name);
+    const idx = m.evaluations?.artificial_analysis_intelligence_index ?? -1;
+    const cur = bestByBase.get(base);
+    const curIdx = cur?.evaluations?.artificial_analysis_intelligence_index ?? -1;
+    if (!cur || idx > curIdx) bestByBase.set(base, m);
+  }
 
   const map: BenchmarkMap = {};
-  for (const row of rows) {
-    const slug = matchSlug(row);
-    if (!slug) continue;
-    const results = mapAAModel(row, now);
-    if (results.length) map[slug] = results;
+  for (const model of ourModels) {
+    const entry = bestByBase.get(normalizeName(model.name));
+    if (!entry) continue;
+    const results = mapAAModel(entry, now);
+    if (results.length) map[model.slug] = results;
   }
   return map;
 }
