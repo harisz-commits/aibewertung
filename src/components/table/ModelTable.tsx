@@ -148,6 +148,12 @@ export function ModelTable({
 
   const categories = ['all', 'chat', 'reasoning', 'coding', 'multimodal', 'embedding', 'reranker'];
 
+  // The SCORE column shows the score for whatever dimension is being sorted, so
+  // sorting by e.g. Coding shows coding scores (descending), not overall.
+  const isScoreSort = (SCORE_SORTS as readonly string[]).includes(sort);
+  const activeScoreKey = (isScoreSort ? sort : 'overall') as keyof TableModel['scores'];
+  const scoreHeader = activeScoreKey === 'overall' ? t('score') : SCORE_LABELS[activeScoreKey][locale === 'de' ? 'de' : 'en'];
+
   return (
     <div>
       {/* Toolbar */}
@@ -301,7 +307,7 @@ export function ModelTable({
               <th className="w-8 px-2 py-3"></th>
               <th className="px-3 py-3 font-medium">{t('model')}</th>
               <th className="px-3 py-3 font-medium">{t('category')}</th>
-              <th className="px-3 py-3 text-center font-medium">{t('score')}</th>
+              <th className="px-3 py-3 text-center font-medium">{scoreHeader}</th>
               <th className="px-3 py-3 text-right font-medium">{t('context')}</th>
               <th className="px-3 py-3 text-right font-medium">{t('input')}</th>
               <th className="px-3 py-3 text-right font-medium">{t('output')}</th>
@@ -317,6 +323,7 @@ export function ModelTable({
                   model={m}
                   isOpen={isOpen}
                   onToggle={() => toggleRow(m.id)}
+                  scoreKey={activeScoreKey}
                   locale={locale}
                   labels={{
                     apiModelId: t('apiModelId'),
@@ -352,6 +359,7 @@ function FragmentRow({
   model: m,
   isOpen,
   onToggle,
+  scoreKey,
   locale,
   labels,
   statusT
@@ -359,6 +367,7 @@ function FragmentRow({
   model: TableModel;
   isOpen: boolean;
   onToggle: () => void;
+  scoreKey: keyof TableModel['scores'];
   locale: string;
   labels: Record<string, string>;
   statusT: (k: string) => string;
@@ -397,7 +406,7 @@ function FragmentRow({
           <span className="whitespace-nowrap text-xs text-muted">{catLabel}</span>
         </td>
         <td className="px-3 py-3 text-center">
-          <ScorePill value={m.scores.overall} />
+          <ScorePill value={m.scores[scoreKey]} />
         </td>
         <td className="px-3 py-3 text-right tabular-nums text-muted">{formatContext(m.contextWindow)}</td>
         <td className="px-3 py-3 text-right tabular-nums">{formatPrice(m.cheapestInputPer1m)}</td>
