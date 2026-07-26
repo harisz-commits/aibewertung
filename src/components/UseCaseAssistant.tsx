@@ -29,21 +29,25 @@ function parseIntent(qRaw: string): Intent {
   const requireLocal = has('local', 'lokal', 'offline', 'on-prem', 'self-host', 'selbst');
   const requireFree = has('free', 'kostenlos', 'gratis');
 
+  // The sort key is the user's GOAL. Capability words (tool/vision) are FILTERS,
+  // not the goal, so they are only used as a last resort — otherwise "cheap
+  // model with tool calling" would wrongly rank by tool use instead of price.
   let scoreKey: keyof Scores = 'overall';
   let label = 'overall quality';
   if (has('code', 'coding', 'programm', 'developer', 'swe')) { scoreKey = 'coding'; label = 'coding'; }
   else if (has('german', 'deutsch')) { scoreKey = 'german'; label = 'German'; }
-  else if (has('rag', 'retrieval', 'embedding', 'knowledge base')) { scoreKey = 'rag'; label = 'RAG'; }
-  else if (requireVision) { scoreKey = 'vision'; label = 'vision'; }
+  else if (has('rag', 'retrieval', 'knowledge base', 'wissensbasis')) { scoreKey = 'rag'; label = 'RAG'; }
   else if (has('reason', 'math', 'mathe', 'logic', 'logik')) { scoreKey = 'reasoning'; label = 'reasoning'; }
-  else if (requireTools) { scoreKey = 'agentTool'; label = 'agent / tool use'; }
   else if (has('support', 'kundensupport', 'customer', 'helpdesk')) { scoreKey = 'customerSupport'; label = 'customer support'; }
   else if (has('translat', 'übersetz')) { scoreKey = 'translation'; label = 'translation'; }
   else if (has('email', 'mail', 'sales', 'vertrieb', 'writ', 'schreib')) { scoreKey = 'salesEmail'; label = 'writing'; }
-  else if (has('fast', 'speed', 'schnell', 'latenc', 'realtime')) { scoreKey = 'speed'; label = 'speed'; }
+  else if (has('fast', 'speed', 'schnell', 'latenc', 'realtime', 'schnelligkeit')) { scoreKey = 'speed'; label = 'speed'; }
   else if (has('long', 'document', 'dokument', 'context', 'kontext')) { scoreKey = 'longContext'; label = 'long context'; }
-  else if (has('privacy', 'eu', 'dsgvo', 'gdpr', 'datenschutz')) { scoreKey = 'privacyEu'; label = 'EU / privacy'; }
-  else if (has('cheap', 'günstig', 'billig', 'budget', 'low cost', 'affordable')) { scoreKey = 'cheapApi'; label = 'low-cost API'; }
+  else if (has('privacy', 'dsgvo', 'gdpr', 'datenschutz')) { scoreKey = 'privacyEu'; label = 'EU / privacy'; }
+  else if (has('cheap', 'günstig', 'billig', 'budget', 'low cost', 'low-cost', 'affordable', 'preiswert', 'preis')) { scoreKey = 'cheapApi'; label = 'low-cost API'; }
+  else if (requireVision) { scoreKey = 'vision'; label = 'vision'; }
+  else if (requireTools) { scoreKey = 'agentTool'; label = 'agent / tool use'; }
+  else if (requireLocal) { scoreKey = 'local'; label = 'local'; }
 
   return { scoreKey, requireVision, requireTools, requireLocal, requireFree, label };
 }

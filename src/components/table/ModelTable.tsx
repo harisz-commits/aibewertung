@@ -8,6 +8,7 @@ import { Link } from '@/i18n/navigation';
 import type { ModelView } from '@/lib/types';
 import {
   CATEGORY_LABELS,
+  SCORE_LABELS,
   formatContext,
   formatDate,
   formatPrice,
@@ -18,16 +19,23 @@ import { Badge, StatusBadges } from '@/components/badges';
 
 export type TableModel = Omit<ModelView, 'description' | 'descriptionDe' | 'sources' | 'family'>;
 
-type SortKey =
-  | 'overall'
-  | 'coding'
-  | 'cheapApi'
-  | 'speed'
-  | 'context'
-  | 'inputPrice'
-  | 'outputPrice'
-  | 'newest'
-  | 'name';
+// Score dimensions users can sort the main table by.
+const SCORE_SORTS = [
+  'overall',
+  'coding',
+  'reasoning',
+  'math',
+  'agentTool',
+  'vision',
+  'german',
+  'rag',
+  'longContext',
+  'cheapApi',
+  'pricePerformance',
+  'speed'
+] as const;
+
+type SortKey = (typeof SCORE_SORTS)[number] | 'context' | 'inputPrice' | 'outputPrice' | 'newest' | 'name';
 
 const CAP_FILTERS = ['vision', 'audio', 'reasoning', 'tools', 'jsonMode'] as const;
 type CapFilter = (typeof CAP_FILTERS)[number];
@@ -64,6 +72,8 @@ export function ModelTable({
   const [caps, setCaps] = useState<Set<CapFilter>>(new Set());
   const [freeOnly, setFreeOnly] = useState(false);
   const [lab, setLab] = useState<string>('all');
+  const [maxPrice, setMaxPrice] = useState<number | null>(null); // max output $/1M
+  const [minContext, setMinContext] = useState<number | null>(null);
   const [sort, setSort] = useState<SortKey>('overall');
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
@@ -83,6 +93,8 @@ export function ModelTable({
     setCaps(new Set());
     setFreeOnly(false);
     setLab('all');
+    setMaxPrice(null);
+    setMinContext(null);
     setSort('overall');
   }
 
@@ -95,6 +107,8 @@ export function ModelTable({
       if (openness === 'closed' && m.isOpenWeight) return false;
       if (freeOnly && (m.cheapestOutputPer1m ?? 1) !== 0) return false;
       if (lab !== 'all' && m.labSlug !== lab) return false;
+      if (maxPrice != null && (m.cheapestOutputPer1m == null || m.cheapestOutputPer1m > maxPrice)) return false;
+      if (minContext != null && (m.contextWindow == null || m.contextWindow < minContext)) return false;
       for (const cap of caps) {
         if (!m.features[cap]) return false;
       }
@@ -122,7 +136,7 @@ export function ModelTable({
       }
     });
     return rows;
-  }, [models, query, category, deployment, openness, caps, freeOnly, lab, sort]);
+  }, [models, query, category, deployment, openness, caps, freeOnly, lab, maxPrice, minContext, sort]);
 
   function toggleRow(id: string) {
     setExpanded((prev) => {
@@ -175,19 +189,46 @@ export function ModelTable({
           </select>
 
           <select
+            value={maxPrice ?? ''}
+            onChange={(e) => setMaxPrice(e.target.value ? Number(e.target.value) : null)}
+            className="rounded-lg border border-border bg-surface px-2.5 py-2 text-sm outline-none focus:border-brand"
+          >
+            <option value="">{t('output')}: {f('all')}</option>
+            <option value="1">≤ $1 /1M</option>
+            <option value="3">≤ $3 /1M</option>
+            <option value="10">≤ $10 /1M</option>
+            <option value="20">≤ $20 /1M</option>
+          </select>
+
+          <select
+            value={minContext ?? ''}
+            onChange={(e) => setMinContext(e.target.value ? Number(e.target.value) : null)}
+            className="rounded-lg border border-border bg-surface px-2.5 py-2 text-sm outline-none focus:border-brand"
+          >
+            <option value="">{t('context')}: {f('all')}</option>
+            <option value="32000">≥ 32K</option>
+            <option value="128000">≥ 128K</option>
+            <option value="200000">≥ 200K</option>
+            <option value="1000000">≥ 1M</option>
+          </select>
+
+          <select
             value={sort}
             onChange={(e) => setSort(e.target.value as SortKey)}
             className="rounded-lg border border-border bg-surface px-2.5 py-2 text-sm outline-none focus:border-brand"
           >
-            <option value="overall">{f('sortBy')}: {t('score')}</option>
-            <option value="coding">{f('sortBy')}: {f('all')} · Coding</option>
-            <option value="cheapApi">{f('sortBy')}: Cheap API</option>
-            <option value="speed">{f('sortBy')}: {t('speed')}</option>
-            <option value="context">{f('sortBy')}: {t('context')}</option>
-            <option value="inputPrice">{f('sortBy')}: {t('input')}</option>
-            <option value="outputPrice">{f('sortBy')}: {t('output')}</option>
-            <option value="newest">{f('sortBy')}: {c('new')}</option>
-            <option value="name">{f('sortBy')}: {t('model')}</option>
+            <optgroup label={f('sortBy')}>
+              {SCORE_SORTS.map((k) => (
+                <option key={k} value={k}>
+                  {SCORE_LABELS[k][locale === 'de' ? 'de' : 'en']}
+                </option>
+              ))}
+              <option value="context">{t('context')}</option>
+              <option value="inputPrice">{t('input')}</option>
+              <option value="outputPrice">{t('output')}</option>
+              <option value="newest">{c('new')}</option>
+              <option value="name">{t('model')}</option>
+            </optgroup>
           </select>
         </div>
 

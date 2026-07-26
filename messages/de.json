@@ -81,6 +81,16 @@
     "vision": "Bestes für Vision",
     "pricePerformance": "Bestes Preis-/Leistung"
   },
+  "rankingsDesc": {
+    "overall": "Beste Allround-Wahl für die meisten",
+    "coding": "Am besten beim Schreiben und Beheben von Code",
+    "cheapApi": "Am günstigsten per API-Aufruf, bei solider Qualität",
+    "local": "Am besten selbst betreibbar (Open-Weight)",
+    "german": "Am besten in Deutsch verstehen und schreiben",
+    "rag": "Antworten aus deinen eigenen Dokumenten (RAG)",
+    "vision": "Am besten beim Verstehen von Bildern/Screenshots",
+    "pricePerformance": "Beste Qualität fürs Geld"
+  },
   "table": {
     "model": "Modell",
     "lab": "Labor",

@@ -11,15 +11,17 @@ export function RankingCards({
   rankings: { id: string; scoreKey: keyof Scores; models: ModelView[] }[];
 }) {
   const t = useTranslations('rankings');
+  const d = useTranslations('rankingsDesc');
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {rankings.map((r) => (
         <div key={r.id} className="rounded-xl border border-border bg-surface p-4">
-          <div className="mb-3 flex items-center gap-2 text-sm font-semibold">
+          <div className="mb-1 flex items-center gap-2 text-sm font-semibold">
             <Trophy size={15} className="text-brand" />
             {t(r.id)}
           </div>
+          <p className="mb-3 text-xs leading-snug text-muted">{d(r.id)}</p>
           <ol className="space-y-1.5">
             {r.models.map((m, i) => (
               <li key={m.id} className="flex items-center gap-2 text-sm">

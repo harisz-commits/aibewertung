@@ -81,6 +81,16 @@
     "vision": "Best for vision",
     "pricePerformance": "Best price/performance"
   },
+  "rankingsDesc": {
+    "overall": "Best all-round pick for most people",
+    "coding": "Best at writing and fixing code",
+    "cheapApi": "Cheapest to call via API, at solid quality",
+    "local": "Best you can run on your own hardware (open-weight)",
+    "german": "Best at understanding and writing German",
+    "rag": "Best for answering from your own documents (RAG)",
+    "vision": "Best at understanding images and screenshots",
+    "pricePerformance": "Best quality for the money"
+  },
   "table": {
     "model": "Model",
     "lab": "Lab",

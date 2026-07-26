@@ -11,10 +11,10 @@ function priceBand(outputPer1m: number | null, lang: Lang): string {
   if (outputPer1m == null) return lang === 'de' ? 'unbekannt bepreist' : 'unpriced';
   if (outputPer1m === 0) return lang === 'de' ? 'kostenlos' : 'free';
   if (outputPer1m < 0.5) return lang === 'de' ? 'sehr günstig' : 'very cheap';
-  if (outputPer1m < 3) return lang === 'de' ? 'günstig' : 'cheap';
-  if (outputPer1m < 10) return lang === 'de' ? 'im Mittelfeld bepreist' : 'mid-priced';
-  if (outputPer1m < 30) return lang === 'de' ? 'gehoben bepreist' : 'premium-priced';
-  return lang === 'de' ? 'teuer' : 'expensive';
+  if (outputPer1m < 2) return lang === 'de' ? 'günstig' : 'cheap';
+  if (outputPer1m < 8) return lang === 'de' ? 'im mittleren Preisbereich' : 'mid-priced';
+  if (outputPer1m < 20) return lang === 'de' ? 'im gehobenen Preisbereich' : 'upper-mid priced';
+  return lang === 'de' ? 'im Premium-Bereich' : 'premium-priced';
 }
 
 function contextBand(ctx: number | null, lang: Lang): string {
@@ -160,18 +160,27 @@ export function ratingHighlights(
 
 export function worthIt(m: ModelView, lang: Lang): string {
   const pp = m.scores.pricePerformance;
+  const out = m.cheapestOutputPer1m;
   const de = lang === 'de';
-  if (m.cheapestOutputPer1m === 0) {
+  if (out === 0) {
     return de
       ? 'Dieses Modell ist kostenlos verfügbar — für Experimente und die meisten Alltagsaufgaben ein risikofreier Einstieg.'
       : 'This model is available for free — a risk-free start for experiments and most everyday tasks.';
   }
-  if (pp >= 65) {
+  // Genuinely cheap, or strong value-for-money → clearly recommend.
+  if ((out != null && out < 8) || pp >= 60) {
     return de
-      ? 'Für die meisten Nutzer bietet dieses Modell ein sehr gutes Preis-Leistungs-Verhältnis — ein teureres Frontier-Modell brauchst du nur für Spezialfälle.'
-      : 'For most users this model offers strong price/performance — you only need a pricier frontier model for edge cases.';
+      ? 'Gutes Preis-Leistungs-Verhältnis für die meisten Nutzer — ein deutlich teureres Frontier-Modell brauchst du nur für Spezialfälle.'
+      : 'Good price/performance for most users — you only need a much pricier frontier model for special cases.';
   }
+  // Only the genuinely expensive tier gets the "premium" caveat.
+  if (out != null && out >= 20) {
+    return de
+      ? 'Dieses Modell liegt im Premium-Bereich. Es lohnt sich, wenn du maximale Qualität brauchst; für vieles reichen günstigere Modelle mit ähnlichem Score.'
+      : 'This model is in the premium tier. Worth it when you need maximum quality; for many tasks cheaper models reach a similar score.';
+  }
+  // Upper-mid: neutral, not alarmist.
   return de
-    ? 'Dieses Modell ist eher hochpreisig. Es lohnt sich, wenn du maximale Qualität brauchst; sonst erreichen günstigere Modelle einen ähnlichen Score.'
-    : 'This model sits at the higher end. Worth it when you need top quality; otherwise cheaper models reach a similar score.';
+    ? 'Preislich im gehobenen Mittelfeld — eine solide Wahl, wenn dir Qualität wichtig ist; wer vor allem aufs Budget schaut, findet günstigere Alternativen.'
+    : 'Priced in the upper-mid range — a solid pick when you value quality; budget-focused users can find cheaper alternatives.';
 }
