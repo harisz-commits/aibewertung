@@ -128,6 +128,24 @@ labelled and never affect organic scores or rankings.
 
 ---
 
+## Per-language coding leaderboard (pipeline)
+
+`npm run import:coding` builds `src/data/coding-languages.json` and the
+`/api/coding/languages` endpoint returns `{ language: { "JavaScript": [{model,
+score}] } }`. The pipeline (`src/lib/coding/*`) standardizes results rows to
+`[model, language, benchmark, score]`, resolves language aliases (js→JavaScript,
+cpp→C++), and computes a per-language composite via z-score normalization (or a
+weighted average: SWE-bench 50% · McEval 30% · MultiPL-E 20%).
+
+**Honest note on data:** the named HF datasets — `SWE-bench/SWE-bench_Multilingual`,
+`nuprl/MultiPL-E`, `Multilingual-Multimodal-NLP/McEval-Instruct` — contain
+benchmark **problems / training data, not per-model scores** (verified via the
+datasets-server). Model×language scores must come from a results source: a
+published leaderboard export or the curated seed
+`src/data/coding-languages.seed.json` (see `.seed.example.json`). MultiPL-E's
+configs are used only for real **language coverage**. Set `HF_TOKEN` for gated
+datasets / higher rate limits.
+
 ## Roadmap (from the product spec)
 
 | Phase | Scope | State |
