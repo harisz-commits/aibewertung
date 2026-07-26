@@ -33,6 +33,17 @@ export function formatScore(score: number | null | undefined): string {
   return score.toFixed(0);
 }
 
+export function formatSpeed(tps: number | null | undefined): string {
+  if (tps == null) return '—';
+  return `${Math.round(tps)} t/s`;
+}
+
+export function formatLatency(ms: number | null | undefined): string {
+  if (ms == null) return '—';
+  if (ms >= 1000) return `${(ms / 1000).toFixed(ms >= 10000 ? 0 : 1)}s`;
+  return `${Math.round(ms)}ms`;
+}
+
 export function scoreColor(score: number): string {
   if (score >= 80) return 'text-success';
   if (score >= 60) return 'text-fg';

@@ -79,7 +79,8 @@
     "german": "Best for German",
     "rag": "Best for RAG",
     "vision": "Best for vision",
-    "pricePerformance": "Best price/performance"
+    "pricePerformance": "Best price/performance",
+    "speed": "Fastest models"
   },
   "rankingsDesc": {
     "overall": "Best all-round pick for most people",
@@ -89,7 +90,8 @@
     "german": "Best at understanding and writing German",
     "rag": "Best for answering from your own documents (RAG)",
     "vision": "Best at understanding images and screenshots",
-    "pricePerformance": "Best quality for the money"
+    "pricePerformance": "Best quality for the money",
+    "speed": "Highest measured output speed (tokens/sec)"
   },
   "table": {
     "model": "Model",
@@ -110,6 +112,10 @@
     "uptime": "Uptime 30m",
     "cachedInput": "Cached input",
     "maxOutput": "Max output",
+    "throughput": "Throughput",
+    "latency": "Latency",
+    "viewList": "List view",
+    "viewGrid": "Grid view",
     "noResults": "No models match your filters.",
     "showingCount": "Showing {shown} of {total} models"
   },
@@ -132,7 +138,19 @@
     "jsonMode": "JSON mode",
     "free": "Free tier",
     "lab": "Lab",
-    "sortBy": "Sort by"
+    "sortBy": "Sort by",
+    "inputModalities": "Input modalities",
+    "image": "Image",
+    "file": "File",
+    "priceOutput": "Output price /1M",
+    "priceInput": "Input price /1M",
+    "contextRange": "Context window",
+    "intelligence": "Intelligence index",
+    "coding": "Coding index",
+    "released": "Released",
+    "anyTime": "Any time",
+    "within": "≤ {n} months",
+    "showDeprecated": "Show deprecated"
   },
   "model": {
     "overview": "Overview",

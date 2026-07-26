@@ -160,6 +160,13 @@ export interface ModelView {
   // source/key is configured). Absent in the marketplace-only snapshot.
   benchmarks?: BenchmarkResultView[];
 
+  // Flattened measured metrics (from Artificial Analysis) for fast table
+  // filtering/sorting/columns. Null when not measured for this model.
+  aaIntelligence?: number | null;
+  aaCoding?: number | null;
+  outputSpeedTps?: number | null; // median output tokens/second
+  ttftMs?: number | null; // median time to first token, milliseconds
+
   // Applied from admin overrides when a database is connected.
   affiliateUrl?: string | null;
   isFeatured?: boolean;

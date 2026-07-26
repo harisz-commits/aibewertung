@@ -129,6 +129,7 @@ export function getHomeRankings(): { id: string; scoreKey: RankingKey; models: M
     { id: 'german', scoreKey: 'german' as RankingKey, models: getTopBy('german', 5) },
     { id: 'rag', scoreKey: 'rag' as RankingKey, models: getTopBy('rag', 5) },
     { id: 'vision', scoreKey: 'vision' as RankingKey, models: getTopBy('vision', 5, (m) => m.features.vision) },
-    { id: 'pricePerformance', scoreKey: 'pricePerformance' as RankingKey, models: getTopBy('pricePerformance', 5) }
+    { id: 'pricePerformance', scoreKey: 'pricePerformance' as RankingKey, models: getTopBy('pricePerformance', 5) },
+    { id: 'speed', scoreKey: 'speed' as RankingKey, models: getTopBy('speed', 5, (m) => m.outputSpeedTps != null) }
   ];
 }

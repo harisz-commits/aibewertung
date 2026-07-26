@@ -94,14 +94,9 @@ export async function fetchAARaw(apiKey: string | undefined): Promise<RawAAModel
   return (body?.data ?? body?.models ?? []) as RawAAModel[];
 }
 
-/** Build a benchmark map keyed by our model slug. For each of our models, find
- * AA entries with the same normalized base name and keep the best variant
+/** Group AA entries by normalized base name, keeping the best variant
  * (highest intelligence index → most capable configuration). */
-export function buildAAMap(
-  rawList: RawAAModel[],
-  ourModels: { slug: string; name: string }[],
-  now = new Date()
-): BenchmarkMap {
+export function bestVariantByBase(rawList: RawAAModel[]): Map<string, RawAAModel> {
   const bestByBase = new Map<string, RawAAModel>();
   for (const m of rawList) {
     if (!m.name) continue;
@@ -111,7 +106,16 @@ export function buildAAMap(
     const curIdx = cur?.evaluations?.artificial_analysis_intelligence_index ?? -1;
     if (!cur || idx > curIdx) bestByBase.set(base, m);
   }
+  return bestByBase;
+}
 
+/** Build a benchmark map keyed by our model slug (best variant per base name). */
+export function buildAAMap(
+  rawList: RawAAModel[],
+  ourModels: { slug: string; name: string }[],
+  now = new Date()
+): BenchmarkMap {
+  const bestByBase = bestVariantByBase(rawList);
   const map: BenchmarkMap = {};
   for (const model of ourModels) {
     const entry = bestByBase.get(normalizeName(model.name));
@@ -120,4 +124,36 @@ export function buildAAMap(
     if (results.length) map[model.slug] = results;
   }
   return map;
+}
+
+export interface AAMetrics {
+  intelligence: number | null;
+  coding: number | null;
+  tps: number | null; // median output tokens/second
+  ttftMs: number | null; // median time to first token (ms)
+}
+
+/** Flattened per-model metrics (indices + measured speed/latency). */
+export function buildAAMetrics(
+  rawList: RawAAModel[],
+  ourModels: { slug: string; name: string }[]
+): Record<string, AAMetrics> {
+  const bestByBase = bestVariantByBase(rawList);
+  const out: Record<string, AAMetrics> = {};
+  for (const model of ourModels) {
+    const e = bestByBase.get(normalizeName(model.name));
+    if (!e) continue;
+    const ev = e.evaluations ?? {};
+    const round = (n: number | null | undefined) => (typeof n === 'number' ? Math.round(n * 10) / 10 : null);
+    out[model.slug] = {
+      intelligence: round(ev.artificial_analysis_intelligence_index),
+      coding: round(ev.artificial_analysis_coding_index),
+      tps: round(e.median_output_tokens_per_second),
+      ttftMs:
+        typeof e.median_time_to_first_token_seconds === 'number'
+          ? Math.round(e.median_time_to_first_token_seconds * 1000)
+          : null
+    };
+  }
+  return out;
 }

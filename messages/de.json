@@ -79,7 +79,8 @@
     "german": "Bestes für Deutsch",
     "rag": "Bestes für RAG",
     "vision": "Bestes für Vision",
-    "pricePerformance": "Bestes Preis-/Leistung"
+    "pricePerformance": "Bestes Preis-/Leistung",
+    "speed": "Schnellste Modelle"
   },
   "rankingsDesc": {
     "overall": "Beste Allround-Wahl für die meisten",
@@ -89,7 +90,8 @@
     "german": "Am besten in Deutsch verstehen und schreiben",
     "rag": "Antworten aus deinen eigenen Dokumenten (RAG)",
     "vision": "Am besten beim Verstehen von Bildern/Screenshots",
-    "pricePerformance": "Beste Qualität fürs Geld"
+    "pricePerformance": "Beste Qualität fürs Geld",
+    "speed": "Höchste gemessene Ausgabegeschwindigkeit (Tokens/s)"
   },
   "table": {
     "model": "Modell",
@@ -110,6 +112,10 @@
     "uptime": "Uptime 30m",
     "cachedInput": "Cached Input",
     "maxOutput": "Max. Output",
+    "throughput": "Durchsatz",
+    "latency": "Latenz",
+    "viewList": "Listenansicht",
+    "viewGrid": "Rasteransicht",
     "noResults": "Keine Modelle passen zu deinen Filtern.",
     "showingCount": "Zeige {shown} von {total} Modellen"
   },
@@ -132,7 +138,19 @@
     "jsonMode": "JSON-Modus",
     "free": "Kostenlos",
     "lab": "Labor",
-    "sortBy": "Sortieren nach"
+    "sortBy": "Sortieren nach",
+    "inputModalities": "Eingabe-Modalitäten",
+    "image": "Bild",
+    "file": "Datei",
+    "priceOutput": "Output-Preis /1M",
+    "priceInput": "Input-Preis /1M",
+    "contextRange": "Kontextfenster",
+    "intelligence": "Intelligence-Index",
+    "coding": "Coding-Index",
+    "released": "Erschienen",
+    "anyTime": "Jederzeit",
+    "within": "≤ {n} Monate",
+    "showDeprecated": "Veraltete anzeigen"
   },
   "model": {
     "overview": "Überblick",

@@ -141,6 +141,18 @@ function multilingualSignal(m: ImportedModel): number {
   return MULTILINGUAL_LAB[m.labSlug] ?? (m.isOpenWeight ? 65 : 60);
 }
 
+// Measured speed score from AA throughput (tok/s) + time-to-first-token (ms).
+// Returns null when no measurement is available (caller falls back to proxy).
+function measuredSpeedScore(tps?: number | null, ttftMs?: number | null): number | null {
+  const hasTps = tps != null && Number.isFinite(tps) && tps > 0;
+  const hasTtft = ttftMs != null && Number.isFinite(ttftMs) && ttftMs > 0;
+  if (!hasTps && !hasTtft) return null;
+  const tpsScore = hasTps ? logScale(tps as number, 20, 400) : null;
+  const ttftScore = hasTtft ? clamp(100 - logScale(ttftMs as number, 150, 20000)) : null;
+  if (tpsScore != null && ttftScore != null) return clamp(0.7 * tpsScore + 0.3 * ttftScore);
+  return (tpsScore ?? ttftScore) as number;
+}
+
 function localEase(m: ImportedModel): number {
   if (!m.isOpenWeight) return 8;
   // Smaller = easier to run locally.
@@ -153,19 +165,26 @@ function localEase(m: ImportedModel): number {
   return 55;
 }
 
+export interface ScoreInputs {
+  benchmarkQuality?: number | null;
+  tps?: number | null;
+  ttftMs?: number | null;
+}
+
 export function scoreModel(
   m: ImportedModel,
   now = new Date(),
-  benchmarkQualityScore?: number | null
+  inputs: ScoreInputs = {}
 ): { scores: Scores; estimated: boolean } {
   const proxy = qualityProxy(m, now);
   // When measured benchmark quality is available, blend it in and treat the
   // result as measured (not estimated). Otherwise fall back to the proxy.
-  const hasBench = benchmarkQualityScore != null && Number.isFinite(benchmarkQualityScore);
-  const Q = hasBench ? clamp(0.65 * (benchmarkQualityScore as number) + 0.35 * proxy) : proxy;
+  const hasBench = inputs.benchmarkQuality != null && Number.isFinite(inputs.benchmarkQuality);
+  const Q = hasBench ? clamp(0.65 * (inputs.benchmarkQuality as number) + 0.35 * proxy) : proxy;
   const cheap = priceCheapness(m.cheapestOutputPer1m);
   const inputCheap = priceCheapness(m.cheapestInputPer1m);
-  const SP = speedProxy(m);
+  // Prefer measured throughput/latency; fall back to the structural proxy.
+  const SP = measuredSpeedScore(inputs.tps, inputs.ttftMs) ?? speedProxy(m);
   const FC = featureCoverage(m);
   const AV = availabilityScore(m);
   const TR = trustScore(m);

@@ -16,7 +16,7 @@ import {
 } from '../src/lib/importers/openrouter.ts';
 import { scoreModel, SCORE_VERSION, qualityProxy } from '../src/lib/scoring/engine.ts';
 import { attachBenchmarks, toResult, type BenchmarkMap } from '../src/lib/importers/benchmarks.ts';
-import { fetchAARaw, buildAAMap } from '../src/lib/importers/artificialAnalysis.ts';
+import { fetchAARaw, buildAAMap, buildAAMetrics, type RawAAModel } from '../src/lib/importers/artificialAnalysis.ts';
 import { benchmarkStats, compositeFor } from '../src/lib/scoring/composite.ts';
 import type { ModelView, Snapshot } from '../src/lib/types.ts';
 
@@ -62,7 +62,7 @@ interface SeedEntry {
   isEstimated?: boolean;
 }
 
-async function loadBenchmarks(models: { slug: string; name: string }[], now: Date): Promise<BenchmarkMap> {
+function loadBenchmarks(models: { slug: string; name: string }[], now: Date, rawAA: RawAAModel[]): BenchmarkMap {
   const merged: BenchmarkMap = {};
   const add = (map: BenchmarkMap) => {
     for (const [slug, results] of Object.entries(map)) {
@@ -71,13 +71,7 @@ async function loadBenchmarks(models: { slug: string; name: string }[], now: Dat
   };
 
   // 1) Artificial Analysis (needs a free API key). Matches by normalized name.
-  try {
-    const rawAA = await fetchAARaw(process.env.ARTIFICIAL_ANALYSIS_API_KEY);
-    if (rawAA.length) console.log(`  Artificial Analysis: ${rawAA.length} models fetched`);
-    add(buildAAMap(rawAA, models, now));
-  } catch (e) {
-    console.warn(`  Artificial Analysis skipped: ${(e as Error).message}`);
-  }
+  add(buildAAMap(rawAA, models, now));
 
   // 2) Local seed file (manually curated; each entry carries its own source).
   const seedPath = join(__dirname, '..', 'src', 'data', 'benchmarks.seed.json');
@@ -146,13 +140,30 @@ async function main() {
   });
   console.log(`  merged real endpoints for ${endpointHits} models`);
 
-  // --- Real benchmarks (optional, key/seed gated; never fabricated) ---
+  // --- Real benchmarks + metrics (optional, key/seed gated; never fabricated) ---
   // Sources: Artificial Analysis API (ARTIFICIAL_ANALYSIS_API_KEY) and/or a
   // local seed file src/data/benchmarks.seed.json (see .example for format).
-  const bench = await loadBenchmarks(imported.map((m) => ({ slug: m.slug, name: m.name })), now);
+  let rawAA: RawAAModel[] = [];
+  try {
+    rawAA = await fetchAARaw(process.env.ARTIFICIAL_ANALYSIS_API_KEY);
+    if (rawAA.length) console.log(`  Artificial Analysis: ${rawAA.length} models fetched`);
+  } catch (e) {
+    console.warn(`  Artificial Analysis skipped: ${(e as Error).message}`);
+  }
+  const modelKeys = imported.map((m) => ({ slug: m.slug, name: m.name }));
+  const bench = loadBenchmarks(modelKeys, now, rawAA);
   imported = attachBenchmarks(imported, bench);
-  const benchCount = Object.keys(bench).length;
-  console.log(`  attached measured benchmarks to ${benchCount} models`);
+  console.log(`  attached measured benchmarks to ${Object.keys(bench).length} models`);
+
+  // Flat metrics: AA indices + measured throughput/latency, for table use.
+  const metrics = buildAAMetrics(rawAA, modelKeys);
+  imported = imported.map((m) => {
+    const mt = metrics[m.slug];
+    return mt
+      ? { ...m, aaIntelligence: mt.intelligence, aaCoding: mt.coding, outputSpeedTps: mt.tps, ttftMs: mt.ttftMs }
+      : m;
+  });
+  console.log(`  attached AA metrics (speed/indices) to ${Object.keys(metrics).length} models`);
 
   // Cross-model stats for z-score normalization, then a domain-weighted
   // composite per model. The composite (population-centered) is rescaled onto
@@ -177,7 +188,11 @@ async function main() {
     // Rescale the population-z composite onto the proxy scale.
     const q = c == null ? null : clampQ(pMean + ((c - cMean) / cStd) * pStd);
     if (q != null) measured++;
-    const { scores, estimated } = scoreModel(m, now, q);
+    const { scores, estimated } = scoreModel(m, now, {
+      benchmarkQuality: q,
+      tps: m.outputSpeedTps,
+      ttftMs: m.ttftMs
+    });
     return { ...m, scores, scoresEstimated: estimated };
   });
   console.log(`  scored ${measured} models with measured benchmark composite`);
