@@ -1,12 +1,12 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowRight, Database, Sparkles } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { applyOverrides, getAllModels, getHomeRankings, getLabs, getOverrides, getSnapshotMeta } from '@/lib/data';
+import { applyOverrides, getAllModels, getHomeRankings, getLabs, getMostDownloaded, getOverrides, getSnapshotMeta } from '@/lib/data';
 import type { ModelView } from '@/lib/types';
 import { ModelTable, type TableModel } from '@/components/table/ModelTable';
 import { RankingCards } from '@/components/RankingCards';
 import { UseCaseAssistant } from '@/components/UseCaseAssistant';
-import { formatDate, formatPrice } from '@/lib/format';
+import { formatCount, formatDate, formatPrice } from '@/lib/format';
 import { Badge } from '@/components/badges';
 
 function toTableModel(m: ModelView): TableModel {
@@ -31,6 +31,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     models: r.models.filter((m) => !hidden(m.slug))
   }));
   const labs = getLabs();
+  const mostDownloaded = getMostDownloaded(8).filter((m) => !hidden(m.slug));
   const meta = getSnapshotMeta();
   const newest = [...models]
     .filter((m) => m.releaseDate)
@@ -106,6 +107,35 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         )}
         <ModelTable models={tableModels} labs={labs} />
       </section>
+
+      {/* Most used open-weight models (Hugging Face adoption) */}
+      {mostDownloaded.length > 0 && (
+        <section id="adoption" className="scroll-mt-20 py-6">
+          <div className="mb-4">
+            <h2 className="text-lg font-semibold">{t('adoptionTitle')}</h2>
+            <p className="text-sm text-muted">{t('adoptionSubtitle')}</p>
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {mostDownloaded.map((m) => (
+              <Link
+                key={m.id}
+                href={`/models/${m.slug}`}
+                className="rounded-xl border border-border bg-surface p-4 transition hover:border-brand/50"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="truncate text-xs text-muted">{m.lab}</span>
+                  <Badge tone="neutral">{c('openWeight')}</Badge>
+                </div>
+                <div className="mt-1 truncate font-medium">{m.name}</div>
+                <div className="mt-2 flex items-center justify-between text-xs text-muted">
+                  <span className="tabular-nums">{formatCount(m.hfDownloads30d)} ↓ / 30d</span>
+                  <span className="tabular-nums">♥ {formatCount(m.hfLikes)}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Today in LLMs */}
       <section id="news" className="scroll-mt-20 py-6">

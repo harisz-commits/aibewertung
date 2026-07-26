@@ -100,6 +100,23 @@ export function getProviders(): { slug: string; name: string; count: number }[] 
   return [...map.values()].sort((a, b) => b.count - a.count);
 }
 
+/** Most-downloaded open-weight models (Hugging Face, last 30 days). Adoption,
+ * not quality — kept out of the scored rankings on purpose. Deduplicated by
+ * Hugging Face repo, since paid and ":free" variants share one repo. */
+export function getMostDownloaded(limit = 8): ModelView[] {
+  const seen = new Set<string>();
+  return getAllModels()
+    .filter((m) => m.hfDownloads30d != null)
+    .sort((a, b) => (b.hfDownloads30d ?? 0) - (a.hfDownloads30d ?? 0))
+    .filter((m) => {
+      const key = m.hfId ?? m.slug;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .slice(0, limit);
+}
+
 type RankingKey = keyof ModelView['scores'];
 
 export function getTopBy(key: RankingKey, limit = 5, filter?: (m: ModelView) => boolean): ModelView[] {

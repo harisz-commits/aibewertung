@@ -13,7 +13,8 @@
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
     "import:openrouter": "node --experimental-strip-types scripts/import-openrouter.ts",
-    "import:benchmarks": "node --experimental-strip-types scripts/import-benchmarks.ts"
+    "import:benchmarks": "node --experimental-strip-types scripts/import-benchmarks.ts",
+    "import:hf": "node --experimental-strip-types scripts/import-huggingface.ts"
   },
   "prisma": {
     "seed": "node --experimental-strip-types prisma/seed.ts"

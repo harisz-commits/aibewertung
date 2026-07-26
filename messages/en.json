@@ -58,7 +58,9 @@
     "tableTitle": "All models",
     "tableSubtitle": "One row per model. Expand to see every provider, price and endpoint.",
     "newModelsTitle": "Today in LLMs",
-    "newModelsSubtitle": "Newly detected models, price and provider changes."
+    "newModelsSubtitle": "Newly detected models, price and provider changes.",
+    "adoptionTitle": "Most used open models",
+    "adoptionSubtitle": "Hugging Face downloads over the last 30 days. Real adoption — never part of any score."
   },
   "assistant": {
     "placeholder": "e.g. cheap model for German customer support with tool calling",
@@ -181,7 +183,12 @@
     "benchmarksNotMeasured": "No benchmark scores measured for this model yet. Here is what the tests mean and how we would read them.",
     "benchmarkGlossary": "Read the full benchmark glossary",
     "measured": "Measured",
-    "notMeasured": "Not yet measured"
+    "notMeasured": "Not yet measured",
+    "adoptionTitle": "Adoption",
+    "adoptionIntro": "How much this model is actually downloaded and starred on Hugging Face. Popularity, not quality — it never affects any score. Only available for open-weight models.",
+    "downloads30d": "Downloads (30d)",
+    "downloadsAllTime": "Downloads (total)",
+    "likes": "Likes"
   },
   "compare": {
     "title": "Compare models",

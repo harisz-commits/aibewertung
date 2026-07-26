@@ -10,6 +10,7 @@ import {
   CATEGORY_LABELS,
   SCORE_LABELS,
   formatContext,
+  formatCount,
   formatDate,
   formatPrice,
   formatScore,
@@ -358,6 +359,29 @@ export default async function ModelDetailPage({
               ))}
             </div>
           </section>
+
+          {/* Adoption (open-weight only — closed models are not published on HF) */}
+          {(m.hfDownloads30d != null || m.hfLikes != null) && (
+            <section className="rounded-xl border border-border bg-surface p-5">
+              <h2 className="mb-1 text-sm font-semibold uppercase tracking-wide text-muted">{t('adoptionTitle')}</h2>
+              <p className="mb-3 text-xs text-muted">{t('adoptionIntro')}</p>
+              <dl className="grid grid-cols-3 gap-3">
+                <Meta label={t('downloads30d')} value={formatCount(m.hfDownloads30d)} />
+                <Meta label={t('downloadsAllTime')} value={formatCount(m.hfDownloadsAllTime)} />
+                <Meta label={t('likes')} value={formatCount(m.hfLikes)} />
+              </dl>
+              {m.hfId && (
+                <a
+                  href={`https://huggingface.co/${m.hfId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-brand hover:underline"
+                >
+                  {m.hfId} <ExternalLink size={12} />
+                </a>
+              )}
+            </section>
+          )}
 
           {/* Local deployment */}
           {m.isOpenWeight && (

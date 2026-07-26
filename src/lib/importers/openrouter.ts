@@ -195,6 +195,7 @@ export function mapModel(raw: RawOpenRouterModel, now = new Date()): ImportedMod
     openness,
     isOpenSource: false,
     isOpenWeight: openWeight,
+    hfId: raw.hugging_face_id ?? null,
     license: null,
     parameterCount: extractParameterCount(hay),
 

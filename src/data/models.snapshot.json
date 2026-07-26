@@ -3,7 +3,8 @@
     "generatedAt": "2026-07-26T04:22:59.445Z",
     "source": "openrouter",
     "modelCount": 345,
-    "scoreVersion": "v1-heuristic-2026.07"
+    "scoreVersion": "v1-heuristic-2026.07",
+    "hfCheckedAt": "2026-07-26T23:02:37.670Z"
   },
   "models": [
     {
@@ -720,7 +721,11 @@
         "salesEmail": 72,
         "pricePerformance": 65
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "zai-org/GLM-5.2",
+      "hfDownloads30d": 827191,
+      "hfDownloadsAllTime": 949769,
+      "hfLikes": 4473
     },
     {
       "id": "minimax-minimax-m3",
@@ -1054,7 +1059,11 @@
         "salesEmail": 73.8,
         "pricePerformance": 69.9
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "MiniMaxAI/Minimax-M3",
+      "hfDownloads30d": 150679,
+      "hfDownloadsAllTime": 339748,
+      "hfLikes": 1371
     },
     {
       "id": "google-gemini-3.6-flash",
@@ -2529,7 +2538,11 @@
         "salesEmail": 76,
         "pricePerformance": 83.5
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "google/gemma-4-26B-A4B-it",
+      "hfDownloads30d": 13226618,
+      "hfDownloadsAllTime": 43284042,
+      "hfLikes": 1326
     },
     {
       "id": "nvidia-nemotron-3-nano-omni-30b-a3b-reasoning:free",
@@ -2642,7 +2655,11 @@
         "salesEmail": 79.4,
         "pricePerformance": 86.3
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16",
+      "hfDownloads30d": 688930,
+      "hfDownloadsAllTime": 2023147,
+      "hfLikes": 396
     },
     {
       "id": "stepfun-step-3.7-flash",
@@ -2875,7 +2892,11 @@
         "salesEmail": 67.4,
         "pricePerformance": 63.8
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "stepfun-ai/Step-3.7-Flash",
+      "hfDownloads30d": 140194,
+      "hfDownloadsAllTime": 293264,
+      "hfLikes": 424
     },
     {
       "id": "qwen-qwen3.5-flash-02-23",
@@ -3088,7 +3109,11 @@
         "salesEmail": 78.3,
         "pricePerformance": 82.6
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "nex-agi/Nex-N2-Mini",
+      "hfDownloads30d": 4027,
+      "hfDownloadsAllTime": 20414,
+      "hfLikes": 289
     },
     {
       "id": "openai-gpt-5.6-luna-pro",
@@ -3915,7 +3940,11 @@
         "salesEmail": 68.4,
         "pricePerformance": 60.2
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "moonshotai/Kimi-K2.7-Code",
+      "hfDownloads30d": 730129,
+      "hfDownloadsAllTime": 1347037,
+      "hfLikes": 1293
     },
     {
       "id": "nvidia-nemotron-3-super-120b-a12b:free",
@@ -4025,7 +4054,11 @@
         "salesEmail": 75.6,
         "pricePerformance": 83.2
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8",
+      "hfDownloads30d": 225425,
+      "hfDownloadsAllTime": 2379871,
+      "hfLikes": 269
     },
     {
       "id": "openai-gpt-5.6-terra-pro",
@@ -4444,7 +4477,11 @@
         "salesEmail": 71,
         "pricePerformance": 74.4
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "openai/gpt-oss-120b",
+      "hfDownloads30d": 4380610,
+      "hfDownloadsAllTime": 47345740,
+      "hfLikes": 5030
     },
     {
       "id": "deepseek-deepseek-v4-flash",
@@ -4648,7 +4685,11 @@
         "salesEmail": 75.3,
         "pricePerformance": 76
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "deepseek-ai/DeepSeek-V4-Flash",
+      "hfDownloads30d": 3121753,
+      "hfDownloadsAllTime": 8814442,
+      "hfLikes": 1823
     },
     {
       "id": "x-ai-grok-build-0.1",
@@ -5267,7 +5308,11 @@
         "salesEmail": 72.7,
         "pricePerformance": 80.8
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "openai/gpt-oss-20b",
+      "hfDownloads30d": 7928705,
+      "hfDownloadsAllTime": 85166832,
+      "hfLikes": 4844
     },
     {
       "id": "openai-gpt-5.6-terra",
@@ -5738,7 +5783,11 @@
         "salesEmail": 69.9,
         "pricePerformance": 70.6
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "google/gemma-4-26B-A4B-it",
+      "hfDownloads30d": 13226618,
+      "hfDownloadsAllTime": 43284042,
+      "hfLikes": 1326
     },
     {
       "id": "nvidia-nemotron-3-ultra-550b-a55b",
@@ -5896,7 +5945,11 @@
         "salesEmail": 68.3,
         "pricePerformance": 62
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+      "hfDownloads30d": 316377,
+      "hfDownloadsAllTime": 455409,
+      "hfLikes": 297
     },
     {
       "id": "qwen-qwen3.5-plus-20260420",
@@ -7252,7 +7305,11 @@
         "salesEmail": 69.2,
         "pricePerformance": 73.7
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "openai/gpt-oss-20b",
+      "hfDownloads30d": 7928705,
+      "hfDownloadsAllTime": 85166832,
+      "hfLikes": 4844
     },
     {
       "id": "openrouter-auto-beta",
@@ -7467,7 +7524,11 @@
         "salesEmail": 76.9,
         "pricePerformance": 84.3
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+      "hfDownloads30d": 316377,
+      "hfDownloadsAllTime": 455409,
+      "hfLikes": 297
     },
     {
       "id": "xiaomi-mimo-v2.5",
@@ -7669,7 +7730,11 @@
         "salesEmail": 75.4,
         "pricePerformance": 76.1
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "XiaomiMiMo/MiMo-V2.5",
+      "hfDownloads30d": 307974,
+      "hfDownloadsAllTime": 754731,
+      "hfLikes": 367
     },
     {
       "id": "mistralai-ministral-8b-2512",
@@ -7780,7 +7845,11 @@
         "salesEmail": 69.5,
         "pricePerformance": 73.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "mistralai/Ministral-3-8B-Instruct-2512",
+      "hfDownloads30d": 123627,
+      "hfDownloadsAllTime": 916313,
+      "hfLikes": 187
     },
     {
       "id": "qwen-qwen3.6-35b-a3b",
@@ -7986,7 +8055,11 @@
         "salesEmail": 67.4,
         "pricePerformance": 64.4
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3.6-35B-A3B",
+      "hfDownloads30d": 6308622,
+      "hfDownloadsAllTime": 19845356,
+      "hfLikes": 2523
     },
     {
       "id": "mistralai-ministral-3b-2512",
@@ -8097,7 +8170,11 @@
         "salesEmail": 69.3,
         "pricePerformance": 75.2
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "mistralai/Ministral-3-3B-Instruct-2512",
+      "hfDownloads30d": 737827,
+      "hfDownloadsAllTime": 3385359,
+      "hfLikes": 267
     },
     {
       "id": "nvidia-nemotron-nano-9b-v2:free",
@@ -8207,7 +8284,11 @@
         "salesEmail": 70.9,
         "pricePerformance": 79.3
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+      "hfDownloads30d": 303997,
+      "hfDownloadsAllTime": 3546456,
+      "hfLikes": 505
     },
     {
       "id": "qwen-qwen3.5-122b-a10b",
@@ -8413,7 +8494,11 @@
         "salesEmail": 66.1,
         "pricePerformance": 60.4
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3.5-122B-A10B",
+      "hfDownloads30d": 1513198,
+      "hfDownloadsAllTime": 5159541,
+      "hfLikes": 593
     },
     {
       "id": "tencent-hy3",
@@ -8654,7 +8739,11 @@
         "salesEmail": 73.4,
         "pricePerformance": 72
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "tencent/Hy3",
+      "hfDownloads30d": 18740,
+      "hfDownloadsAllTime": 18740,
+      "hfLikes": 875
     },
     {
       "id": "openrouter-free",
@@ -8866,7 +8955,11 @@
         "salesEmail": 68.5,
         "pricePerformance": 71.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "mistralai/Ministral-3-14B-Instruct-2512",
+      "hfDownloads30d": 189379,
+      "hfDownloadsAllTime": 1730152,
+      "hfLikes": 308
     },
     {
       "id": "moonshotai-kimi-k2.6",
@@ -9071,7 +9164,11 @@
         "salesEmail": 68.6,
         "pricePerformance": 61.4
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "moonshotai/Kimi-K2.6",
+      "hfDownloads30d": 945754,
+      "hfDownloadsAllTime": 6979720,
+      "hfLikes": 1571
     },
     {
       "id": "nvidia-nemotron-3.5-content-safety:free",
@@ -9182,7 +9279,11 @@
         "salesEmail": 74.3,
         "pricePerformance": 82.1
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "nvidia/Nemotron-3.5-Content-Safety",
+      "hfDownloads30d": 6306,
+      "hfDownloadsAllTime": 12813,
+      "hfLikes": 38
     },
     {
       "id": "google-lyria-3-pro-preview",
@@ -9601,7 +9702,11 @@
         "salesEmail": 65,
         "pricePerformance": 64.4
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "mistralai/Mistral-Small-4-119B-2603",
+      "hfDownloads30d": 190758,
+      "hfDownloadsAllTime": 498648,
+      "hfLikes": 411
     },
     {
       "id": "qwen-qwen3.7-plus",
@@ -10506,7 +10611,11 @@
         "salesEmail": 72.3,
         "pricePerformance": 69
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "deepseek-ai/DeepSeek-V4-Pro",
+      "hfDownloads30d": 1664160,
+      "hfDownloadsAllTime": 9005591,
+      "hfLikes": 5312
     },
     {
       "id": "nvidia-nemotron-nano-12b-v2-vl:free",
@@ -10618,7 +10727,11 @@
         "salesEmail": 72.1,
         "pricePerformance": 80.3
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "nvidia/NVIDIA-Nemotron-Nano-12B-v2-VL-BF16",
+      "hfDownloads30d": 181161,
+      "hfDownloadsAllTime": 1189758,
+      "hfLikes": 87
     },
     {
       "id": "x-ai-grok-4.5",
@@ -11040,7 +11153,11 @@
         "salesEmail": 66.4,
         "pricePerformance": 61.8
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3.5-27B",
+      "hfDownloads30d": 2595551,
+      "hfDownloadsAllTime": 14923571,
+      "hfLikes": 1016
     },
     {
       "id": "deepseek-deepseek-v3.2",
@@ -11288,7 +11405,11 @@
         "salesEmail": 70.5,
         "pricePerformance": 70.6
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "deepseek-ai/DeepSeek-V3.2",
+      "hfDownloads30d": 1272159,
+      "hfDownloadsAllTime": 20942830,
+      "hfLikes": 1459
     },
     {
       "id": "anthropic-claude-opus-5",
@@ -11876,7 +11997,11 @@
         "salesEmail": 68.5,
         "pricePerformance": 69
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8",
+      "hfDownloads30d": 225425,
+      "hfDownloadsAllTime": 2379871,
+      "hfLikes": 269
     },
     {
       "id": "qwen-qwen3.5-35b-a3b",
@@ -12071,7 +12196,11 @@
         "salesEmail": 67,
         "pricePerformance": 64
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3.5-35B-A3B",
+      "hfDownloads30d": 2520325,
+      "hfDownloadsAllTime": 15080804,
+      "hfLikes": 1475
     },
     {
       "id": "nvidia-nemotron-3-nano-30b-a3b",
@@ -12181,7 +12310,11 @@
         "salesEmail": 69.4,
         "pricePerformance": 72.5
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
+      "hfDownloads30d": 955125,
+      "hfDownloadsAllTime": 7946224,
+      "hfLikes": 800
     },
     {
       "id": "anthropic-claude-opus-4.8",
@@ -12589,7 +12722,11 @@
         "salesEmail": 65.1,
         "pricePerformance": 61.3
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen3-VL-8B-Thinking",
+      "hfDownloads30d": 144483,
+      "hfDownloadsAllTime": 2324672,
+      "hfLikes": 217
     },
     {
       "id": "google-gemma-4-31b-it:free",
@@ -12795,7 +12932,11 @@
         "salesEmail": 77.8,
         "pricePerformance": 85
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "google/gemma-4-31B-it",
+      "hfDownloads30d": 12458374,
+      "hfDownloadsAllTime": 42209609,
+      "hfLikes": 3375
     },
     {
       "id": "openai-gpt-oss-safeguard-20b",
@@ -12905,7 +13046,11 @@
         "salesEmail": 67.3,
         "pricePerformance": 69.1
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "openai/gpt-oss-safeguard-20b",
+      "hfDownloads30d": 102679,
+      "hfDownloadsAllTime": 643113,
+      "hfLikes": 243
     },
     {
       "id": "nex-agi-nex-n2-pro",
@@ -13121,7 +13266,11 @@
         "salesEmail": 69.5,
         "pricePerformance": 66.1
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "nex-agi/Nex-N2-Pro",
+      "hfDownloads30d": 1778,
+      "hfDownloadsAllTime": 9989,
+      "hfLikes": 370
     },
     {
       "id": "poolside-laguna-s-2.1:free",
@@ -13226,7 +13375,11 @@
         "salesEmail": 74.8,
         "pricePerformance": 82.5
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "poolside/Laguna-S-2.1",
+      "hfDownloads30d": 56445,
+      "hfDownloadsAllTime": 56445,
+      "hfLikes": 694
     },
     {
       "id": "moonshotai-kimi-k2.5",
@@ -13431,7 +13584,11 @@
         "salesEmail": 65.5,
         "pricePerformance": 58.6
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "moonshotai/Kimi-K2.5",
+      "hfDownloads30d": 997243,
+      "hfDownloadsAllTime": 14823094,
+      "hfLikes": 2855
     },
     {
       "id": "anthropic-claude-fable-5",
@@ -14023,7 +14180,11 @@
         "salesEmail": 68.1,
         "pricePerformance": 65
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "MiniMaxAI/MiniMax-M2.7",
+      "hfDownloads30d": 973966,
+      "hfDownloadsAllTime": 5075935,
+      "hfLikes": 1231
     },
     {
       "id": "qwen-qwen3.5-397b-a17b",
@@ -14229,7 +14390,11 @@
         "salesEmail": 66.5,
         "pricePerformance": 60.2
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3.5-397B-A17B",
+      "hfDownloads30d": 409718,
+      "hfDownloadsAllTime": 4951515,
+      "hfLikes": 1539
     },
     {
       "id": "deepseek-deepseek-v3.2-exp",
@@ -14466,7 +14631,11 @@
         "salesEmail": 68.1,
         "pricePerformance": 68.5
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "deepseek-ai/DeepSeek-V3.2-Exp",
+      "hfDownloads30d": 294382,
+      "hfDownloadsAllTime": 1374304,
+      "hfLikes": 992
     },
     {
       "id": "qwen-qwen3.5-9b",
@@ -14672,7 +14841,11 @@
         "salesEmail": 71,
         "pricePerformance": 74.9
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3.5-9B",
+      "hfDownloads30d": 10939195,
+      "hfDownloadsAllTime": 41138622,
+      "hfLikes": 1756
     },
     {
       "id": "google-gemma-4-31b-it",
@@ -14878,7 +15051,11 @@
         "salesEmail": 71.2,
         "pricePerformance": 71.2
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "google/gemma-4-31B-it",
+      "hfDownloads30d": 12458374,
+      "hfDownloadsAllTime": 42209609,
+      "hfLikes": 3375
     },
     {
       "id": "openai-gpt-5.4-nano",
@@ -15595,7 +15772,11 @@
         "salesEmail": 66.5,
         "pricePerformance": 60.9
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3.6-27B",
+      "hfDownloads30d": 6006186,
+      "hfDownloadsAllTime": 17412165,
+      "hfLikes": 2063
     },
     {
       "id": "qwen-qwen3-vl-30b-a3b-thinking",
@@ -15706,7 +15887,11 @@
         "salesEmail": 64.6,
         "pricePerformance": 60.2
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen3-VL-30B-A3B-Thinking",
+      "hfDownloads30d": 16552,
+      "hfDownloadsAllTime": 954405,
+      "hfLikes": 200
     },
     {
       "id": "google-gemini-2.5-flash-lite",
@@ -16060,7 +16245,11 @@
         "salesEmail": 69.2,
         "pricePerformance": 75
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "RekaAI/reka-edge-2603",
+      "hfDownloads30d": 557,
+      "hfDownloadsAllTime": 15685,
+      "hfLikes": 130
     },
     {
       "id": "poolside-laguna-s-2.1",
@@ -16165,7 +16354,11 @@
         "salesEmail": 73,
         "pricePerformance": 75.5
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "poolside/Laguna-S-2.1",
+      "hfDownloads30d": 56445,
+      "hfDownloadsAllTime": 56445,
+      "hfLikes": 694
     },
     {
       "id": "poolside-laguna-xs-2.1:free",
@@ -16270,7 +16463,11 @@
         "salesEmail": 74.5,
         "pricePerformance": 82.2
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "poolside/Laguna-XS-2.1",
+      "hfDownloads30d": 23776,
+      "hfDownloadsAllTime": 23796,
+      "hfLikes": 179
     },
     {
       "id": "minimax-minimax-m2.5",
@@ -16463,7 +16660,11 @@
         "salesEmail": 66.6,
         "pricePerformance": 64.1
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "MiniMaxAI/MiniMax-M2.5",
+      "hfDownloads30d": 723608,
+      "hfDownloadsAllTime": 4006915,
+      "hfLikes": 1500
     },
     {
       "id": "openai-gpt-5-nano",
@@ -16808,7 +17009,11 @@
         "salesEmail": 63.6,
         "pricePerformance": 68.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "google/gemma-3-12b-it",
+      "hfDownloads30d": 1215697,
+      "hfDownloadsAllTime": 21205520,
+      "hfLikes": 793
     },
     {
       "id": "mistralai-mistral-medium-3-5",
@@ -17430,7 +17635,11 @@
         "salesEmail": 66.4,
         "pricePerformance": 58
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "thinkingmachines/Inkling",
+      "hfDownloads30d": 34511,
+      "hfDownloadsAllTime": 34511,
+      "hfLikes": 1579
     },
     {
       "id": "z-ai-glm-4.7",
@@ -17678,7 +17887,11 @@
         "salesEmail": 66.1,
         "pricePerformance": 61
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "zai-org/GLM-4.7",
+      "hfDownloads30d": 62421,
+      "hfDownloadsAllTime": 648819,
+      "hfLikes": 2049
     },
     {
       "id": "mistralai-mistral-small-3.2-24b-instruct",
@@ -17789,7 +18002,11 @@
         "salesEmail": 62.8,
         "pricePerformance": 65.4
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+      "hfDownloads30d": 256214,
+      "hfDownloadsAllTime": 4898348,
+      "hfLikes": 598
     },
     {
       "id": "nvidia-nemotron-3-nano-30b-a3b:free",
@@ -17899,7 +18116,11 @@
         "salesEmail": 71.1,
         "pricePerformance": 79.4
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
+      "hfDownloads30d": 955125,
+      "hfDownloadsAllTime": 7946224,
+      "hfLikes": 800
     },
     {
       "id": "~google-gemini-flash-latest",
@@ -18318,7 +18539,11 @@
         "salesEmail": 62.6,
         "pricePerformance": 56.6
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen3-VL-235B-A22B-Thinking",
+      "hfDownloads30d": 10515,
+      "hfDownloadsAllTime": 3500918,
+      "hfLikes": 400
     },
     {
       "id": "xiaomi-mimo-v2.5-pro",
@@ -18517,7 +18742,11 @@
         "salesEmail": 71.6,
         "pricePerformance": 68.5
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "XiaomiMiMo/MiMo-V2.5-Pro",
+      "hfDownloads30d": 61335,
+      "hfDownloadsAllTime": 258442,
+      "hfLikes": 718
     },
     {
       "id": "mistralai-voxtral-small-24b-2507",
@@ -18629,7 +18858,11 @@
         "salesEmail": 62,
         "pricePerformance": 64.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "mistralai/Voxtral-Small-24B-2507",
+      "hfDownloads30d": 240970,
+      "hfDownloadsAllTime": 676228,
+      "hfLikes": 514
     },
     {
       "id": "minimax-minimax-m2",
@@ -18866,7 +19099,11 @@
         "salesEmail": 65.1,
         "pricePerformance": 62.4
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "MiniMaxAI/MiniMax-M2",
+      "hfDownloads30d": 99923,
+      "hfDownloadsAllTime": 2307414,
+      "hfLikes": 1500
     },
     {
       "id": "deepseek-deepseek-v3.1-terminus",
@@ -19114,7 +19351,11 @@
         "salesEmail": 65.2,
         "pricePerformance": 62.5
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "deepseek-ai/DeepSeek-V3.1-Terminus",
+      "hfDownloads30d": 14741,
+      "hfDownloadsAllTime": 215799,
+      "hfLikes": 366
     },
     {
       "id": "qwen-qwen3-vl-32b-instruct",
@@ -19352,7 +19593,11 @@
         "salesEmail": 63.1,
         "pricePerformance": 64.3
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-VL-32B-Instruct",
+      "hfDownloads30d": 2985326,
+      "hfDownloadsAllTime": 16080086,
+      "hfLikes": 217
     },
     {
       "id": "google-gemini-2.5-flash",
@@ -19981,7 +20226,11 @@
         "salesEmail": 64.6,
         "pricePerformance": 57.7
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "zai-org/GLM-5.1",
+      "hfDownloads30d": 85116,
+      "hfDownloadsAllTime": 600420,
+      "hfLikes": 1837
     },
     {
       "id": "poolside-laguna-m.1:free",
@@ -20086,7 +20335,11 @@
         "salesEmail": 73.4,
         "pricePerformance": 81.3
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "poolside/Laguna-M.1",
+      "hfDownloads30d": 2449,
+      "hfDownloadsAllTime": 6106,
+      "hfLikes": 131
     },
     {
       "id": "z-ai-glm-5",
@@ -20279,7 +20532,11 @@
         "salesEmail": 64.4,
         "pricePerformance": 58.2
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "zai-org/GLM-5",
+      "hfDownloads30d": 160345,
+      "hfDownloadsAllTime": 1246843,
+      "hfLikes": 2119
     },
     {
       "id": "openai-gpt-5.1-codex-mini",
@@ -20749,7 +21006,11 @@
         "salesEmail": 64.4,
         "pricePerformance": 58.2
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "moonshotai/Kimi-K2-Thinking",
+      "hfDownloads30d": 75732,
+      "hfDownloadsAllTime": 1790817,
+      "hfLikes": 1711
     },
     {
       "id": "google-gemini-3.1-flash-image",
@@ -21065,7 +21326,11 @@
         "salesEmail": 64.3,
         "pricePerformance": 65.4
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "zai-org/GLM-4.7-Flash",
+      "hfDownloads30d": 2219535,
+      "hfDownloadsAllTime": 10002740,
+      "hfLikes": 1790
     },
     {
       "id": "arcee-ai-trinity-large-thinking",
@@ -21264,7 +21529,11 @@
         "salesEmail": 63.5,
         "pricePerformance": 61.8
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "arcee-ai/Trinity-Large-Thinking",
+      "hfDownloads30d": 8653,
+      "hfDownloadsAllTime": 61331,
+      "hfLikes": 185
     },
     {
       "id": "x-ai-grok-4.20-multi-agent",
@@ -22096,7 +22365,11 @@
         "salesEmail": 63.4,
         "pricePerformance": 70.3
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "google/gemma-3-4b-it",
+      "hfDownloads30d": 2133551,
+      "hfDownloadsAllTime": 23340104,
+      "hfLikes": 1429
     },
     {
       "id": "openrouter-auto",
@@ -22306,7 +22579,11 @@
         "salesEmail": 71.5,
         "pricePerformance": 76.3
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "poolside/Laguna-XS-2.1",
+      "hfDownloads30d": 23776,
+      "hfDownloadsAllTime": 23796,
+      "hfLikes": 179
     },
     {
       "id": "qwen-qwen3-vl-30b-a3b-instruct",
@@ -22544,7 +22821,11 @@
         "salesEmail": 61.9,
         "pricePerformance": 61.9
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-VL-30B-A3B-Instruct",
+      "hfDownloads30d": 962132,
+      "hfDownloadsAllTime": 17066946,
+      "hfLikes": 589
     },
     {
       "id": "mistralai-mistral-nemo",
@@ -22654,7 +22935,11 @@
         "salesEmail": 63.3,
         "pricePerformance": 72.9
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "mistralai/Mistral-Nemo-Instruct-2407",
+      "hfDownloads30d": 417137,
+      "hfDownloadsAllTime": 9635365,
+      "hfLikes": 1692
     },
     {
       "id": "openai-gpt-5.3-codex",
@@ -23212,7 +23497,11 @@
         "salesEmail": 63.5,
         "pricePerformance": 66.2
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-32B",
+      "hfDownloads30d": 10148561,
+      "hfDownloadsAllTime": 49156783,
+      "hfLikes": 722
     },
     {
       "id": "openai-gpt-5-mini",
@@ -23683,7 +23972,11 @@
         "salesEmail": 66,
         "pricePerformance": 62.5
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "MiniMaxAI/MiniMax-M2.1",
+      "hfDownloads30d": 10251,
+      "hfDownloadsAllTime": 443136,
+      "hfLikes": 1357
     },
     {
       "id": "qwen-qwen3-next-80b-a3b-thinking",
@@ -23793,7 +24086,11 @@
         "salesEmail": 63.2,
         "pricePerformance": 61.9
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen3-Next-80B-A3B-Thinking",
+      "hfDownloads30d": 35879,
+      "hfDownloadsAllTime": 2413626,
+      "hfLikes": 492
     },
     {
       "id": "google-gemini-2.5-pro",
@@ -24355,7 +24652,11 @@
         "salesEmail": 72.3,
         "pricePerformance": 80.5
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "CohereLabs/North-Mini-Code-1.0",
+      "hfDownloads30d": 14657,
+      "hfDownloadsAllTime": 44987,
+      "hfLikes": 535
     },
     {
       "id": "google-gemma-3-27b-it",
@@ -24466,7 +24767,11 @@
         "salesEmail": 59.8,
         "pricePerformance": 61.2
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "google/gemma-3-27b-it",
+      "hfDownloads30d": 841567,
+      "hfDownloadsAllTime": 16234075,
+      "hfLikes": 2003
     },
     {
       "id": "mistralai-mistral-large-2512",
@@ -25333,7 +25638,11 @@
         "salesEmail": 62.1,
         "pricePerformance": 57.2
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "zai-org/GLM-4.6",
+      "hfDownloads30d": 17392,
+      "hfDownloadsAllTime": 759244,
+      "hfLikes": 1230
     },
     {
       "id": "meta-llama-llama-3.1-8b-instruct",
@@ -25443,7 +25752,11 @@
         "salesEmail": 61.7,
         "pricePerformance": 69.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+      "hfDownloads30d": 8041649,
+      "hfDownloadsAllTime": 173056371,
+      "hfLikes": 6399
     },
     {
       "id": "deepseek-deepseek-chat-v3.1",
@@ -25680,7 +25993,11 @@
         "salesEmail": 61.9,
         "pricePerformance": 60
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "deepseek-ai/DeepSeek-V3.1",
+      "hfDownloads30d": 291113,
+      "hfDownloadsAllTime": 2531865,
+      "hfLikes": 826
     },
     {
       "id": "anthropic-claude-opus-5-fast",
@@ -26107,7 +26424,11 @@
         "salesEmail": 61.8,
         "pricePerformance": 62.3
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-30B-A3B",
+      "hfDownloads30d": 3042368,
+      "hfDownloadsAllTime": 17013936,
+      "hfLikes": 912
     },
     {
       "id": "anthropic-claude-opus-4.7",
@@ -27269,7 +27590,11 @@
         "salesEmail": 61.4,
         "pricePerformance": 59.8
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "zai-org/GLM-4.6V",
+      "hfDownloads30d": 4884,
+      "hfDownloadsAllTime": 419369,
+      "hfLikes": 394
     },
     {
       "id": "openai-o3",
@@ -28040,7 +28365,11 @@
         "salesEmail": 59.9,
         "pricePerformance": 57.8
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+      "hfDownloads30d": 290564,
+      "hfDownloadsAllTime": 15905340,
+      "hfLikes": 1040
     },
     {
       "id": "google-gemini-3.1-flash-lite-image",
@@ -28401,7 +28730,11 @@
         "salesEmail": 57.8,
         "pricePerformance": 59.6
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-VL-8B-Instruct",
+      "hfDownloads30d": 5128460,
+      "hfDownloadsAllTime": 43949366,
+      "hfLikes": 1012
     },
     {
       "id": "stepfun-step-3.5-flash",
@@ -28589,7 +28922,11 @@
         "salesEmail": 68.4,
         "pricePerformance": 70.1
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "stepfun-ai/Step-3.5-Flash",
+      "hfDownloads30d": 108984,
+      "hfDownloadsAllTime": 1310302,
+      "hfLikes": 829
     },
     {
       "id": "openai-gpt-5.1",
@@ -29072,7 +29409,11 @@
         "salesEmail": 59.1,
         "pricePerformance": 54.9
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-VL-235B-A22B-Instruct",
+      "hfDownloads30d": 1791160,
+      "hfDownloadsAllTime": 7957400,
+      "hfLikes": 411
     },
     {
       "id": "anthropic-claude-opus-4.8-fast",
@@ -29532,7 +29873,11 @@
         "salesEmail": 59.2,
         "pricePerformance": 57.9
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-14B",
+      "hfDownloads30d": 3242778,
+      "hfDownloadsAllTime": 24358345,
+      "hfLikes": 433
     },
     {
       "id": "meta-llama-llama-4-maverick",
@@ -29792,7 +30137,11 @@
         "salesEmail": 59.9,
         "pricePerformance": 59
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "hfDownloads30d": 55433,
+      "hfDownloadsAllTime": 716097,
+      "hfLikes": 504
     },
     {
       "id": "z-ai-glm-5v-turbo",
@@ -30092,7 +30441,11 @@
         "salesEmail": 61.6,
         "pricePerformance": 66.1
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "hfDownloads30d": 2096197,
+      "hfDownloadsAllTime": 14753476,
+      "hfLikes": 823
     },
     {
       "id": "~x-ai-grok-latest",
@@ -30382,7 +30735,11 @@
         "salesEmail": 71.1,
         "pricePerformance": 73.7
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "tencent/Hy3-preview",
+      "hfDownloads30d": 72959,
+      "hfDownloadsAllTime": 259186,
+      "hfLikes": 300
     },
     {
       "id": "bytedance-seed-seed-2.0-lite",
@@ -32000,7 +32357,11 @@
         "salesEmail": 61,
         "pricePerformance": 60
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-Coder-Next",
+      "hfDownloads30d": 789657,
+      "hfDownloadsAllTime": 5755385,
+      "hfLikes": 1555
     },
     {
       "id": "anthropic-claude-haiku-4.5",
@@ -32611,7 +32972,11 @@
         "salesEmail": 60.5,
         "pricePerformance": 63.8
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+      "hfDownloads30d": 1533665,
+      "hfDownloadsAllTime": 13854956,
+      "hfLikes": 1178
     },
     {
       "id": "meta-llama-llama-4-scout",
@@ -32871,7 +33236,11 @@
         "salesEmail": 60,
         "pricePerformance": 63.1
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+      "hfDownloads30d": 449048,
+      "hfDownloadsAllTime": 7174731,
+      "hfLikes": 1330
     },
     {
       "id": "~anthropic-claude-sonnet-latest",
@@ -33631,7 +34000,11 @@
         "salesEmail": 61.2,
         "pricePerformance": 66.1
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "meta-llama/Llama-Guard-4-12B",
+      "hfDownloads30d": 188723,
+      "hfDownloadsAllTime": 1327837,
+      "hfLikes": 115
     },
     {
       "id": "qwen-qwen3-235b-a22b-2507",
@@ -33741,7 +34114,11 @@
         "salesEmail": 59.5,
         "pricePerformance": 60.2
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+      "hfDownloads30d": 64434,
+      "hfDownloadsAllTime": 1527005,
+      "hfLikes": 793
     },
     {
       "id": "deepseek-deepseek-r1-0528",
@@ -33851,7 +34228,11 @@
         "salesEmail": 58.5,
         "pricePerformance": 53.9
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "deepseek-ai/DeepSeek-R1-0528",
+      "hfDownloads30d": 256284,
+      "hfDownloadsAllTime": 16525055,
+      "hfLikes": 2457
     },
     {
       "id": "meituan-longcat-2.0",
@@ -34028,7 +34409,11 @@
         "salesEmail": 66.1,
         "pricePerformance": 62.6
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "meituan-longcat/LongCat-2.0",
+      "hfDownloads30d": 2826,
+      "hfDownloadsAllTime": 2826,
+      "hfLikes": 219
     },
     {
       "id": "mistralai-devstral-2512",
@@ -34139,7 +34524,11 @@
         "salesEmail": 58,
         "pricePerformance": 53.8
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "mistralai/Devstral-2-123B-Instruct-2512",
+      "hfDownloads30d": 64361,
+      "hfDownloadsAllTime": 309846,
+      "hfLikes": 328
     },
     {
       "id": "qwen-qwen-2.5-7b-instruct",
@@ -34249,7 +34638,11 @@
         "salesEmail": 58,
         "pricePerformance": 65.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen2.5-7B-Instruct",
+      "hfDownloads30d": 12013901,
+      "hfDownloadsAllTime": 161980984,
+      "hfLikes": 1437
     },
     {
       "id": "anthropic-claude-opus-4.7-fast",
@@ -35319,7 +35712,11 @@
         "salesEmail": 57.7,
         "pricePerformance": 54
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "zai-org/GLM-4.5V",
+      "hfDownloads30d": 146898,
+      "hfDownloadsAllTime": 913590,
+      "hfLikes": 719
     },
     {
       "id": "qwen-qwen3-8b",
@@ -35578,7 +35975,11 @@
         "salesEmail": 58.9,
         "pricePerformance": 60.5
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-8B",
+      "hfDownloads30d": 16764566,
+      "hfDownloadsAllTime": 97437880,
+      "hfLikes": 1241
     },
     {
       "id": "inclusionai-ring-2.6-1t",
@@ -35877,7 +36278,11 @@
         "salesEmail": 66.3,
         "pricePerformance": 67.1
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "poolside/Laguna-M.1",
+      "hfDownloads30d": 2449,
+      "hfDownloadsAllTime": 6106,
+      "hfLikes": 131
     },
     {
       "id": "inclusionai-ling-2.6-flash",
@@ -36793,7 +37198,11 @@
         "salesEmail": 59.6,
         "pricePerformance": 54.7
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "zai-org/GLM-4.5",
+      "hfDownloads30d": 130394,
+      "hfDownloadsAllTime": 909377,
+      "hfLikes": 1407
     },
     {
       "id": "mistralai-mistral-small-24b-instruct-2501",
@@ -37030,7 +37439,11 @@
         "salesEmail": 59,
         "pricePerformance": 67.5
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "mistralai/Mistral-Small-24B-Instruct-2501",
+      "hfDownloads30d": 85048,
+      "hfDownloadsAllTime": 7205867,
+      "hfLikes": 962
     },
     {
       "id": "qwen-qwen3-235b-a22b",
@@ -37278,7 +37691,11 @@
         "salesEmail": 59.2,
         "pricePerformance": 55.2
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "Qwen/Qwen3-235B-A22B",
+      "hfDownloads30d": 813101,
+      "hfDownloadsAllTime": 6226438,
+      "hfLikes": 1102
     },
     {
       "id": "mistralai-codestral-2508",
@@ -37494,7 +37911,11 @@
         "salesEmail": 57.5,
         "pricePerformance": 56.1
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "hfDownloads30d": 85434,
+      "hfDownloadsAllTime": 1059688,
+      "hfLikes": 1358
     },
     {
       "id": "openai-gpt-5.4-pro",
@@ -38335,7 +38756,11 @@
         "salesEmail": 57.3,
         "pricePerformance": 55.5
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "deepseek-ai/DeepSeek-V3-0324",
+      "hfDownloads30d": 838420,
+      "hfDownloadsAllTime": 7361475,
+      "hfLikes": 3149
     },
     {
       "id": "moonshotai-kimi-k2-0905",
@@ -38572,7 +38997,11 @@
         "salesEmail": 57.1,
         "pricePerformance": 52.1
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "moonshotai/Kimi-K2-Instruct-0905",
+      "hfDownloads30d": 159706,
+      "hfDownloadsAllTime": 5079307,
+      "hfLikes": 785
     },
     {
       "id": "qwen-qwen-plus",
@@ -39517,7 +39946,11 @@
         "salesEmail": 61.2,
         "pricePerformance": 59.8
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "zai-org/GLM-4.5-Air",
+      "hfDownloads30d": 488277,
+      "hfDownloadsAllTime": 4422131,
+      "hfLikes": 623
     },
     {
       "id": "ibm-granite-granite-4.1-8b",
@@ -39716,7 +40149,11 @@
         "salesEmail": 61.3,
         "pricePerformance": 68.5
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "ibm-granite/granite-4.1-8b",
+      "hfDownloads30d": 3379647,
+      "hfDownloadsAllTime": 3768834,
+      "hfLikes": 229
     },
     {
       "id": "allenai-olmo-3-32b-think",
@@ -39948,7 +40385,11 @@
         "salesEmail": 61.6,
         "pricePerformance": 62.3
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "allenai/Olmo-3-32B-Think",
+      "hfDownloads30d": 11243,
+      "hfDownloadsAllTime": 54746,
+      "hfLikes": 173
     },
     {
       "id": "tencent-hunyuan-a13b-instruct",
@@ -40053,7 +40494,11 @@
         "salesEmail": 60.2,
         "pricePerformance": 60.6
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "tencent/Hunyuan-A13B-Instruct",
+      "hfDownloads30d": 53991,
+      "hfDownloadsAllTime": 320624,
+      "hfLikes": 796
     },
     {
       "id": "openai-gpt-5.4-image-2",
@@ -40271,7 +40716,11 @@
         "salesEmail": 58.1,
         "pricePerformance": 54.8
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen3-30B-A3B-Thinking-2507",
+      "hfDownloads30d": 143715,
+      "hfDownloadsAllTime": 3852097,
+      "hfLikes": 377
     },
     {
       "id": "google-gemma-3n-e4b-it",
@@ -40381,7 +40830,11 @@
         "salesEmail": 57.6,
         "pricePerformance": 64.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "google/gemma-3n-E4B-it",
+      "hfDownloads30d": 29745,
+      "hfDownloadsAllTime": 1345551,
+      "hfLikes": 919
     },
     {
       "id": "~openai-gpt-latest",
@@ -40593,7 +41046,11 @@
         "salesEmail": 56.2,
         "pricePerformance": 58.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "meta-llama/Llama-3.3-70B-Instruct",
+      "hfDownloads30d": 655402,
+      "hfDownloadsAllTime": 13367494,
+      "hfLikes": 2920
     },
     {
       "id": "meta-llama-llama-3.1-70b-instruct",
@@ -40703,7 +41160,11 @@
         "salesEmail": 56.2,
         "pricePerformance": 58.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+      "hfDownloads30d": 1255006,
+      "hfDownloadsAllTime": 23679146,
+      "hfLikes": 935
     },
     {
       "id": "cohere-command-a",
@@ -40907,7 +41368,11 @@
         "salesEmail": 50.9,
         "pricePerformance": 41.4
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "CohereForAI/c4ai-command-a-03-2025",
+      "hfDownloads30d": 1738,
+      "hfDownloadsAllTime": 120056,
+      "hfLikes": 394
     },
     {
       "id": "deepseek-deepseek-chat",
@@ -41166,7 +41631,11 @@
         "salesEmail": 56.1,
         "pricePerformance": 55.8
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "deepseek-ai/DeepSeek-V3",
+      "hfDownloads30d": 1227741,
+      "hfDownloadsAllTime": 19037100,
+      "hfLikes": 4102
     },
     {
       "id": "openai-gpt-audio-mini",
@@ -41886,7 +42355,11 @@
         "salesEmail": 60.2,
         "pricePerformance": 64.8
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "ByteDance-Seed/UI-TARS-1.5-7B",
+      "hfDownloads30d": 572960,
+      "hfDownloadsAllTime": 2915989,
+      "hfLikes": 581
     },
     {
       "id": "~anthropic-claude-fable-latest",
@@ -42475,7 +42948,11 @@
         "salesEmail": 54,
         "pricePerformance": 49.5
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "deepseek-ai/DeepSeek-R1",
+      "hfDownloads30d": 8929922,
+      "hfDownloadsAllTime": 43036193,
+      "hfLikes": 13508
     },
     {
       "id": "qwen-qwen2.5-vl-72b-instruct",
@@ -42586,7 +43063,11 @@
         "salesEmail": 54.8,
         "pricePerformance": 53.9
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen2.5-VL-72B-Instruct",
+      "hfDownloads30d": 564619,
+      "hfDownloadsAllTime": 7242482,
+      "hfLikes": 643
     },
     {
       "id": "qwen-qwen3-235b-a22b-thinking-2507",
@@ -42696,7 +43177,11 @@
         "salesEmail": 56.3,
         "pricePerformance": 50.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen3-235B-A22B-Thinking-2507",
+      "hfDownloads30d": 20387,
+      "hfDownloadsAllTime": 603852,
+      "hfLikes": 408
     },
     {
       "id": "openai-gpt-chat-latest",
@@ -43939,7 +44424,11 @@
         "salesEmail": 53.2,
         "pricePerformance": 56.2
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen2.5-72B-Instruct",
+      "hfDownloads30d": 524719,
+      "hfDownloadsAllTime": 8080916,
+      "hfLikes": 965
     },
     {
       "id": "mistralai-mistral-saba",
@@ -44257,7 +44746,11 @@
         "salesEmail": 60.7,
         "pricePerformance": 62.5
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "NousResearch/Hermes-4-70B",
+      "hfDownloads30d": 1741,
+      "hfDownloadsAllTime": 48079,
+      "hfLikes": 203
     },
     {
       "id": "cohere-command-r7b-12-2024",
@@ -45055,7 +45548,11 @@
         "salesEmail": 56.4,
         "pricePerformance": 58
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "thedrummer/cydonia-24b-v4.1",
+      "hfDownloads30d": 2167,
+      "hfDownloadsAllTime": 17761,
+      "hfLikes": 80
     },
     {
       "id": "perceptron-perceptron-mk1",
@@ -45584,7 +46081,11 @@
         "salesEmail": 57.5,
         "pricePerformance": 55.3
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "baidu/ERNIE-4.5-VL-424B-A47B-PT",
+      "hfDownloads30d": 1056,
+      "hfDownloadsAllTime": 324349,
+      "hfLikes": 106
     },
     {
       "id": "openai-o3-mini-high",
@@ -45908,7 +46409,11 @@
         "salesEmail": 54.6,
         "pricePerformance": 56.1
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
+      "hfDownloads30d": 251293,
+      "hfDownloadsAllTime": 3740035,
+      "hfLikes": 1376
     },
     {
       "id": "amazon-nova-lite-v1",
@@ -46326,7 +46831,11 @@
         "salesEmail": 51.7,
         "pricePerformance": 55
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "TheDrummer/UnslopNemo-12B-v4.1",
+      "hfDownloads30d": 1326,
+      "hfDownloadsAllTime": 253794,
+      "hfLikes": 23
     },
     {
       "id": "meta-llama-llama-3.2-3b-instruct",
@@ -46436,7 +46945,11 @@
         "salesEmail": 53.9,
         "pricePerformance": 57.5
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "meta-llama/Llama-3.2-3B-Instruct",
+      "hfDownloads30d": 1829572,
+      "hfDownloadsAllTime": 46242323,
+      "hfLikes": 2368
     },
     {
       "id": "openai-o1",
@@ -46998,7 +47511,11 @@
         "salesEmail": 54.3,
         "pricePerformance": 65.4
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Sao10K/L3-8B-Lunaris-v1",
+      "hfDownloads30d": 812,
+      "hfDownloadsAllTime": 454201,
+      "hfLikes": 145
     },
     {
       "id": "openai-gpt-4o-2024-08-06",
@@ -47878,7 +48395,11 @@
         "salesEmail": 54.5,
         "pricePerformance": 53.2
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "MiniMaxAI/MiniMax-Text-01",
+      "hfDownloads30d": 4523,
+      "hfDownloadsAllTime": 83086,
+      "hfLikes": 656
     },
     {
       "id": "aion-labs-aion-3.0",
@@ -48083,7 +48604,11 @@
         "salesEmail": 52.1,
         "pricePerformance": 52.3
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Sao10K/L3.1-70B-Euryale-v2.2",
+      "hfDownloads30d": 439,
+      "hfDownloadsAllTime": 14896,
+      "hfLikes": 67
     },
     {
       "id": "ibm-granite-granite-4.0-h-micro",
@@ -48326,7 +48851,11 @@
         "salesEmail": 55.9,
         "pricePerformance": 63.6
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "ibm-granite/granite-4.0-h-micro",
+      "hfDownloads30d": 6595,
+      "hfDownloadsAllTime": 195548,
+      "hfLikes": 148
     },
     {
       "id": "minimax-minimax-m1",
@@ -48855,7 +49384,11 @@
         "salesEmail": 52.2,
         "pricePerformance": 62.9
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Gryphe/MythoMax-L2-13b",
+      "hfDownloads30d": 934,
+      "hfDownloadsAllTime": 736393,
+      "hfLikes": 393
     },
     {
       "id": "microsoft-phi-4",
@@ -49103,7 +49636,11 @@
         "salesEmail": 57.4,
         "pricePerformance": 63.9
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "microsoft/phi-4",
+      "hfDownloads30d": 716091,
+      "hfDownloadsAllTime": 13073814,
+      "hfLikes": 2282
     },
     {
       "id": "cohere-command-r-08-2024",
@@ -49619,7 +50156,11 @@
         "salesEmail": 51,
         "pricePerformance": 53.4
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "TheDrummer/Rocinante-12B-v1.1",
+      "hfDownloads30d": 2770,
+      "hfDownloadsAllTime": 30259,
+      "hfLikes": 125
     },
     {
       "id": "nousresearch-hermes-4-405b",
@@ -49724,7 +50265,11 @@
         "salesEmail": 53.8,
         "pricePerformance": 48.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "NousResearch/Hermes-4-405B",
+      "hfDownloads30d": 773,
+      "hfDownloadsAllTime": 5099,
+      "hfLikes": 92
     },
     {
       "id": "anthropic-claude-sonnet-4",
@@ -50074,7 +50619,11 @@
         "salesEmail": 59.5,
         "pricePerformance": 64.3
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "RekaAI/reka-flash-3",
+      "hfDownloads30d": 326,
+      "hfDownloadsAllTime": 20682,
+      "hfLikes": 389
     },
     {
       "id": "openai-gpt-4o-mini-search-preview",
@@ -50289,7 +50838,11 @@
         "salesEmail": 47,
         "pricePerformance": 49.1
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "google/gemma-2-27b-it",
+      "hfDownloads30d": 117753,
+      "hfDownloadsAllTime": 5247784,
+      "hfLikes": 568
     },
     {
       "id": "meta-llama-llama-3.2-1b-instruct",
@@ -50399,7 +50952,11 @@
         "salesEmail": 52.4,
         "pricePerformance": 58.3
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "meta-llama/Llama-3.2-1B-Instruct",
+      "hfDownloads30d": 10261512,
+      "hfDownloadsAllTime": 89674700,
+      "hfLikes": 1546
     },
     {
       "id": "openai-gpt-5-chat",
@@ -50611,7 +51168,11 @@
         "salesEmail": 51.3,
         "pricePerformance": 52.4
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "NousResearch/Hermes-3-Llama-3.1-70B",
+      "hfDownloads30d": 9042,
+      "hfDownloadsAllTime": 322834,
+      "hfLikes": 132
     },
     {
       "id": "ai21-jamba-large-1.7",
@@ -50721,7 +51282,11 @@
         "salesEmail": 47.6,
         "pricePerformance": 39.6
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "ai21labs/AI21-Jamba-Large-1.7",
+      "hfDownloads30d": 56,
+      "hfDownloadsAllTime": 1552,
+      "hfLikes": 34
     },
     {
       "id": "sao10k-l3.3-euryale-70b",
@@ -50826,7 +51391,11 @@
         "salesEmail": 51.1,
         "pricePerformance": 51.9
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Sao10K/L3.3-70B-Euryale-v2.3",
+      "hfDownloads30d": 1048,
+      "hfDownloadsAllTime": 73655,
+      "hfLikes": 96
     },
     {
       "id": "mistralai-mixtral-8x22b-instruct",
@@ -51031,7 +51600,11 @@
         "salesEmail": 43.2,
         "pricePerformance": 37
       },
-      "scoresEstimated": false
+      "scoresEstimated": false,
+      "hfId": "mistralai/Mixtral-8x22B-Instruct-v0.1",
+      "hfDownloads30d": 76208,
+      "hfDownloadsAllTime": 6219423,
+      "hfLikes": 756
     },
     {
       "id": "microsoft-wizardlm-2-8x22b",
@@ -51141,7 +51714,8 @@
         "salesEmail": 48.7,
         "pricePerformance": 50.7
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "microsoft/WizardLM-2-8x22B"
     },
     {
       "id": "amazon-nova-micro-v1",
@@ -51457,7 +52031,11 @@
         "salesEmail": 51.5,
         "pricePerformance": 51.6
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "cognitivecomputations/Dolphin-Mistral-24B-Venice-Edition",
+      "hfDownloads30d": 201746,
+      "hfDownloadsAllTime": 409924,
+      "hfLikes": 617
     },
     {
       "id": "nousresearch-hermes-3-llama-3.1-405b",
@@ -51562,7 +52140,11 @@
         "salesEmail": 50.1,
         "pricePerformance": 50
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "NousResearch/Hermes-3-Llama-3.1-405B",
+      "hfDownloads30d": 601,
+      "hfDownloadsAllTime": 954899,
+      "hfLikes": 272
     },
     {
       "id": "openai-o1-pro",
@@ -51996,7 +52578,11 @@
         "salesEmail": 48.4,
         "pricePerformance": 45.2
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "moonshotai/Kimi-K2-Instruct",
+      "hfDownloads30d": 191911,
+      "hfDownloadsAllTime": 3769077,
+      "hfLikes": 2370
     },
     {
       "id": "mistralai-mistral-large",
@@ -52723,7 +53309,11 @@
         "salesEmail": 48.5,
         "pricePerformance": 49.5
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "TheDrummer/Skyfall-36B-v2",
+      "hfDownloads30d": 1744,
+      "hfDownloadsAllTime": 10775,
+      "hfLikes": 51
     },
     {
       "id": "deepseek-deepseek-r1-distill-llama-70b",
@@ -52833,7 +53423,11 @@
         "salesEmail": 48.9,
         "pricePerformance": 49.8
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+      "hfDownloads30d": 811030,
+      "hfDownloadsAllTime": 5748111,
+      "hfLikes": 790
     },
     {
       "id": "openrouter-fusion",
@@ -53551,7 +54145,11 @@
         "salesEmail": 44.9,
         "pricePerformance": 47.4
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Undi95/ReMM-SLERP-L2-13B",
+      "hfDownloads30d": 248,
+      "hfDownloadsAllTime": 85204,
+      "hfLikes": 27
     },
     {
       "id": "openai-gpt-3.5-turbo",
@@ -54297,7 +54895,11 @@
         "salesEmail": 45.6,
         "pricePerformance": 46.2
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "Qwen/Qwen2.5-Coder-32B-Instruct",
+      "hfDownloads30d": 1323844,
+      "hfDownloadsAllTime": 10371935,
+      "hfLikes": 2085
     },
     {
       "id": "minimax-minimax-m2-her",
@@ -55217,7 +55819,11 @@
         "salesEmail": 40.1,
         "pricePerformance": 35.2
       },
-      "scoresEstimated": true
+      "scoresEstimated": true,
+      "hfId": "anthracite-org/magnum-v4-72b",
+      "hfDownloads30d": 3307,
+      "hfDownloadsAllTime": 47431,
+      "hfLikes": 58
     },
     {
       "id": "openrouter-bodybuilder",

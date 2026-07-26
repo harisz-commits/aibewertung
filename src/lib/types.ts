@@ -130,6 +130,8 @@ export interface ModelView {
   openness: Openness;
   isOpenSource: boolean;
   isOpenWeight: boolean;
+  /** Hugging Face repo id, when the model is published there (open-weight only). */
+  hfId?: string | null;
   license: string | null;
   parameterCount: string | null;
 
@@ -166,6 +168,12 @@ export interface ModelView {
   aaCoding?: number | null;
   outputSpeedTps?: number | null; // median output tokens/second
   ttftMs?: number | null; // median time to first token, milliseconds
+
+  // Hugging Face adoption (open-weight models only). Popularity, NOT quality —
+  // deliberately excluded from every score.
+  hfDownloads30d?: number | null;
+  hfDownloadsAllTime?: number | null;
+  hfLikes?: number | null;
 
   // Applied from admin overrides when a database is connected.
   affiliateUrl?: string | null;

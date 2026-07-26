@@ -58,7 +58,9 @@
     "tableTitle": "Alle Modelle",
     "tableSubtitle": "Eine Zeile pro Modell. Ausklappen für alle Anbieter, Preise und Endpunkte.",
     "newModelsTitle": "Heute in LLMs",
-    "newModelsSubtitle": "Neu erkannte Modelle, Preis- und Anbieteränderungen."
+    "newModelsSubtitle": "Neu erkannte Modelle, Preis- und Anbieteränderungen.",
+    "adoptionTitle": "Meistgenutzte offene Modelle",
+    "adoptionSubtitle": "Hugging-Face-Downloads der letzten 30 Tage. Echte Verbreitung — fließt in keinen Score ein."
   },
   "assistant": {
     "placeholder": "z. B. günstiges Modell für deutschen Kundensupport mit Tool-Calling",
@@ -181,7 +183,12 @@
     "benchmarksNotMeasured": "Für dieses Modell sind noch keine Benchmark-Werte gemessen. Hier steht, was die Tests bedeuten und wie wir sie lesen würden.",
     "benchmarkGlossary": "Zum vollständigen Benchmark-Glossar",
     "measured": "Gemessen",
-    "notMeasured": "Noch nicht gemessen"
+    "notMeasured": "Noch nicht gemessen",
+    "adoptionTitle": "Verbreitung",
+    "adoptionIntro": "Wie oft dieses Modell auf Hugging Face tatsächlich heruntergeladen und favorisiert wird. Beliebtheit, nicht Qualität — fließt in keinen Score ein. Nur für Open-Weight-Modelle verfügbar.",
+    "downloads30d": "Downloads (30 T.)",
+    "downloadsAllTime": "Downloads (gesamt)",
+    "likes": "Likes"
   },
   "compare": {
     "title": "Modelle vergleichen",

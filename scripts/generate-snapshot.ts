@@ -18,6 +18,7 @@ import {
 import { scoreModel, SCORE_VERSION, qualityProxy } from '../src/lib/scoring/engine.ts';
 import { attachBenchmarks, toResult, type BenchmarkMap } from '../src/lib/importers/benchmarks.ts';
 import { fetchAARaw, buildAAMap, buildAAMetrics, type RawAAModel } from '../src/lib/importers/artificialAnalysis.ts';
+import { fetchHfStatsMap } from '../src/lib/importers/huggingface.ts';
 import { benchmarkStats, compositeFor } from '../src/lib/scoring/composite.ts';
 import type { ModelView, Snapshot } from '../src/lib/types.ts';
 
@@ -165,6 +166,22 @@ async function main() {
       : m;
   });
   console.log(`  attached AA metrics (speed/indices) to ${Object.keys(metrics).length} models`);
+
+  // Hugging Face adoption for open-weight models (public API, no key needed).
+  // Popularity only — never feeds a score.
+  try {
+    const hfIds = imported.map((m) => m.hfId).filter((x): x is string => Boolean(x));
+    const hfMap = await fetchHfStatsMap(hfIds, { token: process.env.HF_TOKEN });
+    imported = imported.map((m) => {
+      const s = m.hfId ? hfMap[m.hfId] : undefined;
+      return s
+        ? { ...m, hfDownloads30d: s.downloads30d, hfDownloadsAllTime: s.downloadsAllTime, hfLikes: s.likes }
+        : m;
+    });
+    console.log(`  attached Hugging Face adoption to ${Object.keys(hfMap).length}/${hfIds.length} open-weight models`);
+  } catch (e) {
+    console.warn(`  Hugging Face adoption skipped: ${(e as Error).message}`);
+  }
 
   // Cross-model stats for z-score normalization, then a domain-weighted
   // composite per model. The composite (population-centered) is rescaled onto

@@ -44,6 +44,14 @@ export function formatLatency(ms: number | null | undefined): string {
   return `${Math.round(ms)}ms`;
 }
 
+/** Compact counts for download/like figures: 16764566 → "16.8M". */
+export function formatCount(n: number | null | undefined): string {
+  if (n == null) return '—';
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1)}M`;
+  if (n >= 1_000) return `${(n / 1_000).toFixed(n >= 10_000 ? 0 : 1)}k`;
+  return String(n);
+}
+
 export function scoreColor(score: number): string {
   if (score >= 80) return 'text-success';
   if (score >= 60) return 'text-fg';

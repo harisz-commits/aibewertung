@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { LayoutGrid, List, Search, SlidersHorizontal, X } from 'lucide-react';
 import clsx from 'clsx';
@@ -76,6 +76,25 @@ function ScorePill({ value }: { value: number }) {
   );
 }
 
+// --- Filter state <-> URL ---------------------------------------------------
+// Filters live in the query string so they survive navigating to a model and
+// coming back (browser history restores the URL), a reload, and sharing a link.
+// Only non-default values are written, keeping clean URLs for the default view.
+
+const rangeToParam = (r: Range, stops: number[]) => (isActiveRange(r, stops) ? `${r[0]}-${r[1]}` : null);
+
+function rangeFromParam(v: string | null, stops: number[]): Range | null {
+  if (!v) return null;
+  const [a, b] = v.split('-').map(Number);
+  const max = stops.length - 1;
+  if (!Number.isInteger(a) || !Number.isInteger(b) || a < 0 || b > max || a > b) return null;
+  return [a, b];
+}
+
+const setToParam = <T extends string>(s: Set<T>) => (s.size ? [...s].join('.') : null);
+const setFromParam = <T extends string>(v: string | null, allowed: readonly T[]): Set<T> | null =>
+  v ? new Set(v.split('.').filter((x): x is T => (allowed as readonly string[]).includes(x))) : null;
+
 function Toggle({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
     <button
@@ -122,6 +141,49 @@ export function ModelTable({
   const [view, setView] = useState<'table' | 'grid'>('table');
   const [showFilters, setShowFilters] = useState(false);
 
+  // Restore filters from the URL once on mount. Done in an effect (not a state
+  // initializer) so server and first client render agree — no hydration
+  // mismatch — at the cost of one extra render.
+  const hydrated = useRef(false);
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    const str = (k: string) => p.get(k);
+    const num = (k: string) => (p.get(k) ? Number(p.get(k)) : null);
+
+    if (str('q')) setQuery(str('q')!);
+    if (str('cat')) setCategory(str('cat')!);
+    const o = str('open');
+    if (o === 'open_weight' || o === 'closed') setOpenness(o);
+    const cp = setFromParam(str('caps'), CAP_FILTERS);
+    if (cp) setCaps(cp);
+    const md = setFromParam(str('mods'), MODALITIES);
+    if (md) setMods(md);
+    if (str('free') === '1') setFreeOnly(true);
+    if (str('depr') === '1') setShowDeprecated(true);
+    if (str('lab')) setLab(str('lab')!);
+    const rel = num('rel');
+    if (rel && [3, 6, 12].includes(rel)) setReleasedMonths(rel);
+    const op = rangeFromParam(str('outp'), PRICE_STOPS);
+    if (op) setOutPrice(op);
+    const ip = rangeFromParam(str('inp'), PRICE_STOPS);
+    if (ip) setInPrice(ip);
+    const cx = rangeFromParam(str('ctx'), CONTEXT_STOPS);
+    if (cx) setCtx(cx);
+    const iq = rangeFromParam(str('intel'), INDEX_STOPS);
+    if (iq) setIntel(iq);
+    const cd = rangeFromParam(str('code'), INDEX_STOPS);
+    if (cd) setCodingIdx(cd);
+    const s = str('sort');
+    if (s) setSort(s as SortKey);
+    if (str('view') === 'grid') setView('grid');
+    // Reveal the panel when real filters were restored, so it is obvious why
+    // the list is narrowed. Sort/search/view alone are visible in the toolbar.
+    const FILTER_KEYS = ['cat', 'open', 'caps', 'mods', 'free', 'depr', 'lab', 'rel', 'outp', 'inp', 'ctx', 'intel', 'code'];
+    if (FILTER_KEYS.some((k) => p.has(k))) setShowFilters(true);
+
+    hydrated.current = true;
+  }, []);
+
   function toggleSet<T>(setter: (fn: (p: Set<T>) => Set<T>) => void, val: T) {
     setter((prev) => {
       const next = new Set(prev);
@@ -147,6 +209,42 @@ export function ModelTable({
     setCodingIdx(fullRange(INDEX_STOPS));
     setSort('overall');
   }
+
+  // Mirror the current filters into the URL. history.replaceState keeps this a
+  // shallow update (no server round-trip, no scroll jump) while still making
+  // the state part of the entry the browser restores on Back.
+  useEffect(() => {
+    if (!hydrated.current) return;
+    const p = new URLSearchParams();
+    const put = (k: string, v: string | null | undefined) => {
+      if (v) p.set(k, v);
+    };
+    put('q', query.trim() || null);
+    put('cat', category !== 'all' ? category : null);
+    put('open', openness !== 'all' ? openness : null);
+    put('caps', setToParam(caps));
+    put('mods', setToParam(mods));
+    put('free', freeOnly ? '1' : null);
+    put('depr', showDeprecated ? '1' : null);
+    put('lab', lab !== 'all' ? lab : null);
+    put('rel', releasedMonths ? String(releasedMonths) : null);
+    put('outp', rangeToParam(outPrice, PRICE_STOPS));
+    put('inp', rangeToParam(inPrice, PRICE_STOPS));
+    put('ctx', rangeToParam(ctx, CONTEXT_STOPS));
+    put('intel', rangeToParam(intel, INDEX_STOPS));
+    put('code', rangeToParam(codingIdx, INDEX_STOPS));
+    put('sort', sort !== 'overall' ? sort : null);
+    put('view', view === 'grid' ? 'grid' : null);
+
+    const qs = p.toString();
+    const url = `${window.location.pathname}${qs ? `?${qs}` : ''}${window.location.hash}`;
+    if (url !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
+      // Keep the existing history state object — the App Router keeps its own
+      // routing data in there, and replacing it with null breaks client-side
+      // navigation (links stop working).
+      window.history.replaceState(window.history.state, '', url);
+    }
+  }, [query, category, openness, caps, mods, freeOnly, showDeprecated, lab, releasedMonths, outPrice, inPrice, ctx, intel, codingIdx, sort, view]);
 
   const activeFilterCount =
     (category !== 'all' ? 1 : 0) +
