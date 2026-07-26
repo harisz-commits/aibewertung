@@ -46,8 +46,9 @@
     "model": "Modell",
     "source": "Benchmark",
     "score": "Score",
+    "estimated": "Schätzung",
     "noLangData": "Für diese Sprache noch keine Daten.",
-    "scoreNote": "Der Score ist ein 0–100-Composite: Benchmarks werden pro Sprache z-Score-normalisiert, damit MultiPL-E (pass@1) und SWE-bench (Resolve-Rate) vergleichbar sind. Der rohe Benchmark-Wert steht neben jedem Modell."
+    "scoreNote": "Der Score ist ein 0–100-Composite (pro Sprache z-Score-normalisiert, damit MultiPL-E-pass@1 und SWE-bench-Resolve-Rate vergleichbar sind). Zeilen mit „Schätzung“ haben keinen gemessenen Per-Sprache-Wert — sie werden aus dem Gesamt-Coding-Index des Modells plus einem aus den Messdaten gelernten Sprach-Offset geschätzt. Gemessene Werte haben immer Vorrang."
   },
   "benchmarks": {
     "title": "Benchmarks verständlich erklärt",

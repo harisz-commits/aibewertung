@@ -46,8 +46,9 @@
     "model": "Model",
     "source": "Benchmark",
     "score": "Score",
+    "estimated": "Estimate",
     "noLangData": "No data for this language yet.",
-    "scoreNote": "Score is a 0–100 composite: benchmarks are z-score normalized per language so MultiPL-E (pass@1) and SWE-bench (resolve rate) are comparable. The raw per-benchmark value is shown next to each model."
+    "scoreNote": "Score is a 0–100 composite (z-score normalized per language, so MultiPL-E pass@1 and SWE-bench resolve rate are comparable). Rows marked \"Estimate\" have no measured per-language result — they are estimated from the model's overall coding index plus a per-language difficulty offset learned from the measured data. Measured values always take precedence."
   },
   "benchmarks": {
     "title": "Benchmarks explained",

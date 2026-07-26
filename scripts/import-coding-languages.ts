@@ -9,7 +9,13 @@
 import { readFileSync, existsSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { computeLanguageLeaderboards, type RawCodingRow, type AggregationMode } from '../src/lib/coding/aggregate.ts';
+import {
+  computeLanguageLeaderboards,
+  estimateRows,
+  type RawCodingRow,
+  type AggregationMode,
+  type CurrentModel
+} from '../src/lib/coding/aggregate.ts';
 import { CANONICAL_LANGUAGES } from '../src/lib/coding/languages.ts';
 import {
   multiplELanguages,
@@ -54,7 +60,25 @@ async function main() {
       console.warn(`  Seed parse failed: ${(e as Error).message}`);
     }
   }
-  console.log(`Total ${rows.length} result rows.`);
+  console.log(`Total ${rows.length} measured rows.`);
+
+  // Estimates for CURRENT models (from the snapshot) that lack real per-language
+  // data — clearly flagged as estimates. Baseline = their AA coding index.
+  try {
+    const snapPath = join(DATA, 'models.snapshot.json');
+    if (existsSync(snapPath)) {
+      const snap = JSON.parse(readFileSync(snapPath, 'utf8'));
+      const current: CurrentModel[] = (snap.models ?? [])
+        .filter((m: any) => typeof m.aaCoding === 'number')
+        .map((m: any) => ({ name: String(m.name).replace(/^[^:]+:\s*/, ''), coding: m.aaCoding }));
+      const est = estimateRows(rows, current);
+      rows = rows.concat(est);
+      console.log(`  estimated: ${est.length} rows for ${current.length} current models`);
+    }
+  } catch (e) {
+    console.warn(`  estimation skipped: ${(e as Error).message}`);
+  }
+  console.log(`Total ${rows.length} rows (incl. estimates).`);
 
   // 2) Language coverage (real, from MultiPL-E configs when reachable).
   let coverage: string[] = CANONICAL_LANGUAGES;

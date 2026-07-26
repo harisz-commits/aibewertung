@@ -6,11 +6,13 @@ import { Info } from 'lucide-react';
 import clsx from 'clsx';
 import type { LanguageLeaderboard } from '@/lib/coding/aggregate';
 import { scoreBg } from '@/lib/format';
+import { Badge } from '@/components/badges';
 
 const BENCH_LABEL: Record<string, string> = {
   'multipl-e': 'MultiPL-E',
   'swe-bench-multilingual': 'SWE-bench',
-  mceval: 'McEval'
+  mceval: 'McEval',
+  estimated: 'est.'
 };
 
 export function CodingLanguages({ leaderboard }: { leaderboard: LanguageLeaderboard }) {
@@ -65,13 +67,20 @@ export function CodingLanguages({ leaderboard }: { leaderboard: LanguageLeaderbo
             </thead>
             <tbody>
               {entries.map((e, i) => (
-                <tr key={e.model} className="border-t border-border">
+                <tr key={e.model} className={clsx('border-t border-border', e.isEstimated && 'bg-warning/5')}>
                   <td className="px-3 py-2 tabular-nums text-muted">{i + 1}</td>
-                  <td className="px-3 py-2 font-medium">{e.model}</td>
+                  <td className="px-3 py-2 font-medium">
+                    <span className="flex flex-wrap items-center gap-1.5">
+                      {e.model}
+                      {e.isEstimated && <Badge tone="warning">{t('estimated')}</Badge>}
+                    </span>
+                  </td>
                   <td className="px-3 py-2 text-xs text-muted">
-                    {Object.entries(e.benchmarks)
-                      .map(([b, v]) => `${BENCH_LABEL[b] ?? b} ${v}%`)
-                      .join(' · ')}
+                    {e.isEstimated
+                      ? '—'
+                      : Object.entries(e.benchmarks)
+                          .map(([b, v]) => `${BENCH_LABEL[b] ?? b} ${v}%`)
+                          .join(' · ')}
                   </td>
                   <td className="px-3 py-2 text-center">
                     <span className={clsx('rounded px-1.5 py-0.5 text-xs font-semibold tabular-nums', scoreBg(e.score))}>
