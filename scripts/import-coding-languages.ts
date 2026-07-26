@@ -30,7 +30,7 @@ const SEED = join(DATA, 'coding-languages.seed.json');
 
 async function main() {
   const token = process.env.HF_TOKEN || process.env.HUGGINGFACE_API_TOKEN;
-  const mode = (process.env.CODING_AGG_MODE as AggregationMode) || 'zscore';
+  const mode = (process.env.CODING_AGG_MODE as AggregationMode) || 'weighted';
 
   // 1) Results rows from real sources + optional curated seed.
   let rows: RawCodingRow[] = [];

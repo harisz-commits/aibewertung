@@ -37,7 +37,7 @@
     "noData": "Noch keine gemessenen Werte pro Sprache",
     "noDataBody": "Die Pipeline steht. Werte pro Sprache erscheinen hier automatisch, sobald eine Ergebnis-Quelle angebunden ist — ein veröffentlichter Leaderboard-Export oder ein kuratierter Seed. Wir zeigen niemals erfundene Zahlen.",
     "howTitle": "So funktioniert es",
-    "howBody": "Ergebnisse werden auf [Modell, Sprache, Benchmark, Score] standardisiert, Sprach-Aliase aufgelöst (js → JavaScript, cpp → C++) und ein Composite pro Sprache per Z-Score-Normalisierung berechnet — oder als gewichteter Schnitt: SWE-bench 50 % · McEval 30 % · MultiPL-E 20 %.",
+    "howBody": "Ergebnisse werden auf [Modell, Sprache, Benchmark, Score] standardisiert und Sprach-Aliase aufgelöst (js → JavaScript, cpp → C++). Der Score pro Sprache steht auf einer rohen 0–100-Kompetenzskala: ein gemessener Benchmark-Prozentwert wird 1:1 gezeigt (MultiPL-E-pass@1, SWE-bench-Resolve-Rate). Hat ein Modell mehrere Benchmarks, werden sie gewichtet gemittelt (SWE-bench 50 % · McEval 30 % · MultiPL-E 20 %).",
     "sourcesTitle": "Datenquellen",
     "sourcesBody": "Die Werte stammen aus BigCode/MultiPL-E (pass@1 über viele Sprachen, offene Modelle) und dem SWE-bench-Multilingual-Leaderboard (echte Bug-Fixing-Resolve-Rates, aktuelle Modelle/Agenten). Jede Zeile zeigt, aus welchem Benchmark sie kommt.",
     "coverageTitle": "Abgedeckte Sprachen ({count})",
@@ -48,7 +48,7 @@
     "score": "Score",
     "estimated": "Schätzung",
     "noLangData": "Für diese Sprache noch keine Daten.",
-    "scoreNote": "Der Score ist ein 0–100-Composite (pro Sprache z-Score-normalisiert, damit MultiPL-E-pass@1 und SWE-bench-Resolve-Rate vergleichbar sind). Zeilen mit „Schätzung“ haben keinen gemessenen Per-Sprache-Wert — sie werden aus dem Gesamt-Coding-Index des Modells plus einem aus den Messdaten gelernten Sprach-Offset geschätzt. Gemessene Werte haben immer Vorrang."
+    "scoreNote": "Der Score ist das echte, gemessene Ergebnis des Modells im Benchmark der jeweiligen Sprache, auf einer 0–100-Kompetenzskala — der Benchmark, der jede Zahl erzeugt hat, steht daneben. Wir normalisieren bewusst nicht per z-Score über Benchmarks hinweg: sie decken unterschiedliche, kaum überlappende Modell-Populationen ab, sonst würde „Spitze eines schwachen Feldes“ über „Spitze eines starken Feldes“ ranken und die Reihenfolge verzerren. Zeilen mit „Schätzung“ haben keinen gemessenen Per-Sprache-Wert — sie nutzen den Gesamt-Coding-Index des Modells plus einen aus den Messdaten gelernten Sprach-Offset. Gemessene Werte haben immer Vorrang."
   },
   "benchmarks": {
     "title": "Benchmarks verständlich erklärt",

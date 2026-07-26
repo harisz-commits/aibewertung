@@ -1,9 +1,23 @@
 // Per-language coding aggregation. Takes standardized rows
 // [{ model, language, benchmark, score(0-100) }] from any results source and
 // produces one composite score per (model, language), then a leaderboard per
-// language. Because benchmarks differ hugely in difficulty (SWE-bench ≪
-// MultiPL-E), scores are either z-score normalized per (language, benchmark)
-// before averaging, or combined with an explicit weighted average.
+// language.
+//
+// Default aggregation is a raw "competence" scale: our benchmarks are already
+// 0-100 pass-rate-like signals, so the composite is a weighted average of the
+// raw scores and a single-benchmark model shows its measured value 1:1
+// (MultiPL-E pass@1 87% stays 87, an SWE-bench resolve rate stays as-is, an
+// estimate stays as-is). The benchmark label travels with every row, so a
+// reader always sees which test produced a number.
+//
+// A z-score mode exists but is OFF by default. Our benchmarks cover DISJOINT
+// model populations (mostly open models on MultiPL-E, frontier agents on
+// SWE-bench, estimates for current models) with almost no per-(model,language)
+// overlap, so per-benchmark z-scores measure "rank within your own field"
+// rather than absolute skill — which inverts real orderings (a small model
+// topping a weak field outscoring a frontier model topping a strong one).
+// Without shared anchor models the two scales cannot be equated statistically,
+// so we do not pretend to and show the honest raw numbers instead.
 
 import { canonicalLanguage } from './languages.ts';
 
@@ -103,7 +117,7 @@ export function computeLanguageLeaderboards(
   raw: RawCodingRow[],
   opts: { mode?: AggregationMode; weights?: BenchmarkWeights } = {}
 ): AggregateResult {
-  const mode = opts.mode ?? 'zscore';
+  const mode = opts.mode ?? 'weighted';
   const weights = opts.weights ?? DEFAULT_WEIGHTS;
   const { rows, skipped } = standardizeRows(raw);
 
@@ -118,7 +132,9 @@ export function computeLanguageLeaderboards(
   }
 
   const qualityOf = (r: CodingScoreRow): number => {
+    // Default: raw competence — the measured percentage IS the score.
     if (mode === 'weighted') return r.score;
+    // Opt-in z-score (see file header for why it is not the default).
     const st = stats[statKey(r.language, r.benchmark)];
     if (!st || st.std === 0) return 50; // single data point / no spread → neutral
     return clamp(50 + 15 * ((r.score - st.mean) / st.std));
