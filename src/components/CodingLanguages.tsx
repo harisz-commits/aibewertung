@@ -7,6 +7,12 @@ import clsx from 'clsx';
 import type { LanguageLeaderboard } from '@/lib/coding/aggregate';
 import { scoreBg } from '@/lib/format';
 
+const BENCH_LABEL: Record<string, string> = {
+  'multipl-e': 'MultiPL-E',
+  'swe-bench-multilingual': 'SWE-bench',
+  mceval: 'McEval'
+};
+
 export function CodingLanguages({ leaderboard }: { leaderboard: LanguageLeaderboard }) {
   const t = useTranslations('coding');
   const langs = Object.keys(leaderboard).sort();
@@ -48,11 +54,12 @@ export function CodingLanguages({ leaderboard }: { leaderboard: LanguageLeaderbo
         <p className="text-sm text-muted">{t('noLangData')}</p>
       ) : (
         <div className="overflow-x-auto scroll-thin rounded-xl border border-border">
-          <table className="w-full min-w-[420px] text-sm">
+          <table className="w-full min-w-[520px] text-sm">
             <thead className="bg-surface-2 text-left text-xs uppercase tracking-wide text-muted">
               <tr>
                 <th className="w-10 px-3 py-2 font-medium">{t('rank')}</th>
                 <th className="px-3 py-2 font-medium">{t('model')}</th>
+                <th className="px-3 py-2 font-medium">{t('source')}</th>
                 <th className="px-3 py-2 text-center font-medium">{t('score')}</th>
               </tr>
             </thead>
@@ -61,6 +68,11 @@ export function CodingLanguages({ leaderboard }: { leaderboard: LanguageLeaderbo
                 <tr key={e.model} className="border-t border-border">
                   <td className="px-3 py-2 tabular-nums text-muted">{i + 1}</td>
                   <td className="px-3 py-2 font-medium">{e.model}</td>
+                  <td className="px-3 py-2 text-xs text-muted">
+                    {Object.entries(e.benchmarks)
+                      .map(([b, v]) => `${BENCH_LABEL[b] ?? b} ${v}%`)
+                      .join(' · ')}
+                  </td>
                   <td className="px-3 py-2 text-center">
                     <span className={clsx('rounded px-1.5 py-0.5 text-xs font-semibold tabular-nums', scoreBg(e.score))}>
                       {e.score.toFixed(0)}
@@ -72,6 +84,7 @@ export function CodingLanguages({ leaderboard }: { leaderboard: LanguageLeaderbo
           </table>
         </div>
       )}
+      <p className="mt-2 text-[11px] text-muted">{t('scoreNote')}</p>
     </div>
   );
 }

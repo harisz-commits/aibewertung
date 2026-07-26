@@ -39,13 +39,15 @@
     "howTitle": "How it works",
     "howBody": "Results are standardized to [model, language, benchmark, score], language aliases are resolved (js → JavaScript, cpp → C++), and a per-language composite is computed via z-score normalization — or a weighted average: SWE-bench 50% · McEval 30% · MultiPL-E 20%.",
     "sourcesTitle": "Data sources",
-    "sourcesBody": "SWE-bench Multilingual, McEval and MultiPL-E provide the benchmark problems (and, via MultiPL-E, the language coverage). Per-model scores require running an evaluation or importing a leaderboard export.",
+    "sourcesBody": "Scores are imported from BigCode/MultiPL-E (pass@1 across many languages, open models) and the SWE-bench Multilingual leaderboard (real bug-fixing resolve rates, recent models/agents). Each row shows which benchmark it came from.",
     "coverageTitle": "Languages covered ({count})",
     "selectLanguage": "Language",
     "rank": "#",
     "model": "Model",
+    "source": "Benchmark",
     "score": "Score",
-    "noLangData": "No data for this language yet."
+    "noLangData": "No data for this language yet.",
+    "scoreNote": "Score is a 0–100 composite: benchmarks are z-score normalized per language so MultiPL-E (pass@1) and SWE-bench (resolve rate) are comparable. The raw per-benchmark value is shown next to each model."
   },
   "benchmarks": {
     "title": "Benchmarks explained",

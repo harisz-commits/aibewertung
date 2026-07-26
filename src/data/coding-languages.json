@@ -1,17 +1,111 @@
 {
   "meta": {
-    "generatedAt": "2026-07-26T12:40:11.970Z",
+    "generatedAt": "2026-07-26T15:25:05.791Z",
     "mode": "zscore",
     "weights": {
       "swe-bench-multilingual": 0.5,
       "mceval": 0.3,
       "multipl-e": 0.2
     },
-    "rowCount": 0,
+    "rowCount": 817,
     "skipped": 0,
-    "languages": [],
-    "models": [],
-    "benchmarks": [],
+    "languages": [
+      "C",
+      "C++",
+      "D",
+      "Go",
+      "Java",
+      "JavaScript",
+      "Julia",
+      "Lua",
+      "PHP",
+      "Python",
+      "R",
+      "Racket",
+      "Ruby",
+      "Rust",
+      "Swift"
+    ],
+    "models": [
+      "Artigenz-Coder-DS-6.7B",
+      "Claude 4.5 Haiku",
+      "Claude 4.5 Opus",
+      "Claude 4.5 Sonnet",
+      "Claude 4.6 Opus",
+      "CodeFuse-DeepSeek-33b",
+      "CodeGeex2-6B",
+      "CodeGemma-2B",
+      "CodeGemma-7B",
+      "CodeGemma-7B-it",
+      "CodeGen-16B-Multi",
+      "CodeGen25-7B-mono",
+      "CodeGen25-7B-multi",
+      "CodeLlama-13b",
+      "CodeLlama-13b-Instruct",
+      "CodeLlama-13b-Python",
+      "CodeLlama-34b",
+      "CodeLlama-34b-Instruct",
+      "CodeLlama-34b-Python",
+      "CodeLlama-70b",
+      "CodeLlama-70b-Instruct",
+      "CodeLlama-70b-Python",
+      "CodeLlama-7b",
+      "CodeLlama-7b-Instruct",
+      "CodeLlama-7b-Python",
+      "CodeQwen1.5-7B",
+      "CodeQwen1.5-7B-Chat",
+      "CodeShell-7B",
+      "DeciCoder-1B",
+      "DeepSeek V3.2",
+      "DeepSeek-Coder-1b-base",
+      "DeepSeek-Coder-33b-base",
+      "DeepSeek-Coder-33b-instruct",
+      "DeepSeek-Coder-7b-base",
+      "DeepSeek-Coder-7b-instruct",
+      "Falcon-180B",
+      "GLM-5",
+      "GPT 5.2 Codex",
+      "GPT-5 mini",
+      "GPT-5-2 Codex",
+      "GPT-5.2 (high reasoning)",
+      "Gemini 3 Flash",
+      "Gemini 3 Pro",
+      "Kimi K2.5",
+      "Minimax 2.5",
+      "Nxcode-CQ-7B-orpo",
+      "OctoCoder-15B",
+      "OctoGeeX-7B",
+      "OpenCodeInterpreter-DS-33B",
+      "OpenCodeInterpreter-DS-6.7B",
+      "Phi-1",
+      "Phind-CodeLlama-34B-Python-v1",
+      "Phind-CodeLlama-34B-v1",
+      "Phind-CodeLlama-34B-v2",
+      "Qwen2.5-Coder-32B",
+      "Qwen2.5-Coder-32B-Instruct",
+      "Refact-1.6B",
+      "Replit-2.7B",
+      "SantaCoder-1.1B",
+      "Stable-code-3b",
+      "StableCode-3B-alpha",
+      "StarCoder-15B",
+      "StarCoder2-15B",
+      "StarCoder2-3B",
+      "StarCoder2-7B",
+      "StarCoderBase-1.1B",
+      "StarCoderBase-15B",
+      "StarCoderBase-3B",
+      "StarCoderBase-7B",
+      "WizardCoder-15B-V1.0",
+      "WizardCoder-1B-V1.0",
+      "WizardCoder-3B-V1.0",
+      "WizardCoder-Python-13B-V1.0",
+      "WizardCoder-Python-34B-V1.0"
+    ],
+    "benchmarks": [
+      "multipl-e",
+      "swe-bench-multilingual"
+    ],
     "coverage": [
       "Ada",
       "Bash",
@@ -51,5 +145,5755 @@
       "Visual Basic"
     ]
   },
-  "leaderboard": {}
+  "leaderboard": {
+    "Python": [
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 80.7,
+        "benchmarks": {
+          "multipl-e": 87.2
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 80.7,
+        "benchmarks": {
+          "multipl-e": 87.2
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 77.6,
+        "benchmarks": {
+          "multipl-e": 83.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 75.4,
+        "benchmarks": {
+          "multipl-e": 80.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 75.2,
+        "benchmarks": {
+          "multipl-e": 80
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 72.8,
+        "benchmarks": {
+          "multipl-e": 76.8
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Instruct",
+        "score": 71.9,
+        "benchmarks": {
+          "multipl-e": 75.6
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 71.6,
+        "benchmarks": {
+          "multipl-e": 75.2
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 70,
+        "benchmarks": {
+          "multipl-e": 73.2
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 69.1,
+        "benchmarks": {
+          "multipl-e": 72
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 68.3,
+        "benchmarks": {
+          "multipl-e": 70.9
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 68.2,
+        "benchmarks": {
+          "multipl-e": 70.7
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 67.8,
+        "benchmarks": {
+          "multipl-e": 70.2
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 64.5,
+        "benchmarks": {
+          "multipl-e": 65.9
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 61.7,
+        "benchmarks": {
+          "multipl-e": 62.2
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 58.6,
+        "benchmarks": {
+          "multipl-e": 58.1
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 57.8,
+        "benchmarks": {
+          "multipl-e": 57.1
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Python",
+        "score": 56.6,
+        "benchmarks": {
+          "multipl-e": 55.5
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 54.9,
+        "benchmarks": {
+          "multipl-e": 53.3
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 54.5,
+        "benchmarks": {
+          "multipl-e": 52.7
+        }
+      },
+      {
+        "model": "CodeLlama-70b",
+        "score": 54.3,
+        "benchmarks": {
+          "multipl-e": 52.4
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 54.3,
+        "benchmarks": {
+          "multipl-e": 52.5
+        }
+      },
+      {
+        "model": "Phi-1",
+        "score": 53.4,
+        "benchmarks": {
+          "multipl-e": 51.2
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 53,
+        "benchmarks": {
+          "multipl-e": 50.8
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 53,
+        "benchmarks": {
+          "multipl-e": 50.8
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 52.9,
+        "benchmarks": {
+          "multipl-e": 50.6
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 49.3,
+        "benchmarks": {
+          "multipl-e": 45.8
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 49.1,
+        "benchmarks": {
+          "multipl-e": 45.7
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 48.9,
+        "benchmarks": {
+          "multipl-e": 45.3
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 48.7,
+        "benchmarks": {
+          "multipl-e": 45.1
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 48,
+        "benchmarks": {
+          "multipl-e": 44.2
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 47.1,
+        "benchmarks": {
+          "multipl-e": 42.9
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 46.6,
+        "benchmarks": {
+          "multipl-e": 42.3
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 45.2,
+        "benchmarks": {
+          "multipl-e": 40.5
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 45,
+        "benchmarks": {
+          "multipl-e": 40.1
+        }
+      },
+      {
+        "model": "Falcon-180B",
+        "score": 41.4,
+        "benchmarks": {
+          "multipl-e": 35.4
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 41.1,
+        "benchmarks": {
+          "multipl-e": 35.1
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 40.6,
+        "benchmarks": {
+          "multipl-e": 34.3
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 40.4,
+        "benchmarks": {
+          "multipl-e": 34.1
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 40,
+        "benchmarks": {
+          "multipl-e": 33.6
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 39.9,
+        "benchmarks": {
+          "multipl-e": 33.5
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 39.6,
+        "benchmarks": {
+          "multipl-e": 33.1
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 39.5,
+        "benchmarks": {
+          "multipl-e": 32.9
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 38.9,
+        "benchmarks": {
+          "multipl-e": 32.1
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 38.4,
+        "benchmarks": {
+          "multipl-e": 31.4
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 38.1,
+        "benchmarks": {
+          "multipl-e": 31.1
+        }
+      },
+      {
+        "model": "Stable-code-3b",
+        "score": 37.8,
+        "benchmarks": {
+          "multipl-e": 30.7
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 37.5,
+        "benchmarks": {
+          "multipl-e": 30.4
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 37.3,
+        "benchmarks": {
+          "multipl-e": 30
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 36.3,
+        "benchmarks": {
+          "multipl-e": 28.7
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 36,
+        "benchmarks": {
+          "multipl-e": 28.4
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 35.2,
+        "benchmarks": {
+          "multipl-e": 27.3
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 32.1,
+        "benchmarks": {
+          "multipl-e": 23.2
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 30.8,
+        "benchmarks": {
+          "multipl-e": 21.5
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 29.8,
+        "benchmarks": {
+          "multipl-e": 20.1
+        }
+      },
+      {
+        "model": "StableCode-3B-alpha",
+        "score": 29.8,
+        "benchmarks": {
+          "multipl-e": 20.2
+        }
+      },
+      {
+        "model": "DeciCoder-1B",
+        "score": 29.2,
+        "benchmarks": {
+          "multipl-e": 19.3
+        }
+      },
+      {
+        "model": "CodeGen-16B-Multi",
+        "score": 29.1,
+        "benchmarks": {
+          "multipl-e": 19.3
+        }
+      },
+      {
+        "model": "SantaCoder-1.1B",
+        "score": 28.3,
+        "benchmarks": {
+          "multipl-e": 18.1
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 26,
+        "benchmarks": {
+          "multipl-e": 15.2
+        }
+      }
+    ],
+    "Java": [
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 89.8,
+        "benchmarks": {
+          "multipl-e": 73.7
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 81.2,
+        "benchmarks": {
+          "multipl-e": 65.5
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 76.5,
+        "benchmarks": {
+          "multipl-e": 61
+        }
+      },
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 76.4,
+        "benchmarks": {
+          "multipl-e": 60.9
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 76.3,
+        "benchmarks": {
+          "multipl-e": 60.8
+        }
+      },
+      {
+        "model": "GLM-5",
+        "score": 72.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 86
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 72.1,
+        "benchmarks": {
+          "multipl-e": 56.8
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 70,
+        "benchmarks": {
+          "multipl-e": 54.8
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 69.2,
+        "benchmarks": {
+          "multipl-e": 54.1
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 68.5,
+        "benchmarks": {
+          "multipl-e": 53.3
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 67.1,
+        "benchmarks": {
+          "multipl-e": 52
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 66.4,
+        "benchmarks": {
+          "multipl-e": 51.4
+        }
+      },
+      {
+        "model": "Gemini 3 Flash",
+        "score": 66.2,
+        "benchmarks": {
+          "swe-bench-multilingual": 81.4
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 64.4,
+        "benchmarks": {
+          "multipl-e": 49.5
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 63.6,
+        "benchmarks": {
+          "multipl-e": 48.7
+        }
+      },
+      {
+        "model": "Claude 4.5 Opus",
+        "score": 63,
+        "benchmarks": {
+          "swe-bench-multilingual": 79.1
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Instruct",
+        "score": 62,
+        "benchmarks": {
+          "multipl-e": 47.2
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Python",
+        "score": 60.7,
+        "benchmarks": {
+          "multipl-e": 46
+        }
+      },
+      {
+        "model": "Minimax 2.5",
+        "score": 59.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 76.7
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 59.7,
+        "benchmarks": {
+          "multipl-e": 44.9
+        }
+      },
+      {
+        "model": "CodeLlama-70b",
+        "score": 59.4,
+        "benchmarks": {
+          "multipl-e": 44.7
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 58.4,
+        "benchmarks": {
+          "multipl-e": 43.8
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 56.7,
+        "benchmarks": {
+          "multipl-e": 42.2
+        }
+      },
+      {
+        "model": "Claude 4.5 Sonnet",
+        "score": 56.7,
+        "benchmarks": {
+          "swe-bench-multilingual": 74.4
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 56.3,
+        "benchmarks": {
+          "multipl-e": 41.8
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 56.1,
+        "benchmarks": {
+          "multipl-e": 41.5
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 56,
+        "benchmarks": {
+          "multipl-e": 41.4
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 54.7,
+        "benchmarks": {
+          "multipl-e": 40.2
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 53.9,
+        "benchmarks": {
+          "multipl-e": 39.5
+        }
+      },
+      {
+        "model": "Claude 4.6 Opus",
+        "score": 53.6,
+        "benchmarks": {
+          "swe-bench-multilingual": 72.1
+        }
+      },
+      {
+        "model": "Gemini 3 Pro",
+        "score": 53.6,
+        "benchmarks": {
+          "swe-bench-multilingual": 72.1
+        }
+      },
+      {
+        "model": "Kimi K2.5",
+        "score": 53.6,
+        "benchmarks": {
+          "swe-bench-multilingual": 72.1
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 52.1,
+        "benchmarks": {
+          "multipl-e": 37.7
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 50,
+        "benchmarks": {
+          "multipl-e": 35.8
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 49.3,
+        "benchmarks": {
+          "multipl-e": 35
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 48.2,
+        "benchmarks": {
+          "multipl-e": 34
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 48,
+        "benchmarks": {
+          "multipl-e": 33.9
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 47.7,
+        "benchmarks": {
+          "multipl-e": 33.6
+        }
+      },
+      {
+        "model": "Claude 4.5 Haiku",
+        "score": 47.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 67.4
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 46.3,
+        "benchmarks": {
+          "multipl-e": 32.2
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 44.4,
+        "benchmarks": {
+          "multipl-e": 30.4
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 44.2,
+        "benchmarks": {
+          "multipl-e": 30.2
+        }
+      },
+      {
+        "model": "GPT-5-2 Codex",
+        "score": 44.2,
+        "benchmarks": {
+          "swe-bench-multilingual": 65.1
+        }
+      },
+      {
+        "model": "GPT 5.2 Codex",
+        "score": 44.2,
+        "benchmarks": {
+          "swe-bench-multilingual": 65.1
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 43.4,
+        "benchmarks": {
+          "multipl-e": 29.4
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 43.2,
+        "benchmarks": {
+          "multipl-e": 29.2
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 43.1,
+        "benchmarks": {
+          "multipl-e": 29.2
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 42.7,
+        "benchmarks": {
+          "multipl-e": 28.8
+        }
+      },
+      {
+        "model": "Stable-code-3b",
+        "score": 42.7,
+        "benchmarks": {
+          "multipl-e": 28.8
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 42.5,
+        "benchmarks": {
+          "multipl-e": 28.5
+        }
+      },
+      {
+        "model": "Falcon-180B",
+        "score": 42.4,
+        "benchmarks": {
+          "multipl-e": 28.5
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 41.3,
+        "benchmarks": {
+          "multipl-e": 27.4
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 41,
+        "benchmarks": {
+          "multipl-e": 27.2
+        }
+      },
+      {
+        "model": "GPT-5.2 (high reasoning)",
+        "score": 41,
+        "benchmarks": {
+          "swe-bench-multilingual": 62.8
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 39.8,
+        "benchmarks": {
+          "multipl-e": 26
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 39.8,
+        "benchmarks": {
+          "multipl-e": 26
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 38.4,
+        "benchmarks": {
+          "multipl-e": 24.7
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 38.2,
+        "benchmarks": {
+          "multipl-e": 24.4
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 38.1,
+        "benchmarks": {
+          "multipl-e": 24.3
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 37.1,
+        "benchmarks": {
+          "multipl-e": 23.5
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 36.4,
+        "benchmarks": {
+          "multipl-e": 22.8
+        }
+      },
+      {
+        "model": "CodeGen-16B-Multi",
+        "score": 35.8,
+        "benchmarks": {
+          "multipl-e": 22.2
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 35,
+        "benchmarks": {
+          "multipl-e": 21.4
+        }
+      },
+      {
+        "model": "DeepSeek V3.2",
+        "score": 34.7,
+        "benchmarks": {
+          "swe-bench-multilingual": 58.1
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 33.2,
+        "benchmarks": {
+          "multipl-e": 19.7
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 33.2,
+        "benchmarks": {
+          "multipl-e": 19.8
+        }
+      },
+      {
+        "model": "StableCode-3B-alpha",
+        "score": 33,
+        "benchmarks": {
+          "multipl-e": 19.5
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 32.8,
+        "benchmarks": {
+          "multipl-e": 19.3
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 32.7,
+        "benchmarks": {
+          "multipl-e": 19.3
+        }
+      },
+      {
+        "model": "DeciCoder-1B",
+        "score": 28.6,
+        "benchmarks": {
+          "multipl-e": 15.3
+        }
+      },
+      {
+        "model": "SantaCoder-1.1B",
+        "score": 28.3,
+        "benchmarks": {
+          "multipl-e": 15
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 27.4,
+        "benchmarks": {
+          "multipl-e": 14.2
+        }
+      },
+      {
+        "model": "Phi-1",
+        "score": 23.8,
+        "benchmarks": {
+          "multipl-e": 10.8
+        }
+      },
+      {
+        "model": "GPT-5 mini",
+        "score": 9.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 39.5
+        }
+      }
+    ],
+    "JavaScript": [
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 80,
+        "benchmarks": {
+          "multipl-e": 76.1
+        }
+      },
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 76.2,
+        "benchmarks": {
+          "multipl-e": 71.7
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 75,
+        "benchmarks": {
+          "multipl-e": 70.3
+        }
+      },
+      {
+        "model": "Claude 4.6 Opus",
+        "score": 75,
+        "benchmarks": {
+          "swe-bench-multilingual": 83.7
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 73.9,
+        "benchmarks": {
+          "multipl-e": 69.1
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 71.7,
+        "benchmarks": {
+          "multipl-e": 66.5
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 71.5,
+        "benchmarks": {
+          "multipl-e": 66.2
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 71.4,
+        "benchmarks": {
+          "multipl-e": 66.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 71.1,
+        "benchmarks": {
+          "multipl-e": 65.8
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 70.7,
+        "benchmarks": {
+          "multipl-e": 65.3
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 70.5,
+        "benchmarks": {
+          "multipl-e": 65.1
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 70.5,
+        "benchmarks": {
+          "multipl-e": 65.1
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 69.9,
+        "benchmarks": {
+          "multipl-e": 64.5
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 69.4,
+        "benchmarks": {
+          "multipl-e": 63.9
+        }
+      },
+      {
+        "model": "Claude 4.5 Opus",
+        "score": 65.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 76.7
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Instruct",
+        "score": 64.1,
+        "benchmarks": {
+          "multipl-e": 57.8
+        }
+      },
+      {
+        "model": "CodeLlama-70b",
+        "score": 63,
+        "benchmarks": {
+          "multipl-e": 56.5
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Python",
+        "score": 63,
+        "benchmarks": {
+          "multipl-e": 56.5
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 61.9,
+        "benchmarks": {
+          "multipl-e": 55.3
+        }
+      },
+      {
+        "model": "Gemini 3 Pro",
+        "score": 58.8,
+        "benchmarks": {
+          "swe-bench-multilingual": 72.1
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 58.4,
+        "benchmarks": {
+          "multipl-e": 51.3
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 57.4,
+        "benchmarks": {
+          "multipl-e": 50.1
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 56,
+        "benchmarks": {
+          "multipl-e": 48.5
+        }
+      },
+      {
+        "model": "Minimax 2.5",
+        "score": 55.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 70
+        }
+      },
+      {
+        "model": "GPT-5.2 (high reasoning)",
+        "score": 55.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 69.8
+        }
+      },
+      {
+        "model": "GPT-5-2 Codex",
+        "score": 55.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 69.8
+        }
+      },
+      {
+        "model": "GPT 5.2 Codex",
+        "score": 55.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 69.8
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 55.3,
+        "benchmarks": {
+          "multipl-e": 47.7
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 53.7,
+        "benchmarks": {
+          "multipl-e": 45.9
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 53.7,
+        "benchmarks": {
+          "multipl-e": 45.9
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 52.7,
+        "benchmarks": {
+          "multipl-e": 44.7
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 52.3,
+        "benchmarks": {
+          "multipl-e": 44.2
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 51.3,
+        "benchmarks": {
+          "multipl-e": 43.1
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 50.3,
+        "benchmarks": {
+          "multipl-e": 41.9
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 50,
+        "benchmarks": {
+          "multipl-e": 41.7
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 49.4,
+        "benchmarks": {
+          "multipl-e": 40.9
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 49.2,
+        "benchmarks": {
+          "multipl-e": 40.7
+        }
+      },
+      {
+        "model": "Gemini 3 Flash",
+        "score": 49,
+        "benchmarks": {
+          "swe-bench-multilingual": 65.1
+        }
+      },
+      {
+        "model": "GLM-5",
+        "score": 49,
+        "benchmarks": {
+          "swe-bench-multilingual": 65.1
+        }
+      },
+      {
+        "model": "Claude 4.5 Sonnet",
+        "score": 49,
+        "benchmarks": {
+          "swe-bench-multilingual": 65.1
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 47.1,
+        "benchmarks": {
+          "multipl-e": 38.3
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 45.4,
+        "benchmarks": {
+          "multipl-e": 36.3
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 44.6,
+        "benchmarks": {
+          "multipl-e": 35.4
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 44.5,
+        "benchmarks": {
+          "multipl-e": 35.4
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 42.6,
+        "benchmarks": {
+          "multipl-e": 33.1
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 42.6,
+        "benchmarks": {
+          "multipl-e": 33.2
+        }
+      },
+      {
+        "model": "Kimi K2.5",
+        "score": 42.6,
+        "benchmarks": {
+          "swe-bench-multilingual": 60.5
+        }
+      },
+      {
+        "model": "Claude 4.5 Haiku",
+        "score": 42.6,
+        "benchmarks": {
+          "swe-bench-multilingual": 60.5
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 42.3,
+        "benchmarks": {
+          "multipl-e": 32.8
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 41.4,
+        "benchmarks": {
+          "multipl-e": 31.8
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 41.4,
+        "benchmarks": {
+          "multipl-e": 31.7
+        }
+      },
+      {
+        "model": "Falcon-180B",
+        "score": 41.3,
+        "benchmarks": {
+          "multipl-e": 31.7
+        }
+      },
+      {
+        "model": "Stable-code-3b",
+        "score": 41.3,
+        "benchmarks": {
+          "multipl-e": 31.6
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 40.6,
+        "benchmarks": {
+          "multipl-e": 30.8
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 39.8,
+        "benchmarks": {
+          "multipl-e": 29.9
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 39.8,
+        "benchmarks": {
+          "multipl-e": 29.9
+        }
+      },
+      {
+        "model": "DeepSeek V3.2",
+        "score": 39.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 58.1
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 38.6,
+        "benchmarks": {
+          "multipl-e": 28.5
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 38.5,
+        "benchmarks": {
+          "multipl-e": 28.5
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 37.6,
+        "benchmarks": {
+          "multipl-e": 27.4
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 36.6,
+        "benchmarks": {
+          "multipl-e": 26.3
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 36.5,
+        "benchmarks": {
+          "multipl-e": 26.2
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 34,
+        "benchmarks": {
+          "multipl-e": 23.2
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 33.2,
+        "benchmarks": {
+          "multipl-e": 22.4
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 32.3,
+        "benchmarks": {
+          "multipl-e": 21.3
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 31.3,
+        "benchmarks": {
+          "multipl-e": 20.2
+        }
+      },
+      {
+        "model": "Phi-1",
+        "score": 30.5,
+        "benchmarks": {
+          "multipl-e": 19.3
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 30.4,
+        "benchmarks": {
+          "multipl-e": 19.1
+        }
+      },
+      {
+        "model": "CodeGen-16B-Multi",
+        "score": 30.4,
+        "benchmarks": {
+          "multipl-e": 19.2
+        }
+      },
+      {
+        "model": "StableCode-3B-alpha",
+        "score": 30.3,
+        "benchmarks": {
+          "multipl-e": 19
+        }
+      },
+      {
+        "model": "DeciCoder-1B",
+        "score": 29.3,
+        "benchmarks": {
+          "multipl-e": 17.9
+        }
+      },
+      {
+        "model": "SantaCoder-1.1B",
+        "score": 27.2,
+        "benchmarks": {
+          "multipl-e": 15.5
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 25.4,
+        "benchmarks": {
+          "multipl-e": 13.4
+        }
+      },
+      {
+        "model": "GPT-5 mini",
+        "score": 6.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 34.9
+        }
+      }
+    ],
+    "C++": [
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 88.6,
+        "benchmarks": {
+          "multipl-e": 82
+        }
+      },
+      {
+        "model": "Gemini 3 Flash",
+        "score": 87.6,
+        "benchmarks": {
+          "swe-bench-multilingual": 91.7
+        }
+      },
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 76.3,
+        "benchmarks": {
+          "multipl-e": 68
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 76.2,
+        "benchmarks": {
+          "multipl-e": 67.9
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 73.9,
+        "benchmarks": {
+          "multipl-e": 65.2
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 73.2,
+        "benchmarks": {
+          "multipl-e": 64.5
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 73.1,
+        "benchmarks": {
+          "multipl-e": 64.4
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 71.3,
+        "benchmarks": {
+          "multipl-e": 62.4
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 69.3,
+        "benchmarks": {
+          "multipl-e": 60
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 69,
+        "benchmarks": {
+          "multipl-e": 59.8
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 69,
+        "benchmarks": {
+          "multipl-e": 59.7
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 68.9,
+        "benchmarks": {
+          "multipl-e": 59.6
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 67.3,
+        "benchmarks": {
+          "multipl-e": 57.8
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 65.2,
+        "benchmarks": {
+          "multipl-e": 55.3
+        }
+      },
+      {
+        "model": "GLM-5",
+        "score": 62.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 75
+        }
+      },
+      {
+        "model": "Gemini 3 Pro",
+        "score": 62.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 75
+        }
+      },
+      {
+        "model": "Kimi K2.5",
+        "score": 62.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 75
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 61.5,
+        "benchmarks": {
+          "multipl-e": 51.2
+        }
+      },
+      {
+        "model": "CodeLlama-70b",
+        "score": 60.2,
+        "benchmarks": {
+          "multipl-e": 49.7
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Python",
+        "score": 60.2,
+        "benchmarks": {
+          "multipl-e": 49.7
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Instruct",
+        "score": 59.1,
+        "benchmarks": {
+          "multipl-e": 48.5
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 59,
+        "benchmarks": {
+          "multipl-e": 48.4
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 58,
+        "benchmarks": {
+          "multipl-e": 47.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 56.5,
+        "benchmarks": {
+          "multipl-e": 45.5
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 54.2,
+        "benchmarks": {
+          "multipl-e": 42.9
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 53.9,
+        "benchmarks": {
+          "multipl-e": 42.6
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 53,
+        "benchmarks": {
+          "multipl-e": 41.5
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 52.9,
+        "benchmarks": {
+          "multipl-e": 41.4
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 52.9,
+        "benchmarks": {
+          "multipl-e": 41.4
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 51.9,
+        "benchmarks": {
+          "multipl-e": 40.3
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 50.8,
+        "benchmarks": {
+          "multipl-e": 39.1
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 50.7,
+        "benchmarks": {
+          "multipl-e": 39
+        }
+      },
+      {
+        "model": "Claude 4.5 Opus",
+        "score": 50,
+        "benchmarks": {
+          "swe-bench-multilingual": 66.7
+        }
+      },
+      {
+        "model": "Minimax 2.5",
+        "score": 50,
+        "benchmarks": {
+          "swe-bench-multilingual": 66.7
+        }
+      },
+      {
+        "model": "Claude 4.5 Sonnet",
+        "score": 50,
+        "benchmarks": {
+          "swe-bench-multilingual": 66.7
+        }
+      },
+      {
+        "model": "Claude 4.5 Haiku",
+        "score": 50,
+        "benchmarks": {
+          "swe-bench-multilingual": 66.7
+        }
+      },
+      {
+        "model": "DeepSeek V3.2",
+        "score": 50,
+        "benchmarks": {
+          "swe-bench-multilingual": 66.7
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 48.4,
+        "benchmarks": {
+          "multipl-e": 36.4
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 48.3,
+        "benchmarks": {
+          "multipl-e": 36.2
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 48,
+        "benchmarks": {
+          "multipl-e": 35.8
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 46,
+        "benchmarks": {
+          "multipl-e": 33.6
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 44.2,
+        "benchmarks": {
+          "multipl-e": 31.6
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 43.3,
+        "benchmarks": {
+          "multipl-e": 30.6
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 43.1,
+        "benchmarks": {
+          "multipl-e": 30.3
+        }
+      },
+      {
+        "model": "Stable-code-3b",
+        "score": 42.3,
+        "benchmarks": {
+          "multipl-e": 29.4
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 42.2,
+        "benchmarks": {
+          "multipl-e": 29.3
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 42.2,
+        "benchmarks": {
+          "multipl-e": 29.3
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 42,
+        "benchmarks": {
+          "multipl-e": 29
+        }
+      },
+      {
+        "model": "Falcon-180B",
+        "score": 41.6,
+        "benchmarks": {
+          "multipl-e": 28.6
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 41.5,
+        "benchmarks": {
+          "multipl-e": 28.5
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 41.3,
+        "benchmarks": {
+          "multipl-e": 28.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 41,
+        "benchmarks": {
+          "multipl-e": 28
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 40.4,
+        "benchmarks": {
+          "multipl-e": 27.2
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 40.4,
+        "benchmarks": {
+          "multipl-e": 27.2
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 39.1,
+        "benchmarks": {
+          "multipl-e": 25.8
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 38.4,
+        "benchmarks": {
+          "multipl-e": 24.9
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 37.5,
+        "benchmarks": {
+          "multipl-e": 23.9
+        }
+      },
+      {
+        "model": "Claude 4.6 Opus",
+        "score": 37.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 58.3
+        }
+      },
+      {
+        "model": "GPT-5.2 (high reasoning)",
+        "score": 37.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 58.3
+        }
+      },
+      {
+        "model": "GPT-5-2 Codex",
+        "score": 37.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 58.3
+        }
+      },
+      {
+        "model": "GPT 5.2 Codex",
+        "score": 37.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 58.3
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 36.9,
+        "benchmarks": {
+          "multipl-e": 23.3
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 35,
+        "benchmarks": {
+          "multipl-e": 21.1
+        }
+      },
+      {
+        "model": "CodeGen-16B-Multi",
+        "score": 34.9,
+        "benchmarks": {
+          "multipl-e": 21
+        }
+      },
+      {
+        "model": "StableCode-3B-alpha",
+        "score": 34.7,
+        "benchmarks": {
+          "multipl-e": 20.8
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 34.3,
+        "benchmarks": {
+          "multipl-e": 20.4
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 33.5,
+        "benchmarks": {
+          "multipl-e": 19.4
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 32.8,
+        "benchmarks": {
+          "multipl-e": 18.6
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 30.4,
+        "benchmarks": {
+          "multipl-e": 15.9
+        }
+      },
+      {
+        "model": "Phi-1",
+        "score": 29,
+        "benchmarks": {
+          "multipl-e": 14.3
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 26.7,
+        "benchmarks": {
+          "multipl-e": 11.7
+        }
+      },
+      {
+        "model": "GPT-5 mini",
+        "score": 24.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 50
+        }
+      },
+      {
+        "model": "DeciCoder-1B",
+        "score": 22.5,
+        "benchmarks": {
+          "multipl-e": 6.9
+        }
+      },
+      {
+        "model": "SantaCoder-1.1B",
+        "score": 21.9,
+        "benchmarks": {
+          "multipl-e": 6.2
+        }
+      }
+    ],
+    "PHP": [
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 82.1,
+        "benchmarks": {
+          "multipl-e": 73.6
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 78.5,
+        "benchmarks": {
+          "multipl-e": 69.2
+        }
+      },
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 77.4,
+        "benchmarks": {
+          "multipl-e": 68
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 73.1,
+        "benchmarks": {
+          "multipl-e": 62.7
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 70.4,
+        "benchmarks": {
+          "multipl-e": 59.4
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 70.3,
+        "benchmarks": {
+          "multipl-e": 59.3
+        }
+      },
+      {
+        "model": "GLM-5",
+        "score": 69.7,
+        "benchmarks": {
+          "swe-bench-multilingual": 79.1
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 69,
+        "benchmarks": {
+          "multipl-e": 57.8
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 68.7,
+        "benchmarks": {
+          "multipl-e": 57.3
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Instruct",
+        "score": 68.5,
+        "benchmarks": {
+          "multipl-e": 57.1
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 67.8,
+        "benchmarks": {
+          "multipl-e": 56.3
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 67.2,
+        "benchmarks": {
+          "multipl-e": 55.5
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 66.9,
+        "benchmarks": {
+          "multipl-e": 55.2
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Python",
+        "score": 64.9,
+        "benchmarks": {
+          "multipl-e": 52.8
+        }
+      },
+      {
+        "model": "Claude 4.6 Opus",
+        "score": 64.8,
+        "benchmarks": {
+          "swe-bench-multilingual": 76.7
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 64.7,
+        "benchmarks": {
+          "multipl-e": 52.5
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 64.3,
+        "benchmarks": {
+          "multipl-e": 52.1
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 63.4,
+        "benchmarks": {
+          "multipl-e": 50.9
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 60.3,
+        "benchmarks": {
+          "multipl-e": 47.2
+        }
+      },
+      {
+        "model": "CodeLlama-70b",
+        "score": 59.8,
+        "benchmarks": {
+          "multipl-e": 46.6
+        }
+      },
+      {
+        "model": "Claude 4.5 Sonnet",
+        "score": 59.8,
+        "benchmarks": {
+          "swe-bench-multilingual": 74.4
+        }
+      },
+      {
+        "model": "Claude 4.5 Haiku",
+        "score": 59.8,
+        "benchmarks": {
+          "swe-bench-multilingual": 74.4
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 56.2,
+        "benchmarks": {
+          "multipl-e": 42.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 55.8,
+        "benchmarks": {
+          "multipl-e": 41.8
+        }
+      },
+      {
+        "model": "Claude 4.5 Opus",
+        "score": 54.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 72.1
+        }
+      },
+      {
+        "model": "GPT-5-2 Codex",
+        "score": 54.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 72.1
+        }
+      },
+      {
+        "model": "GPT 5.2 Codex",
+        "score": 54.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 72.1
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 54.7,
+        "benchmarks": {
+          "multipl-e": 40.4
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 54.2,
+        "benchmarks": {
+          "multipl-e": 39.8
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 53.9,
+        "benchmarks": {
+          "multipl-e": 39.5
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 53.8,
+        "benchmarks": {
+          "multipl-e": 39.3
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 51.9,
+        "benchmarks": {
+          "multipl-e": 37
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 51.8,
+        "benchmarks": {
+          "multipl-e": 36.9
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 50,
+        "benchmarks": {
+          "multipl-e": 34.8
+        }
+      },
+      {
+        "model": "Gemini 3 Flash",
+        "score": 50,
+        "benchmarks": {
+          "swe-bench-multilingual": 69.8
+        }
+      },
+      {
+        "model": "Kimi K2.5",
+        "score": 50,
+        "benchmarks": {
+          "swe-bench-multilingual": 69.8
+        }
+      },
+      {
+        "model": "GPT-5.2 (high reasoning)",
+        "score": 50,
+        "benchmarks": {
+          "swe-bench-multilingual": 69.8
+        }
+      },
+      {
+        "model": "DeepSeek V3.2",
+        "score": 50,
+        "benchmarks": {
+          "swe-bench-multilingual": 69.8
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 49.9,
+        "benchmarks": {
+          "multipl-e": 34.6
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 48.2,
+        "benchmarks": {
+          "multipl-e": 32.6
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 47.8,
+        "benchmarks": {
+          "multipl-e": 32.1
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 46.8,
+        "benchmarks": {
+          "multipl-e": 30.9
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 46.6,
+        "benchmarks": {
+          "multipl-e": 30.6
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 45.1,
+        "benchmarks": {
+          "multipl-e": 28.8
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 44.9,
+        "benchmarks": {
+          "multipl-e": 28.6
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 44.1,
+        "benchmarks": {
+          "multipl-e": 27.6
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 43.4,
+        "benchmarks": {
+          "multipl-e": 26.8
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 43.4,
+        "benchmarks": {
+          "multipl-e": 26.8
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 42.9,
+        "benchmarks": {
+          "multipl-e": 26.1
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 42.7,
+        "benchmarks": {
+          "multipl-e": 25.9
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 42.2,
+        "benchmarks": {
+          "multipl-e": 25.3
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 42.1,
+        "benchmarks": {
+          "multipl-e": 25.2
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 41.8,
+        "benchmarks": {
+          "multipl-e": 24.8
+        }
+      },
+      {
+        "model": "Stable-code-3b",
+        "score": 40.9,
+        "benchmarks": {
+          "multipl-e": 23.7
+        }
+      },
+      {
+        "model": "Gemini 3 Pro",
+        "score": 40.2,
+        "benchmarks": {
+          "swe-bench-multilingual": 65.1
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 40.1,
+        "benchmarks": {
+          "multipl-e": 22.8
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 39.8,
+        "benchmarks": {
+          "multipl-e": 22.4
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 39.6,
+        "benchmarks": {
+          "multipl-e": 22.1
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 39.5,
+        "benchmarks": {
+          "multipl-e": 22
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 37.2,
+        "benchmarks": {
+          "multipl-e": 19.2
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 36.6,
+        "benchmarks": {
+          "multipl-e": 18.6
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 35.2,
+        "benchmarks": {
+          "multipl-e": 16.8
+        }
+      },
+      {
+        "model": "Minimax 2.5",
+        "score": 35.2,
+        "benchmarks": {
+          "swe-bench-multilingual": 62.8
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 34.7,
+        "benchmarks": {
+          "multipl-e": 16.1
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 33.5,
+        "benchmarks": {
+          "multipl-e": 14.7
+        }
+      },
+      {
+        "model": "Phi-1",
+        "score": 31.6,
+        "benchmarks": {
+          "multipl-e": 12.4
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 29.5,
+        "benchmarks": {
+          "multipl-e": 9.9
+        }
+      },
+      {
+        "model": "CodeGen-16B-Multi",
+        "score": 28.2,
+        "benchmarks": {
+          "multipl-e": 8.4
+        }
+      },
+      {
+        "model": "StableCode-3B-alpha",
+        "score": 24.6,
+        "benchmarks": {
+          "multipl-e": 4
+        }
+      },
+      {
+        "model": "DeciCoder-1B",
+        "score": 23,
+        "benchmarks": {
+          "multipl-e": 2
+        }
+      },
+      {
+        "model": "SantaCoder-1.1B",
+        "score": 22.6,
+        "benchmarks": {
+          "multipl-e": 1.5
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 22.2,
+        "benchmarks": {
+          "multipl-e": 1.1
+        }
+      },
+      {
+        "model": "GPT-5 mini",
+        "score": 5.7,
+        "benchmarks": {
+          "swe-bench-multilingual": 48.8
+        }
+      }
+    ],
+    "Julia": [
+      {
+        "model": "Phi-1",
+        "score": 86.7,
+        "benchmarks": {
+          "multipl-e": 63
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 81.3,
+        "benchmarks": {
+          "multipl-e": 58.2
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 74.2,
+        "benchmarks": {
+          "multipl-e": 51.9
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 73.6,
+        "benchmarks": {
+          "multipl-e": 51.3
+        }
+      },
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 72.7,
+        "benchmarks": {
+          "multipl-e": 50.5
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 68.3,
+        "benchmarks": {
+          "multipl-e": 46.6
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 66.6,
+        "benchmarks": {
+          "multipl-e": 45.1
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 65.6,
+        "benchmarks": {
+          "multipl-e": 44.2
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 64.5,
+        "benchmarks": {
+          "multipl-e": 43.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 64.2,
+        "benchmarks": {
+          "multipl-e": 42.9
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Instruct",
+        "score": 63.4,
+        "benchmarks": {
+          "multipl-e": 42.2
+        }
+      },
+      {
+        "model": "CodeLlama-70b",
+        "score": 63.4,
+        "benchmarks": {
+          "multipl-e": 42.2
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 63.1,
+        "benchmarks": {
+          "multipl-e": 41.9
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 62.6,
+        "benchmarks": {
+          "multipl-e": 41.5
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 60.5,
+        "benchmarks": {
+          "multipl-e": 39.7
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 59.8,
+        "benchmarks": {
+          "multipl-e": 39
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 59.6,
+        "benchmarks": {
+          "multipl-e": 38.8
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 59.1,
+        "benchmarks": {
+          "multipl-e": 38.4
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 57.8,
+        "benchmarks": {
+          "multipl-e": 37.3
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Python",
+        "score": 55.7,
+        "benchmarks": {
+          "multipl-e": 35.4
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 54.1,
+        "benchmarks": {
+          "multipl-e": 34
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 53.2,
+        "benchmarks": {
+          "multipl-e": 33.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 52.8,
+        "benchmarks": {
+          "multipl-e": 32.8
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 52.6,
+        "benchmarks": {
+          "multipl-e": 32.7
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 52.2,
+        "benchmarks": {
+          "multipl-e": 32.2
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 51.2,
+        "benchmarks": {
+          "multipl-e": 31.4
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 51.2,
+        "benchmarks": {
+          "multipl-e": 31.4
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 50.1,
+        "benchmarks": {
+          "multipl-e": 30.4
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 48.4,
+        "benchmarks": {
+          "multipl-e": 28.9
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 48.2,
+        "benchmarks": {
+          "multipl-e": 28.7
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 48,
+        "benchmarks": {
+          "multipl-e": 28.5
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 47.4,
+        "benchmarks": {
+          "multipl-e": 28
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 46.9,
+        "benchmarks": {
+          "multipl-e": 27.6
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 44.7,
+        "benchmarks": {
+          "multipl-e": 25.6
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 43.5,
+        "benchmarks": {
+          "multipl-e": 24.5
+        }
+      },
+      {
+        "model": "Falcon-180B",
+        "score": 43.5,
+        "benchmarks": {
+          "multipl-e": 24.5
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 41.8,
+        "benchmarks": {
+          "multipl-e": 23
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 41.7,
+        "benchmarks": {
+          "multipl-e": 22.9
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 40.8,
+        "benchmarks": {
+          "multipl-e": 22.1
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 40.4,
+        "benchmarks": {
+          "multipl-e": 21.8
+        }
+      },
+      {
+        "model": "Stable-code-3b",
+        "score": 40,
+        "benchmarks": {
+          "multipl-e": 21.4
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 39.7,
+        "benchmarks": {
+          "multipl-e": 21.1
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 39.5,
+        "benchmarks": {
+          "multipl-e": 20.9
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 38.9,
+        "benchmarks": {
+          "multipl-e": 20.4
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 38.3,
+        "benchmarks": {
+          "multipl-e": 19.9
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 38,
+        "benchmarks": {
+          "multipl-e": 19.6
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 37.9,
+        "benchmarks": {
+          "multipl-e": 19.6
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 37.4,
+        "benchmarks": {
+          "multipl-e": 19.1
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 34.1,
+        "benchmarks": {
+          "multipl-e": 16.1
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 33,
+        "benchmarks": {
+          "multipl-e": 15.2
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 31.5,
+        "benchmarks": {
+          "multipl-e": 13.8
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 31.5,
+        "benchmarks": {
+          "multipl-e": 13.9
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 28.7,
+        "benchmarks": {
+          "multipl-e": 11.3
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 21.2,
+        "benchmarks": {
+          "multipl-e": 4.7
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 17.4,
+        "benchmarks": {
+          "multipl-e": 1.2
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 17.1,
+        "benchmarks": {
+          "multipl-e": 1
+        }
+      }
+    ],
+    "D": [
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 94.1,
+        "benchmarks": {
+          "multipl-e": 32.3
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 81.4,
+        "benchmarks": {
+          "multipl-e": 27
+        }
+      },
+      {
+        "model": "CodeLlama-70b",
+        "score": 76.2,
+        "benchmarks": {
+          "multipl-e": 24.8
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 75.1,
+        "benchmarks": {
+          "multipl-e": 24.4
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 73.4,
+        "benchmarks": {
+          "multipl-e": 23.6
+        }
+      },
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 72.4,
+        "benchmarks": {
+          "multipl-e": 23.2
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 71.1,
+        "benchmarks": {
+          "multipl-e": 22.7
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 70.2,
+        "benchmarks": {
+          "multipl-e": 22.3
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 68.5,
+        "benchmarks": {
+          "multipl-e": 21.6
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Python",
+        "score": 67.3,
+        "benchmarks": {
+          "multipl-e": 21.1
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 64.9,
+        "benchmarks": {
+          "multipl-e": 20.1
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Instruct",
+        "score": 64.4,
+        "benchmarks": {
+          "multipl-e": 19.9
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 64,
+        "benchmarks": {
+          "multipl-e": 19.7
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 60.4,
+        "benchmarks": {
+          "multipl-e": 18.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 59.5,
+        "benchmarks": {
+          "multipl-e": 17.9
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 58.5,
+        "benchmarks": {
+          "multipl-e": 17.4
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 58.2,
+        "benchmarks": {
+          "multipl-e": 17.3
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 55.8,
+        "benchmarks": {
+          "multipl-e": 16.3
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 55.2,
+        "benchmarks": {
+          "multipl-e": 16
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 54.6,
+        "benchmarks": {
+          "multipl-e": 15.8
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 53.9,
+        "benchmarks": {
+          "multipl-e": 15.5
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 53.6,
+        "benchmarks": {
+          "multipl-e": 15.4
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 53.3,
+        "benchmarks": {
+          "multipl-e": 15.3
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 53,
+        "benchmarks": {
+          "multipl-e": 15.1
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 50.6,
+        "benchmarks": {
+          "multipl-e": 14.1
+        }
+      },
+      {
+        "model": "Falcon-180B",
+        "score": 50.5,
+        "benchmarks": {
+          "multipl-e": 14.1
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 49.8,
+        "benchmarks": {
+          "multipl-e": 13.8
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 49.4,
+        "benchmarks": {
+          "multipl-e": 13.6
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 49.3,
+        "benchmarks": {
+          "multipl-e": 13.6
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 48.8,
+        "benchmarks": {
+          "multipl-e": 13.4
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 46.9,
+        "benchmarks": {
+          "multipl-e": 12.6
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 45.9,
+        "benchmarks": {
+          "multipl-e": 12.1
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 45.1,
+        "benchmarks": {
+          "multipl-e": 11.8
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 45.1,
+        "benchmarks": {
+          "multipl-e": 11.8
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 44.6,
+        "benchmarks": {
+          "multipl-e": 11.6
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 44.4,
+        "benchmarks": {
+          "multipl-e": 11.5
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 41.8,
+        "benchmarks": {
+          "multipl-e": 10.4
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 41.4,
+        "benchmarks": {
+          "multipl-e": 10.3
+        }
+      },
+      {
+        "model": "Stable-code-3b",
+        "score": 41,
+        "benchmarks": {
+          "multipl-e": 10.1
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 40.8,
+        "benchmarks": {
+          "multipl-e": 10
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 40.5,
+        "benchmarks": {
+          "multipl-e": 9.9
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 40.3,
+        "benchmarks": {
+          "multipl-e": 9.8
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 40.2,
+        "benchmarks": {
+          "multipl-e": 9.8
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 39.6,
+        "benchmarks": {
+          "multipl-e": 9.5
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 38.2,
+        "benchmarks": {
+          "multipl-e": 8.9
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 38,
+        "benchmarks": {
+          "multipl-e": 8.9
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 38,
+        "benchmarks": {
+          "multipl-e": 8.8
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 37,
+        "benchmarks": {
+          "multipl-e": 8.4
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 36.2,
+        "benchmarks": {
+          "multipl-e": 8.1
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 35.7,
+        "benchmarks": {
+          "multipl-e": 7.9
+        }
+      },
+      {
+        "model": "CodeGen-16B-Multi",
+        "score": 35.2,
+        "benchmarks": {
+          "multipl-e": 7.7
+        }
+      },
+      {
+        "model": "Phi-1",
+        "score": 33.7,
+        "benchmarks": {
+          "multipl-e": 7.1
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 32.2,
+        "benchmarks": {
+          "multipl-e": 6.4
+        }
+      },
+      {
+        "model": "DeciCoder-1B",
+        "score": 31.4,
+        "benchmarks": {
+          "multipl-e": 6.1
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 28.7,
+        "benchmarks": {
+          "multipl-e": 5
+        }
+      },
+      {
+        "model": "StableCode-3B-alpha",
+        "score": 28.2,
+        "benchmarks": {
+          "multipl-e": 4.8
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 27.9,
+        "benchmarks": {
+          "multipl-e": 4.6
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 27.9,
+        "benchmarks": {
+          "multipl-e": 4.7
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 27.2,
+        "benchmarks": {
+          "multipl-e": 4.3
+        }
+      }
+    ],
+    "Lua": [
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 81.2,
+        "benchmarks": {
+          "multipl-e": 57.8
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 80.7,
+        "benchmarks": {
+          "multipl-e": 57.3
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 75.7,
+        "benchmarks": {
+          "multipl-e": 52.8
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 73.5,
+        "benchmarks": {
+          "multipl-e": 50.9
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 70,
+        "benchmarks": {
+          "multipl-e": 47.8
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 68.3,
+        "benchmarks": {
+          "multipl-e": 46.3
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 68.1,
+        "benchmarks": {
+          "multipl-e": 46
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Python",
+        "score": 66.6,
+        "benchmarks": {
+          "multipl-e": 44.7
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 66.4,
+        "benchmarks": {
+          "multipl-e": 44.6
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 66.1,
+        "benchmarks": {
+          "multipl-e": 44.3
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 66.1,
+        "benchmarks": {
+          "multipl-e": 44.3
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Instruct",
+        "score": 65.9,
+        "benchmarks": {
+          "multipl-e": 44.1
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 65.5,
+        "benchmarks": {
+          "multipl-e": 43.8
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 63.6,
+        "benchmarks": {
+          "multipl-e": 42.1
+        }
+      },
+      {
+        "model": "CodeLlama-70b",
+        "score": 63.1,
+        "benchmarks": {
+          "multipl-e": 41.6
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 60.6,
+        "benchmarks": {
+          "multipl-e": 39.4
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 60,
+        "benchmarks": {
+          "multipl-e": 38.9
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 58.5,
+        "benchmarks": {
+          "multipl-e": 37.5
+        }
+      },
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 58.2,
+        "benchmarks": {
+          "multipl-e": 37.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 57.4,
+        "benchmarks": {
+          "multipl-e": 36.5
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 54.4,
+        "benchmarks": {
+          "multipl-e": 33.9
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 53.3,
+        "benchmarks": {
+          "multipl-e": 32.9
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 53.3,
+        "benchmarks": {
+          "multipl-e": 32.9
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 53.3,
+        "benchmarks": {
+          "multipl-e": 32.9
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 52.6,
+        "benchmarks": {
+          "multipl-e": 32.3
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 52.2,
+        "benchmarks": {
+          "multipl-e": 31.9
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 51.8,
+        "benchmarks": {
+          "multipl-e": 31.6
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 51.5,
+        "benchmarks": {
+          "multipl-e": 31.3
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 50.8,
+        "benchmarks": {
+          "multipl-e": 30.7
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 50.6,
+        "benchmarks": {
+          "multipl-e": 30.5
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 50.4,
+        "benchmarks": {
+          "multipl-e": 30.4
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 49.9,
+        "benchmarks": {
+          "multipl-e": 29.9
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 47.8,
+        "benchmarks": {
+          "multipl-e": 28
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 47.6,
+        "benchmarks": {
+          "multipl-e": 27.9
+        }
+      },
+      {
+        "model": "Falcon-180B",
+        "score": 46.3,
+        "benchmarks": {
+          "multipl-e": 26.7
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 46.2,
+        "benchmarks": {
+          "multipl-e": 26.6
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 45.7,
+        "benchmarks": {
+          "multipl-e": 26.2
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 44.7,
+        "benchmarks": {
+          "multipl-e": 25.2
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 43.2,
+        "benchmarks": {
+          "multipl-e": 23.9
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 42.7,
+        "benchmarks": {
+          "multipl-e": 23.4
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 42.6,
+        "benchmarks": {
+          "multipl-e": 23.4
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 41.7,
+        "benchmarks": {
+          "multipl-e": 22.6
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 41.5,
+        "benchmarks": {
+          "multipl-e": 22.4
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 41.1,
+        "benchmarks": {
+          "multipl-e": 22
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 40.8,
+        "benchmarks": {
+          "multipl-e": 21.8
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 38.2,
+        "benchmarks": {
+          "multipl-e": 19.4
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 36.6,
+        "benchmarks": {
+          "multipl-e": 18
+        }
+      },
+      {
+        "model": "Stable-code-3b",
+        "score": 36,
+        "benchmarks": {
+          "multipl-e": 17.5
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 34.5,
+        "benchmarks": {
+          "multipl-e": 16.2
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 34.2,
+        "benchmarks": {
+          "multipl-e": 15.9
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 33.8,
+        "benchmarks": {
+          "multipl-e": 15.5
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 33.8,
+        "benchmarks": {
+          "multipl-e": 15.5
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 30.4,
+        "benchmarks": {
+          "multipl-e": 12.5
+        }
+      },
+      {
+        "model": "SantaCoder-1.1B",
+        "score": 27.6,
+        "benchmarks": {
+          "multipl-e": 10
+        }
+      },
+      {
+        "model": "CodeGen-16B-Multi",
+        "score": 25.9,
+        "benchmarks": {
+          "multipl-e": 8.5
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 23.9,
+        "benchmarks": {
+          "multipl-e": 6.8
+        }
+      },
+      {
+        "model": "Phi-1",
+        "score": 23.3,
+        "benchmarks": {
+          "multipl-e": 6.2
+        }
+      },
+      {
+        "model": "StableCode-3B-alpha",
+        "score": 22.1,
+        "benchmarks": {
+          "multipl-e": 5.1
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 18.7,
+        "benchmarks": {
+          "multipl-e": 2.1
+        }
+      }
+    ],
+    "R": [
+      {
+        "model": "StableCode-3B-alpha",
+        "score": 100,
+        "benchmarks": {
+          "multipl-e": 80
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 81.6,
+        "benchmarks": {
+          "multipl-e": 52.7
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 74.2,
+        "benchmarks": {
+          "multipl-e": 45.9
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 68.2,
+        "benchmarks": {
+          "multipl-e": 40.4
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 67.7,
+        "benchmarks": {
+          "multipl-e": 39.9
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 67.6,
+        "benchmarks": {
+          "multipl-e": 39.9
+        }
+      },
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 67.5,
+        "benchmarks": {
+          "multipl-e": 39.7
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 67.5,
+        "benchmarks": {
+          "multipl-e": 39.8
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 67.2,
+        "benchmarks": {
+          "multipl-e": 39.4
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 66.8,
+        "benchmarks": {
+          "multipl-e": 39.1
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 66.2,
+        "benchmarks": {
+          "multipl-e": 38.6
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 65.3,
+        "benchmarks": {
+          "multipl-e": 37.7
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 65.3,
+        "benchmarks": {
+          "multipl-e": 37.8
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 64.2,
+        "benchmarks": {
+          "multipl-e": 36.7
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 58.2,
+        "benchmarks": {
+          "multipl-e": 31.2
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Instruct",
+        "score": 56.1,
+        "benchmarks": {
+          "multipl-e": 29.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 55.8,
+        "benchmarks": {
+          "multipl-e": 29
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 54.7,
+        "benchmarks": {
+          "multipl-e": 28
+        }
+      },
+      {
+        "model": "CodeLlama-70b",
+        "score": 54.7,
+        "benchmarks": {
+          "multipl-e": 28
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 54.1,
+        "benchmarks": {
+          "multipl-e": 27.3
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 53.4,
+        "benchmarks": {
+          "multipl-e": 26.8
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Python",
+        "score": 52.7,
+        "benchmarks": {
+          "multipl-e": 26.1
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 50.7,
+        "benchmarks": {
+          "multipl-e": 24.3
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 49,
+        "benchmarks": {
+          "multipl-e": 22.7
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 48.9,
+        "benchmarks": {
+          "multipl-e": 22.5
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 48.7,
+        "benchmarks": {
+          "multipl-e": 22.4
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 47.9,
+        "benchmarks": {
+          "multipl-e": 21.6
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 47.2,
+        "benchmarks": {
+          "multipl-e": 21
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 46.7,
+        "benchmarks": {
+          "multipl-e": 20.5
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 46.3,
+        "benchmarks": {
+          "multipl-e": 20.1
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 45.9,
+        "benchmarks": {
+          "multipl-e": 19.8
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 45.8,
+        "benchmarks": {
+          "multipl-e": 19.7
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 44.3,
+        "benchmarks": {
+          "multipl-e": 18.3
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 44.3,
+        "benchmarks": {
+          "multipl-e": 18.4
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 44.2,
+        "benchmarks": {
+          "multipl-e": 18.3
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 44,
+        "benchmarks": {
+          "multipl-e": 18
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 42.6,
+        "benchmarks": {
+          "multipl-e": 16.7
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 41.2,
+        "benchmarks": {
+          "multipl-e": 15.5
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 40.2,
+        "benchmarks": {
+          "multipl-e": 14.6
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 40.2,
+        "benchmarks": {
+          "multipl-e": 14.5
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 40,
+        "benchmarks": {
+          "multipl-e": 14.4
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 39.9,
+        "benchmarks": {
+          "multipl-e": 14.2
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 39.2,
+        "benchmarks": {
+          "multipl-e": 13.7
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 39.2,
+        "benchmarks": {
+          "multipl-e": 13.6
+        }
+      },
+      {
+        "model": "Stable-code-3b",
+        "score": 38.9,
+        "benchmarks": {
+          "multipl-e": 13.4
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 38.6,
+        "benchmarks": {
+          "multipl-e": 13
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 37,
+        "benchmarks": {
+          "multipl-e": 11.6
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 36.8,
+        "benchmarks": {
+          "multipl-e": 11.4
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 36,
+        "benchmarks": {
+          "multipl-e": 10.7
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 35.5,
+        "benchmarks": {
+          "multipl-e": 10.2
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 35.4,
+        "benchmarks": {
+          "multipl-e": 10.1
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 35.3,
+        "benchmarks": {
+          "multipl-e": 10
+        }
+      },
+      {
+        "model": "DeciCoder-1B",
+        "score": 35.3,
+        "benchmarks": {
+          "multipl-e": 10
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 32.2,
+        "benchmarks": {
+          "multipl-e": 7.2
+        }
+      },
+      {
+        "model": "CodeGen-16B-Multi",
+        "score": 31.4,
+        "benchmarks": {
+          "multipl-e": 6.5
+        }
+      },
+      {
+        "model": "Phi-1",
+        "score": 31.2,
+        "benchmarks": {
+          "multipl-e": 6.2
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 30.7,
+        "benchmarks": {
+          "multipl-e": 5.7
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 29.2,
+        "benchmarks": {
+          "multipl-e": 4.4
+        }
+      }
+    ],
+    "Racket": [
+      {
+        "model": "CodeGen-16B-Multi",
+        "score": 100,
+        "benchmarks": {
+          "multipl-e": 66
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 97.9,
+        "benchmarks": {
+          "multipl-e": 61.5
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 82.9,
+        "benchmarks": {
+          "multipl-e": 47.9
+        }
+      },
+      {
+        "model": "DeciCoder-1B",
+        "score": 81.8,
+        "benchmarks": {
+          "multipl-e": 47
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 68.1,
+        "benchmarks": {
+          "multipl-e": 34.6
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 67.6,
+        "benchmarks": {
+          "multipl-e": 34.2
+        }
+      },
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 65.5,
+        "benchmarks": {
+          "multipl-e": 32.3
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 64.9,
+        "benchmarks": {
+          "multipl-e": 31.7
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 63.2,
+        "benchmarks": {
+          "multipl-e": 30.2
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 62.3,
+        "benchmarks": {
+          "multipl-e": 29.4
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 61.6,
+        "benchmarks": {
+          "multipl-e": 28.7
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 57.4,
+        "benchmarks": {
+          "multipl-e": 24.9
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 57.4,
+        "benchmarks": {
+          "multipl-e": 24.9
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 56.8,
+        "benchmarks": {
+          "multipl-e": 24.3
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 55.7,
+        "benchmarks": {
+          "multipl-e": 23.4
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 54.6,
+        "benchmarks": {
+          "multipl-e": 22.4
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 52.9,
+        "benchmarks": {
+          "multipl-e": 20.9
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 50.7,
+        "benchmarks": {
+          "multipl-e": 18.9
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 50.6,
+        "benchmarks": {
+          "multipl-e": 18.7
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 50.5,
+        "benchmarks": {
+          "multipl-e": 18.6
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 49.9,
+        "benchmarks": {
+          "multipl-e": 18.1
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 48.9,
+        "benchmarks": {
+          "multipl-e": 17.2
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 48.6,
+        "benchmarks": {
+          "multipl-e": 16.9
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 48.3,
+        "benchmarks": {
+          "multipl-e": 16.7
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 47.7,
+        "benchmarks": {
+          "multipl-e": 16.2
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 44.9,
+        "benchmarks": {
+          "multipl-e": 13.6
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 44.8,
+        "benchmarks": {
+          "multipl-e": 13.6
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 44.7,
+        "benchmarks": {
+          "multipl-e": 13.4
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 44.4,
+        "benchmarks": {
+          "multipl-e": 13.2
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 43.7,
+        "benchmarks": {
+          "multipl-e": 12.5
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 43.2,
+        "benchmarks": {
+          "multipl-e": 12
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 43.1,
+        "benchmarks": {
+          "multipl-e": 11.9
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 42.9,
+        "benchmarks": {
+          "multipl-e": 11.8
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 42.9,
+        "benchmarks": {
+          "multipl-e": 11.8
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 42.9,
+        "benchmarks": {
+          "multipl-e": 11.8
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 42.7,
+        "benchmarks": {
+          "multipl-e": 11.6
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 42.1,
+        "benchmarks": {
+          "multipl-e": 11.1
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 41.6,
+        "benchmarks": {
+          "multipl-e": 10.6
+        }
+      },
+      {
+        "model": "Falcon-180B",
+        "score": 41.5,
+        "benchmarks": {
+          "multipl-e": 10.6
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 41.3,
+        "benchmarks": {
+          "multipl-e": 10.4
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 40.5,
+        "benchmarks": {
+          "multipl-e": 9.6
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 40.3,
+        "benchmarks": {
+          "multipl-e": 9.4
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 40.1,
+        "benchmarks": {
+          "multipl-e": 9.2
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 39.9,
+        "benchmarks": {
+          "multipl-e": 9
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 39.6,
+        "benchmarks": {
+          "multipl-e": 8.8
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 38.6,
+        "benchmarks": {
+          "multipl-e": 7.9
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 38.5,
+        "benchmarks": {
+          "multipl-e": 7.8
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 37.6,
+        "benchmarks": {
+          "multipl-e": 7
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 37.1,
+        "benchmarks": {
+          "multipl-e": 6.5
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 35.4,
+        "benchmarks": {
+          "multipl-e": 5
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 35.4,
+        "benchmarks": {
+          "multipl-e": 5
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 34.4,
+        "benchmarks": {
+          "multipl-e": 4.1
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 33.4,
+        "benchmarks": {
+          "multipl-e": 3.2
+        }
+      },
+      {
+        "model": "Phi-1",
+        "score": 33.3,
+        "benchmarks": {
+          "multipl-e": 3.1
+        }
+      },
+      {
+        "model": "StableCode-3B-alpha",
+        "score": 30.8,
+        "benchmarks": {
+          "multipl-e": 0.8
+        }
+      }
+    ],
+    "Rust": [
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 80.8,
+        "benchmarks": {
+          "multipl-e": 68.5
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 79.9,
+        "benchmarks": {
+          "multipl-e": 67.5
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 78.5,
+        "benchmarks": {
+          "multipl-e": 65.9
+        }
+      },
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 78.2,
+        "benchmarks": {
+          "multipl-e": 65.5
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 71.7,
+        "benchmarks": {
+          "multipl-e": 58
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 71.4,
+        "benchmarks": {
+          "multipl-e": 57.7
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 69.6,
+        "benchmarks": {
+          "multipl-e": 55.6
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 68.4,
+        "benchmarks": {
+          "multipl-e": 54.1
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 68.1,
+        "benchmarks": {
+          "multipl-e": 53.9
+        }
+      },
+      {
+        "model": "Gemini 3 Flash",
+        "score": 65.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 81.4
+        }
+      },
+      {
+        "model": "Claude 4.6 Opus",
+        "score": 65.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 81.4
+        }
+      },
+      {
+        "model": "CodeLlama-70b",
+        "score": 64.6,
+        "benchmarks": {
+          "multipl-e": 49.7
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 64.2,
+        "benchmarks": {
+          "multipl-e": 49.2
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 63.8,
+        "benchmarks": {
+          "multipl-e": 48.8
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Python",
+        "score": 63.5,
+        "benchmarks": {
+          "multipl-e": 48.5
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 63.3,
+        "benchmarks": {
+          "multipl-e": 48.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 62.9,
+        "benchmarks": {
+          "multipl-e": 47.7
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 62.7,
+        "benchmarks": {
+          "multipl-e": 47.6
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Instruct",
+        "score": 62.4,
+        "benchmarks": {
+          "multipl-e": 47.2
+        }
+      },
+      {
+        "model": "Claude 4.5 Opus",
+        "score": 62.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 79.1
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 61.5,
+        "benchmarks": {
+          "multipl-e": 46.2
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 59.5,
+        "benchmarks": {
+          "multipl-e": 43.8
+        }
+      },
+      {
+        "model": "Gemini 3 Pro",
+        "score": 58.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 76.7
+        }
+      },
+      {
+        "model": "Claude 4.5 Haiku",
+        "score": 58.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 76.7
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 55.9,
+        "benchmarks": {
+          "multipl-e": 39.7
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 55.6,
+        "benchmarks": {
+          "multipl-e": 39.3
+        }
+      },
+      {
+        "model": "GPT-5.2 (high reasoning)",
+        "score": 55.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 74.4
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 55.1,
+        "benchmarks": {
+          "multipl-e": 38.7
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 54.8,
+        "benchmarks": {
+          "multipl-e": 38.3
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 54.5,
+        "benchmarks": {
+          "multipl-e": 38
+        }
+      },
+      {
+        "model": "Minimax 2.5",
+        "score": 54.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 73.8
+        }
+      },
+      {
+        "model": "GPT-5-2 Codex",
+        "score": 51.8,
+        "benchmarks": {
+          "swe-bench-multilingual": 72.1
+        }
+      },
+      {
+        "model": "GPT 5.2 Codex",
+        "score": 51.8,
+        "benchmarks": {
+          "swe-bench-multilingual": 72.1
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 51.6,
+        "benchmarks": {
+          "multipl-e": 34.6
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 51.6,
+        "benchmarks": {
+          "multipl-e": 34.7
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 51.6,
+        "benchmarks": {
+          "multipl-e": 34.6
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 50.8,
+        "benchmarks": {
+          "multipl-e": 33.7
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 50.1,
+        "benchmarks": {
+          "multipl-e": 32.8
+        }
+      },
+      {
+        "model": "Kimi K2.5",
+        "score": 48.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 69.8
+        }
+      },
+      {
+        "model": "Claude 4.5 Sonnet",
+        "score": 48.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 69.8
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 47.4,
+        "benchmarks": {
+          "multipl-e": 29.7
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 47.3,
+        "benchmarks": {
+          "multipl-e": 29.6
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 47,
+        "benchmarks": {
+          "multipl-e": 29.3
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 45,
+        "benchmarks": {
+          "multipl-e": 27
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 44.9,
+        "benchmarks": {
+          "multipl-e": 26.8
+        }
+      },
+      {
+        "model": "GLM-5",
+        "score": 44.8,
+        "benchmarks": {
+          "swe-bench-multilingual": 67.4
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 44,
+        "benchmarks": {
+          "multipl-e": 25.8
+        }
+      },
+      {
+        "model": "Falcon-180B",
+        "score": 43.3,
+        "benchmarks": {
+          "multipl-e": 25
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 42.9,
+        "benchmarks": {
+          "multipl-e": 24.6
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 42.9,
+        "benchmarks": {
+          "multipl-e": 24.5
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 42.9,
+        "benchmarks": {
+          "multipl-e": 24.5
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 42.7,
+        "benchmarks": {
+          "multipl-e": 24.3
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 42.7,
+        "benchmarks": {
+          "multipl-e": 24.3
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 41.3,
+        "benchmarks": {
+          "multipl-e": 22.6
+        }
+      },
+      {
+        "model": "Stable-code-3b",
+        "score": 40.9,
+        "benchmarks": {
+          "multipl-e": 22.2
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 40.6,
+        "benchmarks": {
+          "multipl-e": 21.8
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 40.6,
+        "benchmarks": {
+          "multipl-e": 21.8
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 39.5,
+        "benchmarks": {
+          "multipl-e": 20.6
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 39.4,
+        "benchmarks": {
+          "multipl-e": 20.5
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 37.8,
+        "benchmarks": {
+          "multipl-e": 18.6
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 37.4,
+        "benchmarks": {
+          "multipl-e": 18.1
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 37.3,
+        "benchmarks": {
+          "multipl-e": 17.9
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 35.9,
+        "benchmarks": {
+          "multipl-e": 16.3
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 34.9,
+        "benchmarks": {
+          "multipl-e": 15.2
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 33.8,
+        "benchmarks": {
+          "multipl-e": 13.9
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 30.6,
+        "benchmarks": {
+          "multipl-e": 10.2
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 28.6,
+        "benchmarks": {
+          "multipl-e": 7.8
+        }
+      },
+      {
+        "model": "Phi-1",
+        "score": 25.7,
+        "benchmarks": {
+          "multipl-e": 4.5
+        }
+      },
+      {
+        "model": "CodeGen-16B-Multi",
+        "score": 25.5,
+        "benchmarks": {
+          "multipl-e": 4.2
+        }
+      },
+      {
+        "model": "StableCode-3B-alpha",
+        "score": 23.6,
+        "benchmarks": {
+          "multipl-e": 2
+        }
+      },
+      {
+        "model": "SantaCoder-1.1B",
+        "score": 23.6,
+        "benchmarks": {
+          "multipl-e": 2
+        }
+      },
+      {
+        "model": "DeciCoder-1B",
+        "score": 23.3,
+        "benchmarks": {
+          "multipl-e": 1.7
+        }
+      },
+      {
+        "model": "DeepSeek V3.2",
+        "score": 20.2,
+        "benchmarks": {
+          "swe-bench-multilingual": 51.2
+        }
+      },
+      {
+        "model": "GPT-5 mini",
+        "score": 13.1,
+        "benchmarks": {
+          "swe-bench-multilingual": 46.5
+        }
+      }
+    ],
+    "Swift": [
+      {
+        "model": "StableCode-3B-alpha",
+        "score": 100,
+        "benchmarks": {
+          "multipl-e": 98
+        }
+      },
+      {
+        "model": "SantaCoder-1.1B",
+        "score": 79.6,
+        "benchmarks": {
+          "multipl-e": 70
+        }
+      },
+      {
+        "model": "DeciCoder-1B",
+        "score": 74.1,
+        "benchmarks": {
+          "multipl-e": 63
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B",
+        "score": 71.9,
+        "benchmarks": {
+          "multipl-e": 60.2
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B-Chat",
+        "score": 71.4,
+        "benchmarks": {
+          "multipl-e": 59.6
+        }
+      },
+      {
+        "model": "Nxcode-CQ-7B-orpo",
+        "score": 70.6,
+        "benchmarks": {
+          "multipl-e": 58.5
+        }
+      },
+      {
+        "model": "Qwen2.5-Coder-32B-Instruct",
+        "score": 70.3,
+        "benchmarks": {
+          "multipl-e": 58.1
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v1",
+        "score": 66.5,
+        "benchmarks": {
+          "multipl-e": 53.3
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-33B",
+        "score": 65.4,
+        "benchmarks": {
+          "multipl-e": 51.9
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-v2",
+        "score": 63.7,
+        "benchmarks": {
+          "multipl-e": 49.6
+        }
+      },
+      {
+        "model": "CodeFuse-DeepSeek-33b",
+        "score": 63.5,
+        "benchmarks": {
+          "multipl-e": 49.4
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-instruct",
+        "score": 63.5,
+        "benchmarks": {
+          "multipl-e": 49.4
+        }
+      },
+      {
+        "model": "Phind-CodeLlama-34B-Python-v1",
+        "score": 61.7,
+        "benchmarks": {
+          "multipl-e": 47.1
+        }
+      },
+      {
+        "model": "OpenCodeInterpreter-DS-6.7B",
+        "score": 60.8,
+        "benchmarks": {
+          "multipl-e": 46
+        }
+      },
+      {
+        "model": "WizardCoder-Python-34B-V1.0",
+        "score": 59.5,
+        "benchmarks": {
+          "multipl-e": 44.3
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-instruct",
+        "score": 59.4,
+        "benchmarks": {
+          "multipl-e": 44.2
+        }
+      },
+      {
+        "model": "Artigenz-Coder-DS-6.7B",
+        "score": 59.2,
+        "benchmarks": {
+          "multipl-e": 43.9
+        }
+      },
+      {
+        "model": "CodeQwen1.5-7B",
+        "score": 58.7,
+        "benchmarks": {
+          "multipl-e": 43.3
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Instruct",
+        "score": 58.4,
+        "benchmarks": {
+          "multipl-e": 42.9
+        }
+      },
+      {
+        "model": "CodeLlama-70b",
+        "score": 58.4,
+        "benchmarks": {
+          "multipl-e": 42.9
+        }
+      },
+      {
+        "model": "CodeLlama-70b-Python",
+        "score": 55.5,
+        "benchmarks": {
+          "multipl-e": 39.1
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Instruct",
+        "score": 54.3,
+        "benchmarks": {
+          "multipl-e": 37.6
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-33b-base",
+        "score": 52.8,
+        "benchmarks": {
+          "multipl-e": 35.8
+        }
+      },
+      {
+        "model": "CodeLlama-34b",
+        "score": 52.4,
+        "benchmarks": {
+          "multipl-e": 35.3
+        }
+      },
+      {
+        "model": "CodeLlama-34b-Python",
+        "score": 51.7,
+        "benchmarks": {
+          "multipl-e": 34.3
+        }
+      },
+      {
+        "model": "StarCoder2-15B",
+        "score": 51.6,
+        "benchmarks": {
+          "multipl-e": 34.2
+        }
+      },
+      {
+        "model": "CodeGemma-7B",
+        "score": 50.4,
+        "benchmarks": {
+          "multipl-e": 32.6
+        }
+      },
+      {
+        "model": "WizardCoder-Python-13B-V1.0",
+        "score": 50.1,
+        "benchmarks": {
+          "multipl-e": 32.3
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Instruct",
+        "score": 49.7,
+        "benchmarks": {
+          "multipl-e": 31.8
+        }
+      },
+      {
+        "model": "CodeLlama-13b",
+        "score": 48,
+        "benchmarks": {
+          "multipl-e": 29.5
+        }
+      },
+      {
+        "model": "WizardCoder-15B-V1.0",
+        "score": 46,
+        "benchmarks": {
+          "multipl-e": 27.1
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Python",
+        "score": 45.8,
+        "benchmarks": {
+          "multipl-e": 26.8
+        }
+      },
+      {
+        "model": "CodeLlama-7b-Instruct",
+        "score": 45.7,
+        "benchmarks": {
+          "multipl-e": 26.7
+        }
+      },
+      {
+        "model": "StarCoder2-7B",
+        "score": 45.2,
+        "benchmarks": {
+          "multipl-e": 26.1
+        }
+      },
+      {
+        "model": "CodeLlama-13b-Python",
+        "score": 45.1,
+        "benchmarks": {
+          "multipl-e": 25.9
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-7b-base",
+        "score": 45,
+        "benchmarks": {
+          "multipl-e": 25.8
+        }
+      },
+      {
+        "model": "CodeLlama-7b",
+        "score": 44.8,
+        "benchmarks": {
+          "multipl-e": 25.5
+        }
+      },
+      {
+        "model": "StarCoder2-3B",
+        "score": 44.5,
+        "benchmarks": {
+          "multipl-e": 25.1
+        }
+      },
+      {
+        "model": "CodeShell-7B",
+        "score": 43.9,
+        "benchmarks": {
+          "multipl-e": 24.3
+        }
+      },
+      {
+        "model": "StarCoder-15B",
+        "score": 42.7,
+        "benchmarks": {
+          "multipl-e": 22.7
+        }
+      },
+      {
+        "model": "CodeGeex2-6B",
+        "score": 42.1,
+        "benchmarks": {
+          "multipl-e": 22.1
+        }
+      },
+      {
+        "model": "Refact-1.6B",
+        "score": 39.2,
+        "benchmarks": {
+          "multipl-e": 18.4
+        }
+      },
+      {
+        "model": "OctoCoder-15B",
+        "score": 39.1,
+        "benchmarks": {
+          "multipl-e": 18.2
+        }
+      },
+      {
+        "model": "OctoGeeX-7B",
+        "score": 38.2,
+        "benchmarks": {
+          "multipl-e": 17
+        }
+      },
+      {
+        "model": "StarCoderBase-15B",
+        "score": 38,
+        "benchmarks": {
+          "multipl-e": 16.7
+        }
+      },
+      {
+        "model": "CodeGen25-7B-multi",
+        "score": 37.9,
+        "benchmarks": {
+          "multipl-e": 16.6
+        }
+      },
+      {
+        "model": "Falcon-180B",
+        "score": 37.2,
+        "benchmarks": {
+          "multipl-e": 15.8
+        }
+      },
+      {
+        "model": "WizardCoder-3B-V1.0",
+        "score": 37.1,
+        "benchmarks": {
+          "multipl-e": 15.7
+        }
+      },
+      {
+        "model": "StarCoderBase-7B",
+        "score": 36.7,
+        "benchmarks": {
+          "multipl-e": 15.1
+        }
+      },
+      {
+        "model": "DeepSeek-Coder-1b-base",
+        "score": 33.8,
+        "benchmarks": {
+          "multipl-e": 11.4
+        }
+      },
+      {
+        "model": "Phi-1",
+        "score": 32.8,
+        "benchmarks": {
+          "multipl-e": 10.1
+        }
+      },
+      {
+        "model": "StarCoderBase-3B",
+        "score": 32.7,
+        "benchmarks": {
+          "multipl-e": 10
+        }
+      },
+      {
+        "model": "WizardCoder-1B-V1.0",
+        "score": 32.4,
+        "benchmarks": {
+          "multipl-e": 9.6
+        }
+      },
+      {
+        "model": "CodeGemma-7B-it",
+        "score": 30.3,
+        "benchmarks": {
+          "multipl-e": 6.9
+        }
+      },
+      {
+        "model": "CodeGemma-2B",
+        "score": 29.8,
+        "benchmarks": {
+          "multipl-e": 6.3
+        }
+      },
+      {
+        "model": "Replit-2.7B",
+        "score": 29.5,
+        "benchmarks": {
+          "multipl-e": 5.9
+        }
+      },
+      {
+        "model": "StarCoderBase-1.1B",
+        "score": 27.9,
+        "benchmarks": {
+          "multipl-e": 3.9
+        }
+      },
+      {
+        "model": "CodeGen25-7B-mono",
+        "score": 26.2,
+        "benchmarks": {
+          "multipl-e": 1.7
+        }
+      },
+      {
+        "model": "CodeGen-16B-Multi",
+        "score": 25.9,
+        "benchmarks": {
+          "multipl-e": 1.3
+        }
+      }
+    ],
+    "Go": [
+      {
+        "model": "Gemini 3 Flash",
+        "score": 70.1,
+        "benchmarks": {
+          "swe-bench-multilingual": 61.9
+        }
+      },
+      {
+        "model": "Minimax 2.5",
+        "score": 64.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 59.5
+        }
+      },
+      {
+        "model": "Kimi K2.5",
+        "score": 64.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 59.5
+        }
+      },
+      {
+        "model": "Claude 4.5 Opus",
+        "score": 59.8,
+        "benchmarks": {
+          "swe-bench-multilingual": 57.1
+        }
+      },
+      {
+        "model": "GLM-5",
+        "score": 59.8,
+        "benchmarks": {
+          "swe-bench-multilingual": 57.1
+        }
+      },
+      {
+        "model": "Claude 4.6 Opus",
+        "score": 54.7,
+        "benchmarks": {
+          "swe-bench-multilingual": 54.8
+        }
+      },
+      {
+        "model": "Claude 4.5 Sonnet",
+        "score": 54.7,
+        "benchmarks": {
+          "swe-bench-multilingual": 54.8
+        }
+      },
+      {
+        "model": "Gemini 3 Pro",
+        "score": 49.6,
+        "benchmarks": {
+          "swe-bench-multilingual": 52.4
+        }
+      },
+      {
+        "model": "GPT-5.2 (high reasoning)",
+        "score": 49.6,
+        "benchmarks": {
+          "swe-bench-multilingual": 52.4
+        }
+      },
+      {
+        "model": "DeepSeek V3.2",
+        "score": 44.5,
+        "benchmarks": {
+          "swe-bench-multilingual": 50
+        }
+      },
+      {
+        "model": "GPT-5-2 Codex",
+        "score": 39.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 47.6
+        }
+      },
+      {
+        "model": "Claude 4.5 Haiku",
+        "score": 39.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 47.6
+        }
+      },
+      {
+        "model": "GPT 5.2 Codex",
+        "score": 39.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 47.6
+        }
+      },
+      {
+        "model": "GPT-5 mini",
+        "score": 8.8,
+        "benchmarks": {
+          "swe-bench-multilingual": 33.3
+        }
+      }
+    ],
+    "Ruby": [
+      {
+        "model": "Gemini 3 Flash",
+        "score": 62,
+        "benchmarks": {
+          "swe-bench-multilingual": 68.2
+        }
+      },
+      {
+        "model": "Kimi K2.5",
+        "score": 62,
+        "benchmarks": {
+          "swe-bench-multilingual": 68.2
+        }
+      },
+      {
+        "model": "Claude 4.6 Opus",
+        "score": 57.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 65.9
+        }
+      },
+      {
+        "model": "Claude 4.5 Opus",
+        "score": 57.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 65.9
+        }
+      },
+      {
+        "model": "Minimax 2.5",
+        "score": 57.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 65.9
+        }
+      },
+      {
+        "model": "GLM-5",
+        "score": 52.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 63.6
+        }
+      },
+      {
+        "model": "Gemini 3 Pro",
+        "score": 52.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 63.6
+        }
+      },
+      {
+        "model": "GPT-5.2 (high reasoning)",
+        "score": 52.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 63.6
+        }
+      },
+      {
+        "model": "DeepSeek V3.2",
+        "score": 52.9,
+        "benchmarks": {
+          "swe-bench-multilingual": 63.6
+        }
+      },
+      {
+        "model": "Claude 4.5 Sonnet",
+        "score": 48.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 61.4
+        }
+      },
+      {
+        "model": "GPT-5-2 Codex",
+        "score": 48.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 61.4
+        }
+      },
+      {
+        "model": "Claude 4.5 Haiku",
+        "score": 48.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 61.4
+        }
+      },
+      {
+        "model": "GPT 5.2 Codex",
+        "score": 48.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 61.4
+        }
+      },
+      {
+        "model": "GPT-5 mini",
+        "score": 0,
+        "benchmarks": {
+          "swe-bench-multilingual": 36.4
+        }
+      }
+    ],
+    "C": [
+      {
+        "model": "GPT-5-2 Codex",
+        "score": 66.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 83.3
+        }
+      },
+      {
+        "model": "GPT 5.2 Codex",
+        "score": 66.4,
+        "benchmarks": {
+          "swe-bench-multilingual": 83.3
+        }
+      },
+      {
+        "model": "Gemini 3 Pro",
+        "score": 62.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 80
+        }
+      },
+      {
+        "model": "GPT-5.2 (high reasoning)",
+        "score": 62.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 80
+        }
+      },
+      {
+        "model": "Gemini 3 Flash",
+        "score": 58.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 76.7
+        }
+      },
+      {
+        "model": "Claude 4.6 Opus",
+        "score": 54.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 73.3
+        }
+      },
+      {
+        "model": "Minimax 2.5",
+        "score": 54.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 73.3
+        }
+      },
+      {
+        "model": "Kimi K2.5",
+        "score": 50.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 70
+        }
+      },
+      {
+        "model": "Claude 4.5 Sonnet",
+        "score": 50.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 70
+        }
+      },
+      {
+        "model": "GLM-5",
+        "score": 46.3,
+        "benchmarks": {
+          "swe-bench-multilingual": 66.7
+        }
+      },
+      {
+        "model": "Claude 4.5 Opus",
+        "score": 42.2,
+        "benchmarks": {
+          "swe-bench-multilingual": 63.3
+        }
+      },
+      {
+        "model": "Claude 4.5 Haiku",
+        "score": 42.2,
+        "benchmarks": {
+          "swe-bench-multilingual": 63.3
+        }
+      },
+      {
+        "model": "DeepSeek V3.2",
+        "score": 38.2,
+        "benchmarks": {
+          "swe-bench-multilingual": 60
+        }
+      },
+      {
+        "model": "GPT-5 mini",
+        "score": 6.1,
+        "benchmarks": {
+          "swe-bench-multilingual": 33.3
+        }
+      }
+    ]
+  }
 }

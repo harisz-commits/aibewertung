@@ -11,7 +11,11 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { computeLanguageLeaderboards, type RawCodingRow, type AggregationMode } from '../src/lib/coding/aggregate.ts';
 import { CANONICAL_LANGUAGES } from '../src/lib/coding/languages.ts';
-import { multiplELanguages } from '../src/lib/importers/codingBenchmarks.ts';
+import {
+  multiplELanguages,
+  fetchBigCodeMultiplE,
+  fetchSweBenchMultilingual
+} from '../src/lib/importers/codingBenchmarks.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA = join(__dirname, '..', 'src', 'data');
@@ -22,19 +26,35 @@ async function main() {
   const token = process.env.HF_TOKEN || process.env.HUGGINGFACE_API_TOKEN;
   const mode = (process.env.CODING_AGG_MODE as AggregationMode) || 'zscore';
 
-  // 1) Results rows (curated seed). Real leaderboard exports go here too.
+  // 1) Results rows from real sources + optional curated seed.
   let rows: RawCodingRow[] = [];
+  const addRows = (label: string, rs: RawCodingRow[]) => {
+    rows = rows.concat(rs);
+    console.log(`  ${label}: ${rs.length} rows`);
+  };
+
+  // BigCode / MultiPL-E (broad language coverage; open models).
+  try {
+    addRows('BigCode MultiPL-E', await fetchBigCodeMultiplE());
+  } catch (e) {
+    console.warn(`  BigCode skipped: ${(e as Error).message}`);
+  }
+  // SWE-bench Multilingual (recent models/agents; real bug-fixing per language).
+  try {
+    addRows('SWE-bench Multilingual', await fetchSweBenchMultilingual());
+  } catch (e) {
+    console.warn(`  SWE-bench Multilingual skipped: ${(e as Error).message}`);
+  }
+  // Curated seed (manual additions / other leaderboard exports).
   if (existsSync(SEED)) {
     try {
       const parsed = JSON.parse(readFileSync(SEED, 'utf8'));
-      rows = Array.isArray(parsed) ? parsed : (parsed.rows ?? []);
-      console.log(`Loaded ${rows.length} result rows from seed.`);
+      addRows('seed', Array.isArray(parsed) ? parsed : (parsed.rows ?? []));
     } catch (e) {
-      console.warn(`Seed parse failed: ${(e as Error).message}`);
+      console.warn(`  Seed parse failed: ${(e as Error).message}`);
     }
-  } else {
-    console.log('No coding-languages.seed.json — writing an empty leaderboard shell.');
   }
+  console.log(`Total ${rows.length} result rows.`);
 
   // 2) Language coverage (real, from MultiPL-E configs when reachable).
   let coverage: string[] = CANONICAL_LANGUAGES;

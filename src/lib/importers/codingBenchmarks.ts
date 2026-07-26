@@ -104,3 +104,126 @@ export function fromResultsTable(rows: any[], map: ResultFieldMap): RawCodingRow
     score: typeof r[map.scoreField] === 'number' ? r[map.scoreField] : Number(r[map.scoreField])
   }));
 }
+
+// ---------------------------------------------------------------------------
+// Real results sources (per-language model scores)
+// ---------------------------------------------------------------------------
+
+function parseCsvLine(line: string): string[] {
+  const out: string[] = [];
+  let cur = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (inQuotes) {
+      if (ch === '"') {
+        if (line[i + 1] === '"') {
+          cur += '"';
+          i++;
+        } else inQuotes = false;
+      } else cur += ch;
+    } else if (ch === '"') inQuotes = true;
+    else if (ch === ',') {
+      out.push(cur);
+      cur = '';
+    } else cur += ch;
+  }
+  out.push(cur);
+  return out;
+}
+
+const BIGCODE_CSV =
+  'https://huggingface.co/spaces/bigcode/bigcode-models-leaderboard/raw/main/data/code_eval_board.csv';
+const BIGCODE_LANG_COLS = [
+  'humaneval-python',
+  'java',
+  'javascript',
+  'cpp',
+  'php',
+  'julia',
+  'd',
+  'lua',
+  'r',
+  'racket',
+  'rust',
+  'swift'
+];
+
+/** BigCode Models Leaderboard → MultiPL-E pass@1 per language (open models). */
+export async function fetchBigCodeMultiplE(): Promise<RawCodingRow[]> {
+  const res = await fetch(BIGCODE_CSV, { headers: { Accept: 'text/csv' } });
+  if (!res.ok) throw new Error(`BigCode HTTP ${res.status}`);
+  const lines = (await res.text()).trim().split(/\r?\n/);
+  const header = parseCsvLine(lines[0]).map((h) => h.trim());
+  const idx: Record<string, number> = {};
+  header.forEach((h, i) => (idx[h] = i));
+  const modelI = idx['Model'];
+  if (modelI == null) throw new Error('BigCode: Model column missing');
+
+  const rows: RawCodingRow[] = [];
+  for (let i = 1; i < lines.length; i++) {
+    const cols = parseCsvLine(lines[i]);
+    const model = cols[modelI]?.trim();
+    if (!model) continue;
+    for (const col of BIGCODE_LANG_COLS) {
+      const ci = idx[col];
+      if (ci == null) continue;
+      const v = Number(cols[ci]);
+      if (Number.isFinite(v) && v > 0) rows.push({ model, language: col, benchmark: 'multipl-e', score: v });
+    }
+  }
+  return rows;
+}
+
+const SWE_HTML = 'https://www.swebench.com/multilingual-leaderboard.html';
+const SWE_MAP = 'https://www.swebench.com/js/multilingualLanguageMap.js';
+
+/** Parse the `const REPO_LANGUAGE_MAP = {...}` object (repo → language). */
+export function parseRepoLanguageMap(js: string): Record<string, string> {
+  const map: Record<string, string> = {};
+  const re = /"([^"]+)"\s*:\s*"([^"]+)"/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(js))) map[m[1]] = m[2];
+  return map;
+}
+
+/** SWE-bench Multilingual → per-language resolve rate (recent models/agents).
+ * Instances are stratified into languages via the site's repo→language map. */
+export async function fetchSweBenchMultilingual(minInstances = 3): Promise<RawCodingRow[]> {
+  const [htmlRes, mapRes] = await Promise.all([fetch(SWE_HTML), fetch(SWE_MAP)]);
+  if (!htmlRes.ok) throw new Error(`SWE-bench HTML HTTP ${htmlRes.status}`);
+  const html = await htmlRes.text();
+  const repoLang = parseRepoLanguageMap(mapRes.ok ? await mapRes.text() : '');
+
+  const m = html.match(/<script[^>]*id="leaderboard-data"[^>]*>([\s\S]*?)<\/script>/);
+  if (!m) throw new Error('SWE-bench: leaderboard-data not found');
+  const tabs = JSON.parse(m[1]) as { name: string; results: any[] }[];
+  const tab = tabs.find((t) => /multilingual/i.test(t.name));
+  if (!tab) throw new Error('SWE-bench: Multilingual tab not found');
+
+  const rows: RawCodingRow[] = [];
+  for (const r of tab.results ?? []) {
+    const details = r.per_instance_details;
+    if (!details || typeof details !== 'object') continue;
+    const tally: Record<string, { res: number; tot: number }> = {};
+    for (const [iid, d] of Object.entries<any>(details)) {
+      const repo = iid.replace(/-\d+$/, '');
+      const lang = repoLang[repo];
+      if (!lang) continue;
+      const t = (tally[lang] ??= { res: 0, tot: 0 });
+      t.tot++;
+      if (d && d.resolved) t.res++;
+    }
+    for (const [lang, t] of Object.entries(tally)) {
+      if (t.tot >= minInstances) {
+        rows.push({
+          model: String(r.name),
+          language: lang,
+          benchmark: 'swe-bench-multilingual',
+          score: (t.res / t.tot) * 100
+        });
+      }
+    }
+  }
+  return rows;
+}
