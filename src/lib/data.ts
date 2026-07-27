@@ -74,6 +74,19 @@ export function getAllModels(): ModelView[] {
   return snapshot.models.filter((m) => m.status !== 'deprecated' && m.status !== 'inactive');
 }
 
+/** Answers in text, so competing on text-task scores is meaningful. Image and
+ * audio GENERATORS are excluded: their coding/writing/German scores come from
+ * structural signals (context, price, capabilities) and say nothing about
+ * text ability, so ranking them next to chat models is misleading. They stay
+ * in the table under their own category. */
+export function isTextModel(m: ModelView): boolean {
+  return m.category !== 'media' && m.category !== 'embedding' && m.category !== 'reranker';
+}
+
+export function getTextModels(): ModelView[] {
+  return getAllModels().filter(isTextModel);
+}
+
 export function getModelBySlug(slug: string): ModelView | undefined {
   return snapshot.models.find((m) => m.slug === slug);
 }
@@ -120,7 +133,8 @@ export function getMostDownloaded(limit = 8): ModelView[] {
 type RankingKey = keyof ModelView['scores'];
 
 export function getTopBy(key: RankingKey, limit = 5, filter?: (m: ModelView) => boolean): ModelView[] {
-  return getAllModels()
+  // Text-task rankings only ever consider models that answer in text.
+  return getTextModels()
     .filter((m) => (filter ? filter(m) : true))
     .filter((m) => m.scores[key] > 0)
     .sort((a, b) => b.scores[key] - a.scores[key])

@@ -8,7 +8,11 @@ export type Category =
   | 'multimodal'
   | 'local'
   | 'embedding'
-  | 'reranker';
+  | 'reranker'
+  /** Generates images/audio rather than answering in text (Lyria, *-image,
+   * gpt-audio). Excluded from text-task rankings — their text scores are
+   * structural artifacts, not a claim about writing or coding ability. */
+  | 'media';
 
 export type ModelStatus =
   | 'active'

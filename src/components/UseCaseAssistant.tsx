@@ -81,7 +81,12 @@ export function UseCaseAssistant({ models }: { models: TableModel[] }) {
 
   const { results, relaxed } = useMemo(() => {
     if (!intent) return { results: [], relaxed: false };
-    const rows = models.filter((m) => {
+    // Image/audio generators and embedding/reranker models never answer a
+    // text use case, so they are not candidates — not even in the fallback.
+    const textModels = models.filter(
+      (m) => m.category !== 'media' && m.category !== 'embedding' && m.category !== 'reranker'
+    );
+    const rows = textModels.filter((m) => {
       if (intent.requireVision && !m.features.vision) return false;
       if (intent.requireTools && !m.features.tools) return false;
       if (intent.requireLocal && !m.isOpenWeight) return false;
@@ -90,7 +95,7 @@ export function UseCaseAssistant({ models }: { models: TableModel[] }) {
     });
     // Only fall back to the unfiltered set if the constraints matched nothing —
     // and say so, instead of silently returning models that miss the ask.
-    const pool = rows.length ? rows : models;
+    const pool = rows.length ? rows : textModels;
     const ranked = [...pool]
       .sort((a, b) => blendedScore(b.scores, intent.goals) - blendedScore(a.scores, intent.goals))
       .slice(0, 3);

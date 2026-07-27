@@ -63,6 +63,10 @@ const OPEN_WEIGHT_HINT = /(llama|mistral|mixtral|qwen|deepseek|gemma|phi|yi-|com
 const CODING_HINT = /(cod(e|er|ing)|codestral|starcoder|devstral|sql)/i;
 const EMBED_HINT = /embed/i;
 const RERANK_HINT = /re[-\s]?rank/i;
+// Image/audio GENERATORS. Matched against id+name and combined with a non-text
+// output modality, so a text model that merely *reads* images (vision) is not
+// caught — only models whose product is an image or a sound.
+const MEDIA_HINT = /(image|audio|speech|tts|voice|music|lyria|imagen|veo|sora|dall-?e|flux|diffusion|midjourney)/i;
 
 function perMillion(perToken?: string): number | null {
   if (perToken == null) return null;
@@ -94,10 +98,14 @@ function deriveCategory(opts: {
   vision: boolean;
   audio: boolean;
   reasoning: boolean;
+  outputModalities: string[];
 }): Category {
   const hay = `${opts.id} ${opts.name}`;
   if (EMBED_HINT.test(hay)) return 'embedding';
   if (RERANK_HINT.test(hay)) return 'reranker';
+  // Both signals required: OpenRouter's auto-router also lists an image output
+  // but is a general text router, so the name must confirm it too.
+  if (opts.outputModalities.some((o) => o !== 'text') && MEDIA_HINT.test(hay)) return 'media';
   if (CODING_HINT.test(hay)) return 'coding';
   if (opts.reasoning) return 'reasoning';
   if (opts.vision || opts.audio) return 'multimodal';
@@ -132,7 +140,7 @@ export function mapModel(raw: RawOpenRouterModel, now = new Date()): ImportedMod
   const openWeight = Boolean(lab.openWeight) || Boolean(raw.hugging_face_id) || OPEN_WEIGHT_HINT.test(raw.id);
   const openness: Openness = openWeight ? 'open_weight' : 'closed';
 
-  const category = deriveCategory({ id: raw.id, name: raw.name, vision, audio, reasoning });
+  const category = deriveCategory({ id: raw.id, name: raw.name, vision, audio, reasoning, outputModalities });
   const { status, isPreview, isBeta, isExperimental } = deriveStatus(hay);
 
   const inputPer1m = perMillion(raw.pricing?.prompt);

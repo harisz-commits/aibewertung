@@ -48,6 +48,11 @@ type SortKey =
   | 'newest'
   | 'name';
 
+// Categories that do not answer in text. Their text scores are structural
+// artifacts, so sorting the default list by e.g. "customer support" would put
+// a music model on top. Hidden unless their category is explicitly selected.
+const NON_TEXT_CATEGORIES = ['media', 'embedding', 'reranker'];
+
 const CAP_FILTERS = ['vision', 'audio', 'reasoning', 'tools', 'jsonMode'] as const;
 type CapFilter = (typeof CAP_FILTERS)[number];
 const MODALITIES = ['image', 'audio', 'file'] as const;
@@ -268,6 +273,8 @@ export function ModelTable({
     const rows = models.filter((m) => {
       if (!showDeprecated && (m.status === 'deprecated' || m.status === 'inactive')) return false;
       if (category !== 'all' && m.category !== category) return false;
+      // Image/audio generators only appear when asked for by category.
+      if (category === 'all' && NON_TEXT_CATEGORIES.includes(m.category)) return false;
       if (openness === 'open_weight' && !m.isOpenWeight) return false;
       if (openness === 'closed' && m.isOpenWeight) return false;
       if (freeOnly && (m.cheapestOutputPer1m ?? 1) !== 0) return false;
@@ -329,7 +336,7 @@ export function ModelTable({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [models, query, category, openness, caps, mods, freeOnly, showDeprecated, lab, releasedMonths, outPrice, inPrice, ctx, intel, codingIdx, sort]);
 
-  const categories = ['all', 'chat', 'reasoning', 'coding', 'multimodal', 'embedding', 'reranker'];
+  const categories = ['all', 'chat', 'reasoning', 'coding', 'multimodal', 'media', 'embedding', 'reranker'];
   const isScoreSort = (SCORE_SORTS as readonly string[]).includes(sort);
   const activeScoreKey = (isScoreSort ? sort : 'overall') as keyof TableModel['scores'];
   const scoreHeader = activeScoreKey === 'overall' ? t('score') : SCORE_LABELS[activeScoreKey][lang];

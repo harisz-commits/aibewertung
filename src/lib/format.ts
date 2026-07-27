@@ -107,5 +107,6 @@ export const CATEGORY_LABELS: Record<string, { en: string; de: string }> = {
   multimodal: { en: 'Multimodal', de: 'Multimodal' },
   local: { en: 'Local / Open-Weight', de: 'Lokal / Open-Weight' },
   embedding: { en: 'Embeddings', de: 'Embeddings' },
-  reranker: { en: 'Reranker', de: 'Reranker' }
+  reranker: { en: 'Reranker', de: 'Reranker' },
+  media: { en: 'Image / Audio generation', de: 'Bild-/Audio-Generierung' }
 };
