@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "hinweis": "Datenschutz-Angaben zu KI-Einsatzwegen. Jede Angabe ist mit Quelle und Prüfdatum belegt. Nicht belegte Punkte stehen als null/'unknown' und werden in der Oberfläche als ungeprüft ausgewiesen — sie werden NICHT geraten. Keine Rechtsberatung.",
+    "pflegeIntervall": "quartalsweise",
+    "letztePruefung": "2026-07-28"
+  },
+  "routes": [
+    {
+      "slug": "anthropic-api",
+      "name": "Anthropic",
+      "route": "Anthropic API (direkt)",
+      "matchProviderSlugs": ["anthropic"],
+      "hostingRegion": "us_dpf",
+      "hostingDetail": "USA",
+      "legalEntity": "Anthropic PBC",
+      "legalEntityCountry": "US",
+      "dpaAvailable": true,
+      "dpaUrl": "https://www.anthropic.com/legal/commercial-terms",
+      "subprocessorsUrl": "https://www.anthropic.com/legal/subprocessors",
+      "trainingOnCustomerData": "no",
+      "retention": "Ein- und Ausgaben werden innerhalb von 30 Tagen automatisch gelöscht",
+      "zeroRetentionAvailable": true,
+      "certifications": [],
+      "supportsProfessionalSecrecy": null,
+      "sourceUrl": "https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training",
+      "sourceUrl2": "https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-data",
+      "checkedAt": "2026-07-28",
+      "belegZitat": "By default, we will not use your inputs or outputs from our commercial products (e.g. Claude for Work, Anthropic API, Claude Gov, etc.) to train our models. / we automatically delete inputs and outputs on our backend within 30 days of receipt or generation",
+      "openQuestions": [
+        "Verarbeitungsort für EU-Kunden nicht abschließend geprüft (EU-Region verfügbar?)",
+        "Verpflichtung mitwirkender Personen nach § 203 Abs. 3 StGB nicht geprüft",
+        "Zertifizierungen (ISO 27001 / SOC 2) nicht geprüft"
+      ]
+    },
+    {
+      "slug": "openai-api",
+      "name": "OpenAI",
+      "route": "OpenAI API (direkt)",
+      "matchProviderSlugs": ["openai", "openai/flex", "openai/priority"],
+      "hostingRegion": "us_dpf",
+      "hostingDetail": "USA (EU-Datenresidenz laut Anbieter verfügbar — nicht abschließend geprüft)",
+      "legalEntity": "OpenAI Ireland Ltd (Vertragspartner für EWR)",
+      "legalEntityCountry": "IE",
+      "dpaAvailable": true,
+      "dpaUrl": "https://openai.com/policies/data-processing-addendum/",
+      "subprocessorsUrl": null,
+      "trainingOnCustomerData": "no",
+      "retention": "API-Ein- und Ausgaben werden nach 30 Tagen gelöscht, soweit keine gesetzliche Aufbewahrungspflicht besteht",
+      "zeroRetentionAvailable": true,
+      "certifications": [],
+      "supportsProfessionalSecrecy": null,
+      "sourceUrl": "https://openai.com/policies/data-processing-addendum/",
+      "sourceUrl2": "https://developers.openai.com/api/docs/guides/your-data",
+      "checkedAt": "2026-07-28",
+      "belegZitat": "OpenAI trainiert nach eigener Dokumentation nicht standardmäßig auf Geschäftsdaten aus der API; API-Daten werden nach 30 Tagen entfernt. Für den EWR ist OpenAI Ireland Limited Vertragspartner.",
+      "openQuestions": [
+        "EU-Datenresidenz für die API: Umfang und Endpunkte nicht abschließend geprüft (Quelle war nicht direkt abrufbar)",
+        "Verpflichtung mitwirkender Personen nach § 203 Abs. 3 StGB nicht geprüft",
+        "Unterauftragsverarbeiter-Liste nicht geprüft"
+      ]
+    },
+    {
+      "slug": "azure-openai-eu",
+      "name": "Microsoft Azure OpenAI",
+      "route": "Azure OpenAI, EU-Region",
+      "matchProviderSlugs": ["azure/eu"],
+      "hostingRegion": "eu",
+      "hostingDetail": "EU/EFTA im Rahmen der EU Data Boundary",
+      "legalEntity": "Microsoft Ireland Operations Ltd",
+      "legalEntityCountry": "IE",
+      "dpaAvailable": true,
+      "dpaUrl": "https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA",
+      "subprocessorsUrl": null,
+      "trainingOnCustomerData": "no",
+      "retention": null,
+      "zeroRetentionAvailable": null,
+      "certifications": [],
+      "supportsProfessionalSecrecy": null,
+      "sourceUrl": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/data-privacy",
+      "checkedAt": "2026-07-28",
+      "belegZitat": "Prompts und Completions werden nicht mit OpenAI geteilt und nicht zum Training der Basismodelle von Microsoft oder OpenAI verwendet; für EU-Data-Boundary-Kunden erfolgt Verarbeitung und Speicherung innerhalb EU/EFTA.",
+      "openQuestions": [
+        "Speicherdauer für Missbrauchs-Monitoring und Möglichkeit der Abschaltung nicht abschließend geprüft",
+        "Verpflichtung mitwirkender Personen nach § 203 Abs. 3 StGB nicht geprüft",
+        "BSI C5 / ISO 27001 für den konkreten Dienst nicht geprüft"
+      ]
+    },
+    {
+      "slug": "azure-openai-global",
+      "name": "Microsoft Azure OpenAI",
+      "route": "Azure OpenAI, globale Region",
+      "matchProviderSlugs": ["azure"],
+      "hostingRegion": "unknown",
+      "hostingDetail": "Region abhängig von der gewählten Bereitstellung — bei globalen Deployments auch außerhalb der EU",
+      "legalEntity": "Microsoft Ireland Operations Ltd",
+      "legalEntityCountry": "IE",
+      "dpaAvailable": true,
+      "dpaUrl": "https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA",
+      "subprocessorsUrl": null,
+      "trainingOnCustomerData": "no",
+      "retention": null,
+      "zeroRetentionAvailable": null,
+      "certifications": [],
+      "supportsProfessionalSecrecy": null,
+      "sourceUrl": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/data-privacy",
+      "checkedAt": "2026-07-28",
+      "belegZitat": "Wie EU-Region, jedoch ohne Zusicherung der Verarbeitung innerhalb EU/EFTA — die Region hängt von der gewählten Bereitstellungsart ab.",
+      "openQuestions": [
+        "Tatsächlicher Verarbeitungsort hängt von der konkreten Bereitstellung ab und muss im Einzelfall geprüft werden"
+      ]
+    },
+    {
+      "slug": "self-hosted",
+      "name": "Eigener Betrieb",
+      "route": "Open-Weight-Modell auf eigener Infrastruktur (Ollama, vLLM, LM Studio)",
+      "matchProviderSlugs": [],
+      "appliesToOpenWeight": true,
+      "hostingRegion": "self_hosted",
+      "hostingDetail": "Eigene Hardware oder eigener Server",
+      "legalEntity": "—",
+      "legalEntityCountry": "DE",
+      "dpaAvailable": true,
+      "dpaUrl": null,
+      "subprocessorsUrl": null,
+      "trainingOnCustomerData": "no",
+      "retention": "Vollständig selbst bestimmt",
+      "zeroRetentionAvailable": true,
+      "certifications": [],
+      "supportsProfessionalSecrecy": true,
+      "sourceUrl": "https://github.com/ollama/ollama",
+      "checkedAt": "2026-07-28",
+      "belegZitat": "Beim Betrieb auf eigener Infrastruktur verlassen die Daten das eigene Netz nicht; es findet keine Auftragsverarbeitung durch Dritte und kein Drittlandtransfer statt.",
+      "openQuestions": [
+        "Setzt eigene technische und organisatorische Maßnahmen voraus (Zugriffsschutz, Protokollierung, Backup)"
+      ]
+    }
+  ]
+}

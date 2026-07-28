@@ -28,7 +28,8 @@
     "benchmarks": "Benchmarks",
     "methodology": "Methodology",
     "api": "API",
-    "news": "Today in LLMs"
+    "news": "Today in LLMs",
+    "branchen": "For your industry"
   },
   "benchmarks": {
     "title": "Benchmarks explained",
