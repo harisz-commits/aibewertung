@@ -87,8 +87,9 @@ const SETUPS = [
 
 const CHECKLISTE = [
   'Verzeichnis von Verarbeitungstätigkeiten (VVT) um den KI-Einsatz ergänzt',
-  'AVV mit dem Anbieter tatsächlich abgeschlossen (nicht nur „verfügbar")',
-  'Anbieter schriftlich nach § 203 Abs. 3 StGB zur Verschwiegenheit verpflichtet',
+  'AVV nach Art. 28 DSGVO mit dem Anbieter tatsächlich abgeschlossen (nicht nur „verfügbar")',
+  'ZUSÄTZLICH: Verschwiegenheitsvereinbarung nach § 203 Abs. 4 StGB in Textform, mit Belehrung über die Strafbarkeit — der AVV ersetzt das nicht',
+  'Unterauftragnehmer des Anbieters ebenfalls nach § 203 verpflichtet; Erklärungen auf Verlangen vorlegbar',
   'Training auf eigenen Daten nachweislich abgeschaltet',
   'Schriftliche Kanzlei-Richtlinie: was darf rein, was nicht',
   'Mitarbeitende geschult (KI-Kompetenz ist nach EU-KI-Verordnung Pflicht)',
@@ -233,10 +234,13 @@ export default async function SteuerkanzleiPage({ params }: { params: Promise<{ 
             <dt className="font-medium">§ 203 StGB — Steuergeheimnis</dt>
             <dd className="mt-1 text-sm text-muted">
               Sie dürfen Mandantengeheimnisse nicht an Dritte offenbaren. Ein KI-Anbieter, der Ihre Texte
-              verarbeitet, wird zum Dritten. Seit der Neufassung ist das nicht automatisch verboten:
-              Absatz 3 erlaubt das Mitwirken sonstiger Personen — aber nur, wenn diese{' '}
-              <strong className="text-fg">schriftlich zur Verschwiegenheit verpflichtet</strong> werden. Genau
-              das muss im Vertrag mit dem Anbieter stehen.
+              verarbeitet, wird zum Dritten. Seit der Reform von 2017 ist das nicht automatisch verboten:
+              Absatz 3 Satz 2 erlaubt es ausdrücklich, externe Dienstleister als{' '}
+              <strong className="text-fg">sonstige mitwirkende Personen</strong> einzubeziehen. Dafür muss der
+              Anbieter nach Absatz 4 <strong className="text-fg">in Textform zur Verschwiegenheit
+              verpflichtet</strong> und über die Strafbarkeit eines Verstoßes belehrt werden — ebenso seine
+              Beschäftigten und Unterauftragnehmer. Die Erklärungen müssen Ihnen auf Verlangen vorgelegt
+              werden.
             </dd>
           </div>
           <div className="rounded-xl border border-border bg-surface p-4">
@@ -246,6 +250,11 @@ export default async function SteuerkanzleiPage({ params }: { params: Promise<{ 
               <strong className="text-fg">Auftragsverarbeitungsvertrag (AVV)</strong> nach Art. 28 DSGVO —
               tatsächlich abgeschlossen, nicht nur auf der Anbieterseite verfügbar. Dazu kommt ein Eintrag im
               Verzeichnis von Verarbeitungstätigkeiten.
+              <span className="mt-2 block rounded-lg border border-warning/40 bg-warning/10 px-3 py-2 text-fg">
+                <strong className="font-medium">Der teuerste Irrtum:</strong> Ein AVV deckt das
+                Steuergeheimnis <strong className="font-medium">nicht</strong> ab. AVV und Verpflichtung nach
+                § 203 StGB sind zwei getrennte Verträge — Sie brauchen beide.
+              </span>
             </dd>
           </div>
           <div className="rounded-xl border border-border bg-surface p-4">

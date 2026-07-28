@@ -116,14 +116,22 @@ export function evaluate(p: ProviderCompliance, dataClass: DataClass): VerdictRe
   //    der entscheidende Punkt: Der Anbieter wird "mitwirkende Person" und muss
   //    vertraglich zur Geheimhaltung verpflichtet werden.
   if (dataClass === 'S3') {
+    if (p.hostingRegion !== 'self_hosted') {
+      // Häufigster und teuerster Irrtum in der Praxis: Ein AVV nach Art. 28
+      // DSGVO deckt § 203 StGB NICHT ab. Das sind zwei getrennte Pflichten.
+      reasons.push({
+        severity: 'condition',
+        text: 'Ein AVV nach Art. 28 DSGVO deckt das Berufsgeheimnis NICHT ab — dafür braucht es zusätzlich eine gesonderte Verschwiegenheitsvereinbarung nach § 203 Abs. 4 StGB, in Textform und mit Belehrung über die Strafbarkeit. Auch eingesetzte Beschäftigte und Unterauftragnehmer müssen verpflichtet werden.'
+      });
+    }
     if (p.supportsProfessionalSecrecy === true) {
-      reasons.push({ severity: 'condition', text: 'Anbieter kann als mitwirkende Person nach § 203 Abs. 3 StGB zur Geheimhaltung verpflichtet werden — diese Verpflichtung muss schriftlich erfolgen.' });
+      reasons.push({ severity: 'condition', text: 'Anbieter kann nach § 203 Abs. 3 Satz 2 StGB als mitwirkende Person einbezogen werden — die Verpflichtung muss tatsächlich geschlossen und auf Verlangen vorlegbar sein.' });
     } else if (p.supportsProfessionalSecrecy === false) {
       down('red');
-      reasons.push({ severity: 'blocker', text: 'Keine Verpflichtung nach § 203 Abs. 3 StGB möglich. Für Mandanten-, Patienten- oder Steuergeheimnisse nicht einsetzbar.' });
+      reasons.push({ severity: 'blocker', text: 'Anbieter bietet keine Verschwiegenheitsvereinbarung nach § 203 StGB an. Für Mandanten-, Patienten- oder Steuergeheimnisse nicht einsetzbar.' });
     } else {
       down('orange');
-      reasons.push({ severity: 'condition', text: 'Verpflichtung mitwirkender Personen nach § 203 Abs. 3 StGB ist nicht belegt. Bis zur Klärung nur ohne Mandantenbezug verwenden (Namen und Kennzeichen entfernen).' });
+      reasons.push({ severity: 'condition', text: 'Ob der Anbieter eine Verschwiegenheitsvereinbarung nach § 203 Abs. 4 StGB anbietet, ist nicht belegt. Bis das schriftlich geklärt ist: nur ohne Mandantenbezug verwenden (Namen, Steuernummern und Aktenzeichen entfernen).' });
     }
   }
 

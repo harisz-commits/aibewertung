@@ -110,6 +110,34 @@
       ]
     },
     {
+      "slug": "ionos-ai-model-hub",
+      "name": "IONOS",
+      "route": "IONOS AI Model Hub (Deutschland)",
+      "matchProviderSlugs": [],
+      "appliesToOpenWeight": true,
+      "hostingRegion": "eu",
+      "hostingDetail": "Deutschland, ISO-27001-zertifizierte Rechenzentren",
+      "legalEntity": "IONOS SE",
+      "legalEntityCountry": "DE",
+      "dpaAvailable": true,
+      "dpaUrl": "https://www.ionos.de/terms-gtc/terms-enterprise-cloud/enterprise-datenschutzpaket/",
+      "subprocessorsUrl": null,
+      "trainingOnCustomerData": "no",
+      "retention": null,
+      "zeroRetentionAvailable": null,
+      "certifications": ["ISO 27001"],
+      "supportsProfessionalSecrecy": null,
+      "sourceUrl": "https://cloud.ionos.com/managed/ai-model-hub",
+      "sourceUrl2": "https://docs.ionos.com/cloud/ai/ai-model-hub/governance-and-compliance/eu-ai-act",
+      "checkedAt": "2026-07-28",
+      "belegZitat": "Hosting vollständig in Deutschland; Daten verlassen Deutschland nicht und werden nicht zur Weiterentwicklung von KI-Modellen genutzt. Betrieb in ISO-27001-zertifizierten Rechenzentren.",
+      "openQuestions": [
+        "Gesonderte Verschwiegenheitsvereinbarung nach § 203 Abs. 4 StGB nicht geprüft",
+        "Welche Modelle konkret angeboten werden, ist hier noch nicht abgebildet — Zuordnung zu unseren Modellen offen",
+        "BSI C5 nicht geprüft"
+      ]
+    },
+    {
       "slug": "self-hosted",
       "name": "Eigener Betrieb",
       "route": "Open-Weight-Modell auf eigener Infrastruktur (Ollama, vLLM, LM Studio)",

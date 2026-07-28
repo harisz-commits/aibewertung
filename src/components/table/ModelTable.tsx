@@ -17,12 +17,18 @@ import {
   scoreBg
 } from '@/lib/format';
 import { Badge, StatusBadges } from '@/components/badges';
+import { VerdictBadge } from '@/components/compliance/VerdictBadge';
+import { DATA_CLASSES, type DataClass, type Verdict } from '@/lib/compliance/types';
 import { RangeSlider } from './RangeSlider';
 import { ModelCard } from './ModelCard';
 
 // Providers are intentionally excluded from the table payload — they live on
 // the model detail page. Dropping the array keeps the client bundle lean.
-export type TableModel = Omit<ModelView, 'description' | 'descriptionDe' | 'sources' | 'family' | 'providers'>;
+export type TableModel = Omit<ModelView, 'description' | 'descriptionDe' | 'sources' | 'family' | 'providers'> & {
+  /** Serverseitig vorberechnete DSGVO-Ampel je Datenklasse. Kompakt gehalten,
+   * damit die vollständige Anbieterliste nicht doch wieder im Client landet. */
+  compliance?: Record<DataClass, Verdict>;
+};
 
 const SCORE_SORTS = [
   'overall',
@@ -145,6 +151,9 @@ export function ModelTable({
   const [sort, setSort] = useState<SortKey>('overall');
   const [view, setView] = useState<'table' | 'grid'>('table');
   const [showFilters, setShowFilters] = useState(false);
+  // Datenklasse steuert die gesamte DSGVO-Spalte — ohne sie ist eine Ampel wertlos.
+  const [dataClass, setDataClass] = useState<DataClass>('S1');
+  const [euOnly, setEuOnly] = useState(false);
 
   // Restore filters from the URL once on mount. Done in an effect (not a state
   // initializer) so server and first client render agree — no hydration
@@ -181,9 +190,12 @@ export function ModelTable({
     const s = str('sort');
     if (s) setSort(s as SortKey);
     if (str('view') === 'grid') setView('grid');
+    const dc = str('dsgvo');
+    if (dc && ['S0', 'S1', 'S2', 'S3'].includes(dc)) setDataClass(dc as DataClass);
+    if (str('eu') === '1') setEuOnly(true);
     // Reveal the panel when real filters were restored, so it is obvious why
     // the list is narrowed. Sort/search/view alone are visible in the toolbar.
-    const FILTER_KEYS = ['cat', 'open', 'caps', 'mods', 'free', 'depr', 'lab', 'rel', 'outp', 'inp', 'ctx', 'intel', 'code'];
+    const FILTER_KEYS = ['cat', 'open', 'caps', 'mods', 'free', 'depr', 'lab', 'rel', 'outp', 'inp', 'ctx', 'intel', 'code', 'eu', 'dsgvo'];
     if (FILTER_KEYS.some((k) => p.has(k))) setShowFilters(true);
 
     hydrated.current = true;
@@ -213,6 +225,8 @@ export function ModelTable({
     setIntel(fullRange(INDEX_STOPS));
     setCodingIdx(fullRange(INDEX_STOPS));
     setSort('overall');
+    setDataClass('S1');
+    setEuOnly(false);
   }
 
   // Mirror the current filters into the URL. history.replaceState keeps this a
@@ -240,6 +254,8 @@ export function ModelTable({
     put('code', rangeToParam(codingIdx, INDEX_STOPS));
     put('sort', sort !== 'overall' ? sort : null);
     put('view', view === 'grid' ? 'grid' : null);
+    put('dsgvo', dataClass !== 'S1' ? dataClass : null);
+    put('eu', euOnly ? '1' : null);
 
     const qs = p.toString();
     const url = `${window.location.pathname}${qs ? `?${qs}` : ''}${window.location.hash}`;
@@ -249,7 +265,7 @@ export function ModelTable({
       // navigation (links stop working).
       window.history.replaceState(window.history.state, '', url);
     }
-  }, [query, category, openness, caps, mods, freeOnly, showDeprecated, lab, releasedMonths, outPrice, inPrice, ctx, intel, codingIdx, sort, view]);
+  }, [query, category, openness, caps, mods, freeOnly, showDeprecated, lab, releasedMonths, outPrice, inPrice, ctx, intel, codingIdx, sort, view, dataClass, euOnly]);
 
   const activeFilterCount =
     (category !== 'all' ? 1 : 0) +
@@ -264,7 +280,8 @@ export function ModelTable({
     (isActiveRange(inPrice, PRICE_STOPS) ? 1 : 0) +
     (isActiveRange(ctx, CONTEXT_STOPS) ? 1 : 0) +
     (isActiveRange(intel, INDEX_STOPS) ? 1 : 0) +
-    (isActiveRange(codingIdx, INDEX_STOPS) ? 1 : 0);
+    (isActiveRange(codingIdx, INDEX_STOPS) ? 1 : 0) +
+    (euOnly ? 1 : 0);
 
   const now = Date.now();
 
@@ -275,6 +292,7 @@ export function ModelTable({
       if (category !== 'all' && m.category !== category) return false;
       // Image/audio generators only appear when asked for by category.
       if (category === 'all' && NON_TEXT_CATEGORIES.includes(m.category)) return false;
+      if (euOnly && m.compliance?.[dataClass] !== 'green') return false;
       if (openness === 'open_weight' && !m.isOpenWeight) return false;
       if (openness === 'closed' && m.isOpenWeight) return false;
       if (freeOnly && (m.cheapestOutputPer1m ?? 1) !== 0) return false;
@@ -334,7 +352,7 @@ export function ModelTable({
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [models, query, category, openness, caps, mods, freeOnly, showDeprecated, lab, releasedMonths, outPrice, inPrice, ctx, intel, codingIdx, sort]);
+  }, [models, query, category, openness, caps, mods, freeOnly, showDeprecated, lab, releasedMonths, outPrice, inPrice, ctx, intel, codingIdx, sort, euOnly, dataClass]);
 
   const categories = ['all', 'chat', 'reasoning', 'coding', 'multimodal', 'media', 'embedding', 'reranker'];
   const isScoreSort = (SCORE_SORTS as readonly string[]).includes(sort);
@@ -466,6 +484,24 @@ export function ModelTable({
                   </Toggle>
                 ))}
               </div>
+              <FilterLabel className="mt-3">DSGVO — welche Daten gehen rein?</FilterLabel>
+              <select
+                value={dataClass}
+                onChange={(e) => setDataClass(e.target.value as DataClass)}
+                className="w-full rounded-lg border border-border bg-surface px-2.5 py-1.5 text-sm outline-none focus:border-brand"
+              >
+                {DATA_CLASSES.map((d) => (
+                  <option key={d.id} value={d.id}>
+                    {d.id} — {d.de}
+                  </option>
+                ))}
+              </select>
+              <div className="mt-2">
+                <Toggle active={euOnly} onClick={() => setEuOnly((v) => !v)}>
+                  Nur unbedenkliche Wege
+                </Toggle>
+              </div>
+
               <FilterLabel className="mt-3">{f('openness')}</FilterLabel>
               <div className="flex flex-wrap gap-1.5">
                 <Toggle active={openness === 'open_weight'} onClick={() => setOpenness(openness === 'open_weight' ? 'all' : 'open_weight')}>
@@ -550,15 +586,18 @@ export function ModelTable({
                 <th className="px-3 py-3 text-right font-medium">{t('output')}</th>
                 <th className="px-3 py-3 text-right font-medium">{t('throughput')}</th>
                 <th className="px-3 py-3 text-right font-medium">{t('latency')}</th>
+                <th className="px-3 py-3 text-center font-medium" title="Bester dokumentierter Einsatzweg für die gewählte Datenklasse">
+                  DSGVO {dataClass}
+                </th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((m) => (
-                <ModelRow key={m.id} model={m} scoreKey={activeScoreKey} locale={locale} statusT={(k) => c(k)} />
+                <ModelRow key={m.id} model={m} scoreKey={activeScoreKey} locale={locale} statusT={(k) => c(k)} dataClass={dataClass} />
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={8} className="px-4 py-16 text-center text-muted">
+                  <td colSpan={9} className="px-4 py-16 text-center text-muted">
                     {t('noResults')}
                   </td>
                 </tr>
@@ -579,12 +618,14 @@ function ModelRow({
   model: m,
   scoreKey,
   locale,
-  statusT
+  statusT,
+  dataClass
 }: {
   model: TableModel;
   scoreKey: keyof TableModel['scores'];
   locale: string;
   statusT: (k: string) => string;
+  dataClass: DataClass;
 }) {
   const catLabel = CATEGORY_LABELS[m.category]?.[locale === 'de' ? 'de' : 'en'] ?? m.category;
   return (
@@ -611,6 +652,9 @@ function ModelRow({
       <td className="px-3 py-3 text-right tabular-nums">{formatPrice(m.cheapestOutputPer1m)}</td>
       <td className="px-3 py-3 text-right tabular-nums text-muted">{m.outputSpeedTps != null ? formatSpeed(m.outputSpeedTps) : '—'}</td>
       <td className="px-3 py-3 text-right tabular-nums text-muted">{formatLatency(m.ttftMs)}</td>
+      <td className="px-3 py-3 text-center">
+        <VerdictBadge verdict={m.compliance?.[dataClass] ?? 'unknown'} short />
+      </td>
     </tr>
   );
 }

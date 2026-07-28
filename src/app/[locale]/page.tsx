@@ -7,13 +7,21 @@ import { ModelTable, type TableModel } from '@/components/table/ModelTable';
 import { RankingCards } from '@/components/RankingCards';
 import { UseCaseAssistant } from '@/components/UseCaseAssistant';
 import { formatCount, formatDate, formatPrice } from '@/lib/format';
+import { modelVerdict } from '@/lib/compliance/data';
+import { DATA_CLASSES, type DataClass } from '@/lib/compliance/types';
+import { LegalNotice } from '@/components/compliance/LegalNotice';
 import { Badge } from '@/components/badges';
 
 function toTableModel(m: ModelView): TableModel {
   // Drop heavy/unused fields from the client payload. Providers live on the
   // model detail page, so the full endpoint array never ships to the table.
   const { description, descriptionDe, sources, family, providers, ...rest } = m;
-  return rest;
+  // Die DSGVO-Ampel braucht die Anbieterliste — deshalb hier serverseitig
+  // vorberechnen und nur die vier kurzen Werte mitschicken.
+  const compliance = Object.fromEntries(
+    DATA_CLASSES.map((d) => [d.id, modelVerdict(m, d.id).verdict])
+  ) as TableModel['compliance'];
+  return { ...rest, compliance };
 }
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -106,6 +114,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </a>
         )}
         <ModelTable models={tableModels} labs={labs} />
+        <LegalNotice variant="inline" className="mt-3" />
       </section>
 
       {/* Most used open-weight models (Hugging Face adoption) */}
