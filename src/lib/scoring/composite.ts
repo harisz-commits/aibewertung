@@ -22,7 +22,7 @@ export const DOMAINS: Record<string, DomainSpec> = {
   knowledge: { weight: 0.15, benchmarks: ['mmlu_pro', 'simpleqa', 'mmmu'] }
 };
 
-// Benchmarks that are themselves cross-domain blends — excluded from the
+// Benchmarks that are themselves cross-domain blends - excluded from the
 // composite to avoid double counting (still shown to users as their own row).
 const EXCLUDE = new Set(['aa_intelligence']);
 

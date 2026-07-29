@@ -34,7 +34,7 @@
   },
   "benchmarks": {
     "title": "Benchmarks explained",
-    "intro": "Every AI test in plain language — what it measures, how to read the score, and where it can fool you. No jargon.",
+    "intro": "Every AI test in plain language - what it measures, how to read the score, and where it can fool you. No jargon.",
     "whatAreTitle": "What is a benchmark?",
     "whatAreBody": "A benchmark is a standardized exam for AI models. Everyone takes the same test, so the scores can be compared. Some tests are multiple-choice quizzes, some make the model write real code, and some let real people vote on which answer they prefer.",
     "whyMisleadTitle": "Why benchmarks can mislead",
@@ -51,7 +51,7 @@
   },
   "home": {
     "heroTitle": "Which AI model should you actually use?",
-    "heroSubtitle": "A clean, trustworthy comparison of every usable LLM — prices, providers, context, capabilities and deterministic scores. Built for non-technical users and developers alike.",
+    "heroSubtitle": "A clean, trustworthy comparison of every usable LLM - prices, providers, context, capabilities and deterministic scores. Built for non-technical users and developers alike.",
     "heroModelsCount": "{count} models tracked",
     "heroCta": "Explore the table",
     "assistantTitle": "Use-case assistant",
@@ -62,7 +62,7 @@
     "newModelsTitle": "Today in LLMs",
     "newModelsSubtitle": "Newly detected models, price and provider changes.",
     "adoptionTitle": "Most used open models",
-    "adoptionSubtitle": "Hugging Face downloads over the last 30 days. Real adoption — never part of any score."
+    "adoptionSubtitle": "Hugging Face downloads over the last 30 days. Real adoption - never part of any score."
   },
   "assistant": {
     "placeholder": "e.g. cheap model for German customer support with tool calling",
@@ -73,14 +73,13 @@
     "example3": "Local model for RAG",
     "example4": "Best German customer support model",
     "resultTitle": "Recommended for you",
-    "empty": "No model matched every constraint — showing the closest picks."
+    "empty": "No model matched every constraint - showing the closest picks."
   },
   "rankings": {
     "overall": "Best overall",
     "coding": "Best for coding",
     "cheapApi": "Best cheap API",
     "local": "Best local / open-weight",
-    "german": "Best for German",
     "rag": "Best for RAG",
     "vision": "Best for vision",
     "pricePerformance": "Best price/performance",
@@ -91,7 +90,6 @@
     "coding": "Best at writing and fixing code",
     "cheapApi": "Cheapest to call via API, at solid quality",
     "local": "Best you can run on your own hardware (open-weight)",
-    "german": "Best at understanding and writing German",
     "rag": "Best for answering from your own documents (RAG)",
     "vision": "Best at understanding images and screenshots",
     "pricePerformance": "Best quality for the money",
@@ -181,13 +179,13 @@
     "cheapestOverall": "Cheapest",
     "backToTable": "All models",
     "ratingTitle": "Rating explained",
-    "ratingIntro": "Why botbrix gives these scores — in plain language, from the model's real signals.",
+    "ratingIntro": "Why botbrix gives these scores - in plain language, from the model's real signals.",
     "benchmarksNotMeasured": "No benchmark scores measured for this model yet. Here is what the tests mean and how we would read them.",
     "benchmarkGlossary": "Read the full benchmark glossary",
     "measured": "Measured",
     "notMeasured": "Not yet measured",
     "adoptionTitle": "Adoption",
-    "adoptionIntro": "How much this model is actually downloaded and starred on Hugging Face. Popularity, not quality — it never affects any score. Only available for open-weight models.",
+    "adoptionIntro": "How much this model is actually downloaded and starred on Hugging Face. Popularity, not quality - it never affects any score. Only available for open-weight models.",
     "downloads30d": "Downloads (30d)",
     "downloadsAllTime": "Downloads (total)",
     "likes": "Likes"

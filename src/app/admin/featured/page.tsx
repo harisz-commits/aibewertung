@@ -67,7 +67,7 @@ export default async function AdminFeaturedPage() {
           <div key={s.id} className="flex items-center justify-between gap-3 rounded-xl border border-border bg-surface p-3 text-sm">
             <div>
               <span className="rounded bg-amber-500/15 px-2 py-0.5 text-xs text-amber-500">{s.label}</span>{' '}
-              <span className="text-muted">{s.placement}</span> · {s.modelId ?? '—'} →{' '}
+              <span className="text-muted">{s.placement}</span> · {s.modelId ?? '-'} →{' '}
               <a href={s.targetUrl} target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">
                 {s.targetUrl}
               </a>

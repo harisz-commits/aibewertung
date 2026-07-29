@@ -43,7 +43,7 @@ export async function generateMetadata({
   const m = getModelBySlug(slug);
   if (!m) return { title: 'Model not found' };
   return {
-    title: `${m.name} — price, providers, context & scores`,
+    title: `${m.name} - price, providers, context & scores`,
     description: stripMarkdown(m.description).slice(0, 155) || `${m.name} by ${m.lab}`
   };
 }
@@ -188,8 +188,8 @@ export default async function ModelDetailPage({
               <Meta label={t('releaseDate')} value={formatDate(m.releaseDate, locale)} />
               <Meta label={t('contextWindow')} value={formatContext(m.contextWindow)} />
               <Meta label={t('maxOutput')} value={formatContext(m.maxOutputTokens)} />
-              <Meta label={t('parameters')} value={m.parameterCount ?? '—'} />
-              <Meta label={t('license')} value={m.license ?? '—'} />
+              <Meta label={t('parameters')} value={m.parameterCount ?? '-'} />
+              <Meta label={t('license')} value={m.license ?? '-'} />
               <Meta label={t('inputModalities')} value={m.inputModalities.join(', ')} />
               <Meta label={t('outputModalities')} value={m.outputModalities.join(', ')} />
               <Meta label={t('cheapestOverall')} value={`${formatPrice(m.cheapestInputPer1m)} / ${formatPrice(m.cheapestOutputPer1m)}`} />
@@ -286,7 +286,7 @@ export default async function ModelDetailPage({
                       <div className="flex items-center justify-between text-sm">
                         <span className="font-medium">{def.name}</span>
                         <span className="tabular-nums">
-                          {r.rawValue != null ? `${r.rawValue}` : '—'} <span className="text-muted">{def.unit}</span>
+                          {r.rawValue != null ? `${r.rawValue}` : '-'} <span className="text-muted">{def.unit}</span>
                           {r.isEstimated && <span className="ml-1 text-warning">*</span>}
                         </span>
                       </div>
@@ -333,7 +333,7 @@ export default async function ModelDetailPage({
                       <Link href={`/benchmarks#${def.groupSlug}`} className="font-medium hover:text-brand">
                         {def.name}
                       </Link>
-                      <span className="text-muted"> — {def.what[lang]}</span>
+                      <span className="text-muted"> - {def.what[lang]}</span>
                     </li>
                   ))}
                 </ul>
@@ -360,7 +360,7 @@ export default async function ModelDetailPage({
             </div>
           </section>
 
-          {/* Adoption (open-weight only — closed models are not published on HF) */}
+          {/* Adoption (open-weight only - closed models are not published on HF) */}
           {(m.hfDownloads30d != null || m.hfLikes != null) && (
             <section className="rounded-xl border border-border bg-surface p-5">
               <h2 className="mb-1 text-sm font-semibold uppercase tracking-wide text-muted">{t('adoptionTitle')}</h2>
@@ -389,8 +389,8 @@ export default async function ModelDetailPage({
               <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted">{t('localDeployment')}</h2>
               <p className="text-sm text-muted">
                 {lang === 'de'
-                  ? 'Open-Weight — grundsätzlich lokal ausführbar (Ollama, LM Studio, vLLM, llama.cpp), abhängig von Größe und Hardware.'
-                  : 'Open-weight — generally runnable locally (Ollama, LM Studio, vLLM, llama.cpp), depending on size and hardware.'}
+                  ? 'Open-Weight - grundsätzlich lokal ausführbar (Ollama, LM Studio, vLLM, llama.cpp), abhängig von Größe und Hardware.'
+                  : 'Open-weight - generally runnable locally (Ollama, LM Studio, vLLM, llama.cpp), depending on size and hardware.'}
               </p>
               {m.parameterCount && (
                 <p className="mt-1 text-sm">

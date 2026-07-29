@@ -34,7 +34,7 @@
   },
   "benchmarks": {
     "title": "Benchmarks verständlich erklärt",
-    "intro": "Jeder KI-Test in einfacher Sprache — was er misst, wie man den Wert liest und wo er dich täuschen kann. Ohne Fachjargon.",
+    "intro": "Jeder KI-Test in einfacher Sprache - was er misst, wie man den Wert liest und wo er dich täuschen kann. Ohne Fachjargon.",
     "whatAreTitle": "Was ist ein Benchmark?",
     "whatAreBody": "Ein Benchmark ist eine standardisierte Prüfung für KI-Modelle. Alle schreiben denselben Test, damit die Ergebnisse vergleichbar sind. Manche Tests sind Multiple-Choice-Quizze, manche lassen das Modell echten Code schreiben, und bei manchen stimmen echte Menschen ab, welche Antwort ihnen besser gefällt.",
     "whyMisleadTitle": "Warum Benchmarks täuschen können",
@@ -51,7 +51,7 @@
   },
   "home": {
     "heroTitle": "Welches KI-Modell solltest du wirklich nutzen?",
-    "heroSubtitle": "Ein übersichtlicher, vertrauenswürdiger Vergleich aller nutzbaren LLMs — Preise, Anbieter, Kontext, Fähigkeiten und deterministische Bewertungen. Für Einsteiger und Entwickler gleichermaßen.",
+    "heroSubtitle": "Ein übersichtlicher, vertrauenswürdiger Vergleich aller nutzbaren LLMs - Preise, Anbieter, Kontext, Fähigkeiten und deterministische Bewertungen. Für Einsteiger und Entwickler gleichermaßen.",
     "heroModelsCount": "{count} Modelle erfasst",
     "heroCta": "Zur Tabelle",
     "assistantTitle": "Anwendungsfall-Assistent",
@@ -62,7 +62,7 @@
     "newModelsTitle": "Heute in LLMs",
     "newModelsSubtitle": "Neu erkannte Modelle, Preis- und Anbieteränderungen.",
     "adoptionTitle": "Meistgenutzte offene Modelle",
-    "adoptionSubtitle": "Hugging-Face-Downloads der letzten 30 Tage. Echte Verbreitung — fließt in keinen Score ein."
+    "adoptionSubtitle": "Hugging-Face-Downloads der letzten 30 Tage. Echte Verbreitung - fließt in keinen Score ein."
   },
   "assistant": {
     "placeholder": "z. B. günstiges Modell für deutschen Kundensupport mit Tool-Calling",
@@ -73,14 +73,13 @@
     "example3": "Lokales Modell für RAG",
     "example4": "Bestes Modell für deutschen Kundensupport",
     "resultTitle": "Für dich empfohlen",
-    "empty": "Kein Modell erfüllte alle Kriterien — zeige die besten Treffer."
+    "empty": "Kein Modell erfüllte alle Kriterien - zeige die besten Treffer."
   },
   "rankings": {
     "overall": "Bestes Gesamtmodell",
     "coding": "Bestes fürs Coden",
     "cheapApi": "Beste günstige API",
     "local": "Bestes lokal / Open-Weight",
-    "german": "Bestes für Deutsch",
     "rag": "Bestes für RAG",
     "vision": "Bestes für Vision",
     "pricePerformance": "Bestes Preis-/Leistung",
@@ -91,7 +90,6 @@
     "coding": "Am besten beim Schreiben und Beheben von Code",
     "cheapApi": "Am günstigsten per API-Aufruf, bei solider Qualität",
     "local": "Am besten selbst betreibbar (Open-Weight)",
-    "german": "Am besten in Deutsch verstehen und schreiben",
     "rag": "Antworten aus deinen eigenen Dokumenten (RAG)",
     "vision": "Am besten beim Verstehen von Bildern/Screenshots",
     "pricePerformance": "Beste Qualität fürs Geld",
@@ -181,13 +179,13 @@
     "cheapestOverall": "Günstigste",
     "backToTable": "Alle Modelle",
     "ratingTitle": "Bewertung erklärt",
-    "ratingIntro": "Warum botbrix diese Scores vergibt — in einfacher Sprache, aus den echten Signalen des Modells.",
+    "ratingIntro": "Warum botbrix diese Scores vergibt - in einfacher Sprache, aus den echten Signalen des Modells.",
     "benchmarksNotMeasured": "Für dieses Modell sind noch keine Benchmark-Werte gemessen. Hier steht, was die Tests bedeuten und wie wir sie lesen würden.",
     "benchmarkGlossary": "Zum vollständigen Benchmark-Glossar",
     "measured": "Gemessen",
     "notMeasured": "Noch nicht gemessen",
     "adoptionTitle": "Verbreitung",
-    "adoptionIntro": "Wie oft dieses Modell auf Hugging Face tatsächlich heruntergeladen und favorisiert wird. Beliebtheit, nicht Qualität — fließt in keinen Score ein. Nur für Open-Weight-Modelle verfügbar.",
+    "adoptionIntro": "Wie oft dieses Modell auf Hugging Face tatsächlich heruntergeladen und favorisiert wird. Beliebtheit, nicht Qualität - fließt in keinen Score ein. Nur für Open-Weight-Modelle verfügbar.",
     "downloads30d": "Downloads (30 T.)",
     "downloadsAllTime": "Downloads (gesamt)",
     "likes": "Likes"

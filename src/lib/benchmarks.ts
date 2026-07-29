@@ -1,4 +1,4 @@
-// Benchmark registry — the single source of truth for which tests botbrix
+// Benchmark registry - the single source of truth for which tests botbrix
 // tracks and, crucially, how to explain each one in plain language (EN/DE).
 //
 // This is editorial content (accurate descriptions of well-known public
@@ -28,11 +28,11 @@ export interface BenchmarkDef {
   /** Rough max of the raw scale, used only for display hints. */
   maxValue: number | null;
   sourceUrl: string | null;
-  /** What the test actually measures — for a total beginner. */
+  /** What the test actually measures - for a total beginner. */
   what: Bilingual;
   /** How to read a score / what "good" looks like. */
   howToRead: Bilingual;
-  /** Where it can mislead — every benchmark has caveats. */
+  /** Where it can mislead - every benchmark has caveats. */
   caveat: Bilingual;
 }
 
@@ -150,8 +150,8 @@ export const BENCHMARKS: BenchmarkDef[] = [
     maxValue: 100,
     sourceUrl: 'https://github.com/hendrycks/test',
     what: {
-      en: 'The original 57-subject knowledge exam. Now largely "saturated" — most good models score high.',
-      de: 'Die ursprüngliche Wissensprüfung über 57 Fächer. Heute weitgehend „gesättigt" — die meisten guten Modelle liegen hoch.'
+      en: 'The original 57-subject knowledge exam. Now largely "saturated" - most good models score high.',
+      de: 'Die ursprüngliche Wissensprüfung über 57 Fächer. Heute weitgehend „gesättigt" - die meisten guten Modelle liegen hoch.'
     },
     howToRead: {
       en: 'Percent correct. Above ~88% differences are mostly noise now.',
@@ -175,8 +175,8 @@ export const BENCHMARKS: BenchmarkDef[] = [
       de: 'Naturwissenschaftliche Fragen auf Master-Niveau (Biologie, Physik, Chemie), so schwer, dass selbst Laien mit Google meist scheitern.'
     },
     howToRead: {
-      en: 'Percent correct. This is a genuine reasoning test — 50%+ is already very strong.',
-      de: 'Prozent korrekt. Ein echter Reasoning-Test — 50 %+ ist bereits sehr stark.'
+      en: 'Percent correct. This is a genuine reasoning test - 50%+ is already very strong.',
+      de: 'Prozent korrekt. Ein echter Reasoning-Test - 50 %+ ist bereits sehr stark.'
     },
     caveat: {
       en: 'Small question set, so a few lucky guesses move the number.',
@@ -196,12 +196,12 @@ export const BENCHMARKS: BenchmarkDef[] = [
       de: 'Eine kleine Python-Funktion aus einer Beschreibung schreiben; sie besteht die versteckten Tests oder nicht.'
     },
     howToRead: {
-      en: '"pass@1" = share solved on the first try. Now saturated — most strong models exceed 90%.',
-      de: '„pass@1" = Anteil beim ersten Versuch gelöst. Heute gesättigt — die meisten starken Modelle über 90 %.'
+      en: '"pass@1" = share solved on the first try. Now saturated - most strong models exceed 90%.',
+      de: '„pass@1" = Anteil beim ersten Versuch gelöst. Heute gesättigt - die meisten starken Modelle über 90 %.'
     },
     caveat: {
-      en: 'Tiny, isolated snippets — nothing like maintaining a real codebase.',
-      de: 'Winzige, isolierte Schnipsel — nichts wie das Pflegen einer echten Codebasis.'
+      en: 'Tiny, isolated snippets - nothing like maintaining a real codebase.',
+      de: 'Winzige, isolierte Schnipsel - nichts wie das Pflegen einer echten Codebasis.'
     }
   },
   {
@@ -217,8 +217,8 @@ export const BENCHMARKS: BenchmarkDef[] = [
       de: 'Tausend einfache Python-Aufgaben („mostly basic programming problems").'
     },
     howToRead: {
-      en: 'Percent solved. Similar story to HumanEval — useful floor, not a differentiator at the top.',
-      de: 'Prozent gelöst. Ähnlich wie HumanEval — nützliche Untergrenze, oben kein Unterscheidungsmerkmal.'
+      en: 'Percent solved. Similar story to HumanEval - useful floor, not a differentiator at the top.',
+      de: 'Prozent gelöst. Ähnlich wie HumanEval - nützliche Untergrenze, oben kein Unterscheidungsmerkmal.'
     },
     caveat: {
       en: 'Basic difficulty; a high score does not imply senior-level engineering.',
@@ -234,12 +234,12 @@ export const BENCHMARKS: BenchmarkDef[] = [
     maxValue: 100,
     sourceUrl: 'https://www.swebench.com/',
     what: {
-      en: 'Fix real GitHub issues in real open-source projects — the model must produce a patch that makes the project’s tests pass. "Verified" is a human-checked, solvable subset.',
-      de: 'Echte GitHub-Issues in echten Open-Source-Projekten beheben — das Modell muss einen Patch liefern, der die Tests bestehen lässt. „Verified" ist eine von Menschen geprüfte, lösbare Teilmenge.'
+      en: 'Fix real GitHub issues in real open-source projects - the model must produce a patch that makes the project’s tests pass. "Verified" is a human-checked, solvable subset.',
+      de: 'Echte GitHub-Issues in echten Open-Source-Projekten beheben - das Modell muss einen Patch liefern, der die Tests bestehen lässt. „Verified" ist eine von Menschen geprüfte, lösbare Teilmenge.'
     },
     howToRead: {
-      en: 'Percent of issues actually fixed. This is the closest thing to real dev work — 40%+ is excellent today.',
-      de: 'Prozent tatsächlich behobener Issues. Das kommt echter Entwicklerarbeit am nächsten — 40 %+ ist heute exzellent.'
+      en: 'Percent of issues actually fixed. This is the closest thing to real dev work - 40%+ is excellent today.',
+      de: 'Prozent tatsächlich behobener Issues. Das kommt echter Entwicklerarbeit am nächsten - 40 %+ ist heute exzellent.'
     },
     caveat: {
       en: 'Depends heavily on the scaffolding/agent around the model, not just the model.',
@@ -276,8 +276,8 @@ export const BENCHMARKS: BenchmarkDef[] = [
     maxValue: 100,
     sourceUrl: 'https://livecodebench.github.io/',
     what: {
-      en: 'Coding problems collected continuously from recent contests, so they post-date model training — harder to "memorise".',
-      de: 'Coding-Aufgaben laufend aus aktuellen Wettbewerben gesammelt, also nach dem Training — schwerer zu „memorieren".'
+      en: 'Coding problems collected continuously from recent contests, so they post-date model training - harder to "memorise".',
+      de: 'Coding-Aufgaben laufend aus aktuellen Wettbewerben gesammelt, also nach dem Training - schwerer zu „memorieren".'
     },
     howToRead: {
       en: 'Percent solved on fresh problems. A cleaner signal for real coding ability than saturated sets.',
@@ -339,8 +339,8 @@ export const BENCHMARKS: BenchmarkDef[] = [
     maxValue: 100,
     sourceUrl: 'https://mmmu-benchmark.github.io/',
     what: {
-      en: 'College-level questions that require reading images, diagrams, charts and tables — not just text.',
-      de: 'Fragen auf Hochschulniveau, die Bilder, Diagramme, Charts und Tabellen erfordern — nicht nur Text.'
+      en: 'College-level questions that require reading images, diagrams, charts and tables - not just text.',
+      de: 'Fragen auf Hochschulniveau, die Bilder, Diagramme, Charts und Tabellen erfordern - nicht nur Text.'
     },
     howToRead: {
       en: 'Percent correct. The go-to score for "can this model actually see and reason about visuals".',
@@ -389,8 +389,8 @@ export const BENCHMARKS: BenchmarkDef[] = [
       de: 'Höher = insgesamt schlauer. Praktisches Ranking auf einen Blick; prüfe die Bestandteile.'
     },
     caveat: {
-      en: 'A weighted blend — the weighting is a judgement call, not a law of nature.',
-      de: 'Eine gewichtete Mischung — die Gewichtung ist eine Entscheidung, kein Naturgesetz.'
+      en: 'A weighted blend - the weighting is a judgement call, not a law of nature.',
+      de: 'Eine gewichtete Mischung - die Gewichtung ist eine Entscheidung, kein Naturgesetz.'
     }
   },
   {
@@ -427,8 +427,8 @@ export const BENCHMARKS: BenchmarkDef[] = [
       de: 'Kurze Faktenfragen mit einer korrekten Antwort, um selbstbewusste „Halluzinationen" aufzudecken.'
     },
     howToRead: {
-      en: 'Percent correct. Even strong models score surprisingly low — humility is the point.',
-      de: 'Prozent korrekt. Selbst starke Modelle liegen überraschend niedrig — genau das ist der Punkt.'
+      en: 'Percent correct. Even strong models score surprisingly low - humility is the point.',
+      de: 'Prozent korrekt. Selbst starke Modelle liegen überraschend niedrig - genau das ist der Punkt.'
     },
     caveat: {
       en: 'Trivia-style facts; not a measure of reasoning or usefulness.',
@@ -465,12 +465,12 @@ export const BENCHMARKS: BenchmarkDef[] = [
     maxValue: 100,
     sourceUrl: 'https://lastexam.ai/',
     what: {
-      en: 'Thousands of extremely hard, expert-written questions across maths, sciences and humanities — designed to sit at the very frontier of human knowledge.',
-      de: 'Tausende extrem schwere, von Experten geschriebene Fragen aus Mathematik, Naturwissenschaften und Geisteswissenschaften — bewusst an der Grenze des menschlichen Wissens.'
+      en: 'Thousands of extremely hard, expert-written questions across maths, sciences and humanities - designed to sit at the very frontier of human knowledge.',
+      de: 'Tausende extrem schwere, von Experten geschriebene Fragen aus Mathematik, Naturwissenschaften und Geisteswissenschaften - bewusst an der Grenze des menschlichen Wissens.'
     },
     howToRead: {
-      en: 'Percent correct. Scores are LOW by design — even frontier models are in the low tens, so small gaps matter.',
-      de: 'Prozent korrekt. Werte sind bewusst NIEDRIG — selbst Spitzenmodelle liegen im niedrigen Zehnerbereich, daher zählen kleine Abstände.'
+      en: 'Percent correct. Scores are LOW by design - even frontier models are in the low tens, so small gaps matter.',
+      de: 'Prozent korrekt. Werte sind bewusst NIEDRIG - selbst Spitzenmodelle liegen im niedrigen Zehnerbereich, daher zählen kleine Abstände.'
     },
     caveat: {
       en: 'So hard that noise is large; treat single-digit differences with care.',
@@ -486,8 +486,8 @@ export const BENCHMARKS: BenchmarkDef[] = [
     maxValue: 100,
     sourceUrl: 'https://scicode-bench.github.io/',
     what: {
-      en: 'Write real scientific code (physics, biology, maths) that reproduces research results — coding plus domain knowledge.',
-      de: 'Echten wissenschaftlichen Code (Physik, Biologie, Mathe) schreiben, der Forschungsergebnisse reproduziert — Coding plus Fachwissen.'
+      en: 'Write real scientific code (physics, biology, maths) that reproduces research results - coding plus domain knowledge.',
+      de: 'Echten wissenschaftlichen Code (Physik, Biologie, Mathe) schreiben, der Forschungsergebnisse reproduziert - Coding plus Fachwissen.'
     },
     howToRead: {
       en: 'Percent of sub-problems solved. Harder and more realistic than toy coding tests.',
@@ -507,8 +507,8 @@ export const BENCHMARKS: BenchmarkDef[] = [
     maxValue: 100,
     sourceUrl: 'https://www.tbench.ai/',
     what: {
-      en: 'Can the model actually operate a computer through the terminal — set up servers, run tools, fix things — as an autonomous agent?',
-      de: 'Kann das Modell einen Computer wirklich über das Terminal bedienen — Server aufsetzen, Tools ausführen, Dinge reparieren — als autonomer Agent?'
+      en: 'Can the model actually operate a computer through the terminal - set up servers, run tools, fix things - as an autonomous agent?',
+      de: 'Kann das Modell einen Computer wirklich über das Terminal bedienen - Server aufsetzen, Tools ausführen, Dinge reparieren - als autonomer Agent?'
     },
     howToRead: {
       en: 'Percent of end-to-end terminal tasks completed. A strong signal for real agentic ability.',
@@ -612,8 +612,8 @@ export const BENCHMARKS: BenchmarkDef[] = [
     maxValue: null,
     sourceUrl: 'https://andonlabs.com/evals/vending-bench',
     what: {
-      en: 'The model runs a simulated vending-machine business for a long time — ordering stock, setting prices, paying fees — and we see if it makes or loses money.',
-      de: 'Das Modell führt lange ein simuliertes Automaten-Geschäft — Nachbestellen, Preise setzen, Gebühren zahlen — und wir sehen, ob es Geld verdient oder verliert.'
+      en: 'The model runs a simulated vending-machine business for a long time - ordering stock, setting prices, paying fees - and we see if it makes or loses money.',
+      de: 'Das Modell führt lange ein simuliertes Automaten-Geschäft - Nachbestellen, Preise setzen, Gebühren zahlen - und wir sehen, ob es Geld verdient oder verliert.'
     },
     howToRead: {
       en: 'Higher final net worth = better at long, boring, real-world business tasks without losing the plot.',

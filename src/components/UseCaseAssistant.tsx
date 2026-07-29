@@ -62,7 +62,7 @@ function parseIntent(qRaw: string): Intent {
 }
 
 /** Combined score across every stated goal (equal weight). A model must be
- * good at ALL of them to win — that is what makes "cheap + coding" return a
+ * good at ALL of them to win - that is what makes "cheap + coding" return a
  * genuinely cheap capable model instead of the best coder at any price. */
 function blendedScore(scores: Scores, goals: (keyof Scores)[]): number {
   if (!goals.length) return scores.overall;
@@ -82,7 +82,7 @@ export function UseCaseAssistant({ models }: { models: TableModel[] }) {
   const { results, relaxed } = useMemo(() => {
     if (!intent) return { results: [], relaxed: false };
     // Image/audio generators and embedding/reranker models never answer a
-    // text use case, so they are not candidates — not even in the fallback.
+    // text use case, so they are not candidates - not even in the fallback.
     const textModels = models.filter(
       (m) => m.category !== 'media' && m.category !== 'embedding' && m.category !== 'reranker'
     );
@@ -93,7 +93,7 @@ export function UseCaseAssistant({ models }: { models: TableModel[] }) {
       if (intent.requireFree && (m.cheapestOutputPer1m ?? 1) !== 0) return false;
       return true;
     });
-    // Only fall back to the unfiltered set if the constraints matched nothing —
+    // Only fall back to the unfiltered set if the constraints matched nothing -
     // and say so, instead of silently returning models that miss the ask.
     const pool = rows.length ? rows : textModels;
     const ranked = [...pool]

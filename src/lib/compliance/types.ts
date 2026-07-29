@@ -14,7 +14,7 @@
 export type DataClass = 'S0' | 'S1' | 'S2' | 'S3';
 
 export const DATA_CLASSES: { id: DataClass; de: string; beispiel: string; norm: string }[] = [
-  { id: 'S0', de: 'Keine personenbezogenen Daten', beispiel: 'Textbausteine, allgemeine Recherche, Code', norm: '—' },
+  { id: 'S0', de: 'Keine personenbezogenen Daten', beispiel: 'Textbausteine, allgemeine Recherche, Code', norm: '-' },
   { id: 'S1', de: 'Normale personenbezogene Daten', beispiel: 'Name, Adresse, E-Mail-Verkehr', norm: 'Art. 6 DSGVO' },
   { id: 'S2', de: 'Besondere Kategorien', beispiel: 'Gesundheit, Religion, Gewerkschaft, Biometrie', norm: 'Art. 9 DSGVO' },
   { id: 'S3', de: 'Berufsgeheimnis', beispiel: 'Mandats-, Patienten-, Steuergeheimnis', norm: '§ 203 StGB' }
@@ -24,7 +24,7 @@ export type HostingRegion = 'eu' | 'us_dpf' | 'us_no_dpf' | 'other' | 'self_host
 export type TrainingUse = 'no' | 'opt_out' | 'yes' | 'unknown';
 
 /** Belegte Eigenschaften eines Einsatzwegs. `sourceUrl` und `checkedAt` sind
- * Pflicht — eine Compliance-Aussage über ein Unternehmen ohne Beleg und Datum
+ * Pflicht - eine Compliance-Aussage über ein Unternehmen ohne Beleg und Datum
  * wird nicht veröffentlicht. */
 export interface ProviderCompliance {
   slug: string;
@@ -46,6 +46,14 @@ export interface ProviderCompliance {
   /** Verpflichtung mitwirkender Personen (§ 203 Abs. 3 StGB) vertraglich
    * abgedeckt? Für Kanzleien/Praxen der entscheidende Punkt. */
   supportsProfessionalSecrecy: boolean | null;
+  /** Worauf stützt sich diese Angabe? Bei Strafrecht muss der Leser die
+   * Belegqualität sehen: 'anbieter' = Anbieter selbst dokumentiert oder
+   * bestätigt, 'community' = Dritt- oder Erfahrungsquelle (Forum, Fachbeitrag).
+   * Eine Community-Quelle ist ein Hinweis, keine Zusicherung. */
+  secrecyEvidence?: 'anbieter' | 'community' | null;
+  secrecyUrl?: string | null;
+  /** Wie der Zusatz bezogen wird - z. B. "über Support-Ticket". */
+  secrecyHinweis?: string | null;
   sourceUrl: string;
   sourceUrl2?: string;
   checkedAt: string;

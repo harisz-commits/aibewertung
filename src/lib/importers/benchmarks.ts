@@ -62,7 +62,7 @@ export function attachBenchmarks<T extends { slug: string; benchmarks?: Benchmar
   return models.map((m) => (map[m.slug] ? { ...m, benchmarks: map[m.slug] } : m));
 }
 
-/** Average of the normalized intelligence/reasoning/coding/math benchmarks —
+/** Average of the normalized intelligence/reasoning/coding/math benchmarks -
  * the measured counterpart to the scoring engine's structural quality proxy. */
 export function benchmarkQuality(benchmarks: BenchmarkResultView[] | undefined): number | null {
   if (!benchmarks || benchmarks.length === 0) return null;

@@ -16,7 +16,7 @@ function toTableModel(m: ModelView): TableModel {
   // Drop heavy/unused fields from the client payload. Providers live on the
   // model detail page, so the full endpoint array never ships to the table.
   const { description, descriptionDe, sources, family, providers, ...rest } = m;
-  // Die DSGVO-Ampel braucht die Anbieterliste — deshalb hier serverseitig
+  // Die DSGVO-Ampel braucht die Anbieterliste - deshalb hier serverseitig
   // vorberechnen und nur die vier kurzen Werte mitschicken.
   const compliance = Object.fromEntries(
     DATA_CLASSES.map((d) => [d.id, modelVerdict(m, d.id).verdict])

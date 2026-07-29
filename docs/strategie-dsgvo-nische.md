@@ -1,4 +1,4 @@
-# botbrix — Strategie: Deutscher KI-Compliance-Guide für Unternehmen
+# botbrix - Strategie: Deutscher KI-Compliance-Guide für Unternehmen
 
 **Stand:** 2026-07-28 · **Status:** Plan, noch nicht umgesetzt
 
@@ -6,22 +6,22 @@
 
 ## 1. Zielbild
 
-**Vorher:** „CoinMarketCap für KI" — Wettrennen um Daten gegen OpenRouter (hat Traffic-Daten,
+**Vorher:** „CoinMarketCap für KI" - Wettrennen um Daten gegen OpenRouter (hat Traffic-Daten,
 weil sie der Marktplatz sind) und Artificial Analysis (betreibt ein eigenes Eval-Labor).
 Nicht gewinnbar.
 
 **Neu:** Die Seite, die einem deutschen Betrieb ohne IT-Abteilung beantwortet:
 
-> *Darf ich KI für meine Arbeit einsetzen — und wenn ja, welche, wie richte ich das ein,
+> *Darf ich KI für meine Arbeit einsetzen - und wenn ja, welche, wie richte ich das ein,
 > und was darf ich auf keinen Fall reingeben?*
 
 Der Wert liegt nicht in mehr Zahlen, sondern in **Einordnung und Urteil**. Das ist genau
-das, was sich nicht wegkopieren lässt — und was OpenRouter und AA strukturell nie tun
+das, was sich nicht wegkopieren lässt - und was OpenRouter und AA strukturell nie tun
 werden, weil ihre Zielgruppe englischsprachige Entwickler sind.
 
-### Abgrenzung — was wir NICHT machen
+### Abgrenzung - was wir NICHT machen
 - Kein Konkurrenzkampf um Benchmark-Zahlen (wir zeigen sie, aber sie sind nicht der Kern)
-- Keine Rechtsberatung im Einzelfall (siehe §12 — das ist in Deutschland reguliert)
+- Keine Rechtsberatung im Einzelfall (siehe §12 - das ist in Deutschland reguliert)
 - Keine Traffic-/Nutzungsdaten, die wir nicht haben
 
 ---
@@ -61,7 +61,7 @@ Dasselbe Modell kann grün oder rot sein:
 | GPT-5.6 über die kostenlose ChatGPT-Weboberfläche | 🔴 |
 
 **Konsequenz für die Datenmodellierung:** Compliance-Attribute hängen am
-**Anbieter/Endpunkt**, nicht am Modell. Wir haben bereits `providers[]` pro Modell —
+**Anbieter/Endpunkt**, nicht am Modell. Wir haben bereits `providers[]` pro Modell -
 genau dort gehören sie hin.
 
 **Zweite Achse:** Das Urteil hängt davon ab, *welche Daten* reingehen. Eine Ampel ohne
@@ -75,7 +75,7 @@ Datenklasse ist wertlos.
 
 | Stufe | Bezeichnung | Beispiele | Rechtsgrundlage |
 |---|---|---|---|
-| **S0** | Keine Personendaten | Textbausteine, Code, allgemeine Recherche | — |
+| **S0** | Keine Personendaten | Textbausteine, Code, allgemeine Recherche | - |
 | **S1** | Normale Personendaten | Kundenname, Adresse, Mailverkehr | Art. 6 DSGVO |
 | **S2** | Besondere Kategorien | Gesundheit, Religion, Gewerkschaft, Biometrie | **Art. 9 DSGVO** |
 | **S3** | Berufsgeheimnis | Mandats-, Patienten-, Steuergeheimnis | **§ 203 StGB** |
@@ -97,8 +97,8 @@ interface ProviderCompliance {
   certifications: string[];            // ISO 27001, SOC 2 Typ II, BSI C5
   supportsProfessionalSecrecy: boolean | null;  // Verpflichtung mitwirkender
                                                 // Personen, § 203 Abs. 3 StGB
-  sourceUrl: string;                   // Beleg — Pflichtfeld
-  checkedAt: string;                   // Datum — Pflichtfeld
+  sourceUrl: string;                   // Beleg - Pflichtfeld
+  checkedAt: string;                   // Datum - Pflichtfeld
 }
 ```
 
@@ -109,7 +109,7 @@ interface ProviderCompliance {
 
 ## 5. Ampel-Logik
 
-Deterministisch und nachvollziehbar — dieselbe Philosophie wie unsere Scores. Kein LLM
+Deterministisch und nachvollziehbar - dieselbe Philosophie wie unsere Scores. Kein LLM
 setzt die Bewertung.
 
 Ergebnis ist eine **Matrix**: Einsatzweg × Datenklasse.
@@ -117,7 +117,7 @@ Ergebnis ist eine **Matrix**: Einsatzweg × Datenklasse.
 | Ampel | Bedeutung |
 |---|---|
 | 🟢 **Unproblematisch** | EU-Hosting oder Self-Hosting, AVV vorhanden, kein Training auf Kundendaten |
-| 🟡 **Machbar mit Auflagen** | Zulässig, aber konkrete Schritte nötig (AVV abschließen, Training abschalten, TOM dokumentieren) — Auflagen werden einzeln aufgelistet |
+| 🟡 **Machbar mit Auflagen** | Zulässig, aber konkrete Schritte nötig (AVV abschließen, Training abschalten, TOM dokumentieren) - Auflagen werden einzeln aufgelistet |
 | 🟠 **Nur anonymisiert** | Personenbezug muss vorher raus (Pseudonymisierung, Schwärzung) |
 | 🔴 **Nicht empfehlenswert** | Kein AVV, Drittland ohne Garantien, Training auf Kundendaten |
 
@@ -129,18 +129,18 @@ Ergebnis ist eine **Matrix**: Einsatzweg × Datenklasse.
 - `hostingRegion === 'us_dpf'` → max. 🟡 ab S1 (mit Hinweis auf Rechtsunsicherheit)
 - `self_hosted` → 🟢 bis S3
 
-**Wichtig:** Jede Ampel zeigt **warum** — die auslösenden Regeln im Klartext, nicht nur die
+**Wichtig:** Jede Ampel zeigt **warum** - die auslösenden Regeln im Klartext, nicht nur die
 Farbe. Das ist der eigentliche Mehrwert.
 
 ---
 
 ## 6. Tabelle & Filter
 
-**Neue Spalte:** „DSGVO-Einsatz" — Ampel für den *besten verfügbaren* Einsatzweg, bezogen
+**Neue Spalte:** „DSGVO-Einsatz" - Ampel für den *besten verfügbaren* Einsatzweg, bezogen
 auf eine oben wählbare Datenklasse (Standard: S1).
 
 **Neue Filter:**
-- Datenklasse (S0–S3) — steuert die gesamte Ampel-Spalte
+- Datenklasse (S0–S3) - steuert die gesamte Ampel-Spalte
 - ☑ Nur EU-Hosting
 - ☑ AVV verfügbar
 - ☑ Kein Training auf meinen Daten
@@ -151,7 +151,7 @@ auf eine oben wählbare Datenklasse (Standard: S1).
 
 **Chance, die wir haben und die Konkurrenz nicht:** EU-Anbieter sind auf OpenRouter und AA
 kaum vertreten. **Aleph Alpha, IONOS AI Model Hub, STACKIT (Schwarz Gruppe), Telekom /
-T-Systems, Open Telekom Cloud, Scaleway, OVHcloud, Nebius, Mistral** — die decken wir ab,
+T-Systems, Open Telekom Cloud, Scaleway, OVHcloud, Nebius, Mistral** - die decken wir ab,
 und dort sind wir dann tatsächlich die bessere Quelle. Das ist eine echte Datenlücke zu
 unseren Gunsten.
 
@@ -161,28 +161,28 @@ unseren Gunsten.
 
 Aufbau je Modell, in dieser Reihenfolge (Laien zuerst):
 
-1. **In einem Satz** — was kann das, für wen lohnt sich das
-2. **DSGVO-Ampel je Einsatzweg** — Tabelle Anbieter × Datenklasse, mit Begründung
-3. **Was darf ich reingeben, was nicht** — konkrete Beispiele, keine Paragraphen
-4. **So richtest du es ein** — Schritt für Schritt, pro Einsatzweg, mit Screenshots
-5. **Was kostet mich das wirklich** — nicht $/1M Token, sondern
+1. **In einem Satz** - was kann das, für wen lohnt sich das
+2. **DSGVO-Ampel je Einsatzweg** - Tabelle Anbieter × Datenklasse, mit Begründung
+3. **Was darf ich reingeben, was nicht** - konkrete Beispiele, keine Paragraphen
+4. **So richtest du es ein** - Schritt für Schritt, pro Einsatzweg, mit Screenshots
+5. **Was kostet mich das wirklich** - nicht $/1M Token, sondern
    „500 Kundenmails/Monat ≈ X €"
-6. **Wofür ist es gut / schlecht** — ehrlich, inkl. Schwächen
-7. **Alternativen** — inkl. EU-Anbieter und lokaler Option
-8. **Benchmarks** — bleibt, aber nach unten, als Beleg statt als Hauptsache
-9. **Quellen & Stand** — jede Compliance-Aussage mit Link und Datum
+6. **Wofür ist es gut / schlecht** - ehrlich, inkl. Schwächen
+7. **Alternativen** - inkl. EU-Anbieter und lokaler Option
+8. **Benchmarks** - bleibt, aber nach unten, als Beleg statt als Hauptsache
+9. **Quellen & Stand** - jede Compliance-Aussage mit Link und Datum
 
 ---
 
 ## 8. Branchen- und Anwendungsfallseiten (der SEO-Kern)
 
 **Das ist der eigentliche Traffic- und Umsatzmotor.** Ein Steuerberater sucht nicht
-„GPT-5.6" — er sucht *„KI Steuerkanzlei DSGVO"* oder *„darf ich ChatGPT für Mandantendaten
+„GPT-5.6" - er sucht *„KI Steuerkanzlei DSGVO"* oder *„darf ich ChatGPT für Mandantendaten
 nutzen"*.
 
-### `/branchen/<slug>` — z. B. `/branchen/steuerkanzlei`
+### `/branchen/<slug>` - z. B. `/branchen/steuerkanzlei`
 - Typische Aufgaben, bei denen KI wirklich Zeit spart (konkret, nicht generisch)
-- Was ist erlaubt, was nicht — mit den einschlägigen Normen in Alltagssprache
+- Was ist erlaubt, was nicht - mit den einschlägigen Normen in Alltagssprache
 - Empfohlenes Setup (3 Varianten: einfach / solide / maximale Kontrolle)
 - Konkrete Modellempfehlung mit Begründung
 - Realistische Kosten- und Zeitersparnisrechnung
@@ -196,7 +196,7 @@ nutzen"*.
 Aufgabenorientiert, branchenübergreifend, mit fertigen Prompt-Vorlagen auf Deutsch.
 
 **Umfang Zielbild:** 8 Branchen × 6 Anwendungsfälle + 345 Modellseiten × 2 Sprachen.
-Aber: **Qualität vor Menge.** Lieber 3 exzellente Branchenseiten als 8 dünne — dünner
+Aber: **Qualität vor Menge.** Lieber 3 exzellente Branchenseiten als 8 dünne - dünner
 Content rankt heute nicht mehr.
 
 ---
@@ -221,22 +221,22 @@ Content rankt heute nicht mehr.
 
 Erklärstücke in Alltagssprache, jeweils mit „Was heißt das für mich konkret?"-Kasten:
 
-- **AVV** — Was ist ein Auftragsverarbeitungsvertrag und warum brauche ich den
-- **Art. 9 DSGVO** — Gesundheitsdaten und andere heikle Kategorien
-- **§ 203 StGB** — Berufsgeheimnis: Wann darf ein IT-Dienstleister mitwirken
-- **Drittlandtransfer** — US-Anbieter, EU-US Data Privacy Framework, aktueller Stand
-- **EU AI Act** — **Pflichten für Betreiber** (nicht nur Hersteller!), inkl.
+- **AVV** - Was ist ein Auftragsverarbeitungsvertrag und warum brauche ich den
+- **Art. 9 DSGVO** - Gesundheitsdaten und andere heikle Kategorien
+- **§ 203 StGB** - Berufsgeheimnis: Wann darf ein IT-Dienstleister mitwirken
+- **Drittlandtransfer** - US-Anbieter, EU-US Data Privacy Framework, aktueller Stand
+- **EU AI Act** - **Pflichten für Betreiber** (nicht nur Hersteller!), inkl.
   KI-Kompetenz-Pflicht nach Art. 4
-- **Betriebsrat** — Mitbestimmung nach § 87 BetrVG bei KI-Tools ← *stark unterversorgtes
+- **Betriebsrat** - Mitbestimmung nach § 87 BetrVG bei KI-Tools ← *stark unterversorgtes
   Thema*
-- **TOM** — Technische und organisatorische Maßnahmen, praktisch
+- **TOM** - Technische und organisatorische Maßnahmen, praktisch
 - **Löschkonzept & Zweckbindung**
 
 Diese Seiten sind gleichzeitig SEO-Fläche und Vertrauensbeweis.
 
 ---
 
-## 11. Datenbeschaffung & Pflege — der Burggraben
+## 11. Datenbeschaffung & Pflege - der Burggraben
 
 **Das ist bewusst Handarbeit, und genau deshalb verteidigbar.** Die Compliance-Daten sind
 nirgends als API abrufbar; sie erfordern Recherche und Urteil.
@@ -246,7 +246,7 @@ Bedrock, Mistral, Aleph Alpha, IONOS, STACKIT, Telekom, Scaleway, OVH, Nebius,
 Groq, Together, Fireworks, DeepInfra …). Pro Anbieter: AVV-Seite, Unterauftragsverarbeiter,
 Regionen, Trainingsrichtlinie, Zertifikate. **Aufwand: 30–60 Min. pro Anbieter.**
 
-**Pflege:** Quartalsweise Prüfung + `checkedAt` aktualisieren. Anbieter ändern Richtlinien —
+**Pflege:** Quartalsweise Prüfung + `checkedAt` aktualisieren. Anbieter ändern Richtlinien -
 veraltete Aussagen sind hier ein echtes Risiko, kein Schönheitsfehler.
 
 **Technisch:** Erfassung als versionierte JSON-Datei im Repo
@@ -272,7 +272,7 @@ Das ist kein Kleingedrucktes, sondern eine Voraussetzung für das ganze Vorhaben
    keine Freigabe.
 4. **Eigene DSGVO-Hausaufgaben:** Impressum und Datenschutzerklärung sind aktuell
    Platzhalter (`legal.impressumBody`: „placeholder"). Das muss **vor** jeder
-   Bewerbung der Seite echt werden — eine Datenschutz-Seite mit Platzhalter-Datenschutz
+   Bewerbung der Seite echt werden - eine Datenschutz-Seite mit Platzhalter-Datenschutz
    ist unhaltbar.
 5. **Fachliche Gegenprüfung.** Vor Live-Gang der Compliance-Inhalte einmal von einem
    Fachanwalt für IT-Recht gegenlesen lassen. Kostet, ist aber die Grundlage der
@@ -288,11 +288,11 @@ Nach Erfolgswahrscheinlichkeit geordnet:
 |---|---|---|
 | **Beratung / Einrichtung für KMU** | ★★★★★ | Seite ist Referenz und Lead-Quelle. Ein Projekt bringt mehr als Affiliate im Jahr |
 | **Branchen-Leitfäden als PDF** (49–199 €) | ★★★★ | Direkt verkaufbar, skaliert ohne Zeitaufwand |
-| **Lead-Vermittlung an EU-Anbieter** | ★★★★ | IONOS, Aleph Alpha, STACKIT zahlen für qualifizierte KMU-Leads — deutlich lohnender als API-Affiliate |
+| **Lead-Vermittlung an EU-Anbieter** | ★★★★ | IONOS, Aleph Alpha, STACKIT zahlen für qualifizierte KMU-Leads - deutlich lohnender als API-Affiliate |
 | **Sponsored Placements** (Infra fertig) | ★★★ | Erst ab Traffic |
 | **Newsletter „KI & Recht für KMU"** | ★★★ | Baut Publikum, später Werbeplätze |
 | API-Affiliate (OpenAI etc.) | ★ | Entwickler gehen direkt, kaum Attribution |
-| Bezahlte API/CSV | ★ | Direkte Konkurrenz zu AA mit weniger Daten — würde ich lassen |
+| Bezahlte API/CSV | ★ | Direkte Konkurrenz zu AA mit weniger Daten - würde ich lassen |
 
 ---
 
@@ -300,24 +300,24 @@ Nach Erfolgswahrscheinlichkeit geordnet:
 
 **Prinzip: erst an einer Branche beweisen, dann skalieren.**
 
-### Etappe 1 — Fundament *(bringt sofort sichtbaren Nutzen)*
+### Etappe 1 - Fundament *(bringt sofort sichtbaren Nutzen)*
 1. Datenmodell `ProviderCompliance` + Datenklassen S0–S3
 2. Compliance-Daten für die **10 wichtigsten Anbieter** recherchieren
 3. Ampel-Logik (deterministisch, mit Begründungstexten)
 4. Tabelle: DSGVO-Spalte + Filter „Nur EU-Hosting" / „AVV" / „kein Training"
 
-### Etappe 2 — Beweis an einer Branche
+### Etappe 2 - Beweis an einer Branche
 5. `/branchen/steuerkanzlei` vollständig und exzellent
 6. DSGVO-Schnellcheck (5 Fragen → Ampel + Empfehlung)
 7. Modell-Detailseiten um Ampel + „Was reingeben, was nicht" + Setup erweitern
 
-### Etappe 3 — Skalieren
+### Etappe 3 - Skalieren
 8. Wissensbasis (AVV, Art. 9, § 203, AI Act, Betriebsrat)
 9. Branchen 2–4 (Kanzlei, Arztpraxis, Handwerk)
 10. Kostenrechner
 11. Anwendungsfallseiten
 
-### Etappe 4 — Umsatz
+### Etappe 4 - Umsatz
 12. Downloads gegen E-Mail + Newsletter
 13. Impressum/Datenschutz echt machen, juristische Gegenprüfung
 14. EU-Anbieter auf Lead-Kooperation ansprechen

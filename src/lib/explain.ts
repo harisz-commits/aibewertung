@@ -63,73 +63,73 @@ export function explainScore(m: ModelView, key: keyof Scores, lang: Lang): strin
     case 'backendCoding':
     case 'frontendCoding':
       return de
-        ? `${b} — ${f.coding ? 'ein auf Code ausgerichtetes Modell' : 'kein spezialisiertes Code-Modell'}${
+        ? `${b} - ${f.coding ? 'ein auf Code ausgerichtetes Modell' : 'kein spezialisiertes Code-Modell'}${
             f.tools ? ', mit Tool-Calling für Agenten' : ''
           }; ${contextBand(m.contextWindow, lang)} hilft bei großen Dateien.`
-        : `${b} — ${f.coding ? 'a coding-focused model' : 'not a specialised coding model'}${
+        : `${b} - ${f.coding ? 'a coding-focused model' : 'not a specialised coding model'}${
             f.tools ? ', with tool calling for agents' : ''
           }; ${contextBand(m.contextWindow, lang)} helps with large files.`;
     case 'reasoning':
     case 'math':
       return de
-        ? `${b} — ${f.reasoning ? 'unterstützt explizites schrittweises Reasoning' : 'ohne dedizierten Reasoning-Modus'}.`
-        : `${b} — ${f.reasoning ? 'supports explicit step-by-step reasoning' : 'no dedicated reasoning mode'}.`;
+        ? `${b} - ${f.reasoning ? 'unterstützt explizites schrittweises Reasoning' : 'ohne dedizierten Reasoning-Modus'}.`
+        : `${b} - ${f.reasoning ? 'supports explicit step-by-step reasoning' : 'no dedicated reasoning mode'}.`;
     case 'cheapApi':
     case 'pricePerformance':
       return de
-        ? `${b} — ${price} bei ${formatPrice(m.cheapestOutputPer1m)}/1M Output-Tokens${
+        ? `${b} - ${price} bei ${formatPrice(m.cheapestOutputPer1m)}/1M Output-Tokens${
             m.providerCount > 1 ? `, über ${m.providerCount} Anbieter verfügbar` : ''
           }.`
-        : `${b} — ${price} at ${formatPrice(m.cheapestOutputPer1m)}/1M output tokens${
+        : `${b} - ${price} at ${formatPrice(m.cheapestOutputPer1m)}/1M output tokens${
             m.providerCount > 1 ? `, available across ${m.providerCount} providers` : ''
           }.`;
     case 'local':
     case 'openWeight':
       return de
-        ? `${b} — ${m.isOpenWeight ? 'Open-Weight, also grundsätzlich lokal ausführbar' : 'geschlossen, nur über Anbieter-APIs'}${
+        ? `${b} - ${m.isOpenWeight ? 'Open-Weight, also grundsätzlich lokal ausführbar' : 'geschlossen, nur über Anbieter-APIs'}${
             m.parameterCount ? ` (${m.parameterCount})` : ''
           }.`
-        : `${b} — ${m.isOpenWeight ? 'open-weight, so it can run locally' : 'closed, provider APIs only'}${
+        : `${b} - ${m.isOpenWeight ? 'open-weight, so it can run locally' : 'closed, provider APIs only'}${
             m.parameterCount ? ` (${m.parameterCount})` : ''
           }.`;
     case 'privacyEu':
       return de
-        ? `${b} — ${m.isOpenWeight ? 'lokal/selbst gehostet betreibbar, was Datenschutz erleichtert' : 'nur über Anbieter, EU-Hosting je nach Provider'}.`
-        : `${b} — ${m.isOpenWeight ? 'can be self-hosted, which helps privacy' : 'provider-only; EU hosting depends on the provider'}.`;
+        ? `${b} - ${m.isOpenWeight ? 'lokal/selbst gehostet betreibbar, was Datenschutz erleichtert' : 'nur über Anbieter, EU-Hosting je nach Provider'}.`
+        : `${b} - ${m.isOpenWeight ? 'can be self-hosted, which helps privacy' : 'provider-only; EU hosting depends on the provider'}.`;
     case 'vision':
       return de
-        ? `${b} — ${f.vision ? 'kann Bilder/Dokumente verarbeiten' : 'kein Bildverständnis'}.`
-        : `${b} — ${f.vision ? 'can process images/documents' : 'no image understanding'}.`;
+        ? `${b} - ${f.vision ? 'kann Bilder/Dokumente verarbeiten' : 'kein Bildverständnis'}.`
+        : `${b} - ${f.vision ? 'can process images/documents' : 'no image understanding'}.`;
     case 'rag':
     case 'longContext':
       return de
-        ? `${b} — ${contextBand(m.contextWindow, lang)} (${formatContext(m.contextWindow)})${
+        ? `${b} - ${contextBand(m.contextWindow, lang)} (${formatContext(m.contextWindow)})${
             f.tools ? ' und Tool-Calling für Abrufe' : ''
           }.`
-        : `${b} — ${contextBand(m.contextWindow, lang)} (${formatContext(m.contextWindow)})${
+        : `${b} - ${contextBand(m.contextWindow, lang)} (${formatContext(m.contextWindow)})${
             f.tools ? ' plus tool calling for retrieval' : ''
           }.`;
     case 'agentTool':
       return de
-        ? `${b} — ${f.tools ? 'unterstützt Tool-/Function-Calling' : 'ohne Tool-Calling'}${
+        ? `${b} - ${f.tools ? 'unterstützt Tool-/Function-Calling' : 'ohne Tool-Calling'}${
             f.reasoning ? ' und Reasoning für mehrstufige Aufgaben' : ''
           }.`
-        : `${b} — ${f.tools ? 'supports tool/function calling' : 'no tool calling'}${
+        : `${b} - ${f.tools ? 'supports tool/function calling' : 'no tool calling'}${
             f.reasoning ? ' plus reasoning for multi-step tasks' : ''
           }.`;
     case 'german':
     case 'translation':
       return de
-        ? `${b} — geschätzt aus der mehrsprachigen Stärke von ${m.lab} und der Gesamtqualität (bis Benchmark-Daten vorliegen).`
-        : `${b} — estimated from ${m.lab}'s multilingual strength and overall quality (until benchmark data lands).`;
+        ? `${b} - geschätzt aus der mehrsprachigen Stärke von ${m.lab} und der Gesamtqualität (bis Benchmark-Daten vorliegen).`
+        : `${b} - estimated from ${m.lab}'s multilingual strength and overall quality (until benchmark data lands).`;
     case 'speed':
       return de
-        ? `${b} — Näherung aus Preis und Modellgröße; echte Durchsatz-/Latenzdaten folgen mit den Provider-Messungen.`
-        : `${b} — approximated from price and model size; real throughput/latency arrives with provider measurements.`;
+        ? `${b} - Näherung aus Preis und Modellgröße; echte Durchsatz-/Latenzdaten folgen mit den Provider-Messungen.`
+        : `${b} - approximated from price and model size; real throughput/latency arrives with provider measurements.`;
     default:
       return de
-        ? `${b} — abgeleitet aus Qualitätssignalen, Funktionsumfang und Preis dieses Modells.`
-        : `${b} — derived from this model's quality signals, feature set and price.`;
+        ? `${b} - abgeleitet aus Qualitätssignalen, Funktionsumfang und Preis dieses Modells.`
+        : `${b} - derived from this model's quality signals, feature set and price.`;
   }
 }
 
@@ -164,14 +164,14 @@ export function worthIt(m: ModelView, lang: Lang): string {
   const de = lang === 'de';
   if (out === 0) {
     return de
-      ? 'Dieses Modell ist kostenlos verfügbar — für Experimente und die meisten Alltagsaufgaben ein risikofreier Einstieg.'
-      : 'This model is available for free — a risk-free start for experiments and most everyday tasks.';
+      ? 'Dieses Modell ist kostenlos verfügbar - für Experimente und die meisten Alltagsaufgaben ein risikofreier Einstieg.'
+      : 'This model is available for free - a risk-free start for experiments and most everyday tasks.';
   }
   // Genuinely cheap, or strong value-for-money → clearly recommend.
   if ((out != null && out < 8) || pp >= 60) {
     return de
-      ? 'Gutes Preis-Leistungs-Verhältnis für die meisten Nutzer — ein deutlich teureres Frontier-Modell brauchst du nur für Spezialfälle.'
-      : 'Good price/performance for most users — you only need a much pricier frontier model for special cases.';
+      ? 'Gutes Preis-Leistungs-Verhältnis für die meisten Nutzer - ein deutlich teureres Frontier-Modell brauchst du nur für Spezialfälle.'
+      : 'Good price/performance for most users - you only need a much pricier frontier model for special cases.';
   }
   // Only the genuinely expensive tier gets the "premium" caveat.
   if (out != null && out >= 20) {
@@ -181,6 +181,6 @@ export function worthIt(m: ModelView, lang: Lang): string {
   }
   // Upper-mid: neutral, not alarmist.
   return de
-    ? 'Preislich im gehobenen Mittelfeld — eine solide Wahl, wenn dir Qualität wichtig ist; wer vor allem aufs Budget schaut, findet günstigere Alternativen.'
-    : 'Priced in the upper-mid range — a solid pick when you value quality; budget-focused users can find cheaper alternatives.';
+    ? 'Preislich im gehobenen Mittelfeld - eine solide Wahl, wenn dir Qualität wichtig ist; wer vor allem aufs Budget schaut, findet günstigere Alternativen.'
+    : 'Priced in the upper-mid range - a solid pick when you value quality; budget-focused users can find cheaper alternatives.';
 }

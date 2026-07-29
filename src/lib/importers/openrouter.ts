@@ -1,4 +1,4 @@
-// OpenRouter importer — maps the public /api/v1/models and /endpoints payloads
+// OpenRouter importer - maps the public /api/v1/models and /endpoints payloads
 // to botbrix's normalized model shape. Pure (no DB/Prisma imports) so it can run
 // both in the Next runtime and as a standalone snapshot/import script.
 //
@@ -65,7 +65,7 @@ const EMBED_HINT = /embed/i;
 const RERANK_HINT = /re[-\s]?rank/i;
 // Image/audio GENERATORS. Matched against id+name and combined with a non-text
 // output modality, so a text model that merely *reads* images (vision) is not
-// caught — only models whose product is an image or a sound.
+// caught - only models whose product is an image or a sound.
 const MEDIA_HINT = /(image|audio|speech|tts|voice|music|lyria|imagen|veo|sora|dall-?e|flux|diffusion|midjourney)/i;
 
 function perMillion(perToken?: string): number | null {
@@ -114,7 +114,7 @@ function deriveCategory(opts: {
 
 /** URL-safe slug from an OpenRouter model id. Collapses every character that
  * is not [a-z0-9] into a single hyphen, so ids with '/', ':' (e.g. ':free'),
- * '.' (version numbers) or '~' (…-latest aliases) never end up in a URL path —
+ * '.' (version numbers) or '~' (…-latest aliases) never end up in a URL path -
  * those characters cause routing/404 issues on Vercel. Distinct ids stay
  * distinct (…-a12b vs …-a12b-free). */
 export function toSlug(id: string): string {

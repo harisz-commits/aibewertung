@@ -10,7 +10,7 @@ export type Category =
   | 'embedding'
   | 'reranker'
   /** Generates images/audio rather than answering in text (Lyria, *-image,
-   * gpt-audio). Excluded from text-task rankings — their text scores are
+   * gpt-audio). Excluded from text-task rankings - their text scores are
    * structural artifacts, not a claim about writing or coding ability. */
   | 'media';
 
@@ -173,7 +173,7 @@ export interface ModelView {
   outputSpeedTps?: number | null; // median output tokens/second
   ttftMs?: number | null; // median time to first token, milliseconds
 
-  // Hugging Face adoption (open-weight models only). Popularity, NOT quality —
+  // Hugging Face adoption (open-weight models only). Popularity, NOT quality -
   // deliberately excluded from every score.
   hfDownloads30d?: number | null;
   hfDownloadsAllTime?: number | null;

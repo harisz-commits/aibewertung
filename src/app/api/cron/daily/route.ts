@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 // Daily update agent entrypoint (Phase 2). Scheduled at 10:00 Europe/Vienna
-// via vercel.json (cron runs in UTC — adjust for DST). Authorize with a bearer
+// via vercel.json (cron runs in UTC - adjust for DST). Authorize with a bearer
 // CRON_SECRET so it cannot be triggered publicly.
 //
 // The full agent (fetch sources → detect new/changed → normalize → changelog →
@@ -20,6 +20,6 @@ export async function GET(request: Request) {
   return NextResponse.json({
     ok: true,
     ranAt: new Date().toISOString(),
-    note: 'Stub — connect DATABASE_URL and the import pipeline to activate.'
+    note: 'Stub - connect DATABASE_URL and the import pipeline to activate.'
   });
 }

@@ -18,7 +18,7 @@ export const COMPLIANCE_META = DATA.meta;
 export const ALL_ROUTES: RouteRecord[] = DATA.routes;
 
 /** Alle dokumentierten Einsatzwege für ein Modell. Ein Weg zählt, wenn einer
- * seiner Anbieter-Slugs am Modell hängt — oder wenn er generell für
+ * seiner Anbieter-Slugs am Modell hängt - oder wenn er generell für
  * Open-Weight-Modelle gilt (Selbstbetrieb). */
 export function routesForModel(m: Pick<ModelView, 'providers' | 'isOpenWeight'>): RouteRecord[] {
   const slugs = new Set((m.providers ?? []).map((p) => p.providerSlug));

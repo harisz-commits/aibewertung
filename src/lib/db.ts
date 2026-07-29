@@ -11,7 +11,7 @@ const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
 export function getDb(): PrismaClient {
   if (!isDbConfigured()) {
-    throw new Error('DATABASE_URL is not set — DB features are unavailable.');
+    throw new Error('DATABASE_URL is not set - DB features are unavailable.');
   }
   if (!globalForPrisma.prisma) {
     globalForPrisma.prisma = new PrismaClient();

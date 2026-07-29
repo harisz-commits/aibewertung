@@ -114,7 +114,7 @@ export function getProviders(): { slug: string; name: string; count: number }[] 
 }
 
 /** Most-downloaded open-weight models (Hugging Face, last 30 days). Adoption,
- * not quality — kept out of the scored rankings on purpose. Deduplicated by
+ * not quality - kept out of the scored rankings on purpose. Deduplicated by
  * Hugging Face repo, since paid and ":free" variants share one repo. */
 export function getMostDownloaded(limit = 8): ModelView[] {
   const seen = new Set<string>();
@@ -157,7 +157,6 @@ export function getHomeRankings(): { id: string; scoreKey: RankingKey; models: M
       models: getTopBy('cheapApi', 5, (m) => (m.cheapestOutputPer1m ?? 0) > 0)
     },
     { id: 'local', scoreKey: 'local' as RankingKey, models: getTopBy('local', 5, (m) => m.isOpenWeight) },
-    { id: 'german', scoreKey: 'german' as RankingKey, models: getTopBy('german', 5) },
     { id: 'rag', scoreKey: 'rag' as RankingKey, models: getTopBy('rag', 5) },
     { id: 'vision', scoreKey: 'vision' as RankingKey, models: getTopBy('vision', 5, (m) => m.features.vision) },
     { id: 'pricePerformance', scoreKey: 'pricePerformance' as RankingKey, models: getTopBy('pricePerformance', 5) },

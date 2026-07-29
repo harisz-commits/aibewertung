@@ -1,7 +1,7 @@
 // Presentation helpers (framework-agnostic).
 
 export function formatPrice(perMillion: number | null | undefined): string {
-  if (perMillion == null) return '—';
+  if (perMillion == null) return '-';
   if (perMillion === 0) return 'Free';
   if (perMillion < 1) return `$${perMillion.toFixed(3)}`;
   if (perMillion < 100) return `$${perMillion.toFixed(2)}`;
@@ -9,14 +9,14 @@ export function formatPrice(perMillion: number | null | undefined): string {
 }
 
 export function formatContext(tokens: number | null | undefined): string {
-  if (tokens == null) return '—';
+  if (tokens == null) return '-';
   if (tokens >= 1_000_000) return `${(tokens / 1_000_000).toFixed(tokens % 1_000_000 === 0 ? 0 : 1)}M`;
   if (tokens >= 1000) return `${Math.round(tokens / 1000)}K`;
   return String(tokens);
 }
 
 export function formatDate(iso: string | null | undefined, locale = 'en'): string {
-  if (!iso) return '—';
+  if (!iso) return '-';
   try {
     return new Intl.DateTimeFormat(locale === 'de' ? 'de-DE' : 'en-US', {
       year: 'numeric',
@@ -24,29 +24,29 @@ export function formatDate(iso: string | null | undefined, locale = 'en'): strin
       day: 'numeric'
     }).format(new Date(iso));
   } catch {
-    return '—';
+    return '-';
   }
 }
 
 export function formatScore(score: number | null | undefined): string {
-  if (score == null) return '—';
+  if (score == null) return '-';
   return score.toFixed(0);
 }
 
 export function formatSpeed(tps: number | null | undefined): string {
-  if (tps == null) return '—';
+  if (tps == null) return '-';
   return `${Math.round(tps)} t/s`;
 }
 
 export function formatLatency(ms: number | null | undefined): string {
-  if (ms == null) return '—';
+  if (ms == null) return '-';
   if (ms >= 1000) return `${(ms / 1000).toFixed(ms >= 10000 ? 0 : 1)}s`;
   return `${Math.round(ms)}ms`;
 }
 
 /** Compact counts for download/like figures: 16764566 → "16.8M". */
 export function formatCount(n: number | null | undefined): string {
-  if (n == null) return '—';
+  if (n == null) return '-';
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1)}M`;
   if (n >= 1_000) return `${(n / 1_000).toFixed(n >= 10_000 ? 0 : 1)}k`;
   return String(n);

@@ -3,13 +3,13 @@ import type { Verdict } from '@/lib/compliance/types';
 
 // "green" heißt NICHT arbeitsfrei: die üblichen Pflichten (AVV abschließen,
 // Eintrag ins Verarbeitungsverzeichnis) gelten immer. Deshalb "Möglich" statt
-// "Unproblematisch" — sonst widerspricht das Label den angezeigten Auflagen.
+// "Unproblematisch" - sonst widerspricht das Label den angezeigten Auflagen.
 export const VERDICT_LABEL: Record<Verdict, string> = {
   green: 'Möglich (mit den üblichen Pflichten)',
   yellow: 'Möglich mit zusätzlichen Auflagen',
   orange: 'Nur ohne Personenbezug',
   red: 'Nicht empfehlenswert',
-  unknown: 'Ungeprüft — keine Freigabe'
+  unknown: 'Ungeprüft - keine Freigabe'
 };
 
 /** Kurzform für enge Spalten. */

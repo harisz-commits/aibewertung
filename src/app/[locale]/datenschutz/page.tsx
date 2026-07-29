@@ -151,7 +151,7 @@ export default async function DatenschutzPage({ params }: { params: Promise<{ lo
 
         <Abschnitt titel="10. Änderungen">
           <p>
-            Wir passen diese Erklärung an, wenn sich die Verarbeitung ändert — etwa bei Einführung von
+            Wir passen diese Erklärung an, wenn sich die Verarbeitung ändert - etwa bei Einführung von
             Benutzerkonten, Newsletter-Versand oder Reichweitenmessung. Es gilt die jeweils hier abrufbare
             Fassung.
           </p>

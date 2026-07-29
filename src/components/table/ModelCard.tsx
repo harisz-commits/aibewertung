@@ -63,7 +63,7 @@ export function ModelCard({
       <div className="grid grid-cols-3 gap-2 border-t border-border pt-3">
         <Stat label={labels.context} value={formatContext(m.contextWindow)} />
         <Stat label={labels.output} value={formatPrice(m.cheapestOutputPer1m)} />
-        <Stat label={labels.speed} value={m.outputSpeedTps != null ? formatSpeed(m.outputSpeedTps) : '—'} />
+        <Stat label={labels.speed} value={m.outputSpeedTps != null ? formatSpeed(m.outputSpeedTps) : '-'} />
       </div>
     </Link>
   );

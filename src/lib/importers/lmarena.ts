@@ -2,7 +2,7 @@
 // publishes an Elo per model based on blind human votes. This maps a leaderboard
 // entry to a 'lmarena' benchmark result. The fetch/source parsing is left as a
 // documented step because the leaderboard is distributed as a periodically
-// updated dataset rather than a stable JSON API — wire the current source in
+// updated dataset rather than a stable JSON API - wire the current source in
 // scripts/import-benchmarks.ts and keep `lastCheckedAt` honest.
 
 import type { BenchmarkResultView } from '../types.ts';

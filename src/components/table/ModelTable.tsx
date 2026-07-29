@@ -22,7 +22,7 @@ import { DATA_CLASSES, type DataClass, type Verdict } from '@/lib/compliance/typ
 import { RangeSlider } from './RangeSlider';
 import { ModelCard } from './ModelCard';
 
-// Providers are intentionally excluded from the table payload — they live on
+// Providers are intentionally excluded from the table payload - they live on
 // the model detail page. Dropping the array keeps the client bundle lean.
 export type TableModel = Omit<ModelView, 'description' | 'descriptionDe' | 'sources' | 'family' | 'providers'> & {
   /** Serverseitig vorberechnete DSGVO-Ampel je Datenklasse. Kompakt gehalten,
@@ -151,13 +151,13 @@ export function ModelTable({
   const [sort, setSort] = useState<SortKey>('overall');
   const [view, setView] = useState<'table' | 'grid'>('table');
   const [showFilters, setShowFilters] = useState(false);
-  // Datenklasse steuert die gesamte DSGVO-Spalte — ohne sie ist eine Ampel wertlos.
+  // Datenklasse steuert die gesamte DSGVO-Spalte - ohne sie ist eine Ampel wertlos.
   const [dataClass, setDataClass] = useState<DataClass>('S1');
   const [euOnly, setEuOnly] = useState(false);
 
   // Restore filters from the URL once on mount. Done in an effect (not a state
-  // initializer) so server and first client render agree — no hydration
-  // mismatch — at the cost of one extra render.
+  // initializer) so server and first client render agree - no hydration
+  // mismatch - at the cost of one extra render.
   const hydrated = useRef(false);
   useEffect(() => {
     const p = new URLSearchParams(window.location.search);
@@ -260,7 +260,7 @@ export function ModelTable({
     const qs = p.toString();
     const url = `${window.location.pathname}${qs ? `?${qs}` : ''}${window.location.hash}`;
     if (url !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
-      // Keep the existing history state object — the App Router keeps its own
+      // Keep the existing history state object - the App Router keeps its own
       // routing data in there, and replacing it with null breaks client-side
       // navigation (links stop working).
       window.history.replaceState(window.history.state, '', url);
@@ -484,7 +484,7 @@ export function ModelTable({
                   </Toggle>
                 ))}
               </div>
-              <FilterLabel className="mt-3">DSGVO — welche Daten gehen rein?</FilterLabel>
+              <FilterLabel className="mt-3">DSGVO - welche Daten gehen rein?</FilterLabel>
               <select
                 value={dataClass}
                 onChange={(e) => setDataClass(e.target.value as DataClass)}
@@ -492,7 +492,7 @@ export function ModelTable({
               >
                 {DATA_CLASSES.map((d) => (
                   <option key={d.id} value={d.id}>
-                    {d.id} — {d.de}
+                    {d.id} - {d.de}
                   </option>
                 ))}
               </select>
@@ -650,7 +650,7 @@ function ModelRow({
       <td className="px-3 py-3 text-right tabular-nums text-muted">{formatContext(m.contextWindow)}</td>
       <td className="px-3 py-3 text-right tabular-nums">{formatPrice(m.cheapestInputPer1m)}</td>
       <td className="px-3 py-3 text-right tabular-nums">{formatPrice(m.cheapestOutputPer1m)}</td>
-      <td className="px-3 py-3 text-right tabular-nums text-muted">{m.outputSpeedTps != null ? formatSpeed(m.outputSpeedTps) : '—'}</td>
+      <td className="px-3 py-3 text-right tabular-nums text-muted">{m.outputSpeedTps != null ? formatSpeed(m.outputSpeedTps) : '-'}</td>
       <td className="px-3 py-3 text-right tabular-nums text-muted">{formatLatency(m.ttftMs)}</td>
       <td className="px-3 py-3 text-center">
         <VerdictBadge verdict={m.compliance?.[dataClass] ?? 'unknown'} short />

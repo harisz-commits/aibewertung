@@ -2,7 +2,7 @@
 //
 // Public, key-free API. Gives the one thing benchmarks cannot: how much a model
 // is ACTUALLY used. Only open-weight models are published on HF, so closed
-// models (GPT, Claude, Gemini) legitimately have no data here — we show nothing
+// models (GPT, Claude, Gemini) legitimately have no data here - we show nothing
 // rather than inventing a number, and these stats never feed the quality score
 // (downloads measure popularity, not capability).
 

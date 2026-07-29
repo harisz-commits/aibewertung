@@ -83,7 +83,7 @@ export default async function ImpressumPage({ params }: { params: Promise<{ loca
             Die Inhalte dieser Seite werden mit Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und
             Aktualität können wir jedoch keine Gewähr übernehmen. Die dargestellten Angaben zu KI-Modellen und
             Anbietern stammen aus öffentlichen Quellen und Anbieterdokumentation; Anbieter ändern ihre
-            Bedingungen laufend. Jede Angabe ist mit Quelle und Prüfdatum versehen — maßgeblich ist stets die
+            Bedingungen laufend. Jede Angabe ist mit Quelle und Prüfdatum versehen - maßgeblich ist stets die
             verlinkte Originalquelle.
           </p>
           <p className="mt-2 text-muted">

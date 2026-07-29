@@ -11,13 +11,13 @@ import '../globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
   title: {
-    default: 'botbrix — AI model intelligence & LLM comparison',
+    default: 'botbrix - AI model intelligence & LLM comparison',
     template: '%s · botbrix'
   },
   description:
     'Compare every usable LLM: prices, providers, context, capabilities, benchmarks and deterministic scores. Bilingual (EN/DE), for developers and non-technical users.',
   openGraph: {
-    title: 'botbrix — AI model intelligence',
+    title: 'botbrix - AI model intelligence',
     description: 'Compare every usable LLM: prices, providers, context, capabilities and scores.',
     type: 'website'
   }

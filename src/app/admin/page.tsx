@@ -46,18 +46,18 @@ export default async function AdminDashboard() {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Stat label="Models in snapshot" value={models.length} href="/admin/models" />
-        <Stat label="Active overrides" value={c?.overrides ?? '—'} href="/admin/models" />
-        <Stat label="Active featured slots" value={c?.featured ?? '—'} href="/admin/featured" />
-        <Stat label="Open data reports" value={c?.openReports ?? '—'} href="/admin/reports" />
-        <Stat label="Leads" value={c?.leads ?? '—'} />
-        <Stat label="Newsletter signups" value={c?.signups ?? '—'} />
+        <Stat label="Active overrides" value={c?.overrides ?? '-'} href="/admin/models" />
+        <Stat label="Active featured slots" value={c?.featured ?? '-'} href="/admin/featured" />
+        <Stat label="Open data reports" value={c?.openReports ?? '-'} href="/admin/reports" />
+        <Stat label="Leads" value={c?.leads ?? '-'} />
+        <Stat label="Newsletter signups" value={c?.signups ?? '-'} />
       </div>
 
       <div className="mt-8 rounded-xl border border-border bg-surface p-5 text-sm text-muted">
         <h2 className="mb-2 font-semibold text-fg">How editing works</h2>
         <p>
           botbrix serves its public data from a real-data snapshot. The admin applies <em>overrides</em> on top of it
-          (hide, verify, change status, set affiliate links) and manages featured/sponsored slots — all stored in
+          (hide, verify, change status, set affiliate links) and manages featured/sponsored slots - all stored in
           PostgreSQL and applied to the live site the moment a <code>DATABASE_URL</code> is connected. Sponsored
           placements are clearly labelled and never affect organic scores or rankings.
         </p>

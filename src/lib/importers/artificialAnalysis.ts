@@ -2,7 +2,7 @@
 // botbrix benchmark results. Requires ARTIFICIAL_ANALYSIS_API_KEY.
 //
 // AA reports blended indices (intelligence/coding/math) on a 0-100 scale and
-// individual evals on a 0-1 scale — this importer normalizes both to a
+// individual evals on a 0-1 scale - this importer normalizes both to a
 // percentage. Model names carry reasoning-effort suffixes like "(high)", so
 // matching strips those and the lab prefix and keeps the best-scoring variant.
 
@@ -83,7 +83,7 @@ export function normalizeName(name: string): string {
 
 export async function fetchAARaw(apiKey: string | undefined): Promise<RawAAModel[]> {
   if (!apiKey) {
-    console.warn('[artificialAnalysis] no ARTIFICIAL_ANALYSIS_API_KEY — skipping.');
+    console.warn('[artificialAnalysis] no ARTIFICIAL_ANALYSIS_API_KEY - skipping.');
     return [];
   }
   const res = await fetch(`${AA_BASE}/data/llms/models`, {

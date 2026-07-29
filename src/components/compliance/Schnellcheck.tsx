@@ -8,7 +8,7 @@ import type { DataClass, ProviderCompliance, VerdictResult } from '@/lib/complia
 import { VerdictBadge } from '@/components/compliance/VerdictBadge';
 import { LegalNotice } from '@/components/compliance/LegalNotice';
 
-/** Vorberechnete Bewertung je Einsatzweg × Datenklasse — die Auswertung selbst
+/** Vorberechnete Bewertung je Einsatzweg × Datenklasse - die Auswertung selbst
  * passiert serverseitig in der Engine, hier wird nur ausgewählt und angezeigt.
  * So bleibt die Logik an EINER Stelle. */
 export interface SchnellcheckRoute {
@@ -34,8 +34,8 @@ const FRAGEN = [
     optionen: [
       { wert: 'S0', label: 'Keine personenbezogenen Daten', hinweis: 'Textbausteine, allgemeine Recherche, interne Texte' },
       { wert: 'S1', label: 'Normale Kundendaten', hinweis: 'Name, Adresse, E-Mail-Verkehr' },
-      { wert: 'S2', label: 'Gesundheits- oder ähnlich sensible Daten', hinweis: 'Art. 9 DSGVO — Praxis, Pflege, Therapie' },
-      { wert: 'S3', label: 'Berufsgeheimnis', hinweis: '§ 203 StGB — Kanzlei, Steuerberatung, Arztpraxis' }
+      { wert: 'S2', label: 'Gesundheits- oder ähnlich sensible Daten', hinweis: 'Art. 9 DSGVO - Praxis, Pflege, Therapie' },
+      { wert: 'S3', label: 'Berufsgeheimnis', hinweis: '§ 203 StGB - Kanzlei, Steuerberatung, Arztpraxis' }
     ]
   },
   {
@@ -53,7 +53,7 @@ const FRAGEN = [
     frage: 'Wer betreut Ihre IT?',
     hilfe: 'Bestimmt, welcher Weg realistisch umsetzbar ist.',
     optionen: [
-      { wert: 'keine', label: 'Niemand — wir machen das selbst nebenbei', hinweis: 'Nur einfache Wege sinnvoll' },
+      { wert: 'keine', label: 'Niemand - wir machen das selbst nebenbei', hinweis: 'Nur einfache Wege sinnvoll' },
       { wert: 'dienstleister', label: 'Ein externer IT-Dienstleister', hinweis: 'Der Normalfall' },
       { wert: 'eigene', label: 'Eigene IT-Abteilung', hinweis: 'Auch Selbstbetrieb möglich' }
     ]

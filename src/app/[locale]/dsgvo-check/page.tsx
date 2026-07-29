@@ -6,9 +6,9 @@ import { DATA_CLASSES, type DataClass } from '@/lib/compliance/types';
 import { Schnellcheck, type SchnellcheckRoute } from '@/components/compliance/Schnellcheck';
 
 export const metadata: Metadata = {
-  title: 'DSGVO-Schnellcheck — welche KI darf ich in meinem Betrieb einsetzen?',
+  title: 'DSGVO-Schnellcheck - welche KI darf ich in meinem Betrieb einsetzen?',
   description:
-    'Drei Fragen zu Ihren Daten, Ihrer Cloud-Vorgabe und Ihrer IT — danach sehen Sie, welcher KI-Einsatzweg für Sie in Frage kommt und was Sie dafür konkret erledigen müssen. Information, keine Rechtsberatung.'
+    'Drei Fragen zu Ihren Daten, Ihrer Cloud-Vorgabe und Ihrer IT - danach sehen Sie, welcher KI-Einsatzweg für Sie in Frage kommt und was Sie dafür konkret erledigen müssen. Information, keine Rechtsberatung.'
 };
 
 export default async function DsgvoCheckPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -19,7 +19,7 @@ export default async function DsgvoCheckPage({ params }: { params: Promise<{ loc
     (m) => m.category !== 'media' && m.category !== 'embedding' && m.category !== 'reranker'
   );
 
-  // Bewertung serverseitig — die Engine bleibt die einzige Quelle der Wahrheit.
+  // Bewertung serverseitig - die Engine bleibt die einzige Quelle der Wahrheit.
   const routes: SchnellcheckRoute[] = ALL_ROUTES.map((r) => ({
     slug: r.slug,
     route: r.route,
@@ -47,7 +47,7 @@ export default async function DsgvoCheckPage({ params }: { params: Promise<{ loc
     <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6">
       <h1 className="text-balance text-3xl font-bold tracking-tight">DSGVO-Schnellcheck</h1>
       <p className="mt-3 text-pretty text-sm leading-relaxed text-muted">
-        Drei Fragen — danach wissen Sie, welcher Weg für Ihren Betrieb in Frage kommt und was Sie dafür
+        Drei Fragen - danach wissen Sie, welcher Weg für Ihren Betrieb in Frage kommt und was Sie dafür
         konkret erledigen müssen. Die Bewertung folgt festen Regeln aus belegten Anbieterangaben; es entscheidet
         kein Sprachmodell.
       </p>

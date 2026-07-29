@@ -7,7 +7,7 @@
 //
 // ⚠️ Dieser Text ist eine sorgfältig erstellte Vorlage, aber KEINE
 // Rechtsberatung. Vor dem Livegang von einer Fachanwältin oder einem
-// Fachanwalt prüfen lassen — insbesondere, wenn Newsletter, Auftragsverarbeiter
+// Fachanwalt prüfen lassen - insbesondere, wenn Newsletter, Auftragsverarbeiter
 // oder weitere Dienste hinzukommen.
 
 export interface SiteLegal {
@@ -23,7 +23,7 @@ export interface SiteLegal {
   verantwortlich: string | null;
   /** Pflicht, sobald ein Datenschutzbeauftragter benannt ist (Art. 37 DSGVO). */
   datenschutzbeauftragter: string | null;
-  /** Hosting-Anbieter — für die Datenschutzerklärung erforderlich. */
+  /** Hosting-Anbieter - für die Datenschutzerklärung erforderlich. */
   hoster: string;
   hosterAdresse: string;
   hosterAvv: string | null;
@@ -42,13 +42,13 @@ export const SITE_LEGAL: SiteLegal = {
   ustIdNr: null,
   verantwortlich: null,
   datenschutzbeauftragter: null,
-  // Vorbelegt, weil die Seite auf Vercel läuft — anpassen, falls sich das ändert.
+  // Vorbelegt, weil die Seite auf Vercel läuft - anpassen, falls sich das ändert.
   hoster: 'Vercel Inc.',
   hosterAdresse: '340 S Lemon Ave #4133, Walnut, CA 91789, USA',
   hosterAvv: 'https://vercel.com/legal/dpa'
 };
 
-/** true, solange Pflichtangaben fehlen — die Seiten weisen dann sichtbar aus,
+/** true, solange Pflichtangaben fehlen - die Seiten weisen dann sichtbar aus,
  * dass sie noch nicht vollständig sind, statt Erfundenes anzuzeigen. */
 export const LEGAL_UNVOLLSTAENDIG = Object.entries(SITE_LEGAL).some(
   ([, v]) => v === PLATZHALTER

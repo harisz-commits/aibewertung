@@ -1,6 +1,6 @@
 // Deterministische Ampel je (Einsatzweg × Datenklasse).
 //
-// Bewusst regelbasiert und nachvollziehbar — wie unsere Score-Engine setzt
+// Bewusst regelbasiert und nachvollziehbar - wie unsere Score-Engine setzt
 // kein Sprachmodell die Bewertung. Jede Ampel liefert die auslösenden Regeln
 // im Klartext mit, weil die Begründung der eigentliche Nutzen ist.
 //
@@ -32,7 +32,7 @@ export function evaluate(p: ProviderCompliance, dataClass: DataClass): VerdictRe
       down('yellow');
       reasons.push({
         severity: 'condition',
-        text: 'Anbieter nutzt Eingaben zum Training. Für personenbezogene Daten ungeeignet — auch ohne Personenbezug sollten keine Betriebsgeheimnisse hinein.'
+        text: 'Anbieter nutzt Eingaben zum Training. Für personenbezogene Daten ungeeignet - auch ohne Personenbezug sollten keine Betriebsgeheimnisse hinein.'
       });
     } else if (p.trainingOnCustomerData === 'unknown') {
       down('unknown');
@@ -46,7 +46,7 @@ export function evaluate(p: ProviderCompliance, dataClass: DataClass): VerdictRe
 
   // --- Ab S1: personenbezogene Daten ---------------------------------------
 
-  // 1) AVV nach Art. 28 DSGVO ist Grundvoraussetzung — außer beim Selbstbetrieb,
+  // 1) AVV nach Art. 28 DSGVO ist Grundvoraussetzung - außer beim Selbstbetrieb,
   //    denn ohne Dritten gibt es keine Auftragsverarbeitung.
   if (p.hostingRegion === 'self_hosted') {
     reasons.push({ severity: 'info', text: 'Selbstbetrieb: kein Auftragsverarbeiter, daher kein AVV nötig.' });
@@ -58,7 +58,7 @@ export function evaluate(p: ProviderCompliance, dataClass: DataClass): VerdictRe
     down('unknown');
     reasons.push({ severity: 'info', text: 'Ob ein AVV angeboten wird, ist nicht belegt.' });
   } else {
-    reasons.push({ severity: 'condition', text: 'AVV muss vor dem Einsatz tatsächlich abgeschlossen werden — vorhanden heißt nicht automatisch geschlossen.' });
+    reasons.push({ severity: 'condition', text: 'AVV muss vor dem Einsatz tatsächlich abgeschlossen werden - vorhanden heißt nicht automatisch geschlossen.' });
   }
 
   // 2) Training auf Kundendaten.
@@ -79,7 +79,7 @@ export function evaluate(p: ProviderCompliance, dataClass: DataClass): VerdictRe
   // 3) Hosting-Region / Drittlandtransfer (Art. 44 ff. DSGVO).
   switch (p.hostingRegion) {
     case 'self_hosted':
-      reasons.push({ severity: 'info', text: 'Selbst betrieben — Daten verlassen die eigene Infrastruktur nicht. Kein Drittlandtransfer.' });
+      reasons.push({ severity: 'info', text: 'Selbst betrieben - Daten verlassen die eigene Infrastruktur nicht. Kein Drittlandtransfer.' });
       break;
     case 'eu':
       reasons.push({ severity: 'info', text: `Verarbeitung in der EU/EWR${p.hostingDetail ? ` (${p.hostingDetail})` : ''}. Kein Drittlandtransfer.` });
@@ -88,7 +88,7 @@ export function evaluate(p: ProviderCompliance, dataClass: DataClass): VerdictRe
       down(dataClass === 'S1' ? 'yellow' : 'orange');
       reasons.push({
         severity: 'condition',
-        text: 'Verarbeitung in den USA auf Basis des EU-US Data Privacy Framework. Rechtlich zulässig, aber politisch angreifbar — bei sensiblen Daten EU-Region oder Selbstbetrieb vorziehen.'
+        text: 'Verarbeitung in den USA auf Basis des EU-US Data Privacy Framework. Rechtlich zulässig, aber politisch angreifbar - bei sensiblen Daten EU-Region oder Selbstbetrieb vorziehen.'
       });
       break;
     case 'us_no_dpf':
@@ -102,7 +102,7 @@ export function evaluate(p: ProviderCompliance, dataClass: DataClass): VerdictRe
       reasons.push({ severity: 'info', text: 'Verarbeitungsort ist nicht belegt.' });
   }
 
-  // 4) S2 — besondere Kategorien (Art. 9 DSGVO).
+  // 4) S2 - besondere Kategorien (Art. 9 DSGVO).
   if (dataClass === 'S2' || dataClass === 'S3') {
     if (p.hostingRegion === 'eu' || p.hostingRegion === 'self_hosted') {
       reasons.push({ severity: 'condition', text: 'Besondere Kategorien nach Art. 9 DSGVO: zusätzlich Rechtsgrundlage, Löschkonzept und dokumentierte technische Maßnahmen erforderlich.' });
@@ -112,7 +112,7 @@ export function evaluate(p: ProviderCompliance, dataClass: DataClass): VerdictRe
     }
   }
 
-  // 5) S3 — Berufsgeheimnis (§ 203 StGB). Für Kanzlei, Praxis, Steuerberatung
+  // 5) S3 - Berufsgeheimnis (§ 203 StGB). Für Kanzlei, Praxis, Steuerberatung
   //    der entscheidende Punkt: Der Anbieter wird "mitwirkende Person" und muss
   //    vertraglich zur Geheimhaltung verpflichtet werden.
   if (dataClass === 'S3') {
@@ -121,11 +121,24 @@ export function evaluate(p: ProviderCompliance, dataClass: DataClass): VerdictRe
       // DSGVO deckt § 203 StGB NICHT ab. Das sind zwei getrennte Pflichten.
       reasons.push({
         severity: 'condition',
-        text: 'Ein AVV nach Art. 28 DSGVO deckt das Berufsgeheimnis NICHT ab — dafür braucht es zusätzlich eine gesonderte Verschwiegenheitsvereinbarung nach § 203 Abs. 4 StGB, in Textform und mit Belehrung über die Strafbarkeit. Auch eingesetzte Beschäftigte und Unterauftragnehmer müssen verpflichtet werden.'
+        text: 'Ein AVV nach Art. 28 DSGVO deckt das Berufsgeheimnis NICHT ab - dafür braucht es zusätzlich eine gesonderte Verschwiegenheitsvereinbarung nach § 203 Abs. 4 StGB, in Textform und mit Belehrung über die Strafbarkeit. Auch eingesetzte Beschäftigte und Unterauftragnehmer müssen verpflichtet werden.'
       });
     }
     if (p.supportsProfessionalSecrecy === true) {
-      reasons.push({ severity: 'condition', text: 'Anbieter kann nach § 203 Abs. 3 Satz 2 StGB als mitwirkende Person einbezogen werden — die Verpflichtung muss tatsächlich geschlossen und auf Verlangen vorlegbar sein.' });
+      // Bleibt grün, aber NUR mit der Zusatzvereinbarung - das steht als
+      // Auflage im Klartext und als Kennzeichnung an der Ampel.
+      reasons.push({
+        severity: 'condition',
+        text: p.secrecyHinweis
+          ? `Nur mit Verschwiegenheitsvereinbarung: ${p.secrecyHinweis}`
+          : 'Nur mit gesonderter Verschwiegenheitsvereinbarung nach § 203 Abs. 4 StGB - diese muss tatsächlich geschlossen und auf Verlangen vorlegbar sein.'
+      });
+      if (p.secrecyEvidence === 'community') {
+        reasons.push({
+          severity: 'condition',
+          text: 'Achtung Belegqualität: Diese Angabe stützt sich auf eine Dritt- oder Erfahrungsquelle, nicht auf eine Zusicherung des Anbieters. Vor dem Einsatz mit Mandantendaten schriftlich beim Anbieter bestätigen lassen.'
+        });
+      }
     } else if (p.supportsProfessionalSecrecy === false) {
       down('red');
       reasons.push({ severity: 'blocker', text: 'Anbieter bietet keine Verschwiegenheitsvereinbarung nach § 203 StGB an. Für Mandanten-, Patienten- oder Steuergeheimnisse nicht einsetzbar.' });
@@ -142,7 +155,7 @@ export function evaluate(p: ProviderCompliance, dataClass: DataClass): VerdictRe
  * 'orange': ein ungeprüfter Weg ist keine Empfehlung. */
 const ORDER: Record<Verdict, number> = { green: 0, yellow: 1, orange: 2, unknown: 3, red: 4 };
 
-/** Beste erreichbare Bewertung eines Modells über alle seine Einsatzwege —
+/** Beste erreichbare Bewertung eines Modells über alle seine Einsatzwege -
  * für die Übersichtstabelle. Liefert den Weg mit, der sie erreicht, damit die
  * Tabelle sagen kann "grün, aber nur über Azure EU". */
 export function bestVerdict(
