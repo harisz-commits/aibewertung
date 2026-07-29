@@ -230,11 +230,5 @@
     "newsletterPlaceholder": "you@example.com",
     "disclaimer": "Data is gathered from APIs, public sources and benchmarks and enriched automatically. It may be incomplete or outdated. Not financial or professional advice.",
     "rights": "All rights reserved."
-  },
-  "legal": {
-    "impressumTitle": "Impressum",
-    "impressumBody": "This is a placeholder Impressum. Replace with your legal entity details (name, address, contact, VAT ID) before going live.",
-    "datenschutzTitle": "Privacy policy",
-    "datenschutzBody": "This is a placeholder privacy policy. Replace with your GDPR-compliant policy covering data collection, cookies, analytics and third parties before going live."
   }
 }

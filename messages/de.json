@@ -230,11 +230,5 @@
     "newsletterPlaceholder": "du@beispiel.de",
     "disclaimer": "Daten stammen aus APIs, öffentlichen Quellen und Benchmarks und werden automatisch angereichert. Sie können unvollständig oder veraltet sein. Keine Finanz- oder Fachberatung.",
     "rights": "Alle Rechte vorbehalten."
-  },
-  "legal": {
-    "impressumTitle": "Impressum",
-    "impressumBody": "Dies ist ein Platzhalter-Impressum. Ersetze es vor dem Livegang durch die Angaben deiner rechtlichen Einheit (Name, Anschrift, Kontakt, USt-IdNr.).",
-    "datenschutzTitle": "Datenschutzerklärung",
-    "datenschutzBody": "Dies ist eine Platzhalter-Datenschutzerklärung. Ersetze sie vor dem Livegang durch deine DSGVO-konforme Erklärung zu Datenerhebung, Cookies, Analyse und Dritten."
   }
 }
