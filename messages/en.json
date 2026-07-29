@@ -29,7 +29,8 @@
     "methodology": "Methodology",
     "api": "API",
     "news": "Today in LLMs",
-    "branchen": "For your industry"
+    "branchen": "For your industry",
+    "dsgvoCheck": "GDPR check"
   },
   "benchmarks": {
     "title": "Benchmarks explained",

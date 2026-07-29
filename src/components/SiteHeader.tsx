@@ -16,6 +16,7 @@ export function SiteHeader() {
     { href: '/compare', label: t('compare') },
     { href: '/benchmarks', label: t('benchmarks') },
     { href: '/branchen/steuerkanzlei', label: t('branchen') },
+    { href: '/dsgvo-check', label: t('dsgvoCheck') },
     { href: '/methodology', label: t('methodology') }
   ];
 
