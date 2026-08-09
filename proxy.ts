@@ -4,6 +4,9 @@ import type { NextRequest } from "next/server";
 /**
  * Password gate in front of the entire app.
  *
+ * Next.js 16 renamed this convention from `middleware` to `proxy`; the
+ * behaviour is unchanged.
+ *
  * This is the outermost cost guardrail: every expensive route sits behind it,
  * so an unauthenticated visitor can never spend Anthropic tokens, ElevenLabs
  * characters or Sandbox minutes. HTTP Basic keeps it to one env var with no
@@ -11,7 +14,7 @@ import type { NextRequest } from "next/server";
  *
  * Leave STUDIO_PASSWORD unset for local development and the gate is skipped.
  */
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const expected = process.env.STUDIO_PASSWORD;
   if (!expected) return NextResponse.next();
 

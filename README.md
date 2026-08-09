@@ -40,6 +40,7 @@ MP4 in Vercel Blob
 | `lib/elevenlabs.ts` | TTS-Client mit Timestamps. |
 | `lib/guardrails.ts` | Rate-Limit und hartes Tagesbudget. |
 | `lib/store.ts` | Kleine JSON- und Binärdokumente in Vercel Blob. |
+| `proxy.ts` | Passwortsperre vor der gesamten App. |
 | `remotion/Video.tsx` | Mapper: JSON → Szenenfolge. |
 | `remotion/scenes/*` | Die neun Szenentypen. |
 | `remotion/shared/*` | Tokens, Motion, Icons, SceneShell, Caption. |
@@ -159,7 +160,8 @@ installieren und das Remotion-Bundle bauen — Minuten statt Sekunden.
 Jeder Aufruf von `/api/script`, `/api/voice` und `/api/render` kostet echtes
 Geld. Vier Schichten liegen davor:
 
-**1. Passwort vor der ganzen App.** `middleware.ts`, HTTP Basic über
+**1. Passwort vor der ganzen App.** `proxy.ts` — die Datei hieß vor Next.js 16
+`middleware.ts` — mit HTTP Basic über
 `STUDIO_PASSWORD` (Benutzername beliebig). Das ist die äußerste Kostensperre —
 wer nicht durchkommt, kann nichts auslösen. Nicht gesetzt = offen, also in
 Produktion immer setzen. Alternativ Vercel Password Protection.
