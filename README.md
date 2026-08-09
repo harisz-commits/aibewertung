@@ -1,167 +1,246 @@
-# botbrix
+# Infographics Studio
 
-**AI model intelligence & LLM comparison platform** — a bilingual (EN/DE),
-CoinMarketCap-style registry of every usable LLM: prices, providers, context,
-capabilities, benchmarks and **deterministic, explainable scores**.
+Stichwort rein, fertiges MP4 raus. Claude schreibt Skript und Szenenliste,
+ElevenLabs spricht es mit Zeichen-Timestamps, Remotion rendert daraus ein
+1920×1080-Erklärvideo im Flat-Vector-Infografik-Stil.
 
-> Status: **Phase 1–3 foundation + core slice** is implemented and runs on real
-> live data from OpenRouter with **no database required**. Later phases (admin,
-> auth, Stripe, paid API, benchmark ingestion, daily agent) are scaffolded and
-> documented below.
-
----
-
-## What works today
-
-- ⚡ **Runs with zero infrastructure.** A committed real-data snapshot
-  (`src/data/models.snapshot.json`, 345 live models from OpenRouter) powers the
-  whole UI. No DB, no API keys needed to `npm run dev`.
-- 🧮 **Model-centric main table** — one row per model, **expandable provider
-  rows** with per-provider prices, context, uptime and availability.
-- 🔎 Search, sort and free filters (category, lab, capabilities, open-weight,
-  local, free tier).
-- 📄 **Model detail pages** with capabilities, providers & prices, use-case
-  score bars, sources and a "is it worth it?" callout.
-- 🧠 **Use-case assistant** — plain-language query → deterministic ranking.
-- ⚖️ **Compare** up to 5 models side by side.
-- 🏆 Ranking cards (best overall / coding / cheap API / local / German / RAG /
-  vision / price-performance).
-- 🌍 **i18n EN/DE** with localized routes (`/en`, `/de`), 🌗 **light/dark**.
-- 📊 **Deterministic scoring engine** (`src/lib/scoring/engine.ts`) — every
-  number comes from auditable formulas; explanations are separate from numbers.
-- 🔌 Public read API: `/api/models`, `/api/rankings`, `/api/health`.
-- 🔍 SEO: `sitemap.xml`, `robots.txt`, per-model metadata.
-- ⚖️ Methodology, Impressum, Datenschutz, transparency disclaimers.
-
-## Tech stack
-
-Next.js 15 (App Router) · TypeScript (strict) · Tailwind CSS · next-intl ·
-Prisma + PostgreSQL (schema ready) · Vercel-compatible.
+Der Kern ist eine Regel: **keine Szenendauer wird jemals von Hand gesetzt.**
+Jede Szene trägt eine `anchorPhrase`, die wörtlich im Voiceover vorkommt.
+ElevenLabs liefert für jedes Zeichen dieses Voiceovers eine Startzeit — damit
+wird aus „wo beginnt diese Szene" eine Textsuche. Ändert sich das Skript,
+ändert sich das Timing automatisch mit.
 
 ---
 
-## Getting started
+## Ablauf
+
+```
+Stichwort
+   │  POST /api/script      Claude (claude-sonnet-4-6, Structured Outputs)
+   ▼
+VideoProject (JSON)         Voiceover + 10–14 Szenen mit anchorPhrase
+   │  POST /api/voice       ElevenLabs /with-timestamps
+   ▼
++ audioUrl + alignment      MP3 in Vercel Blob, Zeichen-Timestamps im Projekt
+   │  resolveSceneTimings() lib/align.ts — Phrase → Zeichenindex → Frame
+   ▼
+Live-Vorschau               @remotion/player, kein Render nötig
+   │  POST /api/render      Vercel Sandbox
+   ▼
+MP4 in Vercel Blob
+```
+
+## Aufbau
+
+| Pfad | Rolle |
+|---|---|
+| `lib/schema.ts` | Zod-Schema und Types. Der Vertrag zwischen allen Teilen. |
+| `lib/align.ts` | Anker-Phrasen → Szenenzeiten. Das Herz der Automatisierung. |
+| `lib/prompt.ts` | System-Prompt für den Scriptwriter. |
+| `lib/elevenlabs.ts` | TTS-Client mit Timestamps. |
+| `lib/guardrails.ts` | Rate-Limit und hartes Tagesbudget. |
+| `lib/store.ts` | Kleine JSON- und Binärdokumente in Vercel Blob. |
+| `remotion/Video.tsx` | Mapper: JSON → Szenenfolge. |
+| `remotion/scenes/*` | Die neun Szenentypen. |
+| `remotion/shared/*` | Tokens, Motion, Icons, SceneShell, Caption. |
+| `components/*` | Studio-UI inklusive Timeline mit Wellenform. |
+| `data/europa.json` | Seed-Datensatz, 781 Wörter, 13 Szenen. |
+
+### Warum die Szenen wiederverwendbar sind
+
+Ein Szenentyp ist eine React-Komponente plus ein Zweig im Zod-Schema. Ein neues
+Video ist ein neuer JSON-Datensatz — kein neues Bauprojekt. Die neun Typen
+decken die Muster ab, die Erklärvideos brauchen: Behauptung (`hook`),
+Zahlenvergleich (`counter`), Schwund (`iconGrid`), Warenströme (`mapFlow`),
+Ursachenkette (`chain`), Gegenüberstellung (`split`), Zeitverlauf (`chart`),
+tragende Faktoren (`pillars`), Schluss (`closer`).
+
+---
+
+## Einen neuen Szenentyp hinzufügen
+
+Fünf Schritte, alle typgeprüft — der `switch` in `Video.tsx` hat einen
+`never`-Guard, es kompiliert also erst wieder, wenn die Verdrahtung steht.
+
+**1. Schema-Zweig in `lib/schema.ts`.** Einmal in `Scene` (mit `sceneBase`) und
+einmal in `ScriptDraft` (mit `draftBase`):
+
+```ts
+z.object({
+  ...sceneBase,
+  type: z.literal("timeline"),
+  events: z.array(z.object({ year: z.string(), label: z.string() })).min(2),
+}),
+```
+
+**2. Komponente in `remotion/scenes/Timeline.tsx`.** Sie bekommt
+`{ scene, frame, accent }` und rendert *innerhalb* der Safe Area; Hintergrund,
+Raster und Untertitel liefert die `SceneShell` bereits:
+
+```tsx
+type TimelineScene = Extract<Scene, { type: "timeline" }>;
+
+export const Timeline: React.FC<SceneRenderProps<TimelineScene>> = ({
+  scene, frame, accent,
+}) => {
+  const { fps } = useVideoConfig();
+  return <div>{scene.events.map((e, i) => (
+    <div key={i} style={{ opacity: drive(frame, fps, i * T.stagger) }}>{e.label}</div>
+  ))}</div>;
+};
+```
+
+Halte dich an `drive()` aus `shared/motion.ts` und an `TYPE`/`C` aus
+`shared/Tokens.ts` — nur so bleibt die Bewegung im ganzen Film dieselbe.
+
+**3. Zweig in `remotion/Video.tsx`:**
+
+```tsx
+case "timeline":
+  return <Timeline scene={s} frame={frame} accent={accent} />;
+```
+
+**4. Probe-Komposition in `remotion/Root.tsx`** (Eintrag in `SCENE_PROBES`).
+Danach lässt sich die Szene einzeln in Remotion Studio öffnen und scrubben.
+
+**5. Prompt in `lib/prompt.ts` ergänzen**, damit Claude weiß, wann der Typ
+sinnvoll ist — ein Satz unter „SZENEN", z. B. *„Chronologie von Ereignissen
+→ timeline"*.
+
+Optional: eine Zeile in `summarize()` in `components/SceneInspector.tsx`, damit
+der Detailbereich die Daten der Szene zusammenfasst.
+
+### Ein neues Icon hinzufügen
+
+Alle Icons stehen in `remotion/shared/icons/index.tsx`. Regeln, die den
+gemeinsamen Look tragen: 48×48-Viewbox, Geometrie innerhalb von 4 px Rand,
+2 px Strichstärke, runde Enden, flächige Füllung als `currentColor` mit
+niedriger Deckkraft, keine Verläufe, keine Schatten, keine zweite Farbe. Namen
+zusätzlich in `ICON_NAMES` in `lib/schema.ts` eintragen — das Enum begrenzt
+gleichzeitig, was Claude auswählen darf.
+
+---
+
+## Lokal starten
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000  → redirects to /en
+cp .env.example .env.local     # Keys eintragen
+npm run dev                    # Studio auf http://localhost:3000
+npm run remotion               # Remotion Studio, alle Szenen einzeln
+npm run verify:timing          # Anker → Frames gegen den Seed prüfen
 ```
 
-Refresh the real-data snapshot from live OpenRouter (Node ≥ 22.6):
+Ohne `ANTHROPIC_API_KEY` und `ELEVENLABS_API_KEY` startet die App trotzdem und
+zeigt den Europa-Seed — nur „Skript erzeugen" und „Generieren" antworten dann
+mit einer Fehlermeldung.
 
-```bash
-npm run snapshot
-```
+## Deploy
 
-Build for production:
+Reihenfolge zählt: das Vercel-Projekt muss existieren, bevor der Blob-Store
+angehängt werden kann.
 
-```bash
-npm run build && npm start
-```
+1. Repo auf GitHub pushen, auf **vercel.com** importieren, einmal deployen.
+2. **Storage → Create Database → Blob**, dem Projekt zuweisen.
+   `BLOB_READ_WRITE_TOKEN` steht danach automatisch bereit.
+3. Env-Variablen setzen (siehe `.env.example`), vor allem `STUDIO_PASSWORD`.
+4. **Neu deployen.** Erst jetzt läuft `create-snapshot` durch — es braucht den
+   Blob-Token und legt den Sandbox-Snapshot an, aus dem jeder Render bootet.
+5. Lokal nachziehen: `vercel link && vercel env pull .env.local`.
 
-### Environment
-
-Copy `.env.example` → `.env`. **Nothing is required for the read-only demo.**
-`DATABASE_URL` and API keys are only needed for the DB-backed pipeline, admin,
-auth and payments.
+Der Build ist `next build && npm run create-snapshot` (siehe `vercel.json`).
+Ohne den Snapshot-Schritt würde der erste Render jedes Deployments Chromium
+installieren und das Remotion-Bundle bauen — Minuten statt Sekunden.
 
 ---
 
-## Architecture
+## Guardrails
 
-```
-src/
-  app/[locale]/         Localized routes: home, models/[slug], compare,
-                        methodology, impressum, datenschutz
-  app/api/              Public API (models, rankings, health) + cron/daily stub
-  components/           Table, filters, ranking cards, assistant, compare, theme
-  i18n/                 next-intl routing/request/navigation
-  lib/
-    types.ts            Read-side view types
-    importers/          Modular source importers (OpenRouter implemented)
-    scoring/engine.ts   Deterministic 0–100 scoring (configurable weights)
-    data.ts             Read layer (snapshot now; Prisma later, same API)
-    labs.ts, format.ts
-  data/models.snapshot.json   Committed real data (regenerate via npm run snapshot)
-prisma/schema.prisma    Full normalized schema (§19)
-prisma/seed.ts          Labs + providers seed
-scripts/
-  generate-snapshot.ts  Live OpenRouter → snapshot JSON (DB-less)
-  import-openrouter.ts   Live OpenRouter → PostgreSQL (Phase 2)
-```
+Jeder Aufruf von `/api/script`, `/api/voice` und `/api/render` kostet echtes
+Geld. Vier Schichten liegen davor:
 
-### Scoring (transparent by design)
+**1. Passwort vor der ganzen App.** `middleware.ts`, HTTP Basic über
+`STUDIO_PASSWORD` (Benutzername beliebig). Das ist die äußerste Kostensperre —
+wer nicht durchkommt, kann nichts auslösen. Nicht gesetzt = offen, also in
+Produktion immer setzen. Alternativ Vercel Password Protection.
 
-`OVERALL_WEIGHTS` (in `engine.ts`) = quality 30% · price-performance 20% ·
-speed 15% · features 15% · availability 10% · trust 10%. Fully configurable.
+**2. Rate-Limit pro Route.** Gleitendes Fenster im Speicher der Instanz:
+6/min Skript, 4/min Stimme, 2/min Render.
 
-**Honesty note:** until dedicated benchmark importers land (Phase 4), the
-"quality" component is a structural **proxy** (context, capabilities, reasoning,
-recency, provider coverage), so snapshot scores are flagged `scoresEstimated:
-true` and shown with an *Estimated* badge. We never present a proxy as a
-measured benchmark.
+**3. Hartes Tagesbudget.** In Vercel Blob gezählt, gilt über alle Instanzen:
 
----
+| Variable | Standard |
+|---|---|
+| `DAILY_SCRIPT_LIMIT` | 40 |
+| `DAILY_VOICE_LIMIT` | 20 |
+| `DAILY_RENDER_LIMIT` | 10 |
 
-## Database pipeline (Phase 2, ready to activate)
+`0` schaltet die jeweilige Route komplett ab. Das Kontingent wird **vor** dem
+teuren Aufruf reserviert, nicht danach — ein Lauf, der auf halber Strecke
+abbricht, hat die Tokens trotzdem verbraucht. Der Zähler ist ein
+Read-Modify-Write; zwei exakt gleichzeitige Anfragen können sich theoretisch
+einen Zählschritt teilen. Für ein Single-Operator-Studio hinter Passwort ist
+das der bewusste Tausch gegen eine zusätzliche Datenbank — es ist eine
+Budgetgrenze, kein Abrechnungsjournal.
 
-```bash
-# 1. set DATABASE_URL in .env (Postgres: Supabase / Neon / local)
-npm run db:generate
-npm run db:push          # create tables from schema.prisma
-npm run db:seed          # labs + providers
-npm run import:openrouter  # upsert models + scores + changelog
-```
+**4. Vercel Spend Management.** Nicht im Code abbildbar, unbedingt einschalten:
+**Vercel → Settings → Billing → Spend Management**, Betrag setzen und
+„Pause Production Deployments" aktivieren. Das ist die einzige Sperre, die auch
+greift, wenn etwas außerhalb dieser App entgleist.
 
-Then swap `src/lib/data.ts` reads from the snapshot to Prisma queries (same
-function signatures) — the UI does not change.
+**Blob-Cleanup.** `/api/cron/cleanup` läuft nächtlich um 04:00 (siehe
+`vercel.json`) und löscht alles unter `renders/` und `audio/`, das älter als
+`BLOB_MAX_AGE_DAYS` (Standard 30) ist. `snapshot-cache/` ist bewusst
+ausgenommen — dessen Löschung würde das Rendern bis zum nächsten Deploy
+lahmlegen. Geschützt über `CRON_SECRET`, das Vercel automatisch setzt.
 
-## Admin backend (Phase 5)
+### Was Geld kostet
 
-Log in at **`/admin`** with `ADMIN_EMAIL` / `ADMIN_PASSWORD` (env). Login works
-with no database; **editing** (hide/verify/status/affiliate overrides, featured
-slots, data reports) needs `DATABASE_URL` + `npm run db:push`. Admin changes are
-stored as slug-keyed overrides applied on top of the snapshot — so monetization
-works with just a database connection, ahead of the full model import. Every
-change is written to `AdminAuditLog`. Sponsored/featured placements are clearly
-labelled and never affect organic scores or rankings.
+| Posten | Größenordnung pro Video |
+|---|---|
+| Claude, ein Skript | ~4k Input-, ~6k Output-Tokens |
+| ElevenLabs | ~5.300 Zeichen |
+| Vercel Sandbox | ein 1080p-Render von ~5 Minuten Laufzeit |
+| Vercel Blob | ~5 MB MP3 + MP4 |
+
+Der Render ist mit Abstand der teuerste Posten. Deshalb ist `/api/render`
+gesperrt, solange kein Audio existiert: ein Render ohne Tonspur wäre ein
+stummes Video auf geschätzter Zeitachse — die teuerste Art, das herauszufinden.
 
 ---
 
-## Per-language coding leaderboard (pipeline)
+## Entscheidungen, die vom Brief abweichen
 
-`npm run import:coding` builds `src/data/coding-languages.json` and the
-`/api/coding/languages` endpoint returns `{ language: { "JavaScript": [{model,
-score}] } }`. The pipeline (`src/lib/coding/*`) standardizes results rows to
-`[model, language, benchmark, score]`, resolves language aliases (js→JavaScript,
-cpp→C++), and computes a per-language composite via z-score normalization (or a
-weighted average: SWE-bench 50% · McEval 30% · MultiPL-E 20%).
+- **Structured Outputs statt „antworte nur mit JSON".** `/api/script` nutzt
+  `output_config.format` mit dem Zod-Schema. Das Format ist damit erzwungen
+  statt erbeten; die Prosa-Anweisung „kein Markdown, keine Backticks" wäre
+  totes Gewicht in jedem Request. Assistant-Prefills, die man dafür früher
+  gebraucht hätte, liefern auf `claude-sonnet-4-6` ohnehin einen 400er.
+- **Fonts self-hosted statt `@remotion/google-fonts`.** „Archivo Expanded" ist
+  keine eigene Google-Fonts-Familie und liegt deshalb nicht in dem Paket — es
+  ist die variable Archivo bei `wdth 125`. Genau diese Instanz liegt als woff2
+  unter `public/fonts/`, zusammen mit Inter Tight und JetBrains Mono. Der
+  Renderer hängt damit an keinem Netzabruf mitten im Render.
+- **`phase` als Szenenfeld.** Der Navy→Mint-Wechsel hängt an
+  `phase: "crisis" | "solution"` statt an „ab Szene 10". So landet der
+  Farbumschlag dort, wo das Skript tatsächlich dreht.
+- **Europa als Regionen-Set.** Eine einzelne vereinfachte Küstenlinie ist von
+  Hand kaum wiedererkennbar zu bekommen. `mapFlow` zeichnet den Kontinent als
+  Blöcke (Iberien, Frankreich, Britische Inseln, Skandinavien, Stiefel …) —
+  lesbarer und stilistisch konsequenter.
+- **Szene 11 des Seeds** nutzt `iconGrid` mit `satellite`, weil `iconGrid` per
+  Definition ein Icon führt; die drei Hebel stehen in `sub`.
 
-**Honest note on data:** the named HF datasets — `SWE-bench/SWE-bench_Multilingual`,
-`nuprl/MultiPL-E`, `Multilingual-Multimodal-NLP/McEval-Instruct` — contain
-benchmark **problems / training data, not per-model scores** (verified via the
-datasets-server). Model×language scores must come from a results source: a
-published leaderboard export or the curated seed
-`src/data/coding-languages.seed.json` (see `.seed.example.json`). MultiPL-E's
-configs are used only for real **language coverage**. Set `HF_TOKEN` for gated
-datasets / higher rate limits.
+## Bekannte Grenzen
 
-## Roadmap (from the product spec)
-
-| Phase | Scope | State |
-|-------|-------|-------|
-| 1 | Project, schema, i18n, light/dark | ✅ done |
-| 2 | Importers, daily update job, change logs | 🟡 OpenRouter importer + DB pipeline + cron stub |
-| 3 | Main table, expandable providers, filters, detail pages | ✅ done |
-| 4 | Scoring engine, use-case rankings, assistant, methodology | 🟡 scoring + rankings + assistant done; benchmark ingestion pending |
-| 5 | Admin backend, verification, featured slots, reports | ✅ auth + models/featured/reports admin (DB-backed) |
-| 6 | Auth, favorites/watchlist, CSV export, Stripe prep | ⬜ schema ready |
-| 7 | Paid API, keys, rate limiting, usage logs | 🟡 open endpoints live; auth/limits pending |
-| 8 | SEO, DE translations, daily summaries, polish | 🟡 SEO + i18n done |
-
-## Data & transparency
-
-Data is gathered from provider APIs, marketplaces (OpenRouter), benchmarks and
-public docs, and enriched automatically. It may be incomplete or outdated.
-Sponsored placements (schema: `FeaturedSlot`) are always clearly marked and
-**never** affect organic scores or rankings. See the in-app **Methodology** page.
+- **Voiceover-Länge.** `eleven_multilingual_v2` nimmt 10.000 Zeichen pro
+  Request. 750–850 Wörter Deutsch sind ~5.300 — also eine Anfrage, kein
+  Zusammensetzen von MP3s. Längere Texte lehnt `/api/voice` mit klarer Meldung
+  ab, statt sie stumm abzuschneiden (das würde jede Szene danach desynchronisieren).
+- **Render-Laufzeit.** `/api/render` hält die Function offen, solange die
+  Sandbox rendert (`maxDuration = 300`). Auf Vercel Hobby liegt die Obergrenze
+  darunter; lange Renders brechen dort ab.
+- **Fortschritt über Blob.** `/api/progress` liest ein JSON aus dem Blob-Store,
+  weil eine Folgeanfrage auf einer anderen Instanz landen kann. Die minimale
+  Cache-Zeit dort ist 60 Sekunden, deshalb hängt der Leser einen
+  Cache-Buster an die URL.
